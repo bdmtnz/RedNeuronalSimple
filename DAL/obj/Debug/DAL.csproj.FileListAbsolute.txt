@@ -1,0 +1,9 @@
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\DAL\bin\Debug\DAL.dll
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\DAL\bin\Debug\DAL.pdb
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\DAL\bin\Debug\ENTITY.dll
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\DAL\bin\Debug\ENTITY.pdb
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\DAL\obj\Debug\DAL.dll
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\DAL\obj\Debug\DAL.pdb
