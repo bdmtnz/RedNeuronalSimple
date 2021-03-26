@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Neurona>
     <Config>
-        10;1;1;0,5;0
+        10;0,1;1;0,5;0
     </Config>
     <Patrones>
         1;2;3;4;5;6;7;8;9

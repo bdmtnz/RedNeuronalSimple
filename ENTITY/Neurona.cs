@@ -29,6 +29,7 @@ namespace ENTITY
             Pesos = new List<Pesos>();
             PesosAnteriores = new List<Pesos>();
             Umbrales = new List<Umbrales>();
+            UmbralesAnteriores = new List<Umbrales>();
             Salidas = new List<Salida>();
             Activacion = new Activacion(FUNCION.Escalon);
         }
@@ -77,7 +78,7 @@ namespace ENTITY
                 Value = Value.Trim();
                 var Split = Value.Split(';');
                 Iteraciones = Int32.Parse(Split[0]);
-                ErrorMaxPermitido = Int32.Parse(Split[1]);
+                ErrorMaxPermitido = Double.Parse(Split[1]);
                 switch (Split[2])
                 {
                     case "0":

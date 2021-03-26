@@ -44,10 +44,16 @@
             this.PbSigmoide = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.LbSalidas = new System.Windows.Forms.Label();
+            this.LbPatrones = new System.Windows.Forms.Label();
+            this.LbEntradas = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.NbRata = new System.Windows.Forms.NumericUpDown();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.NbErrorMax = new System.Windows.Forms.NumericUpDown();
             this.NbIteracion = new System.Windows.Forms.NumericUpDown();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -59,12 +65,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.LbEntradas = new System.Windows.Forms.Label();
-            this.LbPatrones = new System.Windows.Forms.Label();
-            this.LbSalidas = new System.Windows.Forms.Label();
-            this.NbRata = new System.Windows.Forms.NumericUpDown();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbCarga)).BeginInit();
             this.panel2.SuspendLayout();
@@ -74,10 +74,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NbRata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NbErrorMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NbIteracion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NbRata)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -286,6 +286,33 @@
             this.panel6.Size = new System.Drawing.Size(596, 20);
             this.panel6.TabIndex = 0;
             // 
+            // LbSalidas
+            // 
+            this.LbSalidas.AutoSize = true;
+            this.LbSalidas.Location = new System.Drawing.Point(555, 2);
+            this.LbSalidas.Name = "LbSalidas";
+            this.LbSalidas.Size = new System.Drawing.Size(15, 16);
+            this.LbSalidas.TabIndex = 5;
+            this.LbSalidas.Text = "#";
+            // 
+            // LbPatrones
+            // 
+            this.LbPatrones.AutoSize = true;
+            this.LbPatrones.Location = new System.Drawing.Point(320, 2);
+            this.LbPatrones.Name = "LbPatrones";
+            this.LbPatrones.Size = new System.Drawing.Size(15, 16);
+            this.LbPatrones.TabIndex = 4;
+            this.LbPatrones.Text = "#";
+            // 
+            // LbEntradas
+            // 
+            this.LbEntradas.AutoSize = true;
+            this.LbEntradas.Location = new System.Drawing.Point(71, 2);
+            this.LbEntradas.Name = "LbEntradas";
+            this.LbEntradas.Size = new System.Drawing.Size(15, 16);
+            this.LbEntradas.TabIndex = 3;
+            this.LbEntradas.Text = "#";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -341,20 +368,75 @@
             this.panel3.Size = new System.Drawing.Size(200, 496);
             this.panel3.TabIndex = 2;
             // 
+            // NbRata
+            // 
+            this.NbRata.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.NbRata.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NbRata.DecimalPlaces = 1;
+            this.NbRata.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.NbRata.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.NbRata.Location = new System.Drawing.Point(18, 297);
+            this.NbRata.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NbRata.Name = "NbRata";
+            this.NbRata.Size = new System.Drawing.Size(163, 18);
+            this.NbRata.TabIndex = 15;
+            this.NbRata.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.panel7.Location = new System.Drawing.Point(18, 319);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(163, 1);
+            this.panel7.TabIndex = 14;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.label11.Location = new System.Drawing.Point(15, 277);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(130, 16);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Rata de aprendizaje";
+            // 
             // NbErrorMax
             // 
             this.NbErrorMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.NbErrorMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NbErrorMax.DecimalPlaces = 1;
             this.NbErrorMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.NbErrorMax.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.NbErrorMax.Location = new System.Drawing.Point(18, 222);
             this.NbErrorMax.Maximum = new decimal(new int[] {
-            50,
+            1,
             0,
             0,
             0});
             this.NbErrorMax.Name = "NbErrorMax";
             this.NbErrorMax.Size = new System.Drawing.Size(163, 18);
             this.NbErrorMax.TabIndex = 12;
+            this.NbErrorMax.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             // 
             // NbIteracion
             // 
@@ -477,77 +559,6 @@
             this.label4.Text = "2021 - I";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // LbEntradas
-            // 
-            this.LbEntradas.AutoSize = true;
-            this.LbEntradas.Location = new System.Drawing.Point(71, 2);
-            this.LbEntradas.Name = "LbEntradas";
-            this.LbEntradas.Size = new System.Drawing.Size(15, 16);
-            this.LbEntradas.TabIndex = 3;
-            this.LbEntradas.Text = "#";
-            // 
-            // LbPatrones
-            // 
-            this.LbPatrones.AutoSize = true;
-            this.LbPatrones.Location = new System.Drawing.Point(320, 2);
-            this.LbPatrones.Name = "LbPatrones";
-            this.LbPatrones.Size = new System.Drawing.Size(15, 16);
-            this.LbPatrones.TabIndex = 4;
-            this.LbPatrones.Text = "#";
-            // 
-            // LbSalidas
-            // 
-            this.LbSalidas.AutoSize = true;
-            this.LbSalidas.Location = new System.Drawing.Point(555, 2);
-            this.LbSalidas.Name = "LbSalidas";
-            this.LbSalidas.Size = new System.Drawing.Size(15, 16);
-            this.LbSalidas.TabIndex = 5;
-            this.LbSalidas.Text = "#";
-            // 
-            // NbRata
-            // 
-            this.NbRata.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.NbRata.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NbRata.DecimalPlaces = 1;
-            this.NbRata.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.NbRata.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.NbRata.Location = new System.Drawing.Point(18, 297);
-            this.NbRata.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.NbRata.Name = "NbRata";
-            this.NbRata.Size = new System.Drawing.Size(163, 18);
-            this.NbRata.TabIndex = 15;
-            this.NbRata.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.panel7.Location = new System.Drawing.Point(18, 319);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(163, 1);
-            this.panel7.TabIndex = 14;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label11.Location = new System.Drawing.Point(15, 277);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(130, 16);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Rata de aprendizaje";
-            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -576,10 +587,10 @@
             this.panel6.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NbRata)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NbErrorMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NbIteracion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NbRata)).EndInit();
             this.ResumeLayout(false);
 
         }
