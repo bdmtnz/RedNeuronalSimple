@@ -30,6 +30,18 @@ namespace ENTITY
             }
         }
 
+        public string GetPatron()
+        {
+            var Patron = "";
+            foreach (var item in Entradas)
+            {
+                Patron += $"{item};";
+            }
+            Patron = Patron.Substring(0, Patron.Length-1);
+            Patron += ' ';
+            return Patron;
+        }
+
         public void SetError(List<Salida> Salidas)
         {
             this.Error = 0;

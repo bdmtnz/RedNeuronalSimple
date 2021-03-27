@@ -52,8 +52,9 @@ namespace ENTITY
                 Value = Value.Trim();
                 var Split = Value.Split(';');
                 Iteraciones = Int32.Parse(Split[0]);
-                ErrorMaxPermitido = Double.Parse(Split[1]);
-                switch (Split[2])
+                Error = Double.Parse(Split[1]);
+                ErrorMaxPermitido = Double.Parse(Split[2]);
+                switch (Split[3])
                 {
                     case "0":
                         Activacion.Funcion = FUNCION.Escalon;
@@ -68,10 +69,16 @@ namespace ENTITY
                         Activacion.Funcion = FUNCION.Escalon;
                         break;
                 }
-                Rata = Double.Parse(Split[3]);
-                Entrenamientos = Int32.Parse(Split[4]);
+                Rata = Double.Parse(Split[4]);
+                Entrenamientos = Int32.Parse(Split[5]);
             }
         }
+
+        public string GetConfig()
+        {
+            return $" {Iteraciones};{Error};{ErrorMaxPermitido};{(int)Activacion.Funcion};{Rata};{Entrenamientos} ";
+        }
+
         public double Entrenar()
         {
             var ErrorIteracion = 0.0;
