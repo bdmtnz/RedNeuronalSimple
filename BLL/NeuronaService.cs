@@ -34,6 +34,7 @@ namespace BLL
                 i++;
                 R.Entrenamientos = i;
                 //AQUI SE GUARDA LOS PESOS Y UMBRALES
+                _Neurona.WriteXml(R);
                 if (R.ErrorMaxPermitido >= ErrorIteracion) break; 
             }
 

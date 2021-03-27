@@ -21,5 +21,6 @@ namespace ENTITY
         {
             Esperada = Double.Parse(Value);
         }
+
     }
 }

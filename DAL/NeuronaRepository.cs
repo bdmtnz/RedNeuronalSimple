@@ -35,7 +35,7 @@ namespace DAL
                             case "Patrones":
                                 var Patrones = Reader.ReadString().Trim();
                                 Console.WriteLine(Patrones);
-                                var Split = Patrones.Split('\n');
+                                var Split = Patrones.Split(' ');
                                 foreach (var item in Split)
                                 {
                                     Red.Patrones.Add(new Patron(item.Trim()));
@@ -73,6 +73,70 @@ namespace DAL
                 }
             }
             return Red;
+        }
+
+        public void WriteXml(Red R)
+        {
+            XmlDocument doc = new XmlDocument();
+
+            XmlDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
+            XmlElement root = doc.DocumentElement;
+            doc.InsertBefore(xmlDeclaration, root);
+
+            XmlElement Neurona = doc.CreateElement(string.Empty, "Neurona", string.Empty);
+            doc.AppendChild(Neurona);
+            XmlElement Config = doc.CreateElement(string.Empty, "Config", string.Empty);
+            Neurona.AppendChild(Config);
+            XmlText ConfigText = doc.CreateTextNode(R.GetConfig());
+            Config.AppendChild(ConfigText);
+
+            XmlElement Patrones = doc.CreateElement(string.Empty, "Patrones", string.Empty);
+            var i = 0;
+            foreach (var item in R.Patrones)
+            {
+                XmlText Patron;
+                if (i == 0)
+                   Patron = doc.CreateTextNode(" " + item.GetPatron());
+                else
+                    Patron = doc.CreateTextNode(item.GetPatron());
+                Patrones.AppendChild(Patron);
+                ++i;
+            }
+            Neurona.AppendChild(Patrones);
+
+            XmlElement Salidas = doc.CreateElement(string.Empty, "Salidas", string.Empty);
+            var SalidasMap = " ";
+            foreach (var item in R.Salidas)
+            {
+                SalidasMap += $"{item.Esperada};";
+            }
+            SalidasMap = SalidasMap.Substring(0, SalidasMap.Length - 1);
+            SalidasMap += " ";
+            XmlText SalidaText = doc.CreateTextNode(SalidasMap);
+            Salidas.AppendChild(SalidaText);
+            Neurona.AppendChild(Salidas);
+
+            XmlElement Previo = doc.CreateElement(string.Empty, "Previo", string.Empty);
+            XmlElement Umbrales = doc.CreateElement(string.Empty, "Umbrales", string.Empty);
+            XmlText UmbralText = doc.CreateTextNode($" {R.UmbralAnterior.Valor} ");
+            Umbrales.AppendChild(UmbralText);
+
+            XmlElement Pesos = doc.CreateElement(string.Empty, "Pesos", string.Empty);
+            var PesosMap = " ";
+            foreach (var item in R.Pesos.Valores)
+            {
+                PesosMap += $"{item.Valor};";
+            }
+            PesosMap = PesosMap.Substring(0, PesosMap.Length - 1);
+            PesosMap += " ";
+            XmlText PesosText = doc.CreateTextNode(PesosMap);
+            Pesos.AppendChild(PesosText);
+
+            Previo.AppendChild(Umbrales);
+            Previo.AppendChild(Pesos);
+            Neurona.AppendChild(Previo);
+           
+            doc.Save("data.xml");
         }
     }
 }
