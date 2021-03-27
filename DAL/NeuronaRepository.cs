@@ -16,9 +16,9 @@ namespace DAL
         {
         }
 
-        public Neurona ReadXml()
+        public Red ReadXml()
         {
-            var Neurona = new Neurona();
+            var Red = new Red();
             using (XmlReader Reader = XmlReader.Create(@"data.xml"))
             {
                 while (Reader.Read())
@@ -30,7 +30,7 @@ namespace DAL
                             case "Config":
                                 var Config = Reader.ReadString().Trim();
                                 Console.WriteLine(Config);
-                                Neurona.SetConfig(Config);
+                                Red.SetConfig(Config);
                                 break;
                             case "Patrones":
                                 var Patrones = Reader.ReadString().Trim();
@@ -38,7 +38,7 @@ namespace DAL
                                 var Split = Patrones.Split('\n');
                                 foreach (var item in Split)
                                 {
-                                    Neurona.Patrones.Add(new Patron(item.Trim()));
+                                    Red.Patrones.Add(new Patron(item.Trim()));
                                 }
                                 break;
                             case "Salidas":
@@ -47,7 +47,7 @@ namespace DAL
                                 Split = Salidas.Split(';');
                                 foreach (var item in Split)
                                 {
-                                    Neurona.Salidas.Add(new Salida(item.Trim()));
+                                    Red.Salidas.Add(new Salida(item.Trim()));
                                 }
                                 break;
                             case "Umbrales":
@@ -56,23 +56,23 @@ namespace DAL
                                 Split = Umbrales.Split(';');
                                 foreach (var item in Split)
                                 {
-                                    Neurona.Umbrales.Add(new Umbrales(item.Trim()));
+                                    Red.Umbral.Valor = Double.Parse(item.Trim());
                                 }
                                 break;
                             case "Pesos":
                                 var Pesos = Reader.ReadString().Trim();
                                 Console.WriteLine(Pesos);
-                                Split = Pesos.Split(',');
+                                Split = Pesos.Split(';');
                                 foreach (var item in Split)
                                 {
-                                    Neurona.Pesos.Add(new Pesos(item.Trim()));
+                                    Red.Pesos.Valores.Add(new Peso(Double.Parse(item.Trim())));
                                 }
                                 break;
                         }
                     }
                 }
             }
-            return Neurona;
+            return Red;
         }
     }
 }

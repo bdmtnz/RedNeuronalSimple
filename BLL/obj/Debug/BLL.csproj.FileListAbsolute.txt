@@ -9,3 +9,14 @@ C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\BLL\obj\Debug\BLL.csprojAss
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\BLL\obj\Debug\BLL.dll
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\BLL\obj\Debug\BLL.pdb
+C:\Users\gerson\Documents\IA\Neurona\BLL\bin\Debug\BLL.dll
+C:\Users\gerson\Documents\IA\Neurona\BLL\bin\Debug\BLL.pdb
+C:\Users\gerson\Documents\IA\Neurona\BLL\bin\Debug\DAL.dll
+C:\Users\gerson\Documents\IA\Neurona\BLL\bin\Debug\ENTITY.dll
+C:\Users\gerson\Documents\IA\Neurona\BLL\bin\Debug\DAL.pdb
+C:\Users\gerson\Documents\IA\Neurona\BLL\bin\Debug\ENTITY.pdb
+C:\Users\gerson\Documents\IA\Neurona\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\gerson\Documents\IA\Neurona\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\gerson\Documents\IA\Neurona\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\gerson\Documents\IA\Neurona\BLL\obj\Debug\BLL.dll
+C:\Users\gerson\Documents\IA\Neurona\BLL\obj\Debug\BLL.pdb

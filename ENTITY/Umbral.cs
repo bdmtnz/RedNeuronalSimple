@@ -22,31 +22,11 @@ namespace ENTITY
 
         public void Entrenar(double AnteriorValor, double Rata, double ErrorSalida, double Entrada)
         {
-            Valor = AnteriorValor + Rata * ErrorSalida * Entrada;
+            Valor = AnteriorValor + (Rata * ErrorSalida * Entrada);
+            Valor = Valor > 1 ? 1 : Valor;
+            Valor = Valor < 0 ? 0 : Valor;
         }
     }
 
-    public class Umbrales
-    {
-        public List<Umbral> Valores { get; set; }
-
-        public Umbrales()
-        {
-            Valores = new List<Umbral>();
-        }
-
-        public Umbrales(string Values)
-        {
-            if(Values != "")
-            {
-                Valores = new List<Umbral>();
-                Values = Values.Trim();
-                var Split = Values.Split(';');
-                foreach (var item in Split)
-                {
-                    Valores.Add(new Umbral(Double.Parse(item)));
-                }
-            }
-        }
-    }
+    
 }
