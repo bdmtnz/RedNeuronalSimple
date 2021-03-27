@@ -118,6 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BtnSimulation.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAARtJREFUWEft
+        lkEOhDAIRT2aGw/lysN4kDmawy8wIbGktqOWRV9C4hD4MNRgp8GgB8dxzGSb2Cxu1/84UlDZxO36HwfF
+        uGbi/YZIfCFbUUTsQ6bgueRH7iJy/0FCO9ld7CLbBglgMnfTPilKxqgVewS1Zo9yFfl6KBliSvNLilyW
+        SLS/7EhmjUSfhijBLjc76p8QPdsYz+zCxG/FHn15eUpgDtuQF2O5El+eFoI49kS3hq4cmS1gj6A2vu57
+        J0mKV6DZXw2SWSPRpyFKiHVkEpjDK+BxJb48LQRx7IluDcVajBZJUsr/xgG5LJFo1gnZULjrR6wLGiCB
+        OFdYhYTiXPJzSBHFroOs/3FQjGsmQjRkF6NdgFn/YPAe0/QFmAHUr8aEhqEAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="button5.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAALJJREFUWEdj
@@ -137,7 +147,7 @@
         aZuZQiGZquoBuhKHTrSJBk0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="BtnOpen.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAANJJREFUWEft
         17ENwkAQBECX567oFQoxRow2O8l+nT/6kUhWy54DArMtyzLbcRz7+fmcn6tevvqM88D7f+eW5x7KgRHP
@@ -757,4 +767,10 @@
         ypDUWKlUhqTGSqUyJDVWKpUhqbFSqcDO9/4fvM9ohy5IJLwAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="OFD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SFD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>93, 17</value>
+  </metadata>
 </root>
