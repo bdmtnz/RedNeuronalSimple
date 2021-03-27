@@ -4,3 +4,9 @@ C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\ENTITY\bin\Debug\ENTITY.dll
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\ENTITY\bin\Debug\ENTITY.pdb
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\ENTITY\obj\Debug\ENTITY.dll
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\ENTITY\obj\Debug\ENTITY.pdb
+C:\Users\gerson\Documents\IA\Neurona\ENTITY\bin\Debug\ENTITY.dll
+C:\Users\gerson\Documents\IA\Neurona\ENTITY\bin\Debug\ENTITY.pdb
+C:\Users\gerson\Documents\IA\Neurona\ENTITY\obj\Debug\ENTITY.csprojAssemblyReference.cache
+C:\Users\gerson\Documents\IA\Neurona\ENTITY\obj\Debug\ENTITY.csproj.CoreCompileInputs.cache
+C:\Users\gerson\Documents\IA\Neurona\ENTITY\obj\Debug\ENTITY.dll
+C:\Users\gerson\Documents\IA\Neurona\ENTITY\obj\Debug\ENTITY.pdb

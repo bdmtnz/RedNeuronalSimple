@@ -8,24 +8,24 @@ namespace ENTITY
 {
     public class Patron
     {
-        public List<double> Valores { get; set; }
+        public List<double> Entradas { get; set; }
         public double Error { get; set; }
 
         public Patron()
         {
-            Valores = new List<double>();
+            Entradas = new List<double>();
         }
 
         public Patron(string Values)
         {
             if(Values != "")
             {
-                Valores = new List<double>();
+                Entradas = new List<double>();
                 Values = Values.Trim();
                 var Split = Values.Split(';');
                 foreach (var item in Split)
                 {
-                    Valores.Add(Double.Parse(item));
+                    Entradas.Add(Double.Parse(item));
                 }
             }
         }

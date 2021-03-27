@@ -17,7 +17,7 @@ namespace ENTITY
 
         public void Entrenar(double AnteriorValor, double Rata, double ErrorSalida, double Entrada)
         {
-            Valor = AnteriorValor + Rata * ErrorSalida * Entrada;
+            Valor = AnteriorValor + (Rata * ErrorSalida * Entrada);
         }
     }
     
