@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnSimulation = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.BtnIniciar = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.BtnOpen = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,6 +68,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
             this.SFD = new System.Windows.Forms.SaveFileDialog();
+            this.BtnPausa = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbCarga)).BeginInit();
             this.panel2.SuspendLayout();
@@ -86,8 +87,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.panel1.Controls.Add(this.BtnPausa);
             this.panel1.Controls.Add(this.BtnSimulation);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.BtnIniciar);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.BtnOpen);
             this.panel1.Controls.Add(this.label2);
@@ -121,24 +123,24 @@
             this.BtnSimulation.UseVisualStyleBackColor = true;
             this.BtnSimulation.Click += new System.EventHandler(this.Simular);
             // 
-            // button5
+            // BtnIniciar
             // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.button5.Location = new System.Drawing.Point(484, 67);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 30);
-            this.button5.TabIndex = 6;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Entrenar);
+            this.BtnIniciar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnIniciar.BackgroundImage")));
+            this.BtnIniciar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnIniciar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnIniciar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.BtnIniciar.FlatAppearance.BorderSize = 0;
+            this.BtnIniciar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnIniciar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.BtnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtnIniciar.Location = new System.Drawing.Point(486, 66);
+            this.BtnIniciar.Name = "BtnIniciar";
+            this.BtnIniciar.Size = new System.Drawing.Size(30, 30);
+            this.BtnIniciar.TabIndex = 6;
+            this.BtnIniciar.UseVisualStyleBackColor = true;
+            this.BtnIniciar.Click += new System.EventHandler(this.Entrenar);
             // 
             // button4
             // 
@@ -589,6 +591,25 @@
             // 
             this.OFD.FileName = "openFileDialog1";
             // 
+            // BtnPausa
+            // 
+            this.BtnPausa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnPausa.BackgroundImage")));
+            this.BtnPausa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnPausa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnPausa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.BtnPausa.FlatAppearance.BorderSize = 0;
+            this.BtnPausa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnPausa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnPausa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.BtnPausa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtnPausa.Location = new System.Drawing.Point(484, 67);
+            this.BtnPausa.Name = "BtnPausa";
+            this.BtnPausa.Size = new System.Drawing.Size(30, 30);
+            this.BtnPausa.TabIndex = 9;
+            this.BtnPausa.UseVisualStyleBackColor = true;
+            this.BtnPausa.Click += new System.EventHandler(this.BtnPausa_Click);
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -645,7 +666,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CbActivacion;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button BtnIniciar;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button BtnOpen;
         private System.Windows.Forms.PictureBox PbCarga;
@@ -666,6 +687,7 @@
         private System.Windows.Forms.Button BtnSimulation;
         private System.Windows.Forms.OpenFileDialog OFD;
         private System.Windows.Forms.SaveFileDialog SFD;
+        private System.Windows.Forms.Button BtnPausa;
     }
 }
 

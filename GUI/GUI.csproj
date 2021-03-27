@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmProcesar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProcesar.Designer.cs">
+      <DependentUpon>FrmProcesar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSimulador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmProcesar.resx">
+      <DependentUpon>FrmProcesar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSimulador.resx">
       <DependentUpon>FrmSimulador.cs</DependentUpon>
     </EmbeddedResource>

@@ -26,6 +26,8 @@ namespace GUI
         {
             _Neurona = new NeuronaService();
             InitializeComponent();
+            BtnPausa.Visible = false;
+            BtnIniciar.Visible = true;
             Preload();
             Config();
         }
@@ -44,7 +46,7 @@ namespace GUI
         {
             OFD.Filter = "Archivo XML (*.XML)|*.XML";
             SFD.Filter = "Archivo XML (*.XML)|*.XML";
-            Red = _Neurona.ReadXml(null);
+            Red = Telefono.Red = _Neurona.ReadXml(null);
             ShowInfo(Red);
         }
 
@@ -108,16 +110,24 @@ namespace GUI
 
         private void Entrenar(object sender, EventArgs e)
         {
-            PbCarga.Visible = true;
-            Red = _Neurona.Entrenar(Red);
-            PbCarga.Visible = false;
-            var W = "";
-            foreach (var item in Red.Pesos.Valores)
-            {
-                W += item.Valor + ";";
-            }
-            MessageBox.Show("Entrenamentos ->" + Red.Entrenamientos + "\nUmbral -> " + Red.Umbral.Valor + "\nPesos -> " + W+"\nError -> "+Red.Error);
+            BtnIniciar.Visible = false;
+            BtnPausa.Visible = true;
+            RunTask();
         }
+
+        private async void RunTask()
+        {
+            PbCarga.Visible = true;
+            Telefono.Continuar = true;
+            Telefono.Red = Red;
+            var T = new Task(_Neurona.EntrenarPausable);
+            T.Start();
+            await T; 
+            MessageBox.Show("Entrenamentos ->" + Red.Entrenamientos + "\nUmbral -> " + Red.Umbral.Valor + "\nPesos -> " + Telefono.W + "\nError -> " + Red.Error);
+            PbCarga.Visible = false;
+            BtnPausa.Visible = false;
+            BtnIniciar.Visible = true;
+        } 
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
@@ -127,7 +137,6 @@ namespace GUI
         private void Simular(object sender, EventArgs e)
         {
             FrmSimulador = new FrmSimulador(Red);
-            FrmSimulador.ShowDialog();
         }
 
         private void BtnOpen_Click(object sender, EventArgs e)
@@ -139,7 +148,7 @@ namespace GUI
                 {
                     if (File.Exists(OFD.FileName))
                     {
-                        Red = _Neurona.ReadXml(OFD.FileName);
+                        Red = Telefono.Red =  _Neurona.ReadXml(OFD.FileName);
                         ShowInfo(Red);
                     }
                     else
@@ -162,6 +171,14 @@ namespace GUI
             {
                 _Neurona.WriteXML(Red, SFD.FileName);
             }
+        }
+
+        private void BtnPausa_Click(object sender, EventArgs e)
+        {
+            BtnPausa.Visible = false;
+            BtnIniciar.Visible = true;
+            Red = Telefono.Red;
+            Telefono.Continuar = false;
         }
     }
 }

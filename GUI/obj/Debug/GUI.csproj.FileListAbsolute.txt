@@ -33,3 +33,4 @@ C:\Users\gerson\Documents\IA\Neurona\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\gerson\Documents\IA\Neurona\GUI\obj\Debug\GUI.exe
 C:\Users\gerson\Documents\IA\Neurona\GUI\obj\Debug\GUI.pdb
 C:\Users\gerson\Documents\IA\Neurona\GUI\obj\Debug\GUI.FrmSimulador.resources
+C:\Users\gerson\Documents\IA\Neurona\GUI\obj\Debug\GUI.FrmProcesar.resources
