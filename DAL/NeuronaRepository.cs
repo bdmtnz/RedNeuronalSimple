@@ -16,10 +16,11 @@ namespace DAL
         {
         }
 
-        public Red ReadXml()
+        public Red ReadXml(string Path)
         {
             var Red = new Red();
-            using (XmlReader Reader = XmlReader.Create(@"data.xml"))
+            var Default = @"data.xml"; 
+            using (XmlReader Reader = XmlReader.Create(Path??Default))
             {
                 while (Reader.Read())
                 {
@@ -75,7 +76,7 @@ namespace DAL
             return Red;
         }
 
-        public void WriteXml(Red R)
+        public void WriteXml(Red R, string Path)
         {
             XmlDocument doc = new XmlDocument();
 
@@ -135,8 +136,9 @@ namespace DAL
             Previo.AppendChild(Umbrales);
             Previo.AppendChild(Pesos);
             Neurona.AppendChild(Previo);
-           
-            doc.Save("data.xml");
+
+            var Default = @"data.xml";
+            doc.Save(Path??Default);
         }
     }
 }

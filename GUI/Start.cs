@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using ENTITY;
 using BLL;
@@ -19,6 +20,7 @@ namespace GUI
         private Red Red { get; set; }
         public int X_Click { get; set; }
         public int Y_Click { get; set; }
+        private FrmSimulador FrmSimulador { get; set; }
 
         public Start()
         {
@@ -40,7 +42,9 @@ namespace GUI
 
         private void Config()
         {
-            Red = _Neurona.ReadXml();
+            OFD.Filter = "Archivo XML (*.XML)|*.XML";
+            SFD.Filter = "Archivo XML (*.XML)|*.XML";
+            Red = _Neurona.ReadXml(null);
             ShowInfo(Red);
         }
 
@@ -118,6 +122,46 @@ namespace GUI
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void Simular(object sender, EventArgs e)
+        {
+            FrmSimulador = new FrmSimulador(Red);
+            FrmSimulador.ShowDialog();
+        }
+
+        private void BtnOpen_Click(object sender, EventArgs e)
+        {
+            var Result = OFD.ShowDialog();
+            if (Result == DialogResult.OK)
+            {
+                try
+                {
+                    if (File.Exists(OFD.FileName))
+                    {
+                        Red = _Neurona.ReadXml(OFD.FileName);
+                        ShowInfo(Red);
+                    }
+                    else
+                        MessageBox.Show("Se ha eliminado o movido el archivo");
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show("Error al abrir el archivo => " + er.Message, "Proceso fallido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if (Result == DialogResult.Cancel)
+            {
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SFD.FileName = $"data.XML";
+            if (SFD.ShowDialog() == DialogResult.OK)
+            {
+                _Neurona.WriteXML(Red, SFD.FileName);
+            }
         }
     }
 }
