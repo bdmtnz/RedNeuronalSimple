@@ -18,7 +18,7 @@ namespace BLL
             _Neurona = new NeuronaRepository();
         }
 
-        public Neurona ReadXml()
+        public Red ReadXml()
         {
             return _Neurona.ReadXml();
         }
@@ -30,11 +30,13 @@ namespace BLL
             while (i < R.Iteraciones)
             {
                 var ErrorIteracion = R.Entrenar();
+                R.Error = ErrorIteracion;
                 i++;
                 R.Entrenamientos = i;
                 //AQUI SE GUARDA LOS PESOS Y UMBRALES
                 if (R.ErrorMaxPermitido >= ErrorIteracion) break; 
             }
+
             return R;
         }
      

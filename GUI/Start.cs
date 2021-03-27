@@ -16,7 +16,7 @@ namespace GUI
     public partial class Start : Form
     {
         private NeuronaService _Neurona { get; set; }
-        private Neurona Neurona { get; set; }
+        private Red Red { get; set; }
         public int X_Click { get; set; }
         public int Y_Click { get; set; }
 
@@ -40,15 +40,15 @@ namespace GUI
 
         private void Config()
         {
-            Neurona = _Neurona.ReadXml();
-            ShowInfo(Neurona);
+            Red = _Neurona.ReadXml();
+            ShowInfo(Red);
         }
 
-        private void ShowInfo(Neurona N)
+        private void ShowInfo(Red N)
         {
             LbEntradas.Text = N.Entradas.ToString();
             LbPatrones.Text = N.Patrones.Count.ToString();
-            LbSalidas.Text = N.Salidas.Count.ToString();
+            LbSalidas.Text = ""+1;
             NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
             CbActivacion.SelectedIndex = (int)N.Activacion.Funcion;
@@ -105,8 +105,19 @@ namespace GUI
         private void Entrenar(object sender, EventArgs e)
         {
             PbCarga.Visible = true;
-            Neurona = _Neurona.Entrenar(Neurona);
+            Red = _Neurona.Entrenar(Red);
             PbCarga.Visible = false;
+            var W = "";
+            foreach (var item in Red.Pesos.Valores)
+            {
+                W += item.Valor + ";";
+            }
+            MessageBox.Show("Entrenamentos ->" + Red.Entrenamientos + "\nUmbral -> " + Red.Umbral.Valor + "\nPesos -> " + W+"\nError -> "+Red.Error);
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

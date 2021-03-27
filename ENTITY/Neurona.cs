@@ -23,18 +23,13 @@ namespace ENTITY
           
             var Productos = 0.0;
             //RECORRE ENTRADAS DEL PATRON
-            foreach (var Entrada in Patron.Entradas)
+            for (int i = 0; i < Patron.Entradas.Count; i++)
             {
-                var Producto = 1.0;
-                foreach (var Peso in Pesos.Valores)
-                {
-                    Producto *= Entrada * Peso.Valor;
-                }
-                Productos += Producto;
+                Productos += Patron.Entradas[i] * Pesos.Valores[i].Valor;
+
             }
-            //RESTA DE UMBRALES
-            Soma = Productos;
-            Soma -= Umbral.Valor;
+
+            Soma = Productos - Umbral.Valor;
             return Soma;
         }
 

@@ -33,6 +33,7 @@ namespace ENTITY
             UmbralAnterior = new Umbral();
             Salidas = new List<Salida>();
             Activacion = new Activacion(FUNCION.Escalon);
+            Neurona = new Neurona();
         }
         public void SetError(List<Patron> Patrones)
         {
@@ -85,19 +86,24 @@ namespace ENTITY
                 //MODIFICACION DE PESOS Y UMBRALES
                 for (int j = 0; j < Pesos.Valores.Count; j++)
                 {
-                    PesosAnteriores = Pesos;
+                    //SE GUARDAN LOS ANTERIORES PESOS
+                    PesosAnteriores.Valores.Clear();
+                    foreach (var item in Pesos.Valores)
+                    {
+                        PesosAnteriores.Valores.Add(new Peso(item.Valor));
+                    }
                     Pesos.Valores[j].Entrenar(PesosAnteriores.Valores[j].
                         Valor, Rata, Patrones[i].Error, Patrones[i].
                         Entradas[j]);
                 }
                
-                UmbralAnterior = Umbral;
+                UmbralAnterior.Valor = Umbral.Valor;
                 Umbral.Entrenar(UmbralAnterior.Valor, Rata, Patrones[i].Error, Xo);
                 //CALCULA ERROR DE LA ITERACION
                 ErrorIteracion += Patrones[i].Error;
 
             }
-            ErrorIteracion /= Patrones.Count;
+            ErrorIteracion = ErrorIteracion / Patrones.Count;
             //GRAFICAR EIT Vs ITERACIÓN
             //GRAFICAR YD VS YR
             return ErrorIteracion;
