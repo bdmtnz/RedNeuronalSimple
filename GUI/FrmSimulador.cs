@@ -28,6 +28,8 @@ namespace GUI
                 MessageBox.Show("La red aún no esta entrenada, por favor entrenela");
                 Dispose();
             }
+            else
+                ShowDialog();
         }
         private void FrmSimulador_Load(object sender, EventArgs e)
         {

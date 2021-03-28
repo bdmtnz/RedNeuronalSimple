@@ -30,8 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnPausa = new System.Windows.Forms.Button();
             this.BtnSimulation = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.BtnIniciar = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.BtnOpen = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,6 +69,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
             this.SFD = new System.Windows.Forms.SaveFileDialog();
+            this.LbEntrenado = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbCarga)).BeginInit();
             this.panel2.SuspendLayout();
@@ -86,8 +89,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.panel1.Controls.Add(this.BtnPausa);
             this.panel1.Controls.Add(this.BtnSimulation);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.BtnIniciar);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.BtnOpen);
             this.panel1.Controls.Add(this.label2);
@@ -101,6 +105,25 @@
             this.panel1.Size = new System.Drawing.Size(596, 100);
             this.panel1.TabIndex = 0;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveWindow);
+            // 
+            // BtnPausa
+            // 
+            this.BtnPausa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnPausa.BackgroundImage")));
+            this.BtnPausa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnPausa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnPausa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.BtnPausa.FlatAppearance.BorderSize = 0;
+            this.BtnPausa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnPausa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnPausa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.BtnPausa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtnPausa.Location = new System.Drawing.Point(484, 67);
+            this.BtnPausa.Name = "BtnPausa";
+            this.BtnPausa.Size = new System.Drawing.Size(30, 30);
+            this.BtnPausa.TabIndex = 9;
+            this.BtnPausa.UseVisualStyleBackColor = true;
+            this.BtnPausa.Click += new System.EventHandler(this.BtnPausa_Click);
             // 
             // BtnSimulation
             // 
@@ -121,24 +144,24 @@
             this.BtnSimulation.UseVisualStyleBackColor = true;
             this.BtnSimulation.Click += new System.EventHandler(this.Simular);
             // 
-            // button5
+            // BtnIniciar
             // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.button5.Location = new System.Drawing.Point(484, 67);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 30);
-            this.button5.TabIndex = 6;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Entrenar);
+            this.BtnIniciar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnIniciar.BackgroundImage")));
+            this.BtnIniciar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnIniciar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnIniciar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.BtnIniciar.FlatAppearance.BorderSize = 0;
+            this.BtnIniciar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnIniciar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.BtnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtnIniciar.Location = new System.Drawing.Point(486, 66);
+            this.BtnIniciar.Name = "BtnIniciar";
+            this.BtnIniciar.Size = new System.Drawing.Size(30, 30);
+            this.BtnIniciar.TabIndex = 6;
+            this.BtnIniciar.UseVisualStyleBackColor = true;
+            this.BtnIniciar.Click += new System.EventHandler(this.Entrenar);
             // 
             // button4
             // 
@@ -300,6 +323,8 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panel6.Controls.Add(this.LbEntrenado);
+            this.panel6.Controls.Add(this.label13);
             this.panel6.Controls.Add(this.LbSalidas);
             this.panel6.Controls.Add(this.LbPatrones);
             this.panel6.Controls.Add(this.LbEntradas);
@@ -324,7 +349,7 @@
             // LbPatrones
             // 
             this.LbPatrones.AutoSize = true;
-            this.LbPatrones.Location = new System.Drawing.Point(320, 2);
+            this.LbPatrones.Location = new System.Drawing.Point(247, 2);
             this.LbPatrones.Name = "LbPatrones";
             this.LbPatrones.Size = new System.Drawing.Size(15, 16);
             this.LbPatrones.TabIndex = 4;
@@ -355,7 +380,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label9.Location = new System.Drawing.Point(269, 4);
+            this.label9.Location = new System.Drawing.Point(196, 4);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 13);
             this.label9.TabIndex = 1;
@@ -398,7 +423,7 @@
             // 
             this.NbRata.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.NbRata.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NbRata.DecimalPlaces = 1;
+            this.NbRata.DecimalPlaces = 10;
             this.NbRata.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.NbRata.Increment = new decimal(new int[] {
             1,
@@ -411,6 +436,11 @@
             0,
             0,
             0});
+            this.NbRata.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            655360});
             this.NbRata.Name = "NbRata";
             this.NbRata.Size = new System.Drawing.Size(163, 18);
             this.NbRata.TabIndex = 15;
@@ -419,6 +449,7 @@
             0,
             0,
             0});
+            this.NbRata.ValueChanged += new System.EventHandler(this.RaChange);
             // 
             // panel7
             // 
@@ -442,7 +473,7 @@
             // 
             this.NbErrorMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.NbErrorMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NbErrorMax.DecimalPlaces = 1;
+            this.NbErrorMax.DecimalPlaces = 10;
             this.NbErrorMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.NbErrorMax.Increment = new decimal(new int[] {
             1,
@@ -463,6 +494,7 @@
             0,
             0,
             65536});
+            this.NbErrorMax.ValueChanged += new System.EventHandler(this.EmChange);
             // 
             // NbIteracion
             // 
@@ -474,7 +506,7 @@
             0,
             0,
             0});
-            this.NbIteracion.Location = new System.Drawing.Point(18, 143);
+            this.NbIteracion.Location = new System.Drawing.Point(18, 140);
             this.NbIteracion.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -493,6 +525,7 @@
             0,
             0,
             0});
+            this.NbIteracion.ValueChanged += new System.EventHandler(this.ItChange);
             // 
             // panel5
             // 
@@ -515,7 +548,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.panel4.Location = new System.Drawing.Point(18, 165);
+            this.panel4.Location = new System.Drawing.Point(18, 162);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(163, 1);
             this.panel4.TabIndex = 7;
@@ -524,7 +557,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label6.Location = new System.Drawing.Point(15, 123);
+            this.label6.Location = new System.Drawing.Point(15, 120);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(144, 16);
             this.label6.TabIndex = 5;
@@ -589,6 +622,26 @@
             // 
             this.OFD.FileName = "openFileDialog1";
             // 
+            // LbEntrenado
+            // 
+            this.LbEntrenado.AutoSize = true;
+            this.LbEntrenado.Location = new System.Drawing.Point(411, 2);
+            this.LbEntrenado.Name = "LbEntrenado";
+            this.LbEntrenado.Size = new System.Drawing.Size(15, 16);
+            this.LbEntrenado.TabIndex = 7;
+            this.LbEntrenado.Text = "#";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.label13.Location = new System.Drawing.Point(355, 4);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Entrenado:";
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -645,7 +698,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CbActivacion;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button BtnIniciar;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button BtnOpen;
         private System.Windows.Forms.PictureBox PbCarga;
@@ -666,6 +719,9 @@
         private System.Windows.Forms.Button BtnSimulation;
         private System.Windows.Forms.OpenFileDialog OFD;
         private System.Windows.Forms.SaveFileDialog SFD;
+        private System.Windows.Forms.Button BtnPausa;
+        private System.Windows.Forms.Label LbEntrenado;
+        private System.Windows.Forms.Label label13;
     }
 }
 

@@ -45,7 +45,24 @@ namespace BLL
 
             return R;
         }
-     
 
+        public void EntrenarPausable()
+        {
+            var i = 0;
+            if(Telefono.Red.Error > Telefono.Red.ErrorMaxPermitido)
+            {
+                while (i < (Telefono.Red.Iteraciones - Telefono.Red.Entrenamientos) && Telefono.Continuar)
+                {
+                    var ErrorIteracion = Telefono.Red.Entrenar();
+                    Telefono.Red.Error = ErrorIteracion;
+                    i++;
+                    //AQUI SE GUARDA LOS PESOS Y UMBRALES
+                    _Neurona.WriteXml(Telefono.Red, null);
+                    if (Telefono.Red.ErrorMaxPermitido >= ErrorIteracion) break;
+                    System.Threading.Thread.Sleep(100);
+                }
+                Telefono.Red.Entrenamientos += i;
+            }
+        }
     }
 }

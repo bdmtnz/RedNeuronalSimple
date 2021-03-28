@@ -118,6 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BtnPausa.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAALRJREFUWEft
+        1jFqBDEURMG5uY8+3oUCB0+J6VQFP3qiYz3XdV0H7/v+nE6O09vvybvP2JEccsg7eyGHHPLOXsghh7yz
+        F3LIIe/shRxyyDt7IYcc8s5eyCGHvLMXcsgh7+yFHHLIO3shhxzyzl7IIYe8sxdyyCHv7IUccsg7eyGH
+        HPLOXsghh7yzF3LIIe/shRxyyDt7IYcc8s5eyCGHvLMXcsgh7z5b//q0n95+T76u6/rzPL9teBAdy7el
+        BwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="BtnSimulation.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAARtJREFUWEft
@@ -128,7 +137,7 @@
         OFdYhYTiXPJzSBHFroOs/3FQjGsmQjRkF6NdgFn/YPAe0/QFmAHUr8aEhqEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button5.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="BtnIniciar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAALJJREFUWEdj
         GAWjYBSMAgLg////RlDm4ABAB/0G4m4g5oIKDSwAOgQG7gGxK1R44ADELShgERALQ6XpDyBuwACvgTgG
@@ -772,5 +781,8 @@
   </metadata>
   <metadata name="SFD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>93, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>40</value>
   </metadata>
 </root>

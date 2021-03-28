@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Neurona>
-  <Config> 10;0;0,1;0;0,1;4 </Config>
-  <Patrones> 1;1;1 1;1;0 0;0;1 0;0;0 </Patrones>
-  <Salidas> 1;0;0;0 </Salidas>
+  <Config> 100;-341,436600195002;0,1;2;0,1;0 </Config>
+  <Patrones> 0;0;0 0;0;1 0;1;0 0;1;1 1;0;0 1;0;1 1;1;0 1;1;1 </Patrones>
+  <Salidas> 0;0;1;0;1;1;1;0 </Salidas>
   <Previo>
-    <Umbrales> 1 </Umbrales>
-    <Pesos> 0,4;0,4;0,4 </Pesos>
+    <Umbrales> 0 </Umbrales>
+    <Pesos> -3;-3;-3 </Pesos>
   </Previo>
 </Neurona>

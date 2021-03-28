@@ -31,6 +31,18 @@ namespace DAL
                             case "Config":
                                 var Config = Reader.ReadString().Trim();
                                 Console.WriteLine(Config);
+                                var Unidades = Config.Split(';');
+                                foreach (var Unidad in Unidades)
+                                {
+                                    if (!Double.TryParse(Unidad, out _))
+                                    {
+                                        return null;
+                                    }
+                                }
+                                if (ValidarRata(Double.Parse(Unidades[4])))
+                                {
+                                    return null;
+                                }
                                 Red.SetConfig(Config);
                                 break;
                             case "Patrones":
@@ -39,6 +51,14 @@ namespace DAL
                                 var Split = Patrones.Split(' ');
                                 foreach (var item in Split)
                                 {
+                                    var Entradas = item.Split(';');
+                                    foreach (var Entrada in Entradas)
+                                    {
+                                        if(!Double.TryParse(Entrada, out _))
+                                        {
+                                            return null;
+                                        }
+                                    }
                                     Red.Patrones.Add(new Patron(item.Trim()));
                                 }
                                 break;
@@ -48,6 +68,10 @@ namespace DAL
                                 Split = Salidas.Split(';');
                                 foreach (var item in Split)
                                 {
+                                    if (!Double.TryParse(item, out _))
+                                    {
+                                        return null;
+                                    }
                                     Red.Salidas.Add(new Salida(item.Trim()));
                                 }
                                 break;
@@ -57,6 +81,14 @@ namespace DAL
                                 Split = Umbrales.Split(';');
                                 foreach (var item in Split)
                                 {
+                                    if (!Double.TryParse(item, out _))
+                                    {
+                                        return null;
+                                    }
+                                    else if(ValidarUmbral(Double.Parse(item)))
+                                    {
+                                        return null;
+                                    }
                                     Red.Umbral.Valor = Double.Parse(item.Trim());
                                 }
                                 break;
@@ -66,7 +98,19 @@ namespace DAL
                                 Split = Pesos.Split(';');
                                 foreach (var item in Split)
                                 {
+                                    if (!Double.TryParse(item, out _))
+                                    {
+                                        return null;
+                                    }
+                                    else if (ValidarPeso(Double.Parse(item)))
+                                    {
+                                        return null;
+                                    }
                                     Red.Pesos.Valores.Add(new Peso(Double.Parse(item.Trim())));
+                                }
+                                if (EntradasVsPesos(Red.Patrones, Red.Pesos) || PatronesVsSalidas(Red.Salidas, Red.Patrones))
+                                {
+                                    return null;
                                 }
                                 break;
                         }
@@ -74,6 +118,44 @@ namespace DAL
                 }
             }
             return Red;
+        }
+
+        private bool ValidarRata(double Rata)
+        {
+            if (Rata > 0 && Rata <= 1)
+                return false;
+            return true;
+        }
+
+        private bool ValidarPeso(double Peso)
+        {
+            if (Peso >= -3 && Peso <= 3)
+                return false;
+            return true;
+        }
+
+        private bool ValidarUmbral(double Umbral)
+        {
+            if (Umbral >= 0 && Umbral <= 1)
+                return false;
+            return true;
+        }
+
+        private bool PatronesVsSalidas(List<Salida> Salidas, List<Patron> Patrones)
+        {
+            if (Salidas.Count != Patrones.Count)
+                return true;
+            return false;
+        }
+
+        private bool EntradasVsPesos(List<Patron> Patrones, Pesos Pesos)
+        {
+            foreach (var Patron in Patrones)
+            {
+                if (Patron.Entradas.Count != Pesos.Valores.Count)
+                    return true;
+            }
+            return false;
         }
 
         public void WriteXml(Red R, string Path)
