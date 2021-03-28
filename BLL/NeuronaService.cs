@@ -40,7 +40,7 @@ namespace BLL
                 R.Entrenamientos = i;
                 //AQUI SE GUARDA LOS PESOS Y UMBRALES
                 _Neurona.WriteXml(R, null);
-                if (R.ErrorMaxPermitido >= ErrorIteracion) break; 
+                if (R.ErrorMaxPermitido >= ErrorIteracion) break;
             }
 
             return R;
@@ -54,12 +54,11 @@ namespace BLL
                 while (i < (Telefono.Red.Iteraciones - Telefono.Red.Entrenamientos) && Telefono.Continuar)
                 {
                     var ErrorIteracion = Telefono.Red.Entrenar();
+                    _Neurona.WriteXml(Telefono.Red, null);
                     Telefono.Red.Error = ErrorIteracion;
                     i++;
                     //AQUI SE GUARDA LOS PESOS Y UMBRALES
-                    _Neurona.WriteXml(Telefono.Red, null);
                     if (Telefono.Red.ErrorMaxPermitido >= ErrorIteracion) break;
-                    System.Threading.Thread.Sleep(100);
                 }
                 Telefono.Red.Entrenamientos += i;
             }

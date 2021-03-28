@@ -33,3 +33,23 @@ C:\Users\gerson\Documents\IA\Neurona\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\gerson\Documents\IA\Neurona\GUI\obj\Debug\GUI.exe
 C:\Users\gerson\Documents\IA\Neurona\GUI\obj\Debug\GUI.pdb
 C:\Users\gerson\Documents\IA\Neurona\GUI\obj\Debug\GUI.FrmSimulador.resources
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.csprojAssemblyReference.cache
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.FrmSimulador.resources
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.Grafica.resources
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.Start.resources
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.exe
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.pdb
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug\GUI.exe.config
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug\GUI.exe
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug\GUI.pdb
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug\BLL.dll
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug\ENTITY.dll
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug\DAL.dll
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug\BLL.pdb
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug\ENTITY.pdb
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug\DAL.pdb
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.csproj.CopyComplete
+C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.Graficar2.resources

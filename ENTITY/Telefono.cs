@@ -13,6 +13,7 @@ namespace ENTITY
         public static bool Continuar = true;
         public static double Error = 0;
         public static double YR = 0;
+        public static List<string> Datos = new List<string>();
 
         private static string Ws()
         {

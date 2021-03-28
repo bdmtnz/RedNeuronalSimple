@@ -21,10 +21,14 @@ namespace GUI
         public int X_Click { get; set; }
         public int Y_Click { get; set; }
         private FrmSimulador FrmSimulador { get; set; }
+        //private Grafica Grafica { get; set; }
+
+        private Graficar2 graficar2 { get; set; }
 
         public Start()
         {
             _Neurona = new NeuronaService();
+            //Grafica = new Grafica();
             Red = new Red();
             InitializeComponent();
             BtnPausa.Visible = false;
@@ -73,7 +77,6 @@ namespace GUI
             {
                 X_Click = e.X; Y_Click = e.Y;
             }
-
             else
             {
                 Left += (e.X - X_Click);
@@ -89,7 +92,7 @@ namespace GUI
         private void Minimize(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
-        }
+        } 
 
         private void CambiarActivacion(object sender, EventArgs e)
         {
@@ -123,6 +126,12 @@ namespace GUI
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
+            //Grafica.Show();
+            graficar2 = new Graficar2(Red);
+            graficar2.Show();
+            
+            
+            //Grafica.CargarDatos();
         }
 
         private async void RunTask()
@@ -133,6 +142,7 @@ namespace GUI
             var T = new Task(_Neurona.EntrenarPausable);
             T.Start();
             await T;
+            //graficar2.Show();
             Red = Telefono.Red;
             ShowInfo(Red);
             MessageBox.Show("Entrenamentos ->" + Red.Entrenamientos + "\nUmbral -> " + Red.Umbral.Valor + "\nPesos -> " + Telefono.W + "\nError -> " + Red.Error);
@@ -196,6 +206,7 @@ namespace GUI
             Red = Telefono.Red;
             Telefono.Continuar = false;
             ShowInfo(Red);
+            
         }
 
         private void ItChange(object sender, EventArgs e)
