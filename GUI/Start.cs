@@ -25,6 +25,7 @@ namespace GUI
         public Start()
         {
             _Neurona = new NeuronaService();
+            Red = new Red();
             InitializeComponent();
             BtnPausa.Visible = false;
             BtnIniciar.Visible = true;
@@ -46,7 +47,11 @@ namespace GUI
         {
             OFD.Filter = "Archivo XML (*.XML)|*.XML";
             SFD.Filter = "Archivo XML (*.XML)|*.XML";
-            Red = Telefono.Red = _Neurona.ReadXml(null);
+            var Rd = _Neurona.ReadXml(null);
+            if (Rd != null)
+                Red = Telefono.Red = Rd;
+            else
+                MessageBox.Show("El dataset está corrupto o está mal configurado");
             ShowInfo(Red);
         }
 
@@ -55,6 +60,7 @@ namespace GUI
             LbEntradas.Text = N.Entradas.ToString();
             LbPatrones.Text = N.Patrones.Count.ToString();
             LbSalidas.Text = ""+1;
+            LbEntrenado.Text = N.Entrenamientos.ToString();
             NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
             CbActivacion.SelectedIndex = (int)N.Activacion.Funcion;
@@ -93,19 +99,23 @@ namespace GUI
                 PbEscalon.Visible = true;
                 PbLineal.Visible = false;
                 PbSigmoide.Visible = false;
+                Red.Activacion.Funcion = FUNCION.Escalon;
             }
             else if (Cb.SelectedIndex == (int)FUNCION.Lineal)
             {
                 PbEscalon.Visible = false;
                 PbLineal.Visible = true;
                 PbSigmoide.Visible = false;
+                Red.Activacion.Funcion = FUNCION.Lineal;
             }
             else
             {
                 PbEscalon.Visible = false;
                 PbLineal.Visible = false;
                 PbSigmoide.Visible = true;
+                Red.Activacion.Funcion = FUNCION.Sigmoide;
             }
+            Telefono.Red = Red;
         }
 
         private void Entrenar(object sender, EventArgs e)
@@ -122,7 +132,9 @@ namespace GUI
             Telefono.Red = Red;
             var T = new Task(_Neurona.EntrenarPausable);
             T.Start();
-            await T; 
+            await T;
+            Red = Telefono.Red;
+            ShowInfo(Red);
             MessageBox.Show("Entrenamentos ->" + Red.Entrenamientos + "\nUmbral -> " + Red.Umbral.Valor + "\nPesos -> " + Telefono.W + "\nError -> " + Red.Error);
             PbCarga.Visible = false;
             BtnPausa.Visible = false;
@@ -148,7 +160,11 @@ namespace GUI
                 {
                     if (File.Exists(OFD.FileName))
                     {
-                        Red = Telefono.Red =  _Neurona.ReadXml(OFD.FileName);
+                        var Rd =  _Neurona.ReadXml(OFD.FileName);
+                        if (Rd != null)
+                            Red = Telefono.Red = Rd;
+                        else
+                            MessageBox.Show("El dataset está corrupto o está mal configurado");
                         ShowInfo(Red);
                     }
                     else
@@ -179,6 +195,25 @@ namespace GUI
             BtnIniciar.Visible = true;
             Red = Telefono.Red;
             Telefono.Continuar = false;
+            ShowInfo(Red);
+        }
+
+        private void ItChange(object sender, EventArgs e)
+        {
+            Red.Iteraciones = (int)NbIteracion.Value;
+            Telefono.Red = Red;
+        }
+
+        private void EmChange(object sender, EventArgs e)
+        {
+            Red.ErrorMaxPermitido = (double)NbErrorMax.Value;
+            Telefono.Red = Red;
+        }
+
+        private void RaChange(object sender, EventArgs e)
+        {
+            Red.Rata = (double)NbRata.Value;
+            Telefono.Red = Red;
         }
     }
 }

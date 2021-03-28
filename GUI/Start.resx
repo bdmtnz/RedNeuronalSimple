@@ -120,11 +120,11 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnPausa.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAC0SURBVFhH7dYxagQxFETBubmPPt6FAgdPielUBT96omM913VdB+/7/pxOjtPb78m7z9iRHHLI
-        O3shhxzyzl7IIYe8sxdyyCHv7IUccsg7eyGHHPLOXsghh7yzF3LIIe/shRxyyDt7IYcc8s5eyCGHvLMX
-        csgh7+yFHHLIO3shhxzyzl7IIYe8sxdyyCHv7IUccsg7eyGHHPLOXsghh7yzF3LIIe8+W//6tJ/efk++
-        ruv68zy/bXgQHcu3pQcAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAALRJREFUWEft
+        1jFqBDEURMG5uY8+3oUCB0+J6VQFP3qiYz3XdV0H7/v+nE6O09vvybvP2JEccsg7eyGHHPLOXsghh7yz
+        F3LIIe/shRxyyDt7IYcc8s5eyCGHvLMXcsgh7+yFHHLIO3shhxzyzl7IIYe8sxdyyCHv7IUccsg7eyGH
+        HPLOXsghh7yzF3LIIe/shRxyyDt7IYcc8s5eyCGHvLMXcsgh7z5b//q0n95+T76u6/rzPL9teBAdy7el
+        BwAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="BtnSimulation.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -781,5 +781,8 @@
   </metadata>
   <metadata name="SFD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>93, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>40</value>
   </metadata>
 </root>
