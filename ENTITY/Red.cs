@@ -108,13 +108,40 @@ namespace ENTITY
                 Umbral.Entrenar(UmbralAnterior.Valor, Rata, Patrones[i].Error, Xo);
                 //CALCULA ERROR DE LA ITERACION
                 ErrorIteracion += Patrones[i].Error;
-
             }
             ErrorIteracion = ErrorIteracion / Patrones.Count;
             //GRAFICAR EIT Vs ITERACIÓN
             //GRAFICAR YD VS YR
             return ErrorIteracion;
         }
+
+        public double EntrenarFragmentada(int i)
+        {
+            var YR = 0.0;
+            var Soma = Neurona.GetSoma(Pesos, Umbral, Patrones[i]);
+            YR = Activacion.Activar(Soma);
+            Salidas[i].Obtenida = YR;
+            Patrones[i].Error = Salidas[i].Error;
+            //MODIFICACION DE PESOS Y UMBRALES
+            for (int j = 0; j < Pesos.Valores.Count; j++)
+            {
+                //SE GUARDAN LOS ANTERIORES PESOS
+                PesosAnteriores.Valores.Clear();
+                foreach (var item in Pesos.Valores)
+                {
+                    PesosAnteriores.Valores.Add(new Peso(item.Valor));
+                }
+                Pesos.Valores[j].Entrenar(PesosAnteriores.Valores[j].
+                    Valor, Rata, Patrones[i].Error, Patrones[i].
+                    Entradas[j]);
+            }
+
+            UmbralAnterior.Valor = Umbral.Valor;
+            Umbral.Entrenar(UmbralAnterior.Valor, Rata, Patrones[i].Error, Xo);
+            //CALCULA ERROR DE LA ITERACION
+            return Patrones[i].Error;
+        }
+
         public double Simular(Patron Patron)
         {
 

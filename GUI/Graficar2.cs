@@ -50,13 +50,15 @@ namespace GUI
             {
                 Invoke(new Action(() =>
                 {
-                    chart1.Series["Salida " + 1].Points.Add(Red.Error);
+                    var t = Telefono.Red;
+                    chart2.Series["Series1"].Points.Add(Red.Error);
                     var i = 1;
-                    foreach (var item in Red.Salidas)
+                    chart1.Series["Salida 1"].Points.Add(Telefono.Error);
+                    /*foreach (var item in Red.Salidas)
                     {
                         chart1.Series["Salida " + i].Points.Add(item.Esperada);
                         i++;
-                    }
+                    }*/
                 }));
                 Thread.Sleep(100);
             }

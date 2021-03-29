@@ -23,7 +23,8 @@ namespace GUI
         private FrmSimulador FrmSimulador { get; set; }
         //private Grafica Grafica { get; set; }
 
-        private Graficar2 graficar2 { get; set; }
+        //private Graficar2 graficar2 { get; set; }
+        private Grafica graficar { get; set; }
 
         public Start()
         {
@@ -127,9 +128,10 @@ namespace GUI
             BtnPausa.Visible = true;
             RunTask();
             //Grafica.Show();
-            graficar2 = new Graficar2(Red);
-            graficar2.Show();
-            
+            //graficar2 = new Graficar2(Red);
+            //graficar2.Show();
+            graficar = new Grafica(Red);
+            graficar.Show();
             
             //Grafica.CargarDatos();
         }
@@ -139,7 +141,8 @@ namespace GUI
             PbCarga.Visible = true;
             Telefono.Continuar = true;
             Telefono.Red = Red;
-            var T = new Task(_Neurona.EntrenarPausable);
+            //var T = new Task(_Neurona.EntrenarPausable);
+            var T = new Task(_Neurona.EntrenarPausableFragmentada);
             T.Start();
             await T;
             //graficar2.Show();

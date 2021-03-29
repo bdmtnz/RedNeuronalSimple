@@ -18,10 +18,11 @@ namespace GUI
 
         public void Trabajando()
         {
-            foreach(var item in Telefono.Red.Salidas )
+            working(Telefono.Red);
+            /*foreach (var item in Telefono.Red.Salidas )
             {
                 working(Telefono.Red);               
-            }
+            }*/
         }
 
     }

@@ -19,15 +19,29 @@ namespace GUI
 
         //private readonly Red red;
 
-        private List<string> Datos { get; set; }
+        private int i { get; set; }
         public bool Crear { get; set; }
+        private readonly Red Red;
 
-        public Grafica()
+        public Grafica(Red Red)
         {
+            this.Red = Red;
             Crear = true;
-            Datos = new List<string>();
             InitializeComponent();
             Config();
+            Config(Red);
+        }
+
+        private void Config(Red Red)
+        {
+            chart2.Series.Clear();
+            var i = 1;
+            foreach (var item in Red.Salidas)
+            {
+                chart2.Series.Add("Salida " + i);
+                chart2.Series["Salida " + i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                i++;
+            }
         }
 
         private void Config()
@@ -43,6 +57,7 @@ namespace GUI
                                  | NotifyFilters.Security
                                  | NotifyFilters.Size;
 
+            watcher.Changed += OnChanged;
             watcher.Filter = "*.xml";
             watcher.IncludeSubdirectories = false;
             watcher.EnableRaisingEvents = true;
@@ -50,7 +65,7 @@ namespace GUI
 
         private void OnChanged(object sender, FileSystemEventArgs e)
         {
-            chart2_Click(sender, e);
+            /*chart2_Click(sender, e);
             Console.WriteLine($"Changed: {e.FullPath} -> {Telefono.Red.Error}");
             //grafica1.Series["Series1"].Points.AddXY(Telefono.Red.Salidas[0].);
             var j = 1;
@@ -63,6 +78,27 @@ namespace GUI
             if (e.ChangeType != WatcherChangeTypes.Changed)
             {
                 return;
+            }*/
+
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    var seguir = (i % (Telefono.Red.Patrones[0].Entradas.Count)) == 0 ? true : false;
+                    if (seguir)
+                    {
+                        grafica1.Series["Series1"].Points.Add(Telefono.Red.Error);
+                        var j = 1;
+                        foreach (var item in Telefono.Red.Salidas)
+                        {
+                            Console.Write($"{item.Error}|");
+                            chart2.Series["Salida "+j].Points.Add(item.Error);
+                            j++;
+                        }
+                        Console.Write('\n');
+                    }
+                    i++;
+                }));
             }
         }
 
