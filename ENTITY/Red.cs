@@ -26,6 +26,9 @@ namespace ENTITY
         private const double Xo = 1;
         public Red()
         {
+            Rata = 1;
+            Error = 1;
+            ErrorMaxPermitido = 0.1;
             Patrones = new List<Patron>();
             Pesos = new Pesos();
             PesosAnteriores = new Pesos();

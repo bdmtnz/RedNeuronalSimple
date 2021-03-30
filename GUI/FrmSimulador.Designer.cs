@@ -44,7 +44,7 @@ namespace GUI
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.panel4.Location = new System.Drawing.Point(27, 94);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(481, 1);
+            this.panel4.Size = new System.Drawing.Size(316, 1);
             this.panel4.TabIndex = 13;
             // 
             // label6
@@ -65,7 +65,7 @@ namespace GUI
             this.TbPatron.ForeColor = System.Drawing.Color.White;
             this.TbPatron.Location = new System.Drawing.Point(27, 66);
             this.TbPatron.Name = "TbPatron";
-            this.TbPatron.Size = new System.Drawing.Size(481, 22);
+            this.TbPatron.Size = new System.Drawing.Size(316, 22);
             this.TbPatron.TabIndex = 15;
             this.TbPatron.TextChanged += new System.EventHandler(this.TbPatron_TextChanged);
             // 
@@ -81,7 +81,7 @@ namespace GUI
             this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.BtnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnIniciar.Location = new System.Drawing.Point(526, 63);
+            this.BtnIniciar.Location = new System.Drawing.Point(349, 63);
             this.BtnIniciar.Name = "BtnIniciar";
             this.BtnIniciar.Size = new System.Drawing.Size(30, 30);
             this.BtnIniciar.TabIndex = 16;
@@ -93,7 +93,7 @@ namespace GUI
             this.LbResutado.AutoSize = true;
             this.LbResutado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbResutado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.LbResutado.Location = new System.Drawing.Point(23, 114);
+            this.LbResutado.Location = new System.Drawing.Point(23, 122);
             this.LbResutado.Name = "LbResutado";
             this.LbResutado.Size = new System.Drawing.Size(104, 24);
             this.LbResutado.TabIndex = 17;
@@ -107,7 +107,7 @@ namespace GUI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.button1.Location = new System.Drawing.Point(546, -1);
+            this.button1.Location = new System.Drawing.Point(364, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 18;
@@ -120,7 +120,7 @@ namespace GUI
             this.LbResultado.AutoSize = true;
             this.LbResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbResultado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.LbResultado.Location = new System.Drawing.Point(123, 114);
+            this.LbResultado.Location = new System.Drawing.Point(123, 122);
             this.LbResultado.Name = "LbResultado";
             this.LbResultado.Size = new System.Drawing.Size(20, 24);
             this.LbResultado.TabIndex = 19;
@@ -131,7 +131,7 @@ namespace GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.ClientSize = new System.Drawing.Size(574, 182);
+            this.ClientSize = new System.Drawing.Size(397, 182);
             this.ControlBox = false;
             this.Controls.Add(this.LbResultado);
             this.Controls.Add(this.button1);

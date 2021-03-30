@@ -126,6 +126,11 @@ namespace GUI
                 MessageBox.Show("Esta red ya se encuentra entrenada, proceda a simular");
                 return;
             }
+            else if(Red.Iteraciones <= 0)
+            {
+                MessageBox.Show("Por favor ingrese un número de iteraciones valido");
+                return;
+            }
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
@@ -217,6 +222,12 @@ namespace GUI
         {
             Red.Rata = (double)NbRata.Value;
             Telefono.Red = Red;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Red = Telefono.Red = new Red();
+            ShowInfo(Red);
         }
     }
 }
