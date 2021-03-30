@@ -20,7 +20,7 @@ namespace GUI
         private Red Red { get; set; }
         public int X_Click { get; set; }
         public int Y_Click { get; set; }
-        private FrmSimulador FrmSimulador { get; set; }
+ 
         //private Grafica Grafica { get; set; }
 
         //private Graficar2 graficar2 { get; set; }
@@ -100,23 +100,17 @@ namespace GUI
             var Cb = sender as ComboBox;
             if(Cb.SelectedIndex == (int)FUNCION.Escalon)
             {
-                PbEscalon.Visible = true;
-                PbLineal.Visible = false;
-                PbSigmoide.Visible = false;
+                
                 Red.Activacion.Funcion = FUNCION.Escalon;
             }
             else if (Cb.SelectedIndex == (int)FUNCION.Lineal)
             {
-                PbEscalon.Visible = false;
-                PbLineal.Visible = true;
-                PbSigmoide.Visible = false;
+               
                 Red.Activacion.Funcion = FUNCION.Lineal;
             }
             else
             {
-                PbEscalon.Visible = false;
-                PbLineal.Visible = false;
-                PbSigmoide.Visible = true;
+              
                 Red.Activacion.Funcion = FUNCION.Sigmoide;
             }
             Telefono.Red = Red;
@@ -138,18 +132,18 @@ namespace GUI
 
         private async void RunTask()
         {
-            PbCarga.Visible = true;
+            
             Telefono.Continuar = true;
             Telefono.Red = Red;
             //var T = new Task(_Neurona.EntrenarPausable);
-            var T = new Task(_Neurona.EntrenarPausableFragmentada);
+            var T = new Task(_Neurona.EntrenarPausable);
             T.Start();
             await T;
             //graficar2.Show();
             Red = Telefono.Red;
             ShowInfo(Red);
             MessageBox.Show("Entrenamentos ->" + Red.Entrenamientos + "\nUmbral -> " + Red.Umbral.Valor + "\nPesos -> " + Telefono.W + "\nError -> " + Red.Error);
-            PbCarga.Visible = false;
+            
             BtnPausa.Visible = false;
             BtnIniciar.Visible = true;
         } 
@@ -161,7 +155,33 @@ namespace GUI
 
         private void Simular(object sender, EventArgs e)
         {
-            FrmSimulador = new FrmSimulador(Red);
+            if(Red.Patrones.Count <= 0)
+            {
+                MessageBox.Show("No hay patrones");
+                return;
+            }
+            var Entradas = TbPatron.Text.Trim().Replace('.', ',').Split(';');
+            if (Entradas.Length != Red.Patrones[0].Entradas.Count)
+            {
+                MessageBox.Show("El patron ingresado es diferente a los patrones de entrenamiento, verifiquelos");
+                
+                return;
+            }
+            double o;
+            Patron Patron = new Patron();
+            foreach (var Entrada in Entradas)
+            {
+                string entrada = Entrada.Trim();
+                if (!Double.TryParse(entrada, out o))
+                {
+                    MessageBox.Show("Las entradas deben ser numericas, verifiquelas");
+                    
+                    return;
+                }
+                Patron.Entradas.Add(Double.Parse(entrada));
+            }
+            LbResultado.Text = Red.Simular(Patron).ToString();
+
         }
 
         private void BtnOpen_Click(object sender, EventArgs e)
@@ -228,6 +248,11 @@ namespace GUI
         {
             Red.Rata = (double)NbRata.Value;
             Telefono.Red = Red;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

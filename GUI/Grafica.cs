@@ -46,7 +46,7 @@ namespace GUI
 
         private void Config()
         {
-            var watcher = new FileSystemWatcher(@"C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug");
+            var watcher = new FileSystemWatcher(@"..\Debug");
 
             watcher.NotifyFilter = NotifyFilters.Attributes
                                  | NotifyFilters.CreationTime
@@ -84,19 +84,15 @@ namespace GUI
             {
                 Invoke(new Action(() =>
                 {
-                    var seguir = (i % (Telefono.Red.Patrones[0].Entradas.Count)) == 0 ? true : false;
-                    if (seguir)
+                    grafica1.Series["Series1"].Points.Add(Telefono.Red.Error);
+                    var j = 1;
+                    foreach (var item in Telefono.Red.Salidas)
                     {
-                        grafica1.Series["Series1"].Points.Add(Telefono.Red.Error);
-                        var j = 1;
-                        foreach (var item in Telefono.Red.Salidas)
-                        {
-                            Console.Write($"{item.Error}|");
-                            chart2.Series["Salida "+j].Points.Add(item.Error);
-                            j++;
-                        }
-                        Console.Write('\n');
+                        Console.Write($"{item.Error}|");
+                        chart2.Series["Salida " + j].Points.Add(item.Error);
+                        j++;
                     }
+                    Console.Write('\n');
                     i++;
                 }));
             }

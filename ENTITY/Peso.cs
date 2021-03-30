@@ -18,8 +18,8 @@ namespace ENTITY
         public void Entrenar(double AnteriorValor, double Rata, double ErrorSalida, double Entrada)
         {
             Valor = AnteriorValor + (Rata * ErrorSalida * Entrada);
-            Valor = Valor > 3 ? 3 : Valor;
-            Valor = Valor < -3 ? -3 : Valor;
+            Valor = Valor > 1 ? 1 : Valor;
+            Valor = Valor < -1 ? -1 : Valor;
         }
     }
     

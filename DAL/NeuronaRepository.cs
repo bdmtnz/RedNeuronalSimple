@@ -19,103 +19,109 @@ namespace DAL
         public Red ReadXml(string Path)
         {
             var Red = new Red();
-            var Default = @"data.xml"; 
-            using (XmlReader Reader = XmlReader.Create(Path??Default))
+            var Default = @"data.xml";
+            try
             {
-                while (Reader.Read())
+                using (XmlReader Reader = XmlReader.Create(Path ?? Default))
                 {
-                    if (Reader.IsStartElement())
+                    while (Reader.Read())
                     {
-                        switch (Reader.Name.ToString())
+                        if (Reader.IsStartElement())
                         {
-                            case "Config":
-                                var Config = Reader.ReadString().Trim();
-                                Console.WriteLine(Config);
-                                var Unidades = Config.Split(';');
-                                foreach (var Unidad in Unidades)
-                                {
-                                    if (!Double.TryParse(Unidad, out _))
+                            switch (Reader.Name.ToString())
+                            {
+                                case "Config":
+                                    var Config = Reader.ReadString().Trim();
+                                    Console.WriteLine(Config);
+                                    var Unidades = Config.Split(';');
+                                    foreach (var Unidad in Unidades)
                                     {
-                                        return null;
-                                    }
-                                }
-                                if (ValidarRata(Double.Parse(Unidades[4])))
-                                {
-                                    return null;
-                                }
-                                Red.SetConfig(Config);
-                                break;
-                            case "Patrones":
-                                var Patrones = Reader.ReadString().Trim();
-                                Console.WriteLine(Patrones);
-                                var Split = Patrones.Split(' ');
-                                foreach (var item in Split)
-                                {
-                                    var Entradas = item.Split(';');
-                                    foreach (var Entrada in Entradas)
-                                    {
-                                        if(!Double.TryParse(Entrada, out _))
+                                        if (!Double.TryParse(Unidad, out _))
                                         {
                                             return null;
                                         }
                                     }
-                                    Red.Patrones.Add(new Patron(item.Trim()));
-                                }
-                                break;
-                            case "Salidas":
-                                var Salidas = Reader.ReadString().Trim();
-                                Console.WriteLine(Salidas);
-                                Split = Salidas.Split(';');
-                                foreach (var item in Split)
-                                {
-                                    if (!Double.TryParse(item, out _))
+                                    if (ValidarRata(Double.Parse(Unidades[4])))
                                     {
                                         return null;
                                     }
-                                    Red.Salidas.Add(new Salida(item.Trim()));
-                                }
-                                break;
-                            case "Umbrales":
-                                var Umbrales = Reader.ReadString().Trim();
-                                Console.WriteLine(Umbrales);
-                                Split = Umbrales.Split(';');
-                                foreach (var item in Split)
-                                {
-                                    if (!Double.TryParse(item, out _))
+                                    Red.SetConfig(Config);
+                                    break;
+                                case "Patrones":
+                                    var Patrones = Reader.ReadString().Trim();
+                                    Console.WriteLine(Patrones);
+                                    var Split = Patrones.Split(' ');
+                                    foreach (var item in Split)
+                                    {
+                                        var Entradas = item.Split(';');
+                                        foreach (var Entrada in Entradas)
+                                        {
+                                            if (!Double.TryParse(Entrada, out _))
+                                            {
+                                                return null;
+                                            }
+                                        }
+                                        Red.Patrones.Add(new Patron(item.Trim()));
+                                    }
+                                    break;
+                                case "Salidas":
+                                    var Salidas = Reader.ReadString().Trim();
+                                    Console.WriteLine(Salidas);
+                                    Split = Salidas.Split(';');
+                                    foreach (var item in Split)
+                                    {
+                                        if (!Double.TryParse(item, out _))
+                                        {
+                                            return null;
+                                        }
+                                        Red.Salidas.Add(new Salida(item.Trim()));
+                                    }
+                                    break;
+                                case "Umbrales":
+                                    var Umbrales = Reader.ReadString().Trim();
+                                    Console.WriteLine(Umbrales);
+                                    Split = Umbrales.Split(';');
+                                    foreach (var item in Split)
+                                    {
+                                        if (!Double.TryParse(item, out _))
+                                        {
+                                            return null;
+                                        }
+                                        else if (ValidarUmbral(Double.Parse(item)))
+                                        {
+                                            return null;
+                                        }
+                                        Red.Umbral.Valor = Double.Parse(item.Trim());
+                                    }
+                                    break;
+                                case "Pesos":
+                                    var Pesos = Reader.ReadString().Trim();
+                                    Console.WriteLine(Pesos);
+                                    Split = Pesos.Split(';');
+                                    foreach (var item in Split)
+                                    {
+                                        if (!Double.TryParse(item, out _))
+                                        {
+                                            return null;
+                                        }
+                                        else if (ValidarPeso(Double.Parse(item)))
+                                        {
+                                            return null;
+                                        }
+                                        Red.Pesos.Valores.Add(new Peso(Double.Parse(item.Trim())));
+                                    }
+                                    if (EntradasVsPesos(Red.Patrones, Red.Pesos) || PatronesVsSalidas(Red.Salidas, Red.Patrones))
                                     {
                                         return null;
                                     }
-                                    else if(ValidarUmbral(Double.Parse(item)))
-                                    {
-                                        return null;
-                                    }
-                                    Red.Umbral.Valor = Double.Parse(item.Trim());
-                                }
-                                break;
-                            case "Pesos":
-                                var Pesos = Reader.ReadString().Trim();
-                                Console.WriteLine(Pesos);
-                                Split = Pesos.Split(';');
-                                foreach (var item in Split)
-                                {
-                                    if (!Double.TryParse(item, out _))
-                                    {
-                                        return null;
-                                    }
-                                    else if (ValidarPeso(Double.Parse(item)))
-                                    {
-                                        return null;
-                                    }
-                                    Red.Pesos.Valores.Add(new Peso(Double.Parse(item.Trim())));
-                                }
-                                if (EntradasVsPesos(Red.Patrones, Red.Pesos) || PatronesVsSalidas(Red.Salidas, Red.Patrones))
-                                {
-                                    return null;
-                                }
-                                break;
+                                    break;
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception)
+            {
             }
             return Red;
         }
@@ -129,14 +135,14 @@ namespace DAL
 
         private bool ValidarPeso(double Peso)
         {
-            if (Peso >= -3 && Peso <= 3)
+            if (Peso >= -1 && Peso <= 1)
                 return false;
             return true;
         }
 
         private bool ValidarUmbral(double Umbral)
         {
-            if (Umbral >= 0 && Umbral <= 1)
+            if (Umbral >= -1 && Umbral <= 1)
                 return false;
             return true;
         }

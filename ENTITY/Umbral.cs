@@ -24,7 +24,7 @@ namespace ENTITY
         {
             Valor = AnteriorValor + (Rata * ErrorSalida * Entrada);
             Valor = Valor > 1 ? 1 : Valor;
-            Valor = Valor < 0 ? 0 : Valor;
+            Valor = Valor < -1 ? -1 : Valor;
         }
     }
 

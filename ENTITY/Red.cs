@@ -34,6 +34,9 @@ namespace ENTITY
             Salidas = new List<Salida>();
             Activacion = new Activacion(FUNCION.Escalon);
             Neurona = new Neurona();
+            Error = 0.2;
+            ErrorMaxPermitido = 0.01;
+            Rata = 0.1;
         }
         public void SetError(List<Patron> Patrones)
         {

@@ -46,23 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmSimulador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmSimulador.Designer.cs">
-      <DependentUpon>FrmSimulador.cs</DependentUpon>
-    </Compile>
     <Compile Include="Grafica.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Grafica.Designer.cs">
       <DependentUpon>Grafica.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Graficar2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Graficar2.Designer.cs">
-      <DependentUpon>Graficar2.cs</DependentUpon>
     </Compile>
     <Compile Include="MetodoGrafica.cs" />
     <Compile Include="Start.cs">
@@ -73,14 +61,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmSimulador.resx">
-      <DependentUpon>FrmSimulador.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Grafica.resx">
       <DependentUpon>Grafica.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Graficar2.resx">
-      <DependentUpon>Graficar2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
