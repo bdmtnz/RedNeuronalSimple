@@ -21,10 +21,7 @@ namespace GUI
         public int X_Click { get; set; }
         public int Y_Click { get; set; }
         private FrmSimulador FrmSimulador { get; set; }
-        //private Grafica Grafica { get; set; }
-
-        //private Graficar2 graficar2 { get; set; }
-        private Grafica graficar { get; set; }
+        private Grafica Grafica { get; set; }
 
         public Start()
         {
@@ -124,16 +121,16 @@ namespace GUI
 
         private void Entrenar(object sender, EventArgs e)
         {
+            if(Red.Error <= Red.ErrorMaxPermitido)
+            {
+                MessageBox.Show("Esta red ya se encuentra entrenada, proceda a simular");
+                return;
+            }
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
-            //Grafica.Show();
-            //graficar2 = new Graficar2(Red);
-            //graficar2.Show();
-            graficar = new Grafica(Red);
-            graficar.Show();
-            
-            //Grafica.CargarDatos();
+            Grafica = new Grafica(Red);
+            Grafica.Show();
         }
 
         private async void RunTask()
@@ -141,22 +138,14 @@ namespace GUI
             PbCarga.Visible = true;
             Telefono.Continuar = true;
             Telefono.Red = Red;
-            //var T = new Task(_Neurona.EntrenarPausable);
-            var T = new Task(_Neurona.EntrenarPausableFragmentada);
+            var T = new Task(_Neurona.EntrenarPausable);
             T.Start();
             await T;
-            //graficar2.Show();
             Red = Telefono.Red;
             ShowInfo(Red);
-            MessageBox.Show("Entrenamentos ->" + Red.Entrenamientos + "\nUmbral -> " + Red.Umbral.Valor + "\nPesos -> " + Telefono.W + "\nError -> " + Red.Error);
             PbCarga.Visible = false;
             BtnPausa.Visible = false;
             BtnIniciar.Visible = true;
-        } 
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void Simular(object sender, EventArgs e)

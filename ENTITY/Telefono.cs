@@ -24,7 +24,7 @@ namespace ENTITY
             {
                 W += item.Valor + ";";
             }
-            return W;
+            return W.Substring(0, W.Length - 1);
         }
     }
 }

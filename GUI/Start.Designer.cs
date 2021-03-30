@@ -46,6 +46,8 @@
             this.PbSigmoide = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.LbEntrenado = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.LbSalidas = new System.Windows.Forms.Label();
             this.LbPatrones = new System.Windows.Forms.Label();
             this.LbEntradas = new System.Windows.Forms.Label();
@@ -69,8 +71,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
             this.SFD = new System.Windows.Forms.SaveFileDialog();
-            this.LbEntrenado = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbCarga)).BeginInit();
             this.panel2.SuspendLayout();
@@ -207,9 +207,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.label2.Location = new System.Drawing.Point(20, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 16);
+            this.label2.Size = new System.Drawing.Size(50, 16);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Monocapa";
+            this.label2.Text = "Simple";
             // 
             // label1
             // 
@@ -218,9 +218,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.label1.Location = new System.Drawing.Point(17, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 31);
+            this.label1.Size = new System.Drawing.Size(201, 31);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Red neuronal";
+            this.label1.Text = "Red perceptrón";
             // 
             // button2
             // 
@@ -257,7 +257,7 @@
             // PbCarga
             // 
             this.PbCarga.Image = ((System.Drawing.Image)(resources.GetObject("PbCarga.Image")));
-            this.PbCarga.Location = new System.Drawing.Point(167, 0);
+            this.PbCarga.Location = new System.Drawing.Point(208, 0);
             this.PbCarga.Name = "PbCarga";
             this.PbCarga.Size = new System.Drawing.Size(100, 100);
             this.PbCarga.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -278,7 +278,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(596, 396);
             this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // PbEscalon
             // 
@@ -336,6 +335,26 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(596, 20);
             this.panel6.TabIndex = 0;
+            // 
+            // LbEntrenado
+            // 
+            this.LbEntrenado.AutoSize = true;
+            this.LbEntrenado.Location = new System.Drawing.Point(411, 2);
+            this.LbEntrenado.Name = "LbEntrenado";
+            this.LbEntrenado.Size = new System.Drawing.Size(15, 16);
+            this.LbEntrenado.TabIndex = 7;
+            this.LbEntrenado.Text = "#";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.label13.Location = new System.Drawing.Point(355, 4);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Entrenado:";
             // 
             // LbSalidas
             // 
@@ -423,7 +442,7 @@
             // 
             this.NbRata.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.NbRata.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NbRata.DecimalPlaces = 10;
+            this.NbRata.DecimalPlaces = 2;
             this.NbRata.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.NbRata.Increment = new decimal(new int[] {
             1,
@@ -473,7 +492,7 @@
             // 
             this.NbErrorMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.NbErrorMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NbErrorMax.DecimalPlaces = 10;
+            this.NbErrorMax.DecimalPlaces = 2;
             this.NbErrorMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.NbErrorMax.Increment = new decimal(new int[] {
             1,
@@ -510,11 +529,6 @@
             this.NbIteracion.Maximum = new decimal(new int[] {
             -727379968,
             232,
-            0,
-            0});
-            this.NbIteracion.Minimum = new decimal(new int[] {
-            1,
-            0,
             0,
             0});
             this.NbIteracion.Name = "NbIteracion";
@@ -622,26 +636,6 @@
             // 
             this.OFD.FileName = "openFileDialog1";
             // 
-            // LbEntrenado
-            // 
-            this.LbEntrenado.AutoSize = true;
-            this.LbEntrenado.Location = new System.Drawing.Point(411, 2);
-            this.LbEntrenado.Name = "LbEntrenado";
-            this.LbEntrenado.Size = new System.Drawing.Size(15, 16);
-            this.LbEntrenado.TabIndex = 7;
-            this.LbEntrenado.Text = "#";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label13.Location = new System.Drawing.Point(355, 4);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 13);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Entrenado:";
-            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -657,6 +651,7 @@
             this.Name = "Start";
             this.Opacity = 0.98D;
             this.Padding = new System.Windows.Forms.Padding(2);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -703,14 +698,12 @@
         private System.Windows.Forms.Button BtnOpen;
         private System.Windows.Forms.PictureBox PbCarga;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox PbEscalon;
         private System.Windows.Forms.PictureBox PbLineal;
         private System.Windows.Forms.PictureBox PbSigmoide;
-        private System.Windows.Forms.Label LbSalidas;
         private System.Windows.Forms.Label LbPatrones;
         private System.Windows.Forms.Label LbEntradas;
         private System.Windows.Forms.NumericUpDown NbRata;
@@ -722,6 +715,8 @@
         private System.Windows.Forms.Button BtnPausa;
         private System.Windows.Forms.Label LbEntrenado;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label LbSalidas;
+        private System.Windows.Forms.Label label10;
     }
 }
 

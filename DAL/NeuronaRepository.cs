@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml;
-using System.Threading.Tasks;
 
 using ENTITY;
 
@@ -129,14 +126,14 @@ namespace DAL
 
         private bool ValidarPeso(double Peso)
         {
-            if (Peso >= -3 && Peso <= 3)
+            if (Peso >= -1 && Peso <= 1)
                 return false;
             return true;
         }
 
         private bool ValidarUmbral(double Umbral)
         {
-            if (Umbral >= 0 && Umbral <= 1)
+            if (Umbral >= -1 && Umbral <= 1)
                 return false;
             return true;
         }

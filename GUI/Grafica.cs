@@ -1,26 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
 using System.IO;
 using System.Windows.Forms;
 using ENTITY;
-using BLL;
 
 namespace GUI
 {
     public partial class Grafica : Form
     {
 
-        //private readonly Red red;
-
+        public int X_Click { get; set; }
+        public int Y_Click { get; set; }
         private int i { get; set; }
         public bool Crear { get; set; }
+
         private readonly Red Red;
 
         public Grafica(Red Red)
@@ -35,18 +27,21 @@ namespace GUI
         private void Config(Red Red)
         {
             chart2.Series.Clear();
+            grafica1.Series.Clear();
+            grafica1.Series.Add("ErrorIT");
+            grafica1.Series["ErrorIT"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             var i = 1;
             foreach (var item in Red.Salidas)
             {
-                chart2.Series.Add("Salida " + i);
-                chart2.Series["Salida " + i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                chart2.Series.Add("Error " + i);
+                chart2.Series["Error " + i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
                 i++;
             }
         }
 
         private void Config()
         {
-            var watcher = new FileSystemWatcher(@"C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\bin\Debug");
+            var watcher = new FileSystemWatcher(@".\");
 
             watcher.NotifyFilter = NotifyFilters.Attributes
                                  | NotifyFilters.CreationTime
@@ -63,70 +58,49 @@ namespace GUI
             watcher.EnableRaisingEvents = true;
         }
 
+        private void MoveWindow(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            {
+                X_Click = e.X; Y_Click = e.Y;
+            }
+            else
+            {
+                Left += (e.X - X_Click);
+                Top += (e.Y - Y_Click);
+            }
+        }
+
         private void OnChanged(object sender, FileSystemEventArgs e)
         {
-            /*chart2_Click(sender, e);
-            Console.WriteLine($"Changed: {e.FullPath} -> {Telefono.Red.Error}");
-            //grafica1.Series["Series1"].Points.AddXY(Telefono.Red.Salidas[0].);
-            var j = 1;
-            foreach (var item in Telefono.Red.Salidas)
-            {
-                grafica1.Series["Salida "+j].Points.Add(item.Error);
-                ++j;
-            }
-            
-            if (e.ChangeType != WatcherChangeTypes.Changed)
-            {
-                return;
-            }*/
-
             if (InvokeRequired)
             {
                 Invoke(new Action(() =>
                 {
-                    var seguir = (i % (Telefono.Red.Patrones[0].Entradas.Count)) == 0 ? true : false;
-                    if (seguir)
+                    grafica1.Series["ErrorIT"].Points.Add(Telefono.Red.Error);
+                    var j = 1;
+                    foreach (var item in Telefono.Red.Salidas)
                     {
-                        grafica1.Series["Series1"].Points.Add(Telefono.Red.Error);
-                        var j = 1;
-                        foreach (var item in Telefono.Red.Salidas)
-                        {
-                            Console.Write($"{item.Error}|");
-                            chart2.Series["Salida "+j].Points.Add(item.Error);
-                            j++;
-                        }
-                        Console.Write('\n');
+                        chart2.Series["Error " + j].Points.Add(item.Error);
+                        j++;
                     }
                     i++;
+                    CargarDatos();
                 }));
             }
         }
 
         public void CargarDatos()
         {
-            grafica1.Series.Add("Prueba");
-            grafica1.Series["Prueba"].Points.Add(10);
-            grafica1.Series["Prueba"].Points[0].ToolTip = "$ " + 10;
+            LbIteracion.Text = Telefono.Red.Entrenamientos.ToString();
+            LbUmbral.Text = Telefono.Red.Umbral.Valor.ToString();
+            LbError.Text = Telefono.Red.Error.ToString();
+            LbWs.Text = Telefono.W;
         }
 
-        private void Grafica_ChangeUICues(object sender, UICuesEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void chart2_Click(object sender, EventArgs e)
-        {
-            if (Crear)
-            {
-                var i = 1;
-                foreach (var item in Telefono.Red.Salidas)
-                {
-                    grafica1.Series.Clear();
-                    grafica1.Series.Add("Salida " + i);
-                    ++i;
-                }
-                Crear = false;
-            }
+            Dispose();
         }
     }
 }
