@@ -126,6 +126,11 @@ namespace GUI
                 MessageBox.Show("Esta red ya se encuentra entrenada, proceda a simular");
                 return;
             }
+            else if (Red.Patrones.Count <= 0)
+            {
+                MessageBox.Show("Esta red está vacia, llenela y entrenela");
+                return;
+            }
             else if(Red.Iteraciones <= 0)
             {
                 MessageBox.Show("Por favor ingrese un número de iteraciones valido");
@@ -155,6 +160,11 @@ namespace GUI
 
         private void Simular(object sender, EventArgs e)
         {
+            if(Red.Patrones.Count <= 0)
+            {
+                MessageBox.Show("Esta red está vacia, llenela y entrenela");
+                return;
+            }
             FrmSimulador = new FrmSimulador(Red);
         }
 
