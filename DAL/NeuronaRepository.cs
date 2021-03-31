@@ -259,32 +259,32 @@ namespace DAL
 
             XmlElement Iteracion = doc.CreateElement(string.Empty, "I", string.Empty);
             Red.AppendChild(Iteracion);
-            XmlText IteracionText = doc.CreateTextNode(R.Iteraciones.ToString());
+            XmlText IteracionText = doc.CreateTextNode(" "+R.Iteraciones.ToString()+" ");
             Iteracion.AppendChild(IteracionText);
 
             XmlElement Funcion = doc.CreateElement(string.Empty, "F", string.Empty);
             Red.AppendChild(Funcion);
-            XmlText FuncionText = doc.CreateTextNode(R.Activacion.Funcion.ToString());
+            XmlText FuncionText = doc.CreateTextNode(" "+((int)R.Activacion.Funcion).ToString()+" ");
             Funcion.AppendChild(FuncionText);
 
             XmlElement Rata = doc.CreateElement(string.Empty, "R", string.Empty);
             Red.AppendChild(Rata);
-            XmlText RataText = doc.CreateTextNode(R.Rata.ToString());
+            XmlText RataText = doc.CreateTextNode(" "+R.Rata.ToString()+" ");
             Rata.AppendChild(RataText);
 
             XmlElement Error = doc.CreateElement(string.Empty, "E", string.Empty);
             Red.AppendChild(Error);
-            XmlText ErrorText = doc.CreateTextNode(R.Error.ToString());
+            XmlText ErrorText = doc.CreateTextNode(" "+R.Error.ToString()+" ");
             Error.AppendChild(ErrorText);
 
             XmlElement ErrorMax = doc.CreateElement(string.Empty, "EM", string.Empty);
             Red.AppendChild(ErrorMax);
-            XmlText ErrorMaxText = doc.CreateTextNode(R.ErrorMaxPermitido.ToString());
+            XmlText ErrorMaxText = doc.CreateTextNode(" "+R.ErrorMaxPermitido.ToString()+" ");
             ErrorMax.AppendChild(ErrorMaxText);
 
             XmlElement Entrenamiento = doc.CreateElement(string.Empty, "EN", string.Empty);
             Red.AppendChild(Entrenamiento);
-            XmlText EntrenamientoText = doc.CreateTextNode(R.Entrenamientos.ToString());
+            XmlText EntrenamientoText = doc.CreateTextNode(" "+R.Entrenamientos.ToString()+" ");
             Entrenamiento.AppendChild(EntrenamientoText);
 
             XmlElement Patrones = doc.CreateElement(string.Empty, "P", string.Empty);

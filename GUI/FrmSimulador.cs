@@ -25,9 +25,8 @@ namespace GUI
             this.Red = Red;
             InitializeComponent();
             ValidarEntrenamiento(Red);
-            ShowInfo(Red);
-            OFD.Filter = "Archivo XML (*.XML)|*.XML";
         }
+
         private void ValidarEntrenamiento(Red Red)
         {
             if (Red.Error>Red.ErrorMaxPermitido)
@@ -38,15 +37,7 @@ namespace GUI
             else
                 ShowDialog();
         }
-        private void FrmSimulador_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void TbPatron_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void CrearColumnas(List<Patron> Patrones)
         {
             var i = 1;
@@ -68,6 +59,16 @@ namespace GUI
             }
         }
 
+        private bool ValidarDS(List<Patron> Patrones, Red Red)
+        {
+            if (Red.Patrones.Count <= 0 || Patrones.Count <= 0)
+                return true;
+            else if (Patrones[0].Entradas.Count == Red.Patrones[0].Entradas.Count)
+                return false;
+            else
+                return true;
+        }
+
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
             ShowInfo(Red);
@@ -81,6 +82,11 @@ namespace GUI
                         var Ps = _Neurona.LoadPatrones(OFD.FileName);
                         if (Ps != null)
                         {
+                            if(ValidarDS(Ps, Red))
+                            {
+                                MessageBox.Show("El dataset no cuenta con las caracteristicas de la red entrenada");
+                                return;
+                            }
                             LbPath.Text = OFD.FileName;
                             LbPatrones.Text = "" + Ps.Count();
                             CrearColumnas(Ps);
@@ -121,7 +127,7 @@ namespace GUI
             LbError.Text = "" + Telefono.Red.Error;
             LbIteraciones.Text = "" + Telefono.Red.Entrenamientos;
             LbPesos.Text = "" + Telefono.W;
-            LbUmbral.Text = "" + Telefono.Red.Umbral;
+            LbUmbral.Text = "" + Telefono.Red.Umbral.Valor;
         }
 
         private void button1_Click(object sender, EventArgs e)
