@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class Start
+    partial class Dashboard
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnPausa = new System.Windows.Forms.Button();
             this.BtnSimulation = new System.Windows.Forms.Button();

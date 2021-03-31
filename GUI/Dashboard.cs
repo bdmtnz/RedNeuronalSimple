@@ -14,18 +14,18 @@ using BLL;
 
 namespace GUI
 {
-    public partial class Start : Form
+    public partial class Dashboard : Form
     {
-        private NeuronaService _Neurona { get; set; }
+        private RedService _Neurona { get; set; }
         private Red Red { get; set; }
         public int X_Click { get; set; }
         public int Y_Click { get; set; }
-        private FrmSimulador FrmSimulador { get; set; }
-        private Grafica Grafica { get; set; }
+        private Generalizador FrmSimulador { get; set; }
+        private Graficador Grafica { get; set; }
 
-        public Start()
+        public Dashboard()
         {
-            _Neurona = new NeuronaService();
+            _Neurona = new RedService();
             //Grafica = new Grafica();
             Red = new Red();
             InitializeComponent();
@@ -38,9 +38,9 @@ namespace GUI
         private void Preload()
         {
             CbActivacion.Items.AddRange(new object[] { 
-                FUNCION.Escalon.ToString(),
-                FUNCION.Lineal.ToString(),
-                FUNCION.Sigmoide.ToString()
+                FUNCIONES.Escalon.ToString(),
+                FUNCIONES.Lineal.ToString(),
+                FUNCIONES.Sigmoide.ToString()
             });
             CbActivacion.SelectedIndex = 0;  
         }
@@ -51,7 +51,7 @@ namespace GUI
             SFD.Filter = "Archivo XML (*.XML)|*.XML";
             var Rd = _Neurona.ReadXml(null);
             if (Rd != null)
-                Red = Telefono.Red = Rd;
+                Red = Plataforma.Red = Rd;
             else
                 MessageBox.Show("El dataset está corrupto o está mal configurado");
             ShowInfo(Red);
@@ -95,28 +95,28 @@ namespace GUI
         private void CambiarActivacion(object sender, EventArgs e)
         {
             var Cb = sender as ComboBox;
-            if(Cb.SelectedIndex == (int)FUNCION.Escalon)
+            if(Cb.SelectedIndex == (int)FUNCIONES.Escalon)
             {
                 PbEscalon.Visible = true;
                 PbLineal.Visible = false;
                 PbSigmoide.Visible = false;
-                Red.Activacion.Funcion = FUNCION.Escalon;
+                Red.Activacion.Funcion = FUNCIONES.Escalon;
             }
-            else if (Cb.SelectedIndex == (int)FUNCION.Lineal)
+            else if (Cb.SelectedIndex == (int)FUNCIONES.Lineal)
             {
                 PbEscalon.Visible = false;
                 PbLineal.Visible = true;
                 PbSigmoide.Visible = false;
-                Red.Activacion.Funcion = FUNCION.Lineal;
+                Red.Activacion.Funcion = FUNCIONES.Lineal;
             }
             else
             {
                 PbEscalon.Visible = false;
                 PbLineal.Visible = false;
                 PbSigmoide.Visible = true;
-                Red.Activacion.Funcion = FUNCION.Sigmoide;
+                Red.Activacion.Funcion = FUNCIONES.Sigmoide;
             }
-            Telefono.Red = Red;
+            Plataforma.Red = Red;
         }
 
         private void Entrenar(object sender, EventArgs e)
@@ -139,19 +139,19 @@ namespace GUI
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
-            Grafica = new Grafica(Red);
+            Grafica = new Graficador(Red);
             Grafica.Show();
         }
 
         private async void RunTask()
         {
             PbCarga.Visible = true;
-            Telefono.Continuar = true;
-            Telefono.Red = Red;
+            Plataforma.Continuar = true;
+            Plataforma.Red = Red;
             var T = new Task(_Neurona.EntrenarPausable);
             T.Start();
             await T;
-            Red = Telefono.Red;
+            Red = Plataforma.Red;
             ShowInfo(Red);
             PbCarga.Visible = false;
             BtnPausa.Visible = false;
@@ -165,7 +165,7 @@ namespace GUI
                 MessageBox.Show("Esta red está vacia, llenela y entrenela");
                 return;
             }
-            FrmSimulador = new FrmSimulador(Red, _Neurona);
+            FrmSimulador = new Generalizador(Red, _Neurona);
         }
 
         private void BtnOpen_Click(object sender, EventArgs e)
@@ -179,7 +179,7 @@ namespace GUI
                     {
                         var Rd =  _Neurona.ReadXml(OFD.FileName);
                         if (Rd != null)
-                            Red = Telefono.Red = Rd;
+                            Red = Plataforma.Red = Rd;
                         else
                             MessageBox.Show("El dataset está corrupto o está mal configurado");
                         ShowInfo(Red);
@@ -210,8 +210,8 @@ namespace GUI
         {
             BtnPausa.Visible = false;
             BtnIniciar.Visible = true;
-            Red = Telefono.Red;
-            Telefono.Continuar = false;
+            Red = Plataforma.Red;
+            Plataforma.Continuar = false;
             ShowInfo(Red);
             
         }
@@ -219,24 +219,24 @@ namespace GUI
         private void ItChange(object sender, EventArgs e)
         {
             Red.Iteraciones = (int)NbIteracion.Value;
-            Telefono.Red = Red;
+            Plataforma.Red = Red;
         }
 
         private void EmChange(object sender, EventArgs e)
         {
             Red.ErrorMaxPermitido = (double)NbErrorMax.Value;
-            Telefono.Red = Red;
+            Plataforma.Red = Red;
         }
 
         private void RaChange(object sender, EventArgs e)
         {
             Red.Rata = (double)NbRata.Value;
-            Telefono.Red = Red;
+            Plataforma.Red = Red;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Red = Telefono.Red = new Red();
+            Red = Plataforma.Red = new Red();
             ShowInfo(Red);
         }
     }

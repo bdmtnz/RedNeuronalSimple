@@ -8,6 +8,7 @@ namespace ENTITY
 {
     public class Red
     {
+        private const double Xo = 1;
         public List<Patron> Patrones { get; set; }
         public Neurona Neurona { get; set; }
         public List<Salida> Salidas { get; set; }
@@ -23,8 +24,13 @@ namespace ENTITY
         public double Error { get; set; }
         public double ErrorMaxPermitido { get; set; }
 
-        private const double Xo = 1;
+
         public Red()
+        {
+            Normalizar();
+        }
+
+        private void Normalizar()
         {
             Rata = 1;
             Error = 1;
@@ -35,51 +41,8 @@ namespace ENTITY
             Umbral = new Umbral();
             UmbralAnterior = new Umbral();
             Salidas = new List<Salida>();
-            Activacion = new Activacion(FUNCION.Escalon);
+            Activacion = new Activacion(FUNCIONES.Escalon);
             Neurona = new Neurona();
-        }
-        public void SetError(List<Patron> Patrones)
-        {
-            Error = 0;
-            foreach (var item in Patrones)
-            {
-                Error += item.Error;
-            }
-            Error = Error / Patrones.Count;
-        }
-
-        public void SetConfig(string Value)
-        {
-            if (Value != "")
-            {
-                Value = Value.Trim();
-                var Split = Value.Split(';');
-                Iteraciones = Int32.Parse(Split[0]);
-                Error = Double.Parse(Split[1]);
-                ErrorMaxPermitido = Double.Parse(Split[2]);
-                switch (Split[3])
-                {
-                    case "0":
-                        Activacion.Funcion = FUNCION.Escalon;
-                        break;
-                    case "1":
-                        Activacion.Funcion = FUNCION.Lineal;
-                        break;
-                    case "2":
-                        Activacion.Funcion = FUNCION.Sigmoide;
-                        break;
-                    default:
-                        Activacion.Funcion = FUNCION.Escalon;
-                        break;
-                }
-                Rata = Double.Parse(Split[4]);
-                Entrenamientos = Int32.Parse(Split[5]);
-            }
-        }
-
-        public string GetConfig()
-        {
-            return $" {Iteraciones};{Error};{ErrorMaxPermitido};{(int)Activacion.Funcion};{Rata};{Entrenamientos} ";
         }
 
         public double Entrenar()
@@ -89,14 +52,13 @@ namespace ENTITY
             for (int i = 0; i < Patrones.Count; i++)
             {
                 var YR = 0.0;
-                Soma = Neurona.GetSoma(Pesos, Umbral, Patrones[i]);
+                Soma = Neurona.CalcularSoma(Pesos, Umbral, Patrones[i]);
                 YR = Activacion.Activar(Soma);
-                Salidas[i].Obtenida = YR;
+                Salidas[i].YR = YR;
                 Patrones[i].Error = Salidas[i].Error;
-                //MODIFICACION DE PESOS Y UMBRALES
+
                 for (int j = 0; j < Pesos.Valores.Count; j++)
                 {
-                    //SE GUARDAN LOS ANTERIORES PESOS
                     PesosAnteriores.Valores.Clear();
                     foreach (var item in Pesos.Valores)
                     {
@@ -109,49 +71,16 @@ namespace ENTITY
                
                 UmbralAnterior.Valor = Umbral.Valor;
                 Umbral.Entrenar(UmbralAnterior.Valor, Rata, Patrones[i].Error, Xo);
-                //CALCULA ERROR DE LA ITERACION
                 ErrorIteracion += Patrones[i].Error;
             }
             ErrorIteracion = ErrorIteracion / Patrones.Count;
-            //GRAFICAR EIT Vs ITERACIÓN
-            //GRAFICAR YD VS YR
             return ErrorIteracion;
         }
 
-        public double EntrenarFragmentada(int i)
+        public double Generalizar(Patron Patron)
         {
-            var YR = 0.0;
-            var Soma = Neurona.GetSoma(Pesos, Umbral, Patrones[i]);
-            YR = Activacion.Activar(Soma);
-            Salidas[i].Obtenida = YR;
-            Patrones[i].Error = Salidas[i].Error;
-            //MODIFICACION DE PESOS Y UMBRALES
-            for (int j = 0; j < Pesos.Valores.Count; j++)
-            {
-                //SE GUARDAN LOS ANTERIORES PESOS
-                PesosAnteriores.Valores.Clear();
-                foreach (var item in Pesos.Valores)
-                {
-                    PesosAnteriores.Valores.Add(new Peso(item.Valor));
-                }
-                Pesos.Valores[j].Entrenar(PesosAnteriores.Valores[j].
-                    Valor, Rata, Patrones[i].Error, Patrones[i].
-                    Entradas[j]);
-            }
-
-            UmbralAnterior.Valor = Umbral.Valor;
-            Umbral.Entrenar(UmbralAnterior.Valor, Rata, Patrones[i].Error, Xo);
-            //CALCULA ERROR DE LA ITERACION
-            return Patrones[i].Error;
-        }
-
-        public double Simular(Patron Patron)
-        {
-
-            var Soma = Neurona.GetSoma(Pesos, Umbral, Patron); 
+            var Soma = Neurona.CalcularSoma(Pesos, Umbral, Patron); 
             var YR = Activacion.Activar(Soma); 
-            //GRAFICAR EIT Vs ITERACIÓN
-            //GRAFICAR YD VS YR
             return YR;
         }
     }

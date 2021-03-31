@@ -6,14 +6,14 @@ using ENTITY;
 
 namespace DAL
 {
-    public class NeuronaRepository
+    public class RedRepository
     {
 
-        public NeuronaRepository()
+        public RedRepository()
         {
         }
 
-        public Red ReadXml(string Path)
+        public Red GetXML(string Path)
         {
             var Red = new Red();
             var Default = @"DS.xml";
@@ -44,16 +44,16 @@ namespace DAL
                                     switch (Funcion)
                                     {
                                         case "0":
-                                            Red.Activacion.Funcion = FUNCION.Escalon;
+                                            Red.Activacion.Funcion = FUNCIONES.Escalon;
                                             break;
                                         case "1":
-                                            Red.Activacion.Funcion = FUNCION.Lineal;
+                                            Red.Activacion.Funcion = FUNCIONES.Lineal;
                                             break;
                                         case "2":
-                                            Red.Activacion.Funcion = FUNCION.Sigmoide;
+                                            Red.Activacion.Funcion = FUNCIONES.Sigmoide;
                                             break;
                                         default:
-                                            Red.Activacion.Funcion = FUNCION.Escalon;
+                                            Red.Activacion.Funcion = FUNCIONES.Escalon;
                                             break;
                                     }
                                     break;
@@ -170,7 +170,7 @@ namespace DAL
             return Red;
         }
 
-        public List<Patron> LoadPatrones(string Path)
+        public List<Patron> GetDS(string Path)
         {
             var Patrones = new List<Patron>();
             try
@@ -246,7 +246,7 @@ namespace DAL
             return false;
         }
 
-        public void WriteXml(Red R, string Path)
+        public void PostXML(Red R, string Path)
         {
             XmlDocument doc = new XmlDocument();
 
@@ -305,7 +305,7 @@ namespace DAL
             var SalidasMap = " ";
             foreach (var item in R.Salidas)
             {
-                SalidasMap += $"{item.Esperada};";
+                SalidasMap += $"{item.YD};";
             }
             SalidasMap = SalidasMap.Substring(0, SalidasMap.Length - 1);
             SalidasMap += " ";

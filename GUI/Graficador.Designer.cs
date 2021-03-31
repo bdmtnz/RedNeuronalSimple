@@ -1,7 +1,7 @@
 ﻿
 namespace GUI
 {
-    partial class Grafica
+    partial class Graficador
     {
         /// <summary>
         /// Required designer variable.
@@ -137,7 +137,7 @@ namespace GUI
             this.LbIteracion.AutoSize = true;
             this.LbIteracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbIteracion.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbIteracion.Location = new System.Drawing.Point(489, 135);
+            this.LbIteracion.Location = new System.Drawing.Point(497, 104);
             this.LbIteracion.Name = "LbIteracion";
             this.LbIteracion.Size = new System.Drawing.Size(18, 20);
             this.LbIteracion.TabIndex = 9;
@@ -148,7 +148,7 @@ namespace GUI
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(395, 135);
+            this.label3.Location = new System.Drawing.Point(403, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 20);
             this.label3.TabIndex = 8;
@@ -159,7 +159,7 @@ namespace GUI
             this.LbUmbral.AutoSize = true;
             this.LbUmbral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbUmbral.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbUmbral.Location = new System.Drawing.Point(489, 155);
+            this.LbUmbral.Location = new System.Drawing.Point(497, 128);
             this.LbUmbral.Name = "LbUmbral";
             this.LbUmbral.Size = new System.Drawing.Size(18, 20);
             this.LbUmbral.TabIndex = 11;
@@ -170,7 +170,7 @@ namespace GUI
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(423, 155);
+            this.label6.Location = new System.Drawing.Point(431, 128);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 20);
             this.label6.TabIndex = 10;
@@ -181,7 +181,7 @@ namespace GUI
             this.LbError.AutoSize = true;
             this.LbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbError.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbError.Location = new System.Drawing.Point(489, 175);
+            this.LbError.Location = new System.Drawing.Point(497, 152);
             this.LbError.Name = "LbError";
             this.LbError.Size = new System.Drawing.Size(18, 20);
             this.LbError.TabIndex = 13;
@@ -192,7 +192,7 @@ namespace GUI
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(439, 175);
+            this.label8.Location = new System.Drawing.Point(447, 152);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 20);
             this.label8.TabIndex = 12;
@@ -203,7 +203,7 @@ namespace GUI
             this.LbWs.AutoSize = true;
             this.LbWs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbWs.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbWs.Location = new System.Drawing.Point(375, 222);
+            this.LbWs.Location = new System.Drawing.Point(376, 227);
             this.LbWs.Name = "LbWs";
             this.LbWs.Size = new System.Drawing.Size(18, 20);
             this.LbWs.TabIndex = 15;
@@ -214,11 +214,11 @@ namespace GUI
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label10.ForeColor = System.Drawing.SystemColors.Control;
-            this.label10.Location = new System.Drawing.Point(375, 202);
+            this.label10.Location = new System.Drawing.Point(375, 203);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 20);
+            this.label10.Size = new System.Drawing.Size(130, 20);
             this.label10.TabIndex = 14;
-            this.label10.Text = "W\'s : ";
+            this.label10.Text = "Pesos logrados : ";
             // 
             // Grafica
             // 

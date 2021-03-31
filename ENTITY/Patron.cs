@@ -42,14 +42,5 @@ namespace ENTITY
             return Patron;
         }
 
-        public void SetError(List<Salida> Salidas)
-        {
-            this.Error = 0;
-            foreach (var item in Salidas)
-            {
-                this.Error += item.Error;
-            }
-            this.Error = this.Error / Salidas.Count;
-        }
     }
 }

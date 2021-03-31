@@ -1,7 +1,7 @@
 ﻿
 namespace GUI
 {
-    partial class FrmSimulador
+    partial class Generalizador
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSimulador));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Generalizador));
             this.label6 = new System.Windows.Forms.Label();
             this.BtnIniciar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();

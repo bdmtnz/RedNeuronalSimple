@@ -13,13 +13,13 @@ using System.IO;
 
 namespace GUI
 {
-    public partial class FrmSimulador : Form
+    public partial class Generalizador : Form
     {
         private readonly Red Red;
 
-        private readonly NeuronaService _Neurona;
+        private readonly RedService _Neurona;
 
-        public FrmSimulador(Red Red, NeuronaService Neurona)
+        public Generalizador(Red Red, RedService Neurona)
         {
             _Neurona = Neurona;
             this.Red = Red;
@@ -98,7 +98,7 @@ namespace GUI
                                 {
                                     Row.Add(it2.ToString());
                                 }
-                                var Yr = Red.Simular(item);
+                                var Yr = Red.Generalizar(item);
                                 Row.Add(Yr.ToString());
                                 dataGridView1.Rows.Add(Row.ToArray());
                             }
@@ -123,11 +123,11 @@ namespace GUI
 
         private void ShowInfo(Red Red)
         {
-            Telefono.Red = Red;
-            LbError.Text = "" + Telefono.Red.Error;
-            LbIteraciones.Text = "" + Telefono.Red.Entrenamientos;
-            LbPesos.Text = "" + Telefono.W;
-            LbUmbral.Text = "" + Telefono.Red.Umbral.Valor;
+            Plataforma.Red = Red;
+            LbError.Text = "" + Plataforma.Red.Error;
+            LbIteraciones.Text = "" + Plataforma.Red.Entrenamientos;
+            LbPesos.Text = "" + Plataforma.W;
+            LbUmbral.Text = "" + Plataforma.Red.Umbral.Valor;
         }
 
         private void button1_Click(object sender, EventArgs e)

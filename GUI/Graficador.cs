@@ -5,7 +5,7 @@ using ENTITY;
 
 namespace GUI
 {
-    public partial class Grafica : Form
+    public partial class Graficador : Form
     {
 
         public int X_Click { get; set; }
@@ -15,7 +15,7 @@ namespace GUI
 
         private readonly Red Red;
 
-        public Grafica(Red Red)
+        public Graficador(Red Red)
         {
             this.Red = Red;
             Crear = true;
@@ -77,9 +77,9 @@ namespace GUI
             {
                 Invoke(new Action(() =>
                 {
-                    grafica1.Series["ErrorIT"].Points.Add(Telefono.Red.Error);
+                    grafica1.Series["ErrorIT"].Points.Add(Plataforma.Red.Error);
                     var j = 1;
-                    foreach (var item in Telefono.Red.Salidas)
+                    foreach (var item in Plataforma.Red.Salidas)
                     {
                         chart2.Series["Error " + j].Points.Add(item.Error);
                         j++;
@@ -92,10 +92,10 @@ namespace GUI
 
         public void CargarDatos()
         {
-            LbIteracion.Text = Telefono.Red.Entrenamientos.ToString();
-            LbUmbral.Text = Telefono.Red.Umbral.Valor.ToString();
-            LbError.Text = Telefono.Red.Error.ToString();
-            LbWs.Text = Telefono.W;
+            LbIteracion.Text = Plataforma.Red.Entrenamientos.ToString();
+            LbUmbral.Text = Plataforma.Red.Umbral.Valor.ToString();
+            LbError.Text = Plataforma.Red.Error.ToString();
+            LbWs.Text = Plataforma.W;
         }
 
         private void button1_Click(object sender, EventArgs e)
