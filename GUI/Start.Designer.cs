@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.BtnPausa = new System.Windows.Forms.Button();
             this.BtnSimulation = new System.Windows.Forms.Button();
             this.BtnIniciar = new System.Windows.Forms.Button();
@@ -40,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.PbCarga = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PbEscalon = new System.Windows.Forms.PictureBox();
             this.PbLineal = new System.Windows.Forms.PictureBox();
@@ -65,7 +63,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
             this.SFD = new System.Windows.Forms.SaveFileDialog();
-            this.label3 = new System.Windows.Forms.Label();
             this.Patrones = new System.Windows.Forms.DataGridView();
             this.SalidasEsperadas = new System.Windows.Forms.DataGridView();
             this.Pesos = new System.Windows.Forms.DataGridView();
@@ -74,8 +71,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.E1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PbCarga)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbEscalon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbLineal)).BeginInit();
@@ -88,47 +86,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.Patrones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SalidasEsperadas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pesos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Blue;
-            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.BtnPausa);
             this.panel1.Controls.Add(this.BtnSimulation);
             this.panel1.Controls.Add(this.BtnIniciar);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.BtnOpen);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.PbCarga);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(202, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(596, 105);
+            this.panel1.Size = new System.Drawing.Size(596, 37);
             this.panel1.TabIndex = 0;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveWindow);
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.button3.Location = new System.Drawing.Point(410, 67);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 30);
-            this.button3.TabIndex = 10;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // BtnPausa
             // 
@@ -142,7 +118,7 @@
             this.BtnPausa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.BtnPausa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnPausa.Location = new System.Drawing.Point(484, 67);
+            this.BtnPausa.Location = new System.Drawing.Point(47, 4);
             this.BtnPausa.Name = "BtnPausa";
             this.BtnPausa.Size = new System.Drawing.Size(30, 30);
             this.BtnPausa.TabIndex = 9;
@@ -161,7 +137,7 @@
             this.BtnSimulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSimulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.BtnSimulation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnSimulation.Location = new System.Drawing.Point(448, 67);
+            this.BtnSimulation.Location = new System.Drawing.Point(11, 4);
             this.BtnSimulation.Name = "BtnSimulation";
             this.BtnSimulation.Size = new System.Drawing.Size(30, 30);
             this.BtnSimulation.TabIndex = 8;
@@ -180,7 +156,7 @@
             this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.BtnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnIniciar.Location = new System.Drawing.Point(486, 66);
+            this.BtnIniciar.Location = new System.Drawing.Point(49, 3);
             this.BtnIniciar.Name = "BtnIniciar";
             this.BtnIniciar.Size = new System.Drawing.Size(30, 30);
             this.BtnIniciar.TabIndex = 6;
@@ -199,7 +175,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.button4.Location = new System.Drawing.Point(522, 67);
+            this.button4.Location = new System.Drawing.Point(85, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(30, 30);
             this.button4.TabIndex = 5;
@@ -218,7 +194,7 @@
             this.BtnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.BtnOpen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnOpen.Location = new System.Drawing.Point(563, 67);
+            this.BtnOpen.Location = new System.Drawing.Point(126, 4);
             this.BtnOpen.Name = "BtnOpen";
             this.BtnOpen.Size = new System.Drawing.Size(30, 30);
             this.BtnOpen.TabIndex = 4;
@@ -228,23 +204,25 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label2.Location = new System.Drawing.Point(20, 56);
+            this.label2.Location = new System.Drawing.Point(38, 314);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 16);
+            this.label2.Size = new System.Drawing.Size(167, 31);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Simple";
+            this.label2.Text = "JEAN CARLOS";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label1.Location = new System.Drawing.Point(17, 25);
+            this.label1.Location = new System.Drawing.Point(16, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 31);
+            this.label1.Size = new System.Drawing.Size(147, 31);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Red perceptrón";
+            this.label1.Text = "Perceptrón";
             // 
             // button2
             // 
@@ -278,35 +256,26 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Close);
             // 
-            // PbCarga
-            // 
-            this.PbCarga.Image = ((System.Drawing.Image)(resources.GetObject("PbCarga.Image")));
-            this.PbCarga.Location = new System.Drawing.Point(208, 0);
-            this.PbCarga.Name = "PbCarga";
-            this.PbCarga.Size = new System.Drawing.Size(100, 100);
-            this.PbCarga.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PbCarga.TabIndex = 7;
-            this.PbCarga.TabStop = false;
-            this.PbCarga.Visible = false;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.Pesos);
             this.panel2.Controls.Add(this.SalidasEsperadas);
             this.panel2.Controls.Add(this.Patrones);
-            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.PbEscalon);
             this.panel2.Controls.Add(this.PbLineal);
             this.panel2.Controls.Add(this.PbSigmoide);
             this.panel2.Controls.Add(this.panel6);
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(202, 107);
+            this.panel2.Location = new System.Drawing.Point(202, 39);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(596, 391);
+            this.panel2.Size = new System.Drawing.Size(596, 459);
             this.panel2.TabIndex = 1;
             // 
             // PbEscalon
@@ -314,9 +283,9 @@
             this.PbEscalon.BackColor = System.Drawing.Color.White;
             this.PbEscalon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbEscalon.BackgroundImage")));
             this.PbEscalon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PbEscalon.Location = new System.Drawing.Point(298, 6);
+            this.PbEscalon.Location = new System.Drawing.Point(241, 135);
             this.PbEscalon.Name = "PbEscalon";
-            this.PbEscalon.Size = new System.Drawing.Size(43, 43);
+            this.PbEscalon.Size = new System.Drawing.Size(53, 58);
             this.PbEscalon.TabIndex = 2;
             this.PbEscalon.TabStop = false;
             // 
@@ -325,9 +294,9 @@
             this.PbLineal.BackColor = System.Drawing.Color.White;
             this.PbLineal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbLineal.BackgroundImage")));
             this.PbLineal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PbLineal.Location = new System.Drawing.Point(298, 6);
+            this.PbLineal.Location = new System.Drawing.Point(241, 135);
             this.PbLineal.Name = "PbLineal";
-            this.PbLineal.Size = new System.Drawing.Size(43, 43);
+            this.PbLineal.Size = new System.Drawing.Size(53, 58);
             this.PbLineal.TabIndex = 4;
             this.PbLineal.TabStop = false;
             // 
@@ -336,15 +305,15 @@
             this.PbSigmoide.BackColor = System.Drawing.Color.White;
             this.PbSigmoide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbSigmoide.BackgroundImage")));
             this.PbSigmoide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PbSigmoide.Location = new System.Drawing.Point(298, 6);
+            this.PbSigmoide.Location = new System.Drawing.Point(241, 135);
             this.PbSigmoide.Name = "PbSigmoide";
-            this.PbSigmoide.Size = new System.Drawing.Size(43, 43);
+            this.PbSigmoide.Size = new System.Drawing.Size(53, 58);
             this.PbSigmoide.TabIndex = 3;
             this.PbSigmoide.TabStop = false;
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panel6.BackColor = System.Drawing.Color.Blue;
             this.panel6.Controls.Add(this.LbEntrenado);
             this.panel6.Controls.Add(this.label13);
             this.panel6.Controls.Add(this.LbSalidas);
@@ -353,8 +322,8 @@
             this.panel6.Controls.Add(this.label10);
             this.panel6.Controls.Add(this.label9);
             this.panel6.Controls.Add(this.label8);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 371);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(596, 20);
             this.panel6.TabIndex = 0;
@@ -449,6 +418,7 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.CbActivacion);
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(2, 2);
@@ -599,25 +569,14 @@
             // 
             this.OFD.FileName = "openFileDialog1";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(98, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(176, 16);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "FUNCIÓN DE ACTIVACIÓN:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
             // Patrones
             // 
             this.Patrones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Patrones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.E1});
-            this.Patrones.Location = new System.Drawing.Point(6, 130);
+            this.Patrones.Location = new System.Drawing.Point(382, 224);
             this.Patrones.Name = "Patrones";
-            this.Patrones.Size = new System.Drawing.Size(192, 235);
+            this.Patrones.Size = new System.Drawing.Size(188, 235);
             this.Patrones.TabIndex = 6;
             // 
             // SalidasEsperadas
@@ -625,24 +584,24 @@
             this.SalidasEsperadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SalidasEsperadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Salida});
-            this.SalidasEsperadas.Location = new System.Drawing.Point(202, 130);
+            this.SalidasEsperadas.Location = new System.Drawing.Point(378, 42);
             this.SalidasEsperadas.Name = "SalidasEsperadas";
-            this.SalidasEsperadas.Size = new System.Drawing.Size(192, 235);
+            this.SalidasEsperadas.Size = new System.Drawing.Size(192, 61);
             this.SalidasEsperadas.TabIndex = 7;
             // 
             // Pesos
             // 
             this.Pesos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Pesos.Location = new System.Drawing.Point(398, 130);
+            this.Pesos.Location = new System.Drawing.Point(378, 140);
             this.Pesos.Name = "Pesos";
-            this.Pesos.Size = new System.Drawing.Size(192, 235);
+            this.Pesos.Size = new System.Drawing.Size(192, 43);
             this.Pesos.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Cornsilk;
-            this.label4.Location = new System.Drawing.Point(52, 97);
+            this.label4.Location = new System.Drawing.Point(375, 187);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 16);
             this.label4.TabIndex = 9;
@@ -652,7 +611,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Cornsilk;
-            this.label12.Location = new System.Drawing.Point(236, 97);
+            this.label12.Location = new System.Drawing.Point(375, 23);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(123, 16);
             this.label12.TabIndex = 10;
@@ -662,7 +621,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.Cornsilk;
-            this.label14.Location = new System.Drawing.Point(467, 97);
+            this.label14.Location = new System.Drawing.Point(379, 121);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(47, 16);
             this.label14.TabIndex = 11;
@@ -677,6 +636,28 @@
             // 
             this.Salida.HeaderText = "Salida";
             this.Salida.Name = "Salida";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.label15.Location = new System.Drawing.Point(38, 371);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(258, 31);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "CASADIEGOS DUARTE";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(23, 42);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(336, 245);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
             // 
             // Start
             // 
@@ -696,8 +677,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PbCarga)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbEscalon)).EndInit();
@@ -713,6 +692,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Patrones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SalidasEsperadas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pesos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -735,7 +715,6 @@
         private System.Windows.Forms.Button BtnIniciar;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button BtnOpen;
-        private System.Windows.Forms.PictureBox PbCarga;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -754,8 +733,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label LbSalidas;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label4;
@@ -764,6 +741,8 @@
         private System.Windows.Forms.DataGridView Patrones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Salida;
         private System.Windows.Forms.DataGridViewTextBoxColumn E1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

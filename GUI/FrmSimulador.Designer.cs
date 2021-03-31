@@ -37,6 +37,9 @@ namespace GUI
             this.LbResutado = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.LbResultado = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -92,8 +95,8 @@ namespace GUI
             // 
             this.LbResutado.AutoSize = true;
             this.LbResutado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbResutado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.LbResutado.Location = new System.Drawing.Point(23, 122);
+            this.LbResutado.ForeColor = System.Drawing.Color.Black;
+            this.LbResutado.Location = new System.Drawing.Point(512, 161);
             this.LbResutado.Name = "LbResutado";
             this.LbResutado.Size = new System.Drawing.Size(104, 24);
             this.LbResutado.TabIndex = 17;
@@ -107,7 +110,7 @@ namespace GUI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.button1.Location = new System.Drawing.Point(364, 3);
+            this.button1.Location = new System.Drawing.Point(410, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 18;
@@ -119,20 +122,39 @@ namespace GUI
             // 
             this.LbResultado.AutoSize = true;
             this.LbResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbResultado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.LbResultado.Location = new System.Drawing.Point(123, 122);
+            this.LbResultado.ForeColor = System.Drawing.Color.Black;
+            this.LbResultado.Location = new System.Drawing.Point(612, 161);
             this.LbResultado.Name = "LbResultado";
-            this.LbResultado.Size = new System.Drawing.Size(20, 24);
+            this.LbResultado.Size = new System.Drawing.Size(28, 24);
             this.LbResultado.TabIndex = 19;
-            this.LbResultado.Text = "?";
+            this.LbResultado.Text = "---";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(27, 251);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(413, 150);
+            this.dataGridView1.TabIndex = 20;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(127, 203);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(137, 23);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Cargar DataSet";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // FrmSimulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.ClientSize = new System.Drawing.Size(397, 182);
+            this.ClientSize = new System.Drawing.Size(628, 438);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.LbResultado);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.LbResutado);
@@ -147,6 +169,7 @@ namespace GUI
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FrmSimulador_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +183,7 @@ namespace GUI
         private System.Windows.Forms.Label LbResutado;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label LbResultado;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
     }
 }

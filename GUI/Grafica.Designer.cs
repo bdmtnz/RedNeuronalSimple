@@ -37,7 +37,6 @@ namespace GUI
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.grafica1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label1 = new System.Windows.Forms.Label();
             this.NombreGrafica2 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -59,7 +58,7 @@ namespace GUI
             this.grafica1.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.grafica1.Legends.Add(legend3);
-            this.grafica1.Location = new System.Drawing.Point(12, 15);
+            this.grafica1.Location = new System.Drawing.Point(453, 71);
             this.grafica1.Name = "grafica1";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -76,7 +75,7 @@ namespace GUI
             this.chart2.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
             this.chart2.Legends.Add(legend4);
-            this.chart2.Location = new System.Drawing.Point(12, 190);
+            this.chart2.Location = new System.Drawing.Point(26, 84);
             this.chart2.Name = "chart2";
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -87,20 +86,11 @@ namespace GUI
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(376, 354);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            // 
             // NombreGrafica2
             // 
             this.NombreGrafica2.AutoSize = true;
             this.NombreGrafica2.BackColor = System.Drawing.SystemColors.Control;
-            this.NombreGrafica2.Location = new System.Drawing.Point(106, 183);
+            this.NombreGrafica2.Location = new System.Drawing.Point(115, 55);
             this.NombreGrafica2.Name = "NombreGrafica2";
             this.NombreGrafica2.Size = new System.Drawing.Size(90, 13);
             this.NombreGrafica2.TabIndex = 3;
@@ -110,7 +100,7 @@ namespace GUI
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(127, 9);
+            this.label2.Location = new System.Drawing.Point(561, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 4;
@@ -124,7 +114,7 @@ namespace GUI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(548, 2);
+            this.button1.Location = new System.Drawing.Point(790, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 5;
@@ -135,20 +125,22 @@ namespace GUI
             // LbIteracion
             // 
             this.LbIteracion.AutoSize = true;
+            this.LbIteracion.BackColor = System.Drawing.Color.Black;
             this.LbIteracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbIteracion.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbIteracion.Location = new System.Drawing.Point(489, 135);
+            this.LbIteracion.Location = new System.Drawing.Point(185, 289);
             this.LbIteracion.Name = "LbIteracion";
-            this.LbIteracion.Size = new System.Drawing.Size(18, 20);
+            this.LbIteracion.Size = new System.Drawing.Size(24, 20);
             this.LbIteracion.TabIndex = 9;
-            this.LbIteracion.Text = "?";
+            this.LbIteracion.Text = "---";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Black;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(395, 135);
+            this.label3.Location = new System.Drawing.Point(79, 289);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 20);
             this.label3.TabIndex = 8;
@@ -157,20 +149,22 @@ namespace GUI
             // LbUmbral
             // 
             this.LbUmbral.AutoSize = true;
+            this.LbUmbral.BackColor = System.Drawing.Color.Black;
             this.LbUmbral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbUmbral.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbUmbral.Location = new System.Drawing.Point(489, 155);
+            this.LbUmbral.Location = new System.Drawing.Point(345, 289);
             this.LbUmbral.Name = "LbUmbral";
-            this.LbUmbral.Size = new System.Drawing.Size(18, 20);
+            this.LbUmbral.Size = new System.Drawing.Size(24, 20);
             this.LbUmbral.TabIndex = 11;
-            this.LbUmbral.Text = "?";
+            this.LbUmbral.Text = "---";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Black;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(423, 155);
+            this.label6.Location = new System.Drawing.Point(267, 289);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 20);
             this.label6.TabIndex = 10;
@@ -179,20 +173,22 @@ namespace GUI
             // LbError
             // 
             this.LbError.AutoSize = true;
+            this.LbError.BackColor = System.Drawing.Color.Black;
             this.LbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbError.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbError.Location = new System.Drawing.Point(489, 175);
+            this.LbError.Location = new System.Drawing.Point(511, 289);
             this.LbError.Name = "LbError";
-            this.LbError.Size = new System.Drawing.Size(18, 20);
+            this.LbError.Size = new System.Drawing.Size(24, 20);
             this.LbError.TabIndex = 13;
-            this.LbError.Text = "?";
+            this.LbError.Text = "---";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Black;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(439, 175);
+            this.label8.Location = new System.Drawing.Point(449, 289);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 20);
             this.label8.TabIndex = 12;
@@ -201,20 +197,23 @@ namespace GUI
             // LbWs
             // 
             this.LbWs.AutoSize = true;
+            this.LbWs.BackColor = System.Drawing.Color.Black;
             this.LbWs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbWs.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbWs.Location = new System.Drawing.Point(375, 222);
+            this.LbWs.Location = new System.Drawing.Point(683, 289);
             this.LbWs.Name = "LbWs";
-            this.LbWs.Size = new System.Drawing.Size(18, 20);
+            this.LbWs.Size = new System.Drawing.Size(24, 20);
             this.LbWs.TabIndex = 15;
-            this.LbWs.Text = "?";
+            this.LbWs.Text = "---";
+            this.LbWs.Click += new System.EventHandler(this.LbWs_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Black;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label10.ForeColor = System.Drawing.SystemColors.Control;
-            this.label10.Location = new System.Drawing.Point(375, 202);
+            this.label10.Location = new System.Drawing.Point(630, 289);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(47, 20);
             this.label10.TabIndex = 14;
@@ -224,8 +223,8 @@ namespace GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.ClientSize = new System.Drawing.Size(580, 357);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(832, 419);
             this.Controls.Add(this.LbWs);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.LbError);
@@ -237,7 +236,6 @@ namespace GUI
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NombreGrafica2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.grafica1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -256,7 +254,6 @@ namespace GUI
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.DataVisualization.Charting.Chart grafica1;
         public System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Label NombreGrafica2;

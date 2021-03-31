@@ -147,7 +147,7 @@ namespace GUI
 
         private async void RunTask()
         {
-            PbCarga.Visible = true;
+            
             Telefono.Continuar = true;
             Telefono.Red = Red;
             var T = new Task(_Neurona.EntrenarPausable);
@@ -155,7 +155,6 @@ namespace GUI
             await T;
             Red = Telefono.Red;
             ShowInfo(Red);
-            PbCarga.Visible = false;
             BtnPausa.Visible = false;
             BtnIniciar.Visible = true;
         }
@@ -197,6 +196,7 @@ namespace GUI
             else if (Result == DialogResult.Cancel)
             {
             }
+            CargarTablas(Red);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -276,16 +276,19 @@ namespace GUI
         {
             var i = 1;
             Patrones.Columns.Clear();
-            foreach (var item in Red.Patrones)
+            if(Red.Patrones.Count > 0)
             {
-                var Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-                Columna.HeaderText = "E" + i;
-                Columna.Name = Columna.HeaderText;
-                Patrones.Columns.Add(Columna);
-                i++;
+                foreach (var item in Red.Patrones[0].Entradas)
+                {
+                    var Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                    Columna.HeaderText = "E" + i;
+                    Columna.Name = Columna.HeaderText;
+                    Patrones.Columns.Add(Columna);
+                    i++;
+                }
             }
             i = 1;
-            Patrones.Columns.Clear();
+            Pesos.Columns.Clear();
             foreach (var item in Red.Pesos.Valores)
             {
                 var Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();

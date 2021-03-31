@@ -102,5 +102,10 @@ namespace GUI
         {
             Dispose();
         }
+
+        private void LbWs_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
