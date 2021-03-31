@@ -45,6 +45,26 @@ namespace GUI
         {
 
         }
+        private void CrearColumnas(List<Patron> Patrones)
+        {
+            var i = 1;
+            DGV1.Columns.Clear();
+            if (Patrones.Count > 0)
+            {
+                foreach (var item in Red.Patrones[0].Entradas)
+                {
+                    var Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                    Columna.HeaderText = "E" + i;
+                    Columna.Name = Columna.HeaderText;
+                    DGV1.Columns.Add(Columna);
+                    i++;
+                }
+                var _Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                _Columna.HeaderText = "YR";
+                _Columna.Name = _Columna.HeaderText;
+                DGV1.Columns.Add(_Columna);
+            }
+        }
 
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
@@ -69,7 +89,7 @@ namespace GUI
                                 }
                                 var Yr = Red.Simular(item);
                                 Row.Add(Yr.ToString());
-                                DGV1.Rows.Add(Row.ToArray());
+                                DGV.Rows.Add(Row.ToArray());
                             }
                         }
                         else
