@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.BtnPausa = new System.Windows.Forms.Button();
             this.BtnSimulation = new System.Windows.Forms.Button();
             this.BtnIniciar = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.PbEscalon = new System.Windows.Forms.PictureBox();
             this.PbLineal = new System.Windows.Forms.PictureBox();
             this.PbSigmoide = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.LbEntrenado = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -56,40 +56,43 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.NbRata = new System.Windows.Forms.NumericUpDown();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.NbErrorMax = new System.Windows.Forms.NumericUpDown();
             this.NbIteracion = new System.Windows.Forms.NumericUpDown();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.CbActivacion = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
             this.SFD = new System.Windows.Forms.SaveFileDialog();
-            this.button3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Patrones = new System.Windows.Forms.DataGridView();
+            this.SalidasEsperadas = new System.Windows.Forms.DataGridView();
+            this.Pesos = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.E1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbCarga)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbEscalon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbLineal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbSigmoide)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NbRata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NbErrorMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NbIteracion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Patrones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalidasEsperadas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pesos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.panel1.BackColor = System.Drawing.Color.Blue;
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.BtnPausa);
             this.panel1.Controls.Add(this.BtnSimulation);
@@ -104,9 +107,28 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(202, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(596, 100);
+            this.panel1.Size = new System.Drawing.Size(596, 105);
             this.panel1.TabIndex = 0;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveWindow);
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.button3.Location = new System.Drawing.Point(410, 67);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(30, 30);
+            this.button3.TabIndex = 10;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // BtnPausa
             // 
@@ -269,23 +291,30 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.Pesos);
+            this.panel2.Controls.Add(this.SalidasEsperadas);
+            this.panel2.Controls.Add(this.Patrones);
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.PbEscalon);
             this.panel2.Controls.Add(this.PbLineal);
             this.panel2.Controls.Add(this.PbSigmoide);
-            this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.panel6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(202, 102);
+            this.panel2.Location = new System.Drawing.Point(202, 107);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(596, 396);
+            this.panel2.Size = new System.Drawing.Size(596, 391);
             this.panel2.TabIndex = 1;
             // 
             // PbEscalon
             // 
+            this.PbEscalon.BackColor = System.Drawing.Color.White;
             this.PbEscalon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbEscalon.BackgroundImage")));
             this.PbEscalon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PbEscalon.Location = new System.Drawing.Point(397, 177);
+            this.PbEscalon.Location = new System.Drawing.Point(298, 6);
             this.PbEscalon.Name = "PbEscalon";
             this.PbEscalon.Size = new System.Drawing.Size(43, 43);
             this.PbEscalon.TabIndex = 2;
@@ -293,9 +322,10 @@
             // 
             // PbLineal
             // 
+            this.PbLineal.BackColor = System.Drawing.Color.White;
             this.PbLineal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbLineal.BackgroundImage")));
             this.PbLineal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PbLineal.Location = new System.Drawing.Point(397, 177);
+            this.PbLineal.Location = new System.Drawing.Point(298, 6);
             this.PbLineal.Name = "PbLineal";
             this.PbLineal.Size = new System.Drawing.Size(43, 43);
             this.PbLineal.TabIndex = 4;
@@ -303,23 +333,14 @@
             // 
             // PbSigmoide
             // 
+            this.PbSigmoide.BackColor = System.Drawing.Color.White;
             this.PbSigmoide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbSigmoide.BackgroundImage")));
             this.PbSigmoide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PbSigmoide.Location = new System.Drawing.Point(397, 177);
+            this.PbSigmoide.Location = new System.Drawing.Point(298, 6);
             this.PbSigmoide.Name = "PbSigmoide";
             this.PbSigmoide.Size = new System.Drawing.Size(43, 43);
             this.PbSigmoide.TabIndex = 3;
             this.PbSigmoide.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(23, 23);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(549, 333);
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
             // 
             // panel6
             // 
@@ -333,7 +354,7 @@
             this.panel6.Controls.Add(this.label9);
             this.panel6.Controls.Add(this.label8);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 376);
+            this.panel6.Location = new System.Drawing.Point(0, 371);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(596, 20);
             this.panel6.TabIndex = 0;
@@ -420,20 +441,15 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel3.Controls.Add(this.NbRata);
-            this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.NbErrorMax);
             this.panel3.Controls.Add(this.NbIteracion);
-            this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.CbActivacion);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(2, 2);
             this.panel3.Name = "panel3";
@@ -442,10 +458,10 @@
             // 
             // NbRata
             // 
-            this.NbRata.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.NbRata.BackColor = System.Drawing.Color.White;
             this.NbRata.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NbRata.DecimalPlaces = 2;
-            this.NbRata.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.NbRata.ForeColor = System.Drawing.Color.Black;
             this.NbRata.Increment = new decimal(new int[] {
             1,
             0,
@@ -472,14 +488,6 @@
             0});
             this.NbRata.ValueChanged += new System.EventHandler(this.RaChange);
             // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.panel7.Location = new System.Drawing.Point(18, 319);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(163, 1);
-            this.panel7.TabIndex = 14;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -492,10 +500,10 @@
             // 
             // NbErrorMax
             // 
-            this.NbErrorMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.NbErrorMax.BackColor = System.Drawing.Color.White;
             this.NbErrorMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NbErrorMax.DecimalPlaces = 2;
-            this.NbErrorMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.NbErrorMax.ForeColor = System.Drawing.Color.Black;
             this.NbErrorMax.Increment = new decimal(new int[] {
             1,
             0,
@@ -519,15 +527,15 @@
             // 
             // NbIteracion
             // 
-            this.NbIteracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.NbIteracion.BackColor = System.Drawing.Color.White;
             this.NbIteracion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NbIteracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.NbIteracion.ForeColor = System.Drawing.Color.Black;
             this.NbIteracion.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.NbIteracion.Location = new System.Drawing.Point(18, 140);
+            this.NbIteracion.Location = new System.Drawing.Point(18, 142);
             this.NbIteracion.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -543,14 +551,6 @@
             0});
             this.NbIteracion.ValueChanged += new System.EventHandler(this.ItChange);
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.panel5.Location = new System.Drawing.Point(18, 244);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(163, 1);
-            this.panel5.TabIndex = 10;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -560,14 +560,6 @@
             this.label7.Size = new System.Drawing.Size(146, 16);
             this.label7.TabIndex = 8;
             this.label7.Text = "Error máximo permitido";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.panel4.Location = new System.Drawing.Point(18, 162);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(163, 1);
-            this.panel4.TabIndex = 7;
             // 
             // label6
             // 
@@ -581,11 +573,11 @@
             // 
             // CbActivacion
             // 
-            this.CbActivacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.CbActivacion.BackColor = System.Drawing.Color.White;
             this.CbActivacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CbActivacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbActivacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CbActivacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.CbActivacion.ForeColor = System.Drawing.Color.Black;
             this.CbActivacion.FormattingEnabled = true;
             this.CbActivacion.Location = new System.Drawing.Point(19, 371);
             this.CbActivacion.Name = "CbActivacion";
@@ -603,59 +595,88 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Función de activación";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 100);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label3.Location = new System.Drawing.Point(0, 436);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(200, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Brayan Martinez";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label4.Location = new System.Drawing.Point(0, 456);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(200, 40);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "2021 - I";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // OFD
             // 
             this.OFD.FileName = "openFileDialog1";
             // 
-            // button3
+            // label3
             // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.button3.Location = new System.Drawing.Point(410, 67);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 30);
-            this.button3.TabIndex = 10;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(98, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(176, 16);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "FUNCIÓN DE ACTIVACIÓN:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // Patrones
+            // 
+            this.Patrones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Patrones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.E1});
+            this.Patrones.Location = new System.Drawing.Point(6, 130);
+            this.Patrones.Name = "Patrones";
+            this.Patrones.Size = new System.Drawing.Size(192, 235);
+            this.Patrones.TabIndex = 6;
+            // 
+            // SalidasEsperadas
+            // 
+            this.SalidasEsperadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SalidasEsperadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Salida});
+            this.SalidasEsperadas.Location = new System.Drawing.Point(202, 130);
+            this.SalidasEsperadas.Name = "SalidasEsperadas";
+            this.SalidasEsperadas.Size = new System.Drawing.Size(192, 235);
+            this.SalidasEsperadas.TabIndex = 7;
+            // 
+            // Pesos
+            // 
+            this.Pesos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Pesos.Location = new System.Drawing.Point(398, 130);
+            this.Pesos.Name = "Pesos";
+            this.Pesos.Size = new System.Drawing.Size(192, 235);
+            this.Pesos.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Cornsilk;
+            this.label4.Location = new System.Drawing.Point(52, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 16);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Patrones";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Cornsilk;
+            this.label12.Location = new System.Drawing.Point(236, 97);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(123, 16);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Salidas esperadas";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Cornsilk;
+            this.label14.Location = new System.Drawing.Point(467, 97);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(47, 16);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Pesos";
+            // 
+            // E1
+            // 
+            this.E1.HeaderText = "E1";
+            this.E1.Name = "E1";
+            // 
+            // Salida
+            // 
+            this.Salida.HeaderText = "Salida";
+            this.Salida.Name = "Salida";
             // 
             // Start
             // 
@@ -678,10 +699,10 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbCarga)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbEscalon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbLineal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbSigmoide)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -689,7 +710,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.NbRata)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NbErrorMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NbIteracion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Patrones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalidasEsperadas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pesos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -703,14 +726,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown NbErrorMax;
         private System.Windows.Forms.NumericUpDown NbIteracion;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CbActivacion;
         private System.Windows.Forms.Label label5;
@@ -721,14 +739,12 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox PbEscalon;
         private System.Windows.Forms.PictureBox PbLineal;
         private System.Windows.Forms.PictureBox PbSigmoide;
         private System.Windows.Forms.Label LbPatrones;
         private System.Windows.Forms.Label LbEntradas;
         private System.Windows.Forms.NumericUpDown NbRata;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button BtnSimulation;
         private System.Windows.Forms.OpenFileDialog OFD;
@@ -739,6 +755,15 @@
         private System.Windows.Forms.Label LbSalidas;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView Pesos;
+        private System.Windows.Forms.DataGridView SalidasEsperadas;
+        private System.Windows.Forms.DataGridView Patrones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Salida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn E1;
     }
 }
 

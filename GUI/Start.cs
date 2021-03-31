@@ -55,6 +55,8 @@ namespace GUI
             else
                 MessageBox.Show("El dataset está corrupto o está mal configurado");
             ShowInfo(Red);
+            CrearColumnas();
+            CargarTablas(Red);
         }
 
         private void ShowInfo(Red N)
@@ -238,6 +240,65 @@ namespace GUI
         {
             Red = Telefono.Red = new Red();
             ShowInfo(Red);
+        }
+
+
+
+        private void CargarTablas(Red Red)
+        {
+            CrearColumnas();
+            foreach (var item in Red.Patrones)
+            {
+                var entradas = new List<string>();
+                foreach (var it2 in item.Entradas)
+                {
+                    entradas.Add(it2.ToString());
+                }
+                Patrones.Rows.Add(entradas.ToArray());
+            }
+
+            var salidas = new List<string>();
+            foreach (var item in Red.Salidas)
+            {
+                salidas.Add(item.Esperada.ToString());
+            }
+            SalidasEsperadas.Rows.Add(salidas.ToArray());
+
+            var pesos = new List<string>();
+            foreach (var item in Red.Pesos.Valores)
+            {
+                pesos.Add(item.Valor.ToString());
+            }
+            Pesos.Rows.Add(pesos.ToArray());
+        }
+
+        private void CrearColumnas()
+        {
+            var i = 1;
+            Patrones.Columns.Clear();
+            foreach (var item in Red.Patrones)
+            {
+                var Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                Columna.HeaderText = "E" + i;
+                Columna.Name = Columna.HeaderText;
+                Patrones.Columns.Add(Columna);
+                i++;
+            }
+            i = 1;
+            Patrones.Columns.Clear();
+            foreach (var item in Red.Pesos.Valores)
+            {
+                var Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                Columna.HeaderText = "W" + i;
+                Columna.Name = Columna.HeaderText;
+                Pesos.Columns.Add(Columna);
+                i++;
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
