@@ -94,6 +94,10 @@ namespace GUI
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // Open1
+            // 
+            this.Open1.Filter = "Archivo TXT (*.TXT)|*.TXT";
+            // 
             // FrmSimulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

@@ -25,6 +25,7 @@ namespace GUI
             this.Red = Red;
             InitializeComponent();
             ValidarEntrenamiento(Red);
+            Open1.Filter = "Archivo TXT (*.TXT)|*.TXT";
         }
         private void ValidarEntrenamiento(Red Red)
         {
