@@ -22,7 +22,7 @@ namespace ENTITY
             {
                 Entradas = new List<double>();
                 Values = Values.Trim();
-                var Split = Values.Split(';');
+                var Split = Values.Split(' ');
                 foreach (var item in Split)
                 {
                     Entradas.Add(Double.Parse(item));
@@ -35,10 +35,10 @@ namespace ENTITY
             var Patron = "";
             foreach (var item in Entradas)
             {
-                Patron += $"{item};";
+                Patron += $"{item} ";
             }
-            Patron = Patron.Substring(0, Patron.Length-1);
-            Patron += ' ';
+            Patron = Patron.Trim();
+            Patron += ';';
             return Patron;
         }
 

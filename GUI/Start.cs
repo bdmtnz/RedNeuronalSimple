@@ -47,9 +47,9 @@ namespace GUI
 
         private void Config()
         {
-            OFD.Filter = "Archivo XML (*.XML)|*.XML";
-            SFD.Filter = "Archivo XML (*.XML)|*.XML";
-            var Rd = _Neurona.ReadXml(null);
+            OFD.Filter = "Archivo TXT (*.TXT)|*.TXT";
+            SFD.Filter = "Archivo TXT (*.TXT)|*.TXT";
+            var Rd = _Neurona.DataSet(null);
             if (Rd != null)
                 Red = Telefono.Red = Rd;
             else
@@ -177,7 +177,7 @@ namespace GUI
                 {
                     if (File.Exists(OFD.FileName))
                     {
-                        var Rd =  _Neurona.ReadXml(OFD.FileName);
+                        var Rd =  _Neurona.DataSet(OFD.FileName);
                         if (Rd != null)
                             Red = Telefono.Red = Rd;
                         else
@@ -199,10 +199,10 @@ namespace GUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SFD.FileName = $"data.XML";
+            SFD.FileName = $"DataSet.txt";
             if (SFD.ShowDialog() == DialogResult.OK)
             {
-                _Neurona.WriteXML(Red, SFD.FileName);
+                _Neurona.DataSet(Red, SFD.FileName);
             }
         }
 

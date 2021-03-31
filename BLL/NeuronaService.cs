@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 using ENTITY;
 using DAL;
@@ -18,14 +19,16 @@ namespace BLL
             _Neurona = new NeuronaRepository();
         }
 
-        public Red ReadXml(string Path)
+        public Red DataSet(string Path)
         {
-            return _Neurona.ReadXml(Path);
+            return _Neurona.LeerArchivo(Path);
         }
 
-        public void WriteXML(Red R, string Path)
+        public void DataSet(Red R, string Path)
         {
-            _Neurona.WriteXml(R, Path);
+            
+
+            _Neurona.EscribirArchivo(R, Path);
         }
 
         public void EntrenarPausable()
@@ -40,7 +43,7 @@ namespace BLL
                     i++;
                     Telefono.Red.Entrenamientos = i;
                     System.Threading.Thread.Sleep(200);
-                    _Neurona.WriteXml(Telefono.Red, null);
+                    _Neurona.EscribirArchivo(Telefono.Red, null);
                     if (Telefono.Red.ErrorMaxPermitido >= ErrorIteracion) break;
                 }
             }

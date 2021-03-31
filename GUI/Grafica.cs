@@ -53,7 +53,7 @@ namespace GUI
                                  | NotifyFilters.Size;
 
             watcher.Changed += OnChanged;
-            watcher.Filter = "*.xml";
+            watcher.Filter = "*.txt";
             watcher.IncludeSubdirectories = false;
             watcher.EnableRaisingEvents = true;
         }

@@ -53,7 +53,7 @@ namespace ENTITY
             if (Value != "")
             {
                 Value = Value.Trim();
-                var Split = Value.Split(';');
+                var Split = Value.Split(' ');
                 Iteraciones = Int32.Parse(Split[0]);
                 Error = Double.Parse(Split[1]);
                 ErrorMaxPermitido = Double.Parse(Split[2]);
@@ -79,7 +79,7 @@ namespace ENTITY
 
         public string GetConfig()
         {
-            return $" {Iteraciones};{Error};{ErrorMaxPermitido};{(int)Activacion.Funcion};{Rata};{Entrenamientos} ";
+            return $"{Iteraciones} {Error} {ErrorMaxPermitido} {(int)Activacion.Funcion} {Rata} {Entrenamientos}";
         }
 
         public double Entrenar()
@@ -147,7 +147,6 @@ namespace ENTITY
 
         public double Simular(Patron Patron)
         {
-
             var Soma = Neurona.GetSoma(Pesos, Umbral, Patron); 
             var YR = Activacion.Activar(Soma); 
             //GRAFICAR EIT Vs ITERACIÓN

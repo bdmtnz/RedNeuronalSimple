@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml;
+using System.IO;
 
 using ENTITY;
 
@@ -11,114 +11,131 @@ namespace DAL
 
         public NeuronaRepository()
         {
+
         }
 
-        public Red ReadXml(string Path)
+
+        public Red LeerArchivo(string Ruta)
         {
             var Red = new Red();
-            var Default = @"data.xml";
-            try
+            using (var Lector = new StreamReader(Ruta??@".\DataSet.txt"))
             {
-                using (XmlReader Reader = XmlReader.Create(Path ?? Default))
+                var Data = Lector.ReadToEnd();
+                var Split = Data.Split('\n');
+
+                
+                
+                var config = Split[0].Split(' ');
+                foreach (var item in config)
                 {
-                    while (Reader.Read())
+                    if (!Double.TryParse(item,out _))
                     {
-                        if (Reader.IsStartElement())
-                        {
-                            switch (Reader.Name.ToString())
-                            {
-                                case "Config":
-                                    var Config = Reader.ReadString().Trim();
-                                    Console.WriteLine(Config);
-                                    var Unidades = Config.Split(';');
-                                    foreach (var Unidad in Unidades)
-                                    {
-                                        if (!Double.TryParse(Unidad, out _))
-                                        {
-                                            return null;
-                                        }
-                                    }
-                                    if (ValidarRata(Double.Parse(Unidades[4])))
-                                    {
-                                        return null;
-                                    }
-                                    Red.SetConfig(Config);
-                                    break;
-                                case "Patrones":
-                                    var Patrones = Reader.ReadString().Trim();
-                                    Console.WriteLine(Patrones);
-                                    var Split = Patrones.Split(' ');
-                                    foreach (var item in Split)
-                                    {
-                                        var Entradas = item.Split(';');
-                                        foreach (var Entrada in Entradas)
-                                        {
-                                            if (!Double.TryParse(Entrada, out _))
-                                            {
-                                                return null;
-                                            }
-                                        }
-                                        Red.Patrones.Add(new Patron(item.Trim()));
-                                    }
-                                    break;
-                                case "Salidas":
-                                    var Salidas = Reader.ReadString().Trim();
-                                    Console.WriteLine(Salidas);
-                                    Split = Salidas.Split(';');
-                                    foreach (var item in Split)
-                                    {
-                                        if (!Double.TryParse(item, out _))
-                                        {
-                                            return null;
-                                        }
-                                        Red.Salidas.Add(new Salida(item.Trim()));
-                                    }
-                                    break;
-                                case "Umbrales":
-                                    var Umbrales = Reader.ReadString().Trim();
-                                    Console.WriteLine(Umbrales);
-                                    Split = Umbrales.Split(';');
-                                    foreach (var item in Split)
-                                    {
-                                        if (!Double.TryParse(item, out _))
-                                        {
-                                            return null;
-                                        }
-                                        else if (ValidarUmbral(Double.Parse(item)))
-                                        {
-                                            return null;
-                                        }
-                                        Red.Umbral.Valor = Double.Parse(item.Trim());
-                                    }
-                                    break;
-                                case "Pesos":
-                                    var Pesos = Reader.ReadString().Trim();
-                                    Console.WriteLine(Pesos);
-                                    Split = Pesos.Split(';');
-                                    foreach (var item in Split)
-                                    {
-                                        if (!Double.TryParse(item, out _))
-                                        {
-                                            return null;
-                                        }
-                                        else if (ValidarPeso(Double.Parse(item)))
-                                        {
-                                            return null;
-                                        }
-                                        Red.Pesos.Valores.Add(new Peso(Double.Parse(item.Trim())));
-                                    }
-                                    if (EntradasVsPesos(Red.Patrones, Red.Pesos) || PatronesVsSalidas(Red.Salidas, Red.Patrones))
-                                    {
-                                        return null;
-                                    }
-                                    break;
-                            }
-                        }
+                        return null;   
                     }
                 }
+
+                if (ValidarRata(Double.Parse(config[4])))
+                {
+                    return null;
+                }
+
+                
+                Red.SetConfig(Split[0]);
+
+
+                var Patrones = Split[1].Split(';');
+                foreach (var item in Patrones)
+                {
+                    var Entradas = item.Split(' ');
+                    foreach (var Entrada in Entradas)
+                    {
+                        if (!Double.TryParse(Entrada, out _))
+                        {
+                            return null;
+                        }
+                    }
+                    Red.Patrones.Add(new Patron(item));
+                }
+
+                var Salidas = Split[2].Split(' ');
+                foreach (var item in Salidas)
+                {
+                    if(Double.TryParse(item,out _))
+                    {
+                        Red.Salidas.Add(new Salida(item));
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+
+                if(Double.TryParse(Split[3],out _))
+                {
+                    if (ValidarUmbral(Double.Parse(Split[3])))
+                        return null;
+                    Red.Umbral.Valor = Double.Parse(Split[3]);
+                }
+                else
+                {
+                    return null;
+                }
+
+                var Pesos = Split[4].Split(' ');
+                foreach (var item in Pesos)
+                {
+
+                    if (Double.TryParse(item, out _))
+                    {
+                        if (ValidarPeso(Double.Parse(item)))
+                            return null;
+                        Red.Pesos.Valores.Add(new Peso(Double.Parse(item)));
+                    }
+                    else
+                    {
+                        return null;
+                    }    
+                }
+                if(EntradasVsPesos(Red.Patrones, Red.Pesos))
+                    return null;
+
+                if (PatronesVsSalidas(Red.Salidas, Red.Patrones))
+                    return null;
             }
-            catch (Exception) { }
             return Red;
+        }
+
+        public void EscribirArchivo(Red Red, string Ruta)
+        {
+            //File.Delete(@".\DataSet.txt");
+            //File.CreateText(@".\DataSet.txt");
+
+            using (StreamWriter Escritor = new StreamWriter(Ruta??@".\DataSet.txt"))
+            {
+                Escritor.WriteLine(Red.GetConfig());
+                var Patrones = "";
+                foreach (var item in Red.Patrones)
+                {
+                    Patrones += item.GetPatron();
+                }
+                Escritor.WriteLine(Patrones.Substring(0,Patrones.Length-1));
+
+                var salidas = "";
+                foreach (var item in Red.Salidas)
+                {
+                    salidas += item.Esperada+" ";
+                }
+                Escritor.WriteLine(salidas.Substring(0,salidas.Length-1));
+
+                Escritor.WriteLine(Red.Umbral.Valor);
+
+                var pesos = "";
+                foreach (var item in Red.Pesos.Valores)
+                {
+                    pesos += item.Valor + " ";
+                }
+                Escritor.WriteLine(pesos.Substring(0,pesos.Length-1));
+            }
         }
 
         private bool ValidarRata(double Rata)
@@ -159,69 +176,6 @@ namespace DAL
             return false;
         }
 
-        public void WriteXml(Red R, string Path)
-        {
-            XmlDocument doc = new XmlDocument();
-
-            XmlDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
-            XmlElement root = doc.DocumentElement;
-            doc.InsertBefore(xmlDeclaration, root);
-
-            XmlElement Neurona = doc.CreateElement(string.Empty, "Neurona", string.Empty);
-            doc.AppendChild(Neurona);
-            XmlElement Config = doc.CreateElement(string.Empty, "Config", string.Empty);
-            Neurona.AppendChild(Config);
-            XmlText ConfigText = doc.CreateTextNode(R.GetConfig());
-            Config.AppendChild(ConfigText);
-
-            XmlElement Patrones = doc.CreateElement(string.Empty, "Patrones", string.Empty);
-            var i = 0;
-            foreach (var item in R.Patrones)
-            {
-                XmlText Patron;
-                if (i == 0)
-                   Patron = doc.CreateTextNode(" " + item.GetPatron());
-                else
-                    Patron = doc.CreateTextNode(item.GetPatron());
-                Patrones.AppendChild(Patron);
-                ++i;
-            }
-            Neurona.AppendChild(Patrones);
-
-            XmlElement Salidas = doc.CreateElement(string.Empty, "Salidas", string.Empty);
-            var SalidasMap = " ";
-            foreach (var item in R.Salidas)
-            {
-                SalidasMap += $"{item.Esperada};";
-            }
-            SalidasMap = SalidasMap.Substring(0, SalidasMap.Length - 1);
-            SalidasMap += " ";
-            XmlText SalidaText = doc.CreateTextNode(SalidasMap);
-            Salidas.AppendChild(SalidaText);
-            Neurona.AppendChild(Salidas);
-
-            XmlElement Previo = doc.CreateElement(string.Empty, "Previo", string.Empty);
-            XmlElement Umbrales = doc.CreateElement(string.Empty, "Umbrales", string.Empty);
-            XmlText UmbralText = doc.CreateTextNode($" {R.UmbralAnterior.Valor} ");
-            Umbrales.AppendChild(UmbralText);
-
-            XmlElement Pesos = doc.CreateElement(string.Empty, "Pesos", string.Empty);
-            var PesosMap = " ";
-            foreach (var item in R.Pesos.Valores)
-            {
-                PesosMap += $"{item.Valor};";
-            }
-            PesosMap = PesosMap.Substring(0, PesosMap.Length - 1);
-            PesosMap += " ";
-            XmlText PesosText = doc.CreateTextNode(PesosMap);
-            Pesos.AppendChild(PesosText);
-
-            Previo.AppendChild(Umbrales);
-            Previo.AppendChild(Pesos);
-            Neurona.AppendChild(Previo);
-
-            var Default = @"data.xml";
-            doc.Save(Path??Default);
-        }
+        
     }
 }

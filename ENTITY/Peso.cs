@@ -38,7 +38,7 @@ namespace ENTITY
             {
                 Valores = new List<Peso>();
                 Values = Values.Trim();
-                var Split = Values.Split(';');
+                var Split = Values.Split(' ');
                 foreach (var item in Split)
                 {
                     Valores.Add(new Peso(Double.Parse(item)));

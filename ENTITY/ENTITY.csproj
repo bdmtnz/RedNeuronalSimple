@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activacion.cs" />
-    <Compile Include="Entrada.cs" />
     <Compile Include="Neurona.cs" />
     <Compile Include="Patron.cs" />
     <Compile Include="Peso.cs" />
