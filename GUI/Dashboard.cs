@@ -49,7 +49,7 @@ namespace GUI
         {
             OFD.Filter = "Archivo XML (*.XML)|*.XML";
             SFD.Filter = "Archivo XML (*.XML)|*.XML";
-            var Rd = _Neurona.ReadXml(null);
+            var Rd = _Neurona.GetXML(null);
             if (Rd != null)
                 Red = Plataforma.Red = Rd;
             else
@@ -116,6 +116,8 @@ namespace GUI
                 PbSigmoide.Visible = true;
                 Red.Activacion.Funcion = FUNCIONES.Sigmoide;
             }
+            Red.Error = 1;
+            Red.Entrenamientos = 0;
             Plataforma.Red = Red;
         }
 
@@ -148,7 +150,7 @@ namespace GUI
             PbCarga.Visible = true;
             Plataforma.Continuar = true;
             Plataforma.Red = Red;
-            var T = new Task(_Neurona.EntrenarPausable);
+            var T = new Task(_Neurona.Iterar);
             T.Start();
             await T;
             Red = Plataforma.Red;
@@ -177,7 +179,7 @@ namespace GUI
                 {
                     if (File.Exists(OFD.FileName))
                     {
-                        var Rd =  _Neurona.ReadXml(OFD.FileName);
+                        var Rd =  _Neurona.GetXML(OFD.FileName);
                         if (Rd != null)
                             Red = Plataforma.Red = Rd;
                         else
@@ -202,7 +204,7 @@ namespace GUI
             SFD.FileName = $"data.XML";
             if (SFD.ShowDialog() == DialogResult.OK)
             {
-                _Neurona.WriteXML(Red, SFD.FileName);
+                _Neurona.PostXML(Red, SFD.FileName);
             }
         }
 

@@ -9,8 +9,25 @@ namespace DAL
     public class RedRepository
     {
 
-        public RedRepository()
+        private bool CheckRata(double Rata)
         {
+            if (Rata > 0 && Rata <= 1)
+                return false;
+            return true;
+        }
+
+        private bool CheckPeso(double Peso)
+        {
+            if (Peso >= -1 && Peso <= 1)
+                return false;
+            return true;
+        }
+
+        private bool CheckUmbral(double Umbral)
+        {
+            if (Umbral >= -1 && Umbral <= 1)
+                return false;
+            return true;
         }
 
         public Red GetXML(string Path)
@@ -63,7 +80,7 @@ namespace DAL
                                     {
                                         return null;
                                     }
-                                    else if (ValidarRata(Double.Parse(Rata)))
+                                    else if (CheckRata(Double.Parse(Rata)))
                                     {
                                         return null;
                                     }
@@ -133,13 +150,13 @@ namespace DAL
                                         {
                                             return null;
                                         }
-                                        else if (ValidarPeso(Double.Parse(item)))
+                                        else if (CheckPeso(Double.Parse(item)))
                                         {
                                             return null;
                                         }
                                         Red.Pesos.Valores.Add(new Peso(Double.Parse(item.Trim())));
                                     }
-                                    if (EntradasVsPesos(Red.Patrones, Red.Pesos) || PatronesVsSalidas(Red.Salidas, Red.Patrones))
+                                    if (Pesos_Entradas(Red.Patrones, Red.Pesos) || Patron_Salida(Red.Salidas, Red.Patrones))
                                     {
                                         return null;
                                     }
@@ -154,7 +171,7 @@ namespace DAL
                                         {
                                             return null;
                                         }
-                                        else if (ValidarUmbral(Double.Parse(item)))
+                                        else if (CheckUmbral(Double.Parse(item)))
                                         {
                                             return null;
                                         }
@@ -208,35 +225,14 @@ namespace DAL
             return Patrones;
         }
 
-        private bool ValidarRata(double Rata)
-        {
-            if (Rata > 0 && Rata <= 1)
-                return false;
-            return true;
-        }
-
-        private bool ValidarPeso(double Peso)
-        {
-            if (Peso >= -1 && Peso <= 1)
-                return false;
-            return true;
-        }
-
-        private bool ValidarUmbral(double Umbral)
-        {
-            if (Umbral >= -1 && Umbral <= 1)
-                return false;
-            return true;
-        }
-
-        private bool PatronesVsSalidas(List<Salida> Salidas, List<Patron> Patrones)
+        private bool Patron_Salida(List<Salida> Salidas, List<Patron> Patrones)
         {
             if (Salidas.Count != Patrones.Count)
                 return true;
             return false;
         }
 
-        private bool EntradasVsPesos(List<Patron> Patrones, Pesos Pesos)
+        private bool Pesos_Entradas(List<Patron> Patrones, Pesos Pesos)
         {
             foreach (var Patron in Patrones)
             {

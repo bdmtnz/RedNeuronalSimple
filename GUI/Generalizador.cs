@@ -79,7 +79,7 @@ namespace GUI
                 {
                     if (File.Exists(OFD.FileName))
                     {
-                        var Ps = _Neurona.LoadPatrones(OFD.FileName);
+                        var Ps = _Neurona.GetDS(OFD.FileName);
                         if (Ps != null)
                         {
                             if(ValidarDS(Ps, Red))

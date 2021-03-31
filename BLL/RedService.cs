@@ -11,29 +11,29 @@ namespace BLL
 {
     public class RedService
     {
-        private RedRepository _Neurona { get; set; }
+        private RedRepository RedRepo { get; set; }
 
         public RedService()
         {
-            _Neurona = new RedRepository();
+            RedRepo = new RedRepository();
         }
 
-        public Red ReadXml(string Path)
+        public Red GetXML(string Path)
         {
-            return _Neurona.GetXML(Path);
+            return RedRepo.GetXML(Path);
         }
 
-        public void WriteXML(Red R, string Path)
+        public void PostXML(Red R, string Path)
         {
-            _Neurona.PostXML(R, Path);
+            RedRepo.PostXML(R, Path);
         }
 
-        public List<Patron> LoadPatrones(string Path)
+        public List<Patron> GetDS(string Path)
         {
-            return _Neurona.GetDS(Path);
+            return RedRepo.GetDS(Path);
         }
 
-        public void EntrenarPausable()
+        public void Iterar()
         {
             var i = Plataforma.Red.Entrenamientos;
             if(Plataforma.Red.Error > Plataforma.Red.ErrorMaxPermitido)
@@ -44,8 +44,9 @@ namespace BLL
                     Plataforma.Red.Error = ErrorIteracion;
                     i++;
                     Plataforma.Red.Entrenamientos = i;
-                    System.Threading.Thread.Sleep(200);
-                    _Neurona.PostXML(Plataforma.Red, null);
+                    System.Threading.Thread.Sleep(600);
+                    RedRepo.PostXML(Plataforma.Red, null);
+
                     if (Plataforma.Red.ErrorMaxPermitido >= ErrorIteracion) break;
                 }
             }
