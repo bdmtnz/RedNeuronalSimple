@@ -16,7 +16,7 @@ namespace DAL
         public Red ReadXml(string Path)
         {
             var Red = new Red();
-            var Default = @"data.xml";
+            var Default = @"DS.xml";
             try
             {
                 using (XmlReader Reader = XmlReader.Create(Path ?? Default))
@@ -27,24 +27,73 @@ namespace DAL
                         {
                             switch (Reader.Name.ToString())
                             {
-                                case "Config":
-                                    var Config = Reader.ReadString().Trim();
-                                    Console.WriteLine(Config);
-                                    var Unidades = Config.Split(';');
-                                    foreach (var Unidad in Unidades)
-                                    {
-                                        if (!Double.TryParse(Unidad, out _))
-                                        {
-                                            return null;
-                                        }
-                                    }
-                                    if (ValidarRata(Double.Parse(Unidades[4])))
+                                case "I":
+                                    var Iteraciones = Reader.ReadString().Trim();
+                                    if (!Int32.TryParse(Iteraciones, out _))
                                     {
                                         return null;
                                     }
-                                    Red.SetConfig(Config);
+                                    Red.Iteraciones = Int32.Parse(Iteraciones);
                                     break;
-                                case "Patrones":
+                                case "F":
+                                    var Funcion = Reader.ReadString().Trim();
+                                    if (!Int32.TryParse(Funcion, out _))
+                                    {
+                                        return null;
+                                    }
+                                    switch (Funcion)
+                                    {
+                                        case "0":
+                                            Red.Activacion.Funcion = FUNCION.Escalon;
+                                            break;
+                                        case "1":
+                                            Red.Activacion.Funcion = FUNCION.Lineal;
+                                            break;
+                                        case "2":
+                                            Red.Activacion.Funcion = FUNCION.Sigmoide;
+                                            break;
+                                        default:
+                                            Red.Activacion.Funcion = FUNCION.Escalon;
+                                            break;
+                                    }
+                                    break;
+                                case "R":
+                                    var Rata = Reader.ReadString().Trim();
+                                    if (!Double.TryParse(Rata, out _))
+                                    {
+                                        return null;
+                                    }
+                                    else if (ValidarRata(Double.Parse(Rata)))
+                                    {
+                                        return null;
+                                    }
+                                    Red.Rata = Double.Parse(Rata.Trim());
+                                    break;
+                                case "E":
+                                    var Error = Reader.ReadString().Trim();
+                                    if (!Double.TryParse(Error, out _))
+                                    {
+                                        return null;
+                                    }
+                                    Red.Error = Double.Parse(Error);
+                                    break;
+                                case "EM":
+                                    var ErrorMax = Reader.ReadString().Trim();
+                                    if (!Double.TryParse(ErrorMax, out _))
+                                    {
+                                        return null;
+                                    }
+                                    Red.ErrorMaxPermitido = Double.Parse(ErrorMax);
+                                    break;
+                                case "EN":
+                                    var Entrenamientos = Reader.ReadString().Trim();
+                                    if (!Int32.TryParse(Entrenamientos, out _))
+                                    {
+                                        return null;
+                                    }
+                                    Red.Entrenamientos = Int32.Parse(Entrenamientos.Trim());
+                                    break;
+                                case "P":
                                     var Patrones = Reader.ReadString().Trim();
                                     Console.WriteLine(Patrones);
                                     var Split = Patrones.Split(' ');
@@ -61,7 +110,7 @@ namespace DAL
                                         Red.Patrones.Add(new Patron(item.Trim()));
                                     }
                                     break;
-                                case "Salidas":
+                                case "YD":
                                     var Salidas = Reader.ReadString().Trim();
                                     Console.WriteLine(Salidas);
                                     Split = Salidas.Split(';');
@@ -74,24 +123,7 @@ namespace DAL
                                         Red.Salidas.Add(new Salida(item.Trim()));
                                     }
                                     break;
-                                case "Umbrales":
-                                    var Umbrales = Reader.ReadString().Trim();
-                                    Console.WriteLine(Umbrales);
-                                    Split = Umbrales.Split(';');
-                                    foreach (var item in Split)
-                                    {
-                                        if (!Double.TryParse(item, out _))
-                                        {
-                                            return null;
-                                        }
-                                        else if (ValidarUmbral(Double.Parse(item)))
-                                        {
-                                            return null;
-                                        }
-                                        Red.Umbral.Valor = Double.Parse(item.Trim());
-                                    }
-                                    break;
-                                case "Pesos":
+                                case "W":
                                     var Pesos = Reader.ReadString().Trim();
                                     Console.WriteLine(Pesos);
                                     Split = Pesos.Split(';');
@@ -110,6 +142,23 @@ namespace DAL
                                     if (EntradasVsPesos(Red.Patrones, Red.Pesos) || PatronesVsSalidas(Red.Salidas, Red.Patrones))
                                     {
                                         return null;
+                                    }
+                                    break;
+                                case "U":
+                                    var Umbrales = Reader.ReadString().Trim();
+                                    Console.WriteLine(Umbrales);
+                                    Split = Umbrales.Split(';');
+                                    foreach (var item in Split)
+                                    {
+                                        if (!Double.TryParse(item, out _))
+                                        {
+                                            return null;
+                                        }
+                                        else if (ValidarUmbral(Double.Parse(item)))
+                                        {
+                                            return null;
+                                        }
+                                        Red.Umbral.Valor = Double.Parse(item.Trim());
                                     }
                                     break;
                             }
@@ -134,7 +183,7 @@ namespace DAL
                         {
                             switch (Reader.Name.ToString())
                             {
-                                case "Patrones":
+                                case "P":
                                     var _Patrones = Reader.ReadString().Trim();
                                     var Split = _Patrones.Split(' ');
                                     foreach (var item in Split)
@@ -205,14 +254,40 @@ namespace DAL
             XmlElement root = doc.DocumentElement;
             doc.InsertBefore(xmlDeclaration, root);
 
-            XmlElement Neurona = doc.CreateElement(string.Empty, "Neurona", string.Empty);
-            doc.AppendChild(Neurona);
-            XmlElement Config = doc.CreateElement(string.Empty, "Config", string.Empty);
-            Neurona.AppendChild(Config);
-            XmlText ConfigText = doc.CreateTextNode(R.GetConfig());
-            Config.AppendChild(ConfigText);
+            XmlElement Red = doc.CreateElement(string.Empty, "Red", string.Empty);
+            doc.AppendChild(Red);
 
-            XmlElement Patrones = doc.CreateElement(string.Empty, "Patrones", string.Empty);
+            XmlElement Iteracion = doc.CreateElement(string.Empty, "I", string.Empty);
+            Red.AppendChild(Iteracion);
+            XmlText IteracionText = doc.CreateTextNode(R.Iteraciones.ToString());
+            Iteracion.AppendChild(IteracionText);
+
+            XmlElement Funcion = doc.CreateElement(string.Empty, "F", string.Empty);
+            Red.AppendChild(Funcion);
+            XmlText FuncionText = doc.CreateTextNode(R.Activacion.Funcion.ToString());
+            Funcion.AppendChild(FuncionText);
+
+            XmlElement Rata = doc.CreateElement(string.Empty, "R", string.Empty);
+            Red.AppendChild(Rata);
+            XmlText RataText = doc.CreateTextNode(R.Rata.ToString());
+            Rata.AppendChild(RataText);
+
+            XmlElement Error = doc.CreateElement(string.Empty, "E", string.Empty);
+            Red.AppendChild(Error);
+            XmlText ErrorText = doc.CreateTextNode(R.Error.ToString());
+            Error.AppendChild(ErrorText);
+
+            XmlElement ErrorMax = doc.CreateElement(string.Empty, "EM", string.Empty);
+            Red.AppendChild(ErrorMax);
+            XmlText ErrorMaxText = doc.CreateTextNode(R.ErrorMaxPermitido.ToString());
+            ErrorMax.AppendChild(ErrorMaxText);
+
+            XmlElement Entrenamiento = doc.CreateElement(string.Empty, "EN", string.Empty);
+            Red.AppendChild(Entrenamiento);
+            XmlText EntrenamientoText = doc.CreateTextNode(R.Entrenamientos.ToString());
+            Entrenamiento.AppendChild(EntrenamientoText);
+
+            XmlElement Patrones = doc.CreateElement(string.Empty, "P", string.Empty);
             var i = 0;
             foreach (var item in R.Patrones)
             {
@@ -224,9 +299,9 @@ namespace DAL
                 Patrones.AppendChild(Patron);
                 ++i;
             }
-            Neurona.AppendChild(Patrones);
+            Red.AppendChild(Patrones);
 
-            XmlElement Salidas = doc.CreateElement(string.Empty, "Salidas", string.Empty);
+            XmlElement Salidas = doc.CreateElement(string.Empty, "YD", string.Empty);
             var SalidasMap = " ";
             foreach (var item in R.Salidas)
             {
@@ -236,14 +311,9 @@ namespace DAL
             SalidasMap += " ";
             XmlText SalidaText = doc.CreateTextNode(SalidasMap);
             Salidas.AppendChild(SalidaText);
-            Neurona.AppendChild(Salidas);
+            Red.AppendChild(Salidas);
 
-            XmlElement Previo = doc.CreateElement(string.Empty, "Previo", string.Empty);
-            XmlElement Umbrales = doc.CreateElement(string.Empty, "Umbrales", string.Empty);
-            XmlText UmbralText = doc.CreateTextNode($" {R.UmbralAnterior.Valor} ");
-            Umbrales.AppendChild(UmbralText);
-
-            XmlElement Pesos = doc.CreateElement(string.Empty, "Pesos", string.Empty);
+            XmlElement Pesos = doc.CreateElement(string.Empty, "W", string.Empty);
             var PesosMap = " ";
             foreach (var item in R.Pesos.Valores)
             {
@@ -253,12 +323,14 @@ namespace DAL
             PesosMap += " ";
             XmlText PesosText = doc.CreateTextNode(PesosMap);
             Pesos.AppendChild(PesosText);
+            Red.AppendChild(Pesos);
 
-            Previo.AppendChild(Umbrales);
-            Previo.AppendChild(Pesos);
-            Neurona.AppendChild(Previo);
+            XmlElement Umbrales = doc.CreateElement(string.Empty, "U", string.Empty);
+            XmlText UmbralText = doc.CreateTextNode($" {R.UmbralAnterior.Valor} ");
+            Umbrales.AppendChild(UmbralText);
+            Red.AppendChild(Umbrales);
 
-            var Default = @"data.xml";
+            var Default = @"DS.xml";
             doc.Save(Path??Default);
         }
     }

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Red>
+  <I>101</I>
+  <F>Escalon</F>
+  <R>0,1</R>
+  <E>0</E>
+  <EM>0,1</EM>
+  <EN>6</EN>
+  <P> 1;1 1;0 0;1 0;0 </P>
+  <YD> 1;0;0;0 </YD>
+  <W> 0,5;0,5 </W>
+  <U> 1 </U>
+</Red>
