@@ -29,67 +29,14 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSimulador));
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.TbPatron = new System.Windows.Forms.TextBox();
-            this.BtnIniciar = new System.Windows.Forms.Button();
             this.LbResutado = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.LbResultado = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DGV1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Open1 = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.panel4.Location = new System.Drawing.Point(27, 94);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(316, 1);
-            this.panel4.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label6.Location = new System.Drawing.Point(24, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Patron";
-            // 
-            // TbPatron
-            // 
-            this.TbPatron.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.TbPatron.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TbPatron.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPatron.ForeColor = System.Drawing.Color.White;
-            this.TbPatron.Location = new System.Drawing.Point(27, 66);
-            this.TbPatron.Name = "TbPatron";
-            this.TbPatron.Size = new System.Drawing.Size(316, 22);
-            this.TbPatron.TabIndex = 15;
-            this.TbPatron.TextChanged += new System.EventHandler(this.TbPatron_TextChanged);
-            // 
-            // BtnIniciar
-            // 
-            this.BtnIniciar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnIniciar.BackgroundImage")));
-            this.BtnIniciar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BtnIniciar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnIniciar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.BtnIniciar.FlatAppearance.BorderSize = 0;
-            this.BtnIniciar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.BtnIniciar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.BtnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnIniciar.Location = new System.Drawing.Point(349, 63);
-            this.BtnIniciar.Name = "BtnIniciar";
-            this.BtnIniciar.Size = new System.Drawing.Size(30, 30);
-            this.BtnIniciar.TabIndex = 16;
-            this.BtnIniciar.UseVisualStyleBackColor = true;
-            this.BtnIniciar.Click += new System.EventHandler(this.BtnIniciar_Click);
             // 
             // LbResutado
             // 
@@ -110,7 +57,7 @@ namespace GUI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.button1.Location = new System.Drawing.Point(410, 3);
+            this.button1.Location = new System.Drawing.Point(458, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 18;
@@ -129,39 +76,36 @@ namespace GUI
             this.LbResultado.TabIndex = 19;
             this.LbResultado.Text = "---";
             // 
-            // dataGridView1
+            // DGV1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 251);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(413, 150);
-            this.dataGridView1.TabIndex = 20;
+            this.DGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV1.Location = new System.Drawing.Point(44, 119);
+            this.DGV1.Name = "DGV1";
+            this.DGV1.Size = new System.Drawing.Size(413, 150);
+            this.DGV1.TabIndex = 20;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(127, 203);
+            this.button2.Location = new System.Drawing.Point(108, 70);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(137, 23);
             this.button2.TabIndex = 21;
             this.button2.Text = "Cargar DataSet";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FrmSimulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.ClientSize = new System.Drawing.Size(628, 438);
+            this.ClientSize = new System.Drawing.Size(491, 288);
             this.ControlBox = false;
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DGV1);
             this.Controls.Add(this.LbResultado);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.LbResutado);
-            this.Controls.Add(this.BtnIniciar);
-            this.Controls.Add(this.TbPatron);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.label6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmSimulador";
             this.Opacity = 0.98D;
@@ -169,21 +113,18 @@ namespace GUI
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FrmSimulador_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox TbPatron;
-        private System.Windows.Forms.Button BtnIniciar;
         private System.Windows.Forms.Label LbResutado;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label LbResultado;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGV1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.OpenFileDialog Open1;
     }
 }

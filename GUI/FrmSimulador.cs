@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ENTITY;
+using BLL;
+using System.IO;
 
 namespace GUI
 {
@@ -15,15 +17,18 @@ namespace GUI
     {
         private readonly Red Red;
 
-        public FrmSimulador(Red Red)
+        private readonly NeuronaService _Neurona;
+
+        public FrmSimulador(Red Red, NeuronaService Neurona)
         {
+            _Neurona = Neurona;
             this.Red = Red;
             InitializeComponent();
             ValidarEntrenamiento(Red);
         }
         private void ValidarEntrenamiento(Red Red)
         {
-            if (Red.Error>Red.ErrorMaxPermitido)
+            if (Red.Error > Red.ErrorMaxPermitido)
             {
                 MessageBox.Show("La red aún no esta entrenada, por favor entrenela");
                 Dispose();
@@ -43,34 +48,79 @@ namespace GUI
 
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
-
-            var Entradas = TbPatron.Text.Trim().Replace('.',',').Split(';');
-            if (Entradas.Length != Red.Patrones[0].Entradas.Count)
-            {
-                MessageBox.Show("El patron ingresado es diferente a los patrones de entrenamiento, verifiquelos");
-                Dispose();
-                return;
-            }
-            double o;
             Patron Patron = new Patron();
-            foreach (var Entrada in Entradas)
-            {
-                string entrada = Entrada.Trim();
-                if (!Double.TryParse(entrada, out o))
-                {
-                    MessageBox.Show("Las entradas deben ser numericas, verifiquelas");
-                    Dispose();
-                    return;
-                }
-                Patron.Entradas.Add(Double.Parse(entrada));
-            }
-            LbResultado.Text = Red.Simular(Patron).ToString();          
-            
+            LbResultado.Text = Red.Simular(Patron).ToString();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Dispose();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var Result = Open1.ShowDialog();
+            if (Result == DialogResult.OK)
+            {
+                try
+                {
+                    if (File.Exists(Open1.FileName))
+                    {
+                        var Ps = _Neurona.DataSimulacion(Open1.FileName);
+                        if (Ps != null)
+                        {
+                            CrearColumnas(Ps);
+                            var Row = new List<string>();
+                            foreach (var item in Ps)
+                            {
+                                Row.Clear();
+                                foreach (var it2 in item.Entradas)
+                                {
+                                    Row.Add(it2.ToString());
+                                }
+                                var Yr = Red.Simular(item);
+                                Row.Add(Yr.ToString());
+                                DGV1.Rows.Add(Row.ToArray());
+                            }
+                        }
+                        else
+                            MessageBox.Show("El dataset está corrupto o está mal configurado");
+                    }
+                    else
+                        MessageBox.Show("Se ha eliminado o movido el archivo");
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show("Error al abrir el archivo => " + er.Message, "Proceso fallido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if (Result == DialogResult.Cancel)
+            {
+
+            }
+        }
+
+        private void CrearColumnas(List<Patron> Patrones)
+        {
+            var i = 1;
+            DGV1.Columns.Clear();
+            if (Patrones.Count > 0)
+            {
+                foreach (var item in Red.Patrones[0].Entradas)
+                {
+                    var Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                    Columna.HeaderText = "E" + i;
+                    Columna.Name = Columna.HeaderText;
+                    DGV1.Columns.Add(Columna);
+                    i++;
+                }
+                var _Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                _Columna.HeaderText = "YR";
+                _Columna.Name = _Columna.HeaderText;
+                DGV1.Columns.Add(_Columna);
+            }
+        }
+
     }
 }

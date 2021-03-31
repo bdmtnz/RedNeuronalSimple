@@ -31,6 +31,11 @@ namespace BLL
             _Neurona.EscribirArchivo(R, Path);
         }
 
+        public List<Patron> DataSimulacion(string Ruta)
+        {
+            return _Neurona.LeerPatrones(Ruta);
+        }
+
         public void EntrenarPausable()
         {
             var i = Telefono.Red.Entrenamientos;

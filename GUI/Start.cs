@@ -166,7 +166,7 @@ namespace GUI
                 MessageBox.Show("Esta red está vacia, llenela y entrenela");
                 return;
             }
-            FrmSimulador = new FrmSimulador(Red);
+            FrmSimulador = new FrmSimulador(Red, _Neurona);
         }
 
         private void BtnOpen_Click(object sender, EventArgs e)

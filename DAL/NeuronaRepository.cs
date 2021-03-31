@@ -105,11 +105,37 @@ namespace DAL
             return Red;
         }
 
+
+        public List<Patron> LeerPatrones(string Ruta)
+        {
+            if (File.Exists(Ruta))
+            {
+                var Patrones = new List<Patron>();
+                using (var Lector = new StreamReader(Ruta))
+                {
+                    var Data = Lector.ReadToEnd();
+                    var _Patrones = Data.Split(';');
+                    foreach (var item in _Patrones)
+                    {
+                        var Entradas = item.Split(' ');
+                        foreach (var Entrada in Entradas)
+                        {
+                            if (!Double.TryParse(Entrada, out _))
+                            {
+                                return null;
+                            }
+                        }
+                        Patrones.Add(new Patron(item));
+                    }
+
+                }
+                return Patrones;
+            }
+            return null;
+        }
+
         public void EscribirArchivo(Red Red, string Ruta)
         {
-            //File.Delete(@".\DataSet.txt");
-            //File.CreateText(@".\DataSet.txt");
-
             using (StreamWriter Escritor = new StreamWriter(Ruta??@".\DataSet.txt"))
             {
                 Escritor.WriteLine(Red.GetConfig());
