@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ENTITY;
+using BLL;
+using System.IO;
 
 namespace GUI
 {
@@ -15,8 +17,11 @@ namespace GUI
     {
         private readonly Red Red;
 
-        public FrmSimulador(Red Red)
+        private readonly NeuronaService _Neurona;
+
+        public FrmSimulador(Red Red, NeuronaService Neurona)
         {
+            _Neurona = Neurona;
             this.Red = Red;
             InitializeComponent();
             ValidarEntrenamiento(Red);
@@ -43,29 +48,55 @@ namespace GUI
 
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
-
-            var Entradas = TbPatron.Text.Trim().Replace('.',',').Split(';');
-            if (Entradas.Length != Red.Patrones[0].Entradas.Count)
+            var Result = OFD.ShowDialog();
+            if (Result == DialogResult.OK)
             {
-                MessageBox.Show("El patron ingresado es diferente a los patrones de entrenamiento, verifiquelos");
-                Dispose();
-                return;
-            }
-            double o;
-            Patron Patron = new Patron();
-            foreach (var Entrada in Entradas)
-            {
-                string entrada = Entrada.Trim();
-                if (!Double.TryParse(entrada, out o))
+                try
                 {
-                    MessageBox.Show("Las entradas deben ser numericas, verifiquelas");
-                    Dispose();
-                    return;
+                    if (File.Exists(OFD.FileName))
+                    {
+                        var Ps = _Neurona.LoadPatrones(OFD.FileName);
+                        if (Ps != null)
+                        {
+                            CrearColumnas(Ps);
+                            var Row = new List<string>();
+                            foreach (var item in Ps)
+                            {
+                                Row.Clear();
+                                foreach (var it2 in item.Entradas)
+                                {
+                                    Row.Add(it2.ToString());
+                                }
+                                var Yr = Red.Simular(item);
+                                Row.Add(Yr.ToString());
+                                DGV1.Rows.Add(Row.ToArray());
+                            }
+                        }
+                        else
+                            MessageBox.Show("El dataset está corrupto o está mal configurado");
+                    }
+                    else
+                        MessageBox.Show("Se ha eliminado o movido el archivo");
                 }
-                Patron.Entradas.Add(Double.Parse(entrada));
+                catch (Exception er)
+                {
+                    MessageBox.Show("Error al abrir el archivo => " + er.Message, "Proceso fallido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            LbResultado.Text = Red.Simular(Patron).ToString();          
-            
+            else if (Result == DialogResult.Cancel)
+            {
+
+            }
+
+        }
+
+        private void ShowInfo(Red Red)
+        {
+            Telefono.Red = Red;
+            LbError.Text = "" + Telefono.Red.Error;
+            LbIteraciones.Text = "" + Telefono.Red.Entrenamientos;
+            LbPesos.Text = "" + Telefono.W;
+            LbUmbral.Text = "" + Telefono.Red.Umbral;
         }
 
         private void button1_Click(object sender, EventArgs e)
