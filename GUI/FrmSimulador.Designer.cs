@@ -99,9 +99,9 @@ namespace GUI
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(251, 60);
+            this.dataGridView1.Location = new System.Drawing.Point(251, 104);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(432, 206);
+            this.dataGridView1.Size = new System.Drawing.Size(432, 162);
             this.dataGridView1.TabIndex = 20;
             // 
             // label1
@@ -229,6 +229,10 @@ namespace GUI
             this.LbPath.Size = new System.Drawing.Size(15, 16);
             this.LbPath.TabIndex = 32;
             this.LbPath.Text = "#";
+            // 
+            // OFD
+            // 
+            this.OFD.Filter = "Archivo XML (*.XML)|*.XML";
             // 
             // FrmSimulador
             // 

@@ -28,6 +28,11 @@ namespace BLL
             _Neurona.WriteXml(R, Path);
         }
 
+        public List<Patron> LoadPatrones(string Path)
+        {
+            return _Neurona.LoadPatrones(Path);
+        }
+
         public void EntrenarPausable()
         {
             var i = Telefono.Red.Entrenamientos;

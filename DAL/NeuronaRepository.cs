@@ -121,6 +121,44 @@ namespace DAL
             return Red;
         }
 
+        public List<Patron> LoadPatrones(string Path)
+        {
+            var Patrones = new List<Patron>();
+            try
+            {
+                using (XmlReader Reader = XmlReader.Create(Path))
+                {
+                    while (Reader.Read())
+                    {
+                        if (Reader.IsStartElement())
+                        {
+                            switch (Reader.Name.ToString())
+                            {
+                                case "Patrones":
+                                    var _Patrones = Reader.ReadString().Trim();
+                                    var Split = _Patrones.Split(' ');
+                                    foreach (var item in Split)
+                                    {
+                                        var Entradas = item.Split(';');
+                                        foreach (var Entrada in Entradas)
+                                        {
+                                            if (!Double.TryParse(Entrada, out _))
+                                            {
+                                                return null;
+                                            }
+                                        }
+                                        Patrones.Add(new Patron(item.Trim()));
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+            return Patrones;
+        }
+
         private bool ValidarRata(double Rata)
         {
             if (Rata > 0 && Rata <= 1)

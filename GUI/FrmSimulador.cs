@@ -25,6 +25,8 @@ namespace GUI
             this.Red = Red;
             InitializeComponent();
             ValidarEntrenamiento(Red);
+            ShowInfo(Red);
+            OFD.Filter = "Archivo XML (*.XML)|*.XML";
         }
         private void ValidarEntrenamiento(Red Red)
         {
@@ -48,7 +50,7 @@ namespace GUI
         private void CrearColumnas(List<Patron> Patrones)
         {
             var i = 1;
-            DGV1.Columns.Clear();
+            dataGridView1.Columns.Clear();
             if (Patrones.Count > 0)
             {
                 foreach (var item in Red.Patrones[0].Entradas)
@@ -56,18 +58,19 @@ namespace GUI
                     var Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
                     Columna.HeaderText = "E" + i;
                     Columna.Name = Columna.HeaderText;
-                    DGV1.Columns.Add(Columna);
+                    dataGridView1.Columns.Add(Columna);
                     i++;
                 }
                 var _Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
                 _Columna.HeaderText = "YR";
                 _Columna.Name = _Columna.HeaderText;
-                DGV1.Columns.Add(_Columna);
+                dataGridView1.Columns.Add(_Columna);
             }
         }
 
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
+            ShowInfo(Red);
             var Result = OFD.ShowDialog();
             if (Result == DialogResult.OK)
             {
@@ -78,6 +81,8 @@ namespace GUI
                         var Ps = _Neurona.LoadPatrones(OFD.FileName);
                         if (Ps != null)
                         {
+                            LbPath.Text = OFD.FileName;
+                            LbPatrones.Text = "" + Ps.Count();
                             CrearColumnas(Ps);
                             var Row = new List<string>();
                             foreach (var item in Ps)
@@ -89,7 +94,7 @@ namespace GUI
                                 }
                                 var Yr = Red.Simular(item);
                                 Row.Add(Yr.ToString());
-                                DGV.Rows.Add(Row.ToArray());
+                                dataGridView1.Rows.Add(Row.ToArray());
                             }
                         }
                         else
