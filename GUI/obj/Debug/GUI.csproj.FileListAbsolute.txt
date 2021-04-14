@@ -14,7 +14,6 @@ C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\bin\Debug\ENTITY.pdb
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\bin\Debug\DAL.dll
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\bin\Debug\DAL.pdb
-C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.Start.resources
 C:\Users\gerson\Documents\IA\Neurona\GUI\bin\Debug\GUI.exe.config
 C:\Users\gerson\Documents\IA\Neurona\GUI\bin\Debug\GUI.exe
 C:\Users\gerson\Documents\IA\Neurona\GUI\bin\Debug\GUI.pdb
@@ -52,3 +51,6 @@ C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GU
 C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.Generalizador.resources
 C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.Graficador.resources
 C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GUI.Dashboard.resources
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.Generalizador.resources
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.Graficador.resources
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.Dashboard.resources

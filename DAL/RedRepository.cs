@@ -61,7 +61,7 @@ namespace DAL
                                     switch (Funcion)
                                     {
                                         case "0":
-                                            Red.Activacion.Funcion = FUNCIONES.Escalon;
+                                            Red.Activacion.Funcion = FUNCIONES.TangenteHip;
                                             break;
                                         case "1":
                                             Red.Activacion.Funcion = FUNCIONES.Lineal;
@@ -70,7 +70,7 @@ namespace DAL
                                             Red.Activacion.Funcion = FUNCIONES.Sigmoide;
                                             break;
                                         default:
-                                            Red.Activacion.Funcion = FUNCIONES.Escalon;
+                                            Red.Activacion.Funcion = FUNCIONES.TangenteHip;
                                             break;
                                     }
                                     break;

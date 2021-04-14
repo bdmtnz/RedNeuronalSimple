@@ -38,7 +38,7 @@ namespace GUI
         private void Preload()
         {
             CbActivacion.Items.AddRange(new object[] { 
-                FUNCIONES.Escalon.ToString(),
+                FUNCIONES.TangenteHip.ToString(),
                 FUNCIONES.Lineal.ToString(),
                 FUNCIONES.Sigmoide.ToString()
             });
@@ -95,12 +95,12 @@ namespace GUI
         private void CambiarActivacion(object sender, EventArgs e)
         {
             var Cb = sender as ComboBox;
-            if(Cb.SelectedIndex == (int)FUNCIONES.Escalon)
+            if(Cb.SelectedIndex == (int)FUNCIONES.TangenteHip)
             {
                 PbEscalon.Visible = true;
                 PbLineal.Visible = false;
                 PbSigmoide.Visible = false;
-                Red.Activacion.Funcion = FUNCIONES.Escalon;
+                Red.Activacion.Funcion = FUNCIONES.TangenteHip;
             }
             else if (Cb.SelectedIndex == (int)FUNCIONES.Lineal)
             {

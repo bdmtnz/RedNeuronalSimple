@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Capa.cs" />
     <Compile Include="Neurona.cs" />
     <Compile Include="Patron.cs" />
     <Compile Include="Peso.cs" />
