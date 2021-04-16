@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 using ENTITY;
 using BLL;
@@ -22,39 +23,50 @@ namespace GUI
         public int Y_Click { get; set; }
         private Generalizador FrmSimulador { get; set; }
         private Graficador Grafica { get; set; }
+        public ToolTip ToolTips { get; set; }
 
         public Dashboard()
         {
             _Neurona = new RedService();
-            //Grafica = new Grafica();
+            ToolTips = new ToolTip();
             Red = new Red();
             InitializeComponent();
             BtnPausa.Visible = false;
             BtnIniciar.Visible = true;
-            Preload();
             Config();
+            Preload();
         }
 
         private void Preload()
         {
-            CbActivacion.Items.AddRange(new object[] { 
-                FUNCIONES.TangenteHip.ToString(),
-                FUNCIONES.Lineal.ToString(),
-                FUNCIONES.Sigmoide.ToString()
-            });
-            CbActivacion.SelectedIndex = 0;  
+            Abrir(new Home(Red));
         }
 
         private void Config()
         {
+            //FILTROS
             OFD.Filter = "Archivo XML (*.XML)|*.XML";
             SFD.Filter = "Archivo XML (*.XML)|*.XML";
+
+            //CONFIG LINK
+            linkLabel1.Links.Add(0, linkLabel1.Text.Length, "https://github.com/bdmtnz");
+            linkLabel2.Links.Add(0, linkLabel2.Text.Length, "https://sites.google.com/a/unicesar.edu.co/tonnyjimenezm/");
+
+            //CARGA DE CACHÉ
             var Rd = _Neurona.GetXML(null);
             if (Rd != null)
                 Red = Plataforma.Red = Rd;
             else
                 MessageBox.Show("El dataset está corrupto o está mal configurado");
             ShowInfo(Red);
+
+            //TOOLTIPS
+            ToolTips.SetToolTip(TbNeuronas, "Ej. '2 3 2' es equivalente a 2 capas ocultas\n de 2 y 3 neuronas respectivamente y\n una capa de salida con 2 neuronas");
+            ToolTips.SetToolTip(TbFuncion, "Ej. 'S T G L' es quivalente asignar las funciones\n Sigmoide, Tangente hiperbólica, Gaussiana\n y Lineal a 4 capas de la red");
+            ToolTips.SetToolTip(BtnReiniciar, "Reinicializa la red");
+            ToolTips.SetToolTip(BtnSimulation, "Generaliza con al red entrenada");
+            ToolTips.SetToolTip(BtnSave, "Guarda el estado de la red");
+            ToolTips.SetToolTip(BtnOpen, "Abre un archivo con el estado de una red");
         }
 
         private void ShowInfo(Red N)
@@ -65,7 +77,6 @@ namespace GUI
             LbEntrenado.Text = N.Entrenamientos.ToString();
             NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
-            CbActivacion.SelectedIndex = (int)N.Activacion.Funcion;
             NbRata.Value = (decimal)N.Rata;
         }
 
@@ -82,6 +93,17 @@ namespace GUI
             }
         }
 
+        private void Abrir(Form ventana)
+        {
+            Embebed.Controls.Clear();
+
+            ventana.TopLevel = false;
+            Embebed.Controls.Add(ventana);
+            Embebed.Tag = true;
+            ventana.Dock = DockStyle.Fill;
+            ventana.Show();
+        }
+
         private void Close(object sender, EventArgs e)
         {
             Dispose();
@@ -90,35 +112,6 @@ namespace GUI
         private void Minimize(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
-        } 
-
-        private void CambiarActivacion(object sender, EventArgs e)
-        {
-            var Cb = sender as ComboBox;
-            if(Cb.SelectedIndex == (int)FUNCIONES.TangenteHip)
-            {
-                PbEscalon.Visible = true;
-                PbLineal.Visible = false;
-                PbSigmoide.Visible = false;
-                Red.Activacion.Funcion = FUNCIONES.TangenteHip;
-            }
-            else if (Cb.SelectedIndex == (int)FUNCIONES.Lineal)
-            {
-                PbEscalon.Visible = false;
-                PbLineal.Visible = true;
-                PbSigmoide.Visible = false;
-                Red.Activacion.Funcion = FUNCIONES.Lineal;
-            }
-            else
-            {
-                PbEscalon.Visible = false;
-                PbLineal.Visible = false;
-                PbSigmoide.Visible = true;
-                Red.Activacion.Funcion = FUNCIONES.Sigmoide;
-            }
-            Red.Error = 1;
-            Red.Entrenamientos = 0;
-            Plataforma.Red = Red;
         }
 
         private void Entrenar(object sender, EventArgs e)
@@ -167,7 +160,13 @@ namespace GUI
                 MessageBox.Show("Esta red está vacia, llenela y entrenela");
                 return;
             }
-            FrmSimulador = new Generalizador(Red, _Neurona);
+            else if (Red.Error > Red.ErrorMaxPermitido)
+            {
+                MessageBox.Show("La red aún no esta entrenada, por favor entrenela");
+            }
+            else
+                Abrir(new Generalizador(Red, _Neurona));
+            //FrmSimulador = new Generalizador(Red, _Neurona);
         }
 
         private void BtnOpen_Click(object sender, EventArgs e)
@@ -240,6 +239,13 @@ namespace GUI
         {
             Red = Plataforma.Red = new Red();
             ShowInfo(Red);
+        }
+
+        private void OpenLink(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProcessStartInfo PInfo = new ProcessStartInfo(e.Link.LinkData.ToString());
+            Process.Start(PInfo);
+
         }
     }
 }

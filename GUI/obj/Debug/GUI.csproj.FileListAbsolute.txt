@@ -54,3 +54,4 @@ C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\GUI\obj\Debug\GU
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.Generalizador.resources
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.Graficador.resources
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.Dashboard.resources
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.Home.resources

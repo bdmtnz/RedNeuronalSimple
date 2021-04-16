@@ -61,16 +61,16 @@ namespace DAL
                                     switch (Funcion)
                                     {
                                         case "0":
-                                            Red.Activacion.Funcion = FUNCIONES.TangenteHip;
+                                            //Red.Activacion.Funcion = FUNCIONES.TangenteHip;
                                             break;
                                         case "1":
-                                            Red.Activacion.Funcion = FUNCIONES.Lineal;
+                                            //Red.Activacion.Funcion = FUNCIONES.Lineal;
                                             break;
                                         case "2":
-                                            Red.Activacion.Funcion = FUNCIONES.Sigmoide;
+                                            //Red.Activacion.Funcion = FUNCIONES.Sigmoide;
                                             break;
                                         default:
-                                            Red.Activacion.Funcion = FUNCIONES.TangenteHip;
+                                            //Red.Activacion.Funcion = FUNCIONES.TangenteHip;
                                             break;
                                     }
                                     break;
@@ -154,12 +154,12 @@ namespace DAL
                                         {
                                             return null;
                                         }
-                                        Red.Pesos.Valores.Add(new Peso(Double.Parse(item.Trim())));
+                                        //Red.Pesos.Valores.Add(new Peso(Double.Parse(item.Trim())));
                                     }
-                                    if (Pesos_Entradas(Red.Patrones, Red.Pesos) || Patron_Salida(Red.Salidas, Red.Patrones))
+                                    /*if (Pesos_Entradas(Red.Patrones, Red.Pesos) || Patron_Salida(Red.Salidas, Red.Patrones))
                                     {
                                         return null;
-                                    }
+                                    }*/
                                     break;
                                 case "U":
                                     var Umbrales = Reader.ReadString().Trim();
@@ -175,7 +175,7 @@ namespace DAL
                                         {
                                             return null;
                                         }
-                                        Red.Umbral.Valor = Double.Parse(item.Trim());
+                                        //Red.Umbral.Valor = Double.Parse(item.Trim());
                                     }
                                     break;
                             }
@@ -260,8 +260,8 @@ namespace DAL
 
             XmlElement Funcion = doc.CreateElement(string.Empty, "F", string.Empty);
             Red.AppendChild(Funcion);
-            XmlText FuncionText = doc.CreateTextNode(" "+((int)R.Activacion.Funcion).ToString()+" ");
-            Funcion.AppendChild(FuncionText);
+            //XmlText FuncionText = doc.CreateTextNode(" "+((int)R.Activacion.Funcion).ToString()+" ");
+            //Funcion.AppendChild(FuncionText);
 
             XmlElement Rata = doc.CreateElement(string.Empty, "R", string.Empty);
             Red.AppendChild(Rata);
@@ -311,10 +311,10 @@ namespace DAL
 
             XmlElement Pesos = doc.CreateElement(string.Empty, "W", string.Empty);
             var PesosMap = " ";
-            foreach (var item in R.Pesos.Valores)
+            /*foreach (var item in R.Pesos.Valores)
             {
                 PesosMap += $"{item.Valor};";
-            }
+            }*/
             PesosMap = PesosMap.Substring(0, PesosMap.Length - 1);
             PesosMap += " ";
             XmlText PesosText = doc.CreateTextNode(PesosMap);
@@ -322,8 +322,8 @@ namespace DAL
             Red.AppendChild(Pesos);
 
             XmlElement Umbrales = doc.CreateElement(string.Empty, "U", string.Empty);
-            XmlText UmbralText = doc.CreateTextNode($" {R.UmbralAnterior.Valor} ");
-            Umbrales.AppendChild(UmbralText);
+            //XmlText UmbralText = doc.CreateTextNode($" {R.UmbralAnterior.Valor} ");
+            //Umbrales.AppendChild(UmbralText);
             Red.AppendChild(Umbrales);
 
             var Default = @"DS.xml";

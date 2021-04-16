@@ -24,18 +24,6 @@ namespace GUI
             _Neurona = Neurona;
             this.Red = Red;
             InitializeComponent();
-            ValidarEntrenamiento(Red);
-        }
-
-        private void ValidarEntrenamiento(Red Red)
-        {
-            if (Red.Error>Red.ErrorMaxPermitido)
-            {
-                MessageBox.Show("La red aún no esta entrenada, por favor entrenela");
-                Dispose();
-            }
-            else
-                ShowDialog();
         }
 
         private void CrearColumnas(List<Patron> Patrones)
@@ -126,13 +114,9 @@ namespace GUI
             Plataforma.Red = Red;
             LbError.Text = "" + Plataforma.Red.Error;
             LbIteraciones.Text = "" + Plataforma.Red.Entrenamientos;
-            LbPesos.Text = "" + Plataforma.W;
-            LbUmbral.Text = "" + Plataforma.Red.Umbral.Valor;
+            //LbPesos.Text = "" + Plataforma.W;
+            //LbUmbral.Text = "" + Plataforma.Red.Umbral.Valor;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Dispose();
-        }
     }
 }

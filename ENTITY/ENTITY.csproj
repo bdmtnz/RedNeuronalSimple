@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activacion.cs" />
     <Compile Include="Capa.cs" />
     <Compile Include="Neurona.cs" />
     <Compile Include="Patron.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Red.cs" />
     <Compile Include="Plataforma.cs" />
+    <Compile Include="Salida.cs" />
     <Compile Include="Umbral.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
