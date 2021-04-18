@@ -22,7 +22,14 @@ namespace GUI
 
         private void ShowInfo(Red Red)
         {
-
+            LbPath.Text = "/DS.XML";
+            LbPatrones.Text = Red.Patrones.Count.ToString();
+            LbPesos.Text = Red.Capas.Count.ToString();
+            LbError.Text = Red.Error.ToString();
+            LbIteraciones.Text = Red.Iteraciones.ToString();
+            LbEntrenamiento.Text = Red.Entrenamientos.ToString();
+            LbErrorMax.Text = Red.ErrorMaxPermitido.ToString();
+            LbUmbral.Text = Red.Capas.Count.ToString();
         }
 
     }

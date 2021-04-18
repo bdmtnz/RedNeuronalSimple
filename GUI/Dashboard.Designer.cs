@@ -376,6 +376,7 @@
             this.TbFuncion.Name = "TbFuncion";
             this.TbFuncion.Size = new System.Drawing.Size(163, 15);
             this.TbFuncion.TabIndex = 19;
+            this.TbFuncion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -404,6 +405,7 @@
             this.TbNeuronas.Name = "TbNeuronas";
             this.TbNeuronas.Size = new System.Drawing.Size(163, 15);
             this.TbNeuronas.TabIndex = 16;
+            this.TbNeuronas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // NbRata
             // 
@@ -501,6 +503,7 @@
             this.NbIteracion.Name = "NbIteracion";
             this.NbIteracion.Size = new System.Drawing.Size(163, 18);
             this.NbIteracion.TabIndex = 11;
+            this.NbIteracion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.NbIteracion.Value = new decimal(new int[] {
             1,
             0,

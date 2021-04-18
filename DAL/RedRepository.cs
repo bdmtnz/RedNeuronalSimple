@@ -38,6 +38,7 @@ namespace DAL
             {
                 using (XmlReader Reader = XmlReader.Create(Path ?? Default))
                 {
+                    var W = 0; var U = 0;
                     while (Reader.Read())
                     {
                         if (Reader.IsStartElement())
@@ -52,27 +53,13 @@ namespace DAL
                                     }
                                     Red.Iteraciones = Int32.Parse(Iteraciones);
                                     break;
-                                case "F":
-                                    var Funcion = Reader.ReadString().Trim();
-                                    if (!Int32.TryParse(Funcion, out _))
+                                case "EN":
+                                    var Entrenamientos = Reader.ReadString().Trim();
+                                    if (!Int32.TryParse(Entrenamientos, out _))
                                     {
                                         return null;
                                     }
-                                    switch (Funcion)
-                                    {
-                                        case "0":
-                                            //Red.Activacion.Funcion = FUNCIONES.TangenteHip;
-                                            break;
-                                        case "1":
-                                            //Red.Activacion.Funcion = FUNCIONES.Lineal;
-                                            break;
-                                        case "2":
-                                            //Red.Activacion.Funcion = FUNCIONES.Sigmoide;
-                                            break;
-                                        default:
-                                            //Red.Activacion.Funcion = FUNCIONES.TangenteHip;
-                                            break;
-                                    }
+                                    Red.Entrenamientos = Int32.Parse(Entrenamientos.Trim());
                                     break;
                                 case "R":
                                     var Rata = Reader.ReadString().Trim();
@@ -102,17 +89,53 @@ namespace DAL
                                     }
                                     Red.ErrorMaxPermitido = Double.Parse(ErrorMax);
                                     break;
-                                case "EN":
-                                    var Entrenamientos = Reader.ReadString().Trim();
-                                    if (!Int32.TryParse(Entrenamientos, out _))
+                                case "C":
+                                    var Capas = Reader.ReadString().Trim().Split(';');
+                                    for (int i = 0; i < Capas.Length; i++)
                                     {
-                                        return null;
+                                        if (!Int32.TryParse(Capas[i], out _))
+                                        {
+                                            return null;
+                                        }
+                                        Red.Capas.Add(new Capa());
+                                        for (int j = 0; j < Int32.Parse(Capas[i]); j++)
+                                        {
+                                            Red.Capas[i].Neuronas.Add(new Neurona());
+                                        }
                                     }
-                                    Red.Entrenamientos = Int32.Parse(Entrenamientos.Trim());
+                                    break;
+                                case "F":
+                                    var Funciones = Reader.ReadString().Trim().Split(';');
+                                    if (Red.Capas.Count != Funciones.Length)
+                                        return null;
+                                    for (int i = 0; i < Funciones.Length; i++)
+                                    {
+                                        if (!Int32.TryParse(Funciones[i], out _))
+                                        {
+                                            return null;
+                                        }
+                                        switch (Funciones[i])
+                                        {
+                                            case "0":
+                                                Red.Capas[i].Activacion.Funcion = FUNCIONES.Lineal;
+                                                break;
+                                            case "1":
+                                                Red.Capas[i].Activacion.Funcion = FUNCIONES.Sigmoide;
+                                                break;
+                                            case "2":
+                                                Red.Capas[i].Activacion.Funcion = FUNCIONES.TangenteHip;
+                                                break;
+                                            case "3":
+                                                Red.Capas[i].Activacion.Funcion = FUNCIONES.Gaussiana;
+                                                break;
+                                            default:
+                                                Red.Capas[i].Activacion.Funcion = FUNCIONES.Lineal;
+                                                break;
+                                        }
+                                    }
                                     break;
                                 case "P":
                                     var Patrones = Reader.ReadString().Trim();
-                                    Console.WriteLine(Patrones);
                                     var Split = Patrones.Split(' ');
                                     foreach (var item in Split)
                                     {
@@ -128,55 +151,53 @@ namespace DAL
                                     }
                                     break;
                                 case "YD":
-                                    var Salidas = Reader.ReadString().Trim();
-                                    Console.WriteLine(Salidas);
-                                    Split = Salidas.Split(';');
-                                    foreach (var item in Split)
+                                    var Salidas = Reader.ReadString().Trim().Split(' ');
+                                    //VALIDAR QUE LAS SALIDAS CONCUERDEN CON LOS PATRONES Y EL # DE NEURONAS DE SALIDA
+                                    for (int i = 0; i < Salidas.Length; i++)
                                     {
-                                        if (!Double.TryParse(item, out _))
+                                        var Salida = Salidas[i].Split(';');
+                                        for (int j = 0; j < Salida.Length; j++)
                                         {
-                                            return null;
+                                            if (!Double.TryParse(Salida[j], out _))
+                                            {
+                                                return null;
+                                            }
+                                            Red.Patrones[i].SalidasSupervisada.Add(new Salida());
+                                            Red.Patrones[i].SalidasSupervisada[j].YD = Double.Parse(Salida[j]);
                                         }
-                                        Red.Salidas.Add(new Salida(item.Trim()));
                                     }
                                     break;
                                 case "W":
-                                    var Pesos = Reader.ReadString().Trim();
-                                    Console.WriteLine(Pesos);
-                                    Split = Pesos.Split(';');
-                                    foreach (var item in Split)
+                                    var Pesos = Reader.ReadString().Trim().Split(' ');
+                                    foreach (var item in Pesos)
                                     {
-                                        if (!Double.TryParse(item, out _))
+                                        var Peso = item.Split(';');
+                                        foreach (var _item in Peso)
                                         {
-                                            return null;
+                                            if (!Double.TryParse(_item, out _))
+                                            {
+                                                return null;
+                                            }
                                         }
-                                        else if (CheckPeso(Double.Parse(item)))
-                                        {
-                                            return null;
-                                        }
-                                        //Red.Pesos.Valores.Add(new Peso(Double.Parse(item.Trim())));
+                                        Red.Capas[W].Pesos.Add(new ENTITY.Pesos(item));
                                     }
-                                    /*if (Pesos_Entradas(Red.Patrones, Red.Pesos) || Patron_Salida(Red.Salidas, Red.Patrones))
-                                    {
-                                        return null;
-                                    }*/
+                                    ++W;
                                     break;
                                 case "U":
-                                    var Umbrales = Reader.ReadString().Trim();
-                                    Console.WriteLine(Umbrales);
-                                    Split = Umbrales.Split(';');
-                                    foreach (var item in Split)
+                                    var Umbrales = Reader.ReadString().Trim().Split(' ');
+                                    foreach (var item in Umbrales)
                                     {
-                                        if (!Double.TryParse(item, out _))
+                                        var Peso = item.Split(';');
+                                        for (int i = 0; i < Peso.Length; i++)
                                         {
-                                            return null;
+                                            if (!Double.TryParse(Peso[i], out _))
+                                            {
+                                                return null;
+                                            }
+                                            Red.Capas[U].Neuronas[i].Umbral = new Umbral(Double.Parse(Peso[i]));
                                         }
-                                        else if (CheckUmbral(Double.Parse(item)))
-                                        {
-                                            return null;
-                                        }
-                                        //Red.Umbral.Valor = Double.Parse(item.Trim());
                                     }
+                                    ++W;
                                     break;
                             }
                         }
@@ -299,10 +320,10 @@ namespace DAL
 
             XmlElement Salidas = doc.CreateElement(string.Empty, "YD", string.Empty);
             var SalidasMap = " ";
-            foreach (var item in R.Salidas)
+            /*foreach (var item in R.Salidas)
             {
                 SalidasMap += $"{item.YD};";
-            }
+            }*/
             SalidasMap = SalidasMap.Substring(0, SalidasMap.Length - 1);
             SalidasMap += " ";
             XmlText SalidaText = doc.CreateTextNode(SalidasMap);

@@ -10,7 +10,6 @@ namespace ENTITY
     {
         private const double Xo = 1;
         public List<Patron> Patrones { get; set; }
-        public List<Salida> Salidas { get; set; }
         public List<Capa> Capas { get; set; }
         public int Entradas => Patrones.Count > 0 ? Patrones[0].Entradas.Count : 0;
         public double Rata { get; set; }
@@ -21,6 +20,8 @@ namespace ENTITY
 
         public Red()
         {
+            Capas = new List<Capa>();
+            Patrones = new List<Patron>();
             Normalizar();
         }
 
@@ -30,7 +31,6 @@ namespace ENTITY
             Error = 1;
             ErrorMaxPermitido = 0.1;
             Patrones = new List<Patron>();
-            Salidas = new List<Salida>();
         }
 
         public double Entrenar()
@@ -58,7 +58,7 @@ namespace ENTITY
         {
             for (int i = 0; i < Capas[Capas.Count-1].Neuronas.Count; i++)
             {
-                Capas[Capas.Count - 1].Neuronas[i].Salida.YD = Salidas[i].YD;
+                //Capas[Capas.Count - 1].Neuronas[i].Salida.YD = Patrones[i].SalidaEspe.YD;
             }
         }
 

@@ -73,11 +73,21 @@ namespace GUI
         {
             LbEntradas.Text = N.Entradas.ToString();
             LbPatrones.Text = N.Patrones.Count.ToString();
-            LbSalidas.Text = ""+1;
+            LbSalidas.Text = N.Capas[N.Capas.Count - 1].Neuronas.Count.ToString();
             LbEntrenado.Text = N.Entrenamientos.ToString();
             NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
             NbRata.Value = (decimal)N.Rata;
+            foreach (var item in N.Capas)
+            {
+                TbNeuronas.Text += item.Neuronas.Count + ";";
+            }
+            TbNeuronas.Text = TbNeuronas.Text.Remove(TbNeuronas.Text.Length - 1);
+            foreach (var item in N.Capas)
+            {
+                TbFuncion.Text += item.Activacion.Funcion.ToString()[0] + ";";
+            }
+            TbFuncion.Text = TbFuncion.Text.Remove(TbFuncion.Text.Length - 1);
         }
 
         private void MoveWindow(object sender, MouseEventArgs e)
@@ -116,7 +126,7 @@ namespace GUI
 
         private void Entrenar(object sender, EventArgs e)
         {
-            if(Red.Error <= Red.ErrorMaxPermitido)
+            /*if(Red.Error <= Red.ErrorMaxPermitido)
             {
                 MessageBox.Show("Esta red ya se encuentra entrenada, proceda a simular");
                 return;
@@ -135,7 +145,8 @@ namespace GUI
             BtnPausa.Visible = true;
             RunTask();
             Grafica = new Graficador(Red);
-            Grafica.Show();
+            Grafica.Show();*/
+            Abrir(new Graficador(Red));
         }
 
         private async void RunTask()

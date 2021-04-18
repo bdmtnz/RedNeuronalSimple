@@ -31,12 +31,12 @@ namespace GUI
             grafica1.Series.Add("ErrorIT");
             grafica1.Series["ErrorIT"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             var i = 1;
-            foreach (var item in Red.Salidas)
+            /*foreach (var item in Red.Salidas)
             {
                 chart2.Series.Add("Error " + i);
                 chart2.Series["Error " + i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
                 i++;
-            }
+            }*/
         }
 
         private void Config()
@@ -79,11 +79,11 @@ namespace GUI
                 {
                     grafica1.Series["ErrorIT"].Points.Add(Plataforma.Red.Error);
                     var j = 1;
-                    foreach (var item in Plataforma.Red.Salidas)
+                    /*foreach (var item in Plataforma.Red.Salidas)
                     {
                         chart2.Series["Error " + j].Points.Add(item.Error);
                         j++;
-                    }
+                    }*/
                     i++;
                     CargarDatos();
                 }));

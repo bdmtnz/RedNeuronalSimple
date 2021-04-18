@@ -10,15 +10,19 @@ namespace ENTITY
     {
         public List<double> Entradas { get; set; }
         public double Error { get; set; }
+        public List<Salida> SalidasSupervisada { get; set; }
 
         public Patron()
         {
             Entradas = new List<double>();
+            SalidasSupervisada = new List<Salida>();
         }
 
         public Patron(string Values)
         {
-            if(Values != "")
+            Entradas = new List<double>();
+            SalidasSupervisada = new List<Salida>();
+            if (Values != "")
             {
                 Entradas = new List<double>();
                 Values = Values.Trim();
