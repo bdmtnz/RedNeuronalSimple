@@ -10,8 +10,9 @@ namespace ENTITY
         public int Indice { get; set; }
         public double ErrorPatron => GetErrorPatron();
 
-        public Capa()
+        public Capa(int Indice)
         {
+            this.Indice = Indice;
             Normalizar();
         }
 

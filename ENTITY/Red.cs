@@ -37,6 +37,7 @@ namespace ENTITY
         public double Entrenar()
         {
             var ErrorIteracion = 0.0;
+            var ErrorPatron = 0.0;
             //SE ITERA POR PATRÓN
             for (int i = 0; i < Patrones.Count; i++)
             {
@@ -82,13 +83,16 @@ namespace ENTITY
                 {
                     ErrorIteracion += item.Salida.Error;
                 }*/
-                //ELECCIÓN DE EL MENOR
-                foreach (var item in Capas[Capas.Count - 1].Neuronas)
+                //SUMA DE ERROR DE PATRON
+                ErrorPatron = 0;
+                var Errores = 0.0;
+                Capas[Capas.Count - 1].Neuronas.ForEach(x =>
                 {
-                    ErrorIteracion += item.Salida.Error;
-                }
+                    Errores += x.Salida.Error;
+                });
+                ErrorPatron += Errores / Capas[Capas.Count - 1].Neuronas.Count;
             }
-            ErrorIteracion = ErrorIteracion / Patrones.Count;
+            ErrorIteracion = ErrorPatron / Patrones.Count;
             return ErrorIteracion;
         }
 
@@ -120,7 +124,7 @@ namespace ENTITY
             }
 
             //RECORRER LAS NEURONAS Y BUSCAR LAS ALLEGADAS A CERO
-            RecurrenteNeuronas(Capa.Neuronas);
+            RecurrenteNeuronas(Capa.Neuronas, );
 
             //CRITERIO DE PARADA (PRIMERA CAPA)
             if (Capa.Indice > 0)
@@ -129,9 +133,6 @@ namespace ENTITY
 
         private void RecurrenteNeuronas(Capa Capa, List<double> Entradas, double ErrorPatron)
         {
-            var Seguir = true;
-            var Index = 0;
-
             //OBTENEMOS LA MÁS CERCANA A CERO
             var Min = Capa.Neuronas[0];
             Capa.Neuronas.ForEach(x =>
@@ -139,28 +140,76 @@ namespace ENTITY
                 Min = x.Salida.Error > Min.Salida.Error ? Min : x;
             });
 
+            CompararErrores(Min, ErrorPatron, Capa.Activacion, Entradas);
+
+            //BUSCAMOS LAS ADYACENTES
+            var Seguir = true;
+            var Cantidad = 2;
+            var Disponible = Capa.Neuronas.Count - 1;
+            var Habilitadas = 0;
+            Neurona Menor = null;
+            while (Seguir && Disponible > 0)
+            {
+                //SE ITERA PARA BUSCAR EL NÚMERO DE NEURONAS NECESARIAS MÁS CERCANAS A CERO
+                var Cont = 1;
+                while(Cont <= Cantidad)
+                {
+                    for (int i = 0; i < Capa.Neuronas.Count; i++)
+                    {
+                        if (Menor == null && !Capa.Neuronas[i].Usada)
+                            Menor = Capa.Neuronas[i];
+                        else
+                        {
+                            if (!Capa.Neuronas[i].Usada && Menor.Salida.Error > Capa.Neuronas[i].Salida.Error)
+                                Menor = Capa.Neuronas[i];
+                            else if(Disponible == 0 && Habilitadas > 0)
+                            {
+                                Menor = Capa.Neuronas[i];
+                            }
+                        }
+                    }
+                    Cont++;
+                    if(Disponible == 0 && Habilitadas == 0)
+                    {
+                        Seguir = false;
+                        break;
+                    }
+                    //SE UTILIZA EL MENOR QUE SE HA ENCONTRADO, ACTUALZIANDO SUS PESOS
+                    CompararErrores(Menor, ErrorPatron, Capa.Activacion, Entradas);
+                    //CALCULAMOS LA DISPONIBILIDAD
+                    Disponible = 0;
+                    Habilitadas = 0;
+                    Capa.Neuronas.ForEach(x =>
+                    {
+                        if (!x.Usada)
+                            Disponible++;
+                        if (x.Habilitada)
+                            Habilitadas++;
+                    });
+                }
+                //VALIDAR SI HAY NEURONAS PENDIENTES Y RESTAN CANTIDADES
+                Cantidad++;
+            }
+        }
+
+        private void CompararErrores(Neurona Min, double ErrorPatron, Activacion Activacion, List<double> Entradas)
+        {
             //RECALCULAMOS PESOS DE LA SELECCIONADA
             var ErrorAnt = Min.Salida.Error;
             Min.EntrenarPesos(Entradas, Rata, ErrorPatron);
-            var Salida = Min.ActivarTemp(Capa.Activacion, Entradas);
+            var Salida = Min.ActivarTemp(Activacion, Entradas);
             Min.Usada = true;
 
             //COMPARAMOS PARA HACER PERMANENTE O NO
             if (ErrorAnt < Salida)
             {
                 Min.AceptarPesos();
-                Min.Activar(Capa.Activacion, Entradas);
+                Min.Activar(Activacion, Entradas);
                 Min.Habilitada = false;
             }
             else
             {
                 Min.Habilitada = true;
-            }
-
-            //BUSCAMOS LAS ADYACENTES
-            while (Seguir)
-            {
-                Index++;
             }
         }
 
