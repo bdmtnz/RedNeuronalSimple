@@ -22,6 +22,11 @@ namespace ENTITY
             YD = Double.Parse(Value);
         }
 
+        public void SetError(double Error)
+        {
+            YD = (Error + YR);
+        }
+
     }
 
 }

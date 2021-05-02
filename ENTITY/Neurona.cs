@@ -13,6 +13,8 @@ namespace ENTITY
         public Pesos PesosTemp { get; set; }
         public Umbral Umbral { get; set; }
         public Umbral UmbralTemp { get; set; }
+        public bool Habilitada { get; set; }
+        public bool Usada { get; set; }
 
         public Neurona()
         {
@@ -21,6 +23,7 @@ namespace ENTITY
             Salida = new Salida();
             Umbral = new Umbral();
             UmbralTemp = new Umbral();
+            Habilitada = true;
         }
 
         //public void CalcularSoma(Pesos Pesos, Patron Patron)
@@ -34,22 +37,37 @@ namespace ENTITY
 
         public void Activar(Activacion Activacion, List<double> Entradas)
         {            
-            Salida.YR = CalcularSoma(Entradas);
+            Salida.YR = Activacion.Activar(CalcularSoma(Entradas));
+        }
+        public double ActivarTemp(Activacion Activacion, List<double> Entradas)
+        {
+            return Activacion.Activar(CalcularSoma(Entradas));
         }
 
         //private void EntrenarPesos(int Fila, Patron Patron, double Rata)
         //public void Entrenar(double AnteriorValor, double Rata, double ErrorSalida, double Entrada)
-        public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorIteracion)
+        //LAS ENTRADAS SON LAS SALIDAS DE CADA NEURONA DE LA CAPA INMEDIATAMENTE ANTERIOR
+        public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorPatron)
         {
             for (int j = 0; j < PesosTemp.Valores.Count; j++)
             {
                 PesosTemp.Valores[j].Entrenar(
                     PesosTemp.Valores[j].Valor,
                     Rata,
-                    ErrorIteracion,
+                    ErrorPatron,
                     Entradas[j]
                 );
             }
+        }
+
+        public void CalcularError(List<double> Pesos, List<double> Errores)
+        {
+            var Error = 0.0;
+            for (int i = 0; i < Pesos.Count; i++)
+            {
+                Error += Pesos[i] * Errores[i];
+            }
+            Salida.SetError(Error);
         }
 
         public void AceptarPesos()

@@ -17,6 +17,7 @@ namespace ENTITY
         public int Entrenamientos { get; set; }
         public double Error { get; set; }
         public double ErrorMaxPermitido { get; set; }
+        public int PatronIndex { get; set; }
 
         public Red()
         {
@@ -65,6 +66,23 @@ namespace ENTITY
                         }
                     }
                 }
+                //BACKFOWARD
+                for (int b = Capas.Count - 2; b >= 0 ; b--)
+                {
+                    for (int n = 0; n < Capas[b].Neuronas.Count; n++)
+                    {
+                        Capas[b].Neuronas[n].CalcularError(
+                            Capas[b].Neuronas.Select( x => x.Pesos.Valores[n].Valor).ToList(), 
+                            Capas[b].Neuronas.Select( x => x.Salida.Error).ToList()
+                        );
+                    }
+                }
+                /*//ERROR DE ITERACION
+                foreach (var item in Capas[Capas.Count - 1].Neuronas)
+                {
+                    ErrorIteracion += item.Salida.Error;
+                }*/
+                //ELECCIÓN DE EL MENOR
                 foreach (var item in Capas[Capas.Count - 1].Neuronas)
                 {
                     ErrorIteracion += item.Salida.Error;
@@ -72,6 +90,78 @@ namespace ENTITY
             }
             ErrorIteracion = ErrorIteracion / Patrones.Count;
             return ErrorIteracion;
+        }
+
+        private void RecurrenteCapa(Capa Capa, Red Red)
+        {
+            var Siguiente = Red.Capas[Capa.Indice + 1];
+            for (int i = 0; i < Capa.Neuronas.Count; i++)
+            {
+                Capa.Neuronas[i].CalcularError(
+                    Siguiente.Neuronas.Select(S => S.Pesos.Valores[i].Valor).ToList(),
+                    Siguiente.Neuronas.Select(x => x.Salida.Error).ToList()
+                );
+            }
+            for (int i = 0; i < Capa.Neuronas.Count; i++)
+            {
+                //SI ES LA PRIMERA CAPA LAS ENTRADAS SERAN LAS OFRECIDAS POR EL PATRON
+                var Entradas = new List<double>();
+                if (Capa.Indice == 0)
+                    Entradas = Red.Patrones[PatronIndex].Entradas;
+                else
+                    Entradas = Red.Capas[Capa.Indice - 1].Neuronas.Select(x => x.Salida.YR).ToList();
+                //SINO SERÁN LAS OFRECIDAS POR AL CAPA INMEDIATAMENTE ANTERIOR
+
+                //RECARCULAMOS LOS PESOS
+                Capa.Neuronas[i].EntrenarPesos(Entradas, Rata, Red.Capas[Red.Capas.Count - 1].ErrorPatron);
+
+                //RECALCULAMOS UMBRALES
+                Capa.Neuronas[i].UmbralTemp.Entrenar(Capa.Neuronas[i].UmbralTemp.Valor, Rata, Red.Capas[Red.Capas.Count - 1].ErrorPatron, Xo);
+            }
+
+            //RECORRER LAS NEURONAS Y BUSCAR LAS ALLEGADAS A CERO
+            RecurrenteNeuronas(Capa.Neuronas);
+
+            //CRITERIO DE PARADA (PRIMERA CAPA)
+            if (Capa.Indice > 0)
+                RecurrenteCapa(Capas[Capa.Indice - 1], Red);
+        }
+
+        private void RecurrenteNeuronas(Capa Capa, List<double> Entradas, double ErrorPatron)
+        {
+            var Seguir = true;
+            var Index = 0;
+
+            //OBTENEMOS LA MÁS CERCANA A CERO
+            var Min = Capa.Neuronas[0];
+            Capa.Neuronas.ForEach(x =>
+            {
+                Min = x.Salida.Error > Min.Salida.Error ? Min : x;
+            });
+
+            //RECALCULAMOS PESOS DE LA SELECCIONADA
+            var ErrorAnt = Min.Salida.Error;
+            Min.EntrenarPesos(Entradas, Rata, ErrorPatron);
+            var Salida = Min.ActivarTemp(Capa.Activacion, Entradas);
+            Min.Usada = true;
+
+            //COMPARAMOS PARA HACER PERMANENTE O NO
+            if (ErrorAnt < Salida)
+            {
+                Min.AceptarPesos();
+                Min.Activar(Capa.Activacion, Entradas);
+                Min.Habilitada = false;
+            }
+            else
+            {
+                Min.Habilitada = true;
+            }
+
+            //BUSCAMOS LAS ADYACENTES
+            while (Seguir)
+            {
+                Index++;
+            }
         }
 
         public double Generalizar(Patron Patron)
