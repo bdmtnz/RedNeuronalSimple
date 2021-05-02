@@ -78,6 +78,8 @@ namespace GUI
             NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
             NbRata.Value = (decimal)N.Rata;
+            LbPeso.Text = N.Capas.Count.ToString() + " M";
+            LbUmbral.Text = N.Capas.Count.ToString() + " V";
             foreach (var item in N.Capas)
             {
                 TbNeuronas.Text += item.Neuronas.Count + ";";
@@ -126,7 +128,7 @@ namespace GUI
 
         private void Entrenar(object sender, EventArgs e)
         {
-            /*if(Red.Error <= Red.ErrorMaxPermitido)
+            if(Red.Error <= Red.ErrorMaxPermitido)
             {
                 MessageBox.Show("Esta red ya se encuentra entrenada, proceda a simular");
                 return;
@@ -144,8 +146,6 @@ namespace GUI
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
-            Grafica = new Graficador(Red);
-            Grafica.Show();*/
             Abrir(new Graficador(Red));
         }
 

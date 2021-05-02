@@ -169,9 +169,9 @@ namespace DAL
                                     break;
                                 case "W":
                                     var Pesos = Reader.ReadString().Trim().Split(' ');
-                                    foreach (var item in Pesos)
+                                    for (int i = 0; i < Pesos.Length; i++)
                                     {
-                                        var Peso = item.Split(';');
+                                        var Peso = Pesos[i].Split(';');
                                         foreach (var _item in Peso)
                                         {
                                             if (!Double.TryParse(_item, out _))
@@ -179,7 +179,7 @@ namespace DAL
                                                 return null;
                                             }
                                         }
-                                        Red.Capas[W].Pesos.Add(new ENTITY.Pesos(item));
+                                        Red.Capas[W].Neuronas[i].PesosTemp = new ENTITY.Pesos(Pesos[i]);
                                     }
                                     ++W;
                                     break;

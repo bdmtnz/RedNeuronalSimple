@@ -66,9 +66,9 @@
             this.OFD = new System.Windows.Forms.OpenFileDialog();
             this.SFD = new System.Windows.Forms.SaveFileDialog();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
+            this.LbUmbral = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.LbPeso = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.LbEntrenado = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -585,9 +585,9 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.panel6.Controls.Add(this.label15);
+            this.panel6.Controls.Add(this.LbUmbral);
             this.panel6.Controls.Add(this.label16);
-            this.panel6.Controls.Add(this.label12);
+            this.panel6.Controls.Add(this.LbPeso);
             this.panel6.Controls.Add(this.label14);
             this.panel6.Controls.Add(this.LbEntrenado);
             this.panel6.Controls.Add(this.label13);
@@ -603,14 +603,14 @@
             this.panel6.Size = new System.Drawing.Size(776, 20);
             this.panel6.TabIndex = 3;
             // 
-            // label15
+            // LbUmbral
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(748, 2);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(15, 16);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "#";
+            this.LbUmbral.AutoSize = true;
+            this.LbUmbral.Location = new System.Drawing.Point(748, 2);
+            this.LbUmbral.Name = "LbUmbral";
+            this.LbUmbral.Size = new System.Drawing.Size(15, 16);
+            this.LbUmbral.TabIndex = 11;
+            this.LbUmbral.Text = "#";
             // 
             // label16
             // 
@@ -623,14 +623,14 @@
             this.label16.TabIndex = 10;
             this.label16.Text = "Umbrales:";
             // 
-            // label12
+            // LbPeso
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(612, 2);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(15, 16);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "#";
+            this.LbPeso.AutoSize = true;
+            this.LbPeso.Location = new System.Drawing.Point(612, 2);
+            this.LbPeso.Name = "LbPeso";
+            this.LbPeso.Size = new System.Drawing.Size(15, 16);
+            this.LbPeso.TabIndex = 9;
+            this.LbPeso.Text = "#";
             // 
             // label14
             // 
@@ -791,9 +791,9 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox TbNeuronas;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label LbUmbral;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label LbPeso;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label LbEntrenado;
         private System.Windows.Forms.Label label13;

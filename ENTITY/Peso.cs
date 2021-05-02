@@ -32,6 +32,14 @@ namespace ENTITY
             Valores = new List<Peso>();
         }
 
+        public Pesos(List<Peso> Valores)
+        {
+            this.Valores = new List<Peso>();
+            Valores.ForEach( x => {
+                this.Valores.Add(x);
+            });
+        }
+
         public Pesos(string Values)
         {
             if(Values != "")

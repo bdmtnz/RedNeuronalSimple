@@ -35,31 +35,43 @@ namespace ENTITY
 
         public double Entrenar()
         {
-            //SE ITERA POR CAPAS
-            CargarYDs();
             var ErrorIteracion = 0.0;
+            //SE ITERA POR PATRÓN
             for (int i = 0; i < Patrones.Count; i++)
             {
-                var j = 0;
-                for (j = 0; j < Capas.Count ; j++)
+                //SE ITERA POR CAPAS
+                for (int c = 0; c < Capas.Count; c++)
                 {
-                    Capas[j].Entrenar(Patrones[i], Rata, Xo);
+                    //SE ITERA POR NEURONAS
+                    for (int n = 0; n < Capas[c].Neuronas.Count; n++)
+                    {
+                        //SE ENTRENAN LA NEURONAS
+                        if (c == 0)
+                        {
+                            //SE ENTRENA CON LAS ENTRADAS DE CADA PATRON
+                            Capas[c].Neuronas[n].Activar(
+                                Capas[c].Activacion,
+                                Patrones[i].Entradas
+                            );
+                            //Capas[j].Entrenar(Patrones[i], Rata, Xo);
+                        }
+                        else
+                        {
+                            //SE ENTRENA CON LAS SALIDAS DE LA ANTERIOR CAPA
+                            Capas[c].Neuronas[n].Activar( 
+                                Capas[c].Activacion,
+                                Capas[c - 1].Neuronas.Select( x => x.Salida.YR).ToList()
+                            );
+                        }
+                    }
                 }
-                foreach (var item in Capas[j-1].Neuronas)
+                foreach (var item in Capas[Capas.Count - 1].Neuronas)
                 {
                     ErrorIteracion += item.Salida.Error;
                 }
             }
             ErrorIteracion = ErrorIteracion / Patrones.Count;
             return ErrorIteracion;
-        }
-
-        private void CargarYDs()
-        {
-            for (int i = 0; i < Capas[Capas.Count-1].Neuronas.Count; i++)
-            {
-                //Capas[Capas.Count - 1].Neuronas[i].Salida.YD = Patrones[i].SalidaEspe.YD;
-            }
         }
 
         public double Generalizar(Patron Patron)
