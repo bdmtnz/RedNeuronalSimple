@@ -277,32 +277,51 @@ namespace DAL
             XmlElement Iteracion = doc.CreateElement(string.Empty, "I", string.Empty);
             Red.AppendChild(Iteracion);
             XmlText IteracionText = doc.CreateTextNode(" "+R.Iteraciones.ToString()+" ");
-            Iteracion.AppendChild(IteracionText);
 
-            XmlElement Funcion = doc.CreateElement(string.Empty, "F", string.Empty);
-            Red.AppendChild(Funcion);
-            //XmlText FuncionText = doc.CreateTextNode(" "+((int)R.Activacion.Funcion).ToString()+" ");
-            //Funcion.AppendChild(FuncionText);
+            XmlElement Entrenamiento = doc.CreateElement(string.Empty, "EN", string.Empty);
+            Red.AppendChild(Entrenamiento);
+            XmlText EntrenamientoText = doc.CreateTextNode(" " + R.Entrenamientos.ToString() + " ");
+            Entrenamiento.AppendChild(EntrenamientoText);
+
+            Iteracion.AppendChild(IteracionText);
 
             XmlElement Rata = doc.CreateElement(string.Empty, "R", string.Empty);
             Red.AppendChild(Rata);
-            XmlText RataText = doc.CreateTextNode(" "+R.Rata.ToString()+" ");
+            XmlText RataText = doc.CreateTextNode(" " + R.Rata.ToString() + " ");
             Rata.AppendChild(RataText);
 
             XmlElement Error = doc.CreateElement(string.Empty, "E", string.Empty);
             Red.AppendChild(Error);
-            XmlText ErrorText = doc.CreateTextNode(" "+R.Error.ToString()+" ");
+            XmlText ErrorText = doc.CreateTextNode(" " + R.Error.ToString() + " ");
             Error.AppendChild(ErrorText);
 
             XmlElement ErrorMax = doc.CreateElement(string.Empty, "EM", string.Empty);
             Red.AppendChild(ErrorMax);
-            XmlText ErrorMaxText = doc.CreateTextNode(" "+R.ErrorMaxPermitido.ToString()+" ");
+            XmlText ErrorMaxText = doc.CreateTextNode(" " + R.ErrorMaxPermitido.ToString() + " ");
             ErrorMax.AppendChild(ErrorMaxText);
 
-            XmlElement Entrenamiento = doc.CreateElement(string.Empty, "EN", string.Empty);
-            Red.AppendChild(Entrenamiento);
-            XmlText EntrenamientoText = doc.CreateTextNode(" "+R.Entrenamientos.ToString()+" ");
-            Entrenamiento.AppendChild(EntrenamientoText);
+            XmlElement Capas = doc.CreateElement(string.Empty, "C", string.Empty);
+            Red.AppendChild(Capas);
+            var CapasConcat = "";
+            R.Capas.ForEach(x =>
+            {
+                CapasConcat += x.Neuronas.Count + ";";
+            });
+            CapasConcat = CapasConcat.Substring(0, CapasConcat.Length - 1);
+            XmlText CapasText = doc.CreateTextNode(" " + CapasConcat + " ");
+            Capas.AppendChild(CapasText);
+
+
+            XmlElement Funcion = doc.CreateElement(string.Empty, "F", string.Empty);
+            Red.AppendChild(Funcion);
+            var FuncionesConcat = "";
+            R.Capas.ForEach(x =>
+            {
+                FuncionesConcat = (int)x.Activacion.Funcion + ";";
+            });
+            FuncionesConcat = FuncionesConcat.Substring(0, FuncionesConcat.Length - 1);
+            XmlText FuncionText = doc.CreateTextNode(" "+FuncionesConcat+" ");
+            Funcion.AppendChild(FuncionText);
 
             XmlElement Patrones = doc.CreateElement(string.Empty, "P", string.Empty);
             var i = 0;
@@ -320,29 +339,52 @@ namespace DAL
 
             XmlElement Salidas = doc.CreateElement(string.Empty, "YD", string.Empty);
             var SalidasMap = " ";
-            /*foreach (var item in R.Salidas)
+            foreach (var item in R.Capas[R.Capas.Count - 1].Neuronas)
             {
-                SalidasMap += $"{item.YD};";
-            }*/
+                SalidasMap += $"{item.Salida.YD};";
+            }
             SalidasMap = SalidasMap.Substring(0, SalidasMap.Length - 1);
             SalidasMap += " ";
             XmlText SalidaText = doc.CreateTextNode(SalidasMap);
             Salidas.AppendChild(SalidaText);
             Red.AppendChild(Salidas);
 
-            XmlElement Pesos = doc.CreateElement(string.Empty, "W", string.Empty);
-            var PesosMap = " ";
-            /*foreach (var item in R.Pesos.Valores)
+            XmlElement Pesos = doc.CreateElement(string.Empty, "WS", string.Empty);            
+            foreach (var item in R.Capas)
             {
-                PesosMap += $"{item.Valor};";
-            }*/
-            PesosMap = PesosMap.Substring(0, PesosMap.Length - 1);
-            PesosMap += " ";
-            XmlText PesosText = doc.CreateTextNode(PesosMap);
-            Pesos.AppendChild(PesosText);
+                var PesosMap = "";
+                foreach (var neurona in item.Neuronas)
+                {
+                    foreach (var peso in neurona.PesosTemp.Valores)
+                    {
+                        PesosMap += $"{peso.Valor};";
+                    }
+                    PesosMap = PesosMap.Substring(0, PesosMap.Length - 1);
+                    PesosMap += " ";
+                }
+                XmlElement Peso = doc.CreateElement(string.Empty, "W", string.Empty);
+                PesosMap = PesosMap.Substring(0, PesosMap.Length - 1);
+                XmlText PesosText = doc.CreateTextNode(" " + PesosMap + " ");
+                Peso.AppendChild(PesosText);
+                Pesos.AppendChild(Peso);
+            }
             Red.AppendChild(Pesos);
 
-            XmlElement Umbrales = doc.CreateElement(string.Empty, "U", string.Empty);
+
+            XmlElement Umbrales = doc.CreateElement(string.Empty, "US", string.Empty);
+            foreach (var item in R.Capas)
+            {
+                var UmbralesConcat = "";
+                foreach (var _item in item.Neuronas)
+                {
+                    UmbralesConcat += _item.UmbralTemp.Valor+";";
+                }
+                XmlElement Umbral = doc.CreateElement(string.Empty, "U", string.Empty);
+                UmbralesConcat = UmbralesConcat.Substring(0, UmbralesConcat.Length - 1);
+                XmlText UmbralesText = doc.CreateTextNode(" " + UmbralesConcat + " ");
+                Umbral.AppendChild(UmbralesText);
+                Umbrales.AppendChild(Umbral);
+            }
             //XmlText UmbralText = doc.CreateTextNode($" {R.UmbralAnterior.Valor} ");
             //Umbrales.AppendChild(UmbralText);
             Red.AppendChild(Umbrales);
