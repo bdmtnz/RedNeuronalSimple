@@ -40,10 +40,13 @@ namespace GUI
                     dataGridView1.Columns.Add(Columna);
                     i++;
                 }
-                var _Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-                _Columna.HeaderText = "YR";
-                _Columna.Name = _Columna.HeaderText;
-                dataGridView1.Columns.Add(_Columna);
+                for (int s = 0; s < Red.Capas[Red.Capas.Count - 1].Neuronas.Count; s++)
+                {
+                    var _Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                    _Columna.HeaderText = "YR"+(s+1);
+                    _Columna.Name = _Columna.HeaderText;
+                    dataGridView1.Columns.Add(_Columna);
+                }
             }
         }
 
@@ -86,8 +89,11 @@ namespace GUI
                                 {
                                     Row.Add(it2.ToString());
                                 }
-                                var Yr = Red.Generalizar(item);
-                                Row.Add(Yr.ToString());
+                                var Yrs = Red.Generalizar(item);
+                                Yrs.ForEach(x =>
+                                {
+                                    Row.Add(x.ToString());
+                                });
                                 dataGridView1.Rows.Add(Row.ToArray());
                             }
                         }

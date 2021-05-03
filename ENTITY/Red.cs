@@ -41,6 +41,7 @@ namespace ENTITY
             //SE ITERA POR PATRÓN
             for (int i = 0; i < Patrones.Count; i++)
             {
+                PatronIndex = i;
                 //SE ITERA POR CAPAS
                 for (int c = 0; c < Capas.Count; c++)
                 {
@@ -73,16 +74,14 @@ namespace ENTITY
                     for (int n = 0; n < Capas[b].Neuronas.Count; n++)
                     {
                         Capas[b].Neuronas[n].CalcularError(
-                            Capas[b].Neuronas.Select( x => x.Pesos.Valores[n].Valor).ToList(), 
+                            Capas[b].Neuronas[n].Pesos.Valores.Select( x => x.Valor).ToList(), 
                             Capas[b].Neuronas.Select( x => x.Salida.Error).ToList()
                         );
                     }
                 }
-                /*//ERROR DE ITERACION
-                foreach (var item in Capas[Capas.Count - 1].Neuronas)
-                {
-                    ErrorIteracion += item.Salida.Error;
-                }*/
+                //BACK FOWARD
+                RecurrenteCapa(Capas[Capas.Count - 2], this);
+
                 //SUMA DE ERROR DE PATRON
                 ErrorPatron = 0;
                 var Errores = 0.0;
@@ -124,7 +123,10 @@ namespace ENTITY
             }
 
             //RECORRER LAS NEURONAS Y BUSCAR LAS ALLEGADAS A CERO
-            RecurrenteNeuronas(Capa.Neuronas, );
+            if (Capa.Indice == 0)
+                RecurrenteNeuronas(Capa, Patrones[PatronIndex].Entradas, Red.Capas[Red.Capas.Count - 1].ErrorPatron);
+            else
+                RecurrenteNeuronas(Capa, Red.Capas[Capa.Indice - 1].Neuronas.Select( x => x.Salida.Error).ToList(), Red.Capas[Red.Capas.Count - 1].ErrorPatron);
 
             //CRITERIO DE PARADA (PRIMERA CAPA)
             if (Capa.Indice > 0)
@@ -162,14 +164,18 @@ namespace ENTITY
                         {
                             if (!Capa.Neuronas[i].Usada && Menor.Salida.Error > Capa.Neuronas[i].Salida.Error)
                                 Menor = Capa.Neuronas[i];
-                            else if(Disponible == 0 && Habilitadas > 0)
+                            else if(Disponible == 0 && Capa.Neuronas[i].Habilitada)
+                            {
+                                Menor = Capa.Neuronas[i];
+                            }
+                            else
                             {
                                 Menor = Capa.Neuronas[i];
                             }
                         }
                     }
                     Cont++;
-                    if(Disponible == 0 && Habilitadas == 0)
+                    if(Disponible <= 0 && Habilitadas <= 0)
                     {
                         Seguir = false;
                         break;
@@ -207,17 +213,45 @@ namespace ENTITY
                 Min.Activar(Activacion, Entradas);
                 Min.Habilitada = false;
             }
-            else
+            /*else
             {
                 Min.Habilitada = true;
-            }
+            }*/
         }
 
-        public double Generalizar(Patron Patron)
+        public List<double> Generalizar(Patron Patron)
         {
-            //SE ITERA POR CAPAS
-            var YR = 0.0; 
-            return YR;
+            //SE ITERA POR PATRÓN
+            for (int i = 0; i < Patrones.Count; i++)
+            {
+                PatronIndex = i;
+                //SE ITERA POR CAPAS
+                for (int c = 0; c < Capas.Count; c++)
+                {
+                    //SE ITERA POR NEURONAS
+                    for (int n = 0; n < Capas[c].Neuronas.Count; n++)
+                    {
+                        //SE ENTRENAN LA NEURONAS
+                        if (c == 0)
+                        {
+                            //SE ENTRENA CON LAS ENTRADAS DE CADA PATRON
+                            Capas[c].Neuronas[n].Activar(
+                                Capas[c].Activacion,
+                                Patrones[i].Entradas
+                            );
+                        }
+                        else
+                        {
+                            //SE ENTRENA CON LAS SALIDAS DE LA ANTERIOR CAPA
+                            Capas[c].Neuronas[n].Activar(
+                                Capas[c].Activacion,
+                                Capas[c - 1].Neuronas.Select(x => x.Salida.YR).ToList()
+                            );
+                        }
+                    }
+                }                
+            }
+            return Capas[Capas.Count - 1].Neuronas.Select(n => n.Salida.YR).ToList();
         }
     }
     

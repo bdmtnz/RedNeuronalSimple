@@ -47,7 +47,7 @@ namespace BLL
                     //System.Threading.Thread.Sleep(600);
                     RedRepo.PostXML(Plataforma.Red, null);
 
-                    if (Plataforma.Red.ErrorMaxPermitido >= ErrorIteracion) break;
+                    //if (Plataforma.Red.ErrorMaxPermitido >= ErrorIteracion) break;
                 }
             }
         }

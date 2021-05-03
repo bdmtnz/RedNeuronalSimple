@@ -97,7 +97,7 @@ namespace DAL
                                         {
                                             return null;
                                         }
-                                        Red.Capas.Add(new Capa());
+                                        Red.Capas.Add(new Capa(i));
                                         for (int j = 0; j < Int32.Parse(Capas[i]); j++)
                                         {
                                             Red.Capas[i].Neuronas.Add(new Neurona());
@@ -180,6 +180,7 @@ namespace DAL
                                             }
                                         }
                                         Red.Capas[W].Neuronas[i].PesosTemp = new ENTITY.Pesos(Pesos[i]);
+                                        Red.Capas[W].Neuronas[i].Pesos = new ENTITY.Pesos(Pesos[i]);
                                     }
                                     ++W;
                                     break;
@@ -195,6 +196,7 @@ namespace DAL
                                                 return null;
                                             }
                                             Red.Capas[U].Neuronas[i].Umbral = new Umbral(Double.Parse(Peso[i]));
+                                            Red.Capas[U].Neuronas[i].UmbralTemp = new Umbral(Double.Parse(Peso[i]));
                                         }
                                     }
                                     ++W;
@@ -317,7 +319,7 @@ namespace DAL
             var FuncionesConcat = "";
             R.Capas.ForEach(x =>
             {
-                FuncionesConcat = (int)x.Activacion.Funcion + ";";
+                FuncionesConcat += (int)x.Activacion.Funcion + ";";
             });
             FuncionesConcat = FuncionesConcat.Substring(0, FuncionesConcat.Length - 1);
             XmlText FuncionText = doc.CreateTextNode(" "+FuncionesConcat+" ");
@@ -339,11 +341,15 @@ namespace DAL
 
             XmlElement Salidas = doc.CreateElement(string.Empty, "YD", string.Empty);
             var SalidasMap = " ";
-            foreach (var item in R.Capas[R.Capas.Count - 1].Neuronas)
+            R.Patrones.ForEach(P =>
             {
-                SalidasMap += $"{item.Salida.YD};";
-            }
-            SalidasMap = SalidasMap.Substring(0, SalidasMap.Length - 1);
+                P.SalidasSupervisada.ForEach(S =>
+                {
+                    SalidasMap += $"{S.YD};";
+                });
+                SalidasMap = SalidasMap.Substring(0, SalidasMap.Length - 1);
+                SalidasMap += " ";
+            });
             SalidasMap += " ";
             XmlText SalidaText = doc.CreateTextNode(SalidasMap);
             Salidas.AppendChild(SalidaText);

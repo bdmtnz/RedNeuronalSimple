@@ -80,11 +80,13 @@ namespace GUI
             NbRata.Value = (decimal)N.Rata;
             LbPeso.Text = N.Capas.Count.ToString() + " M";
             LbUmbral.Text = N.Capas.Count.ToString() + " V";
+            TbNeuronas.Text = "";
             foreach (var item in N.Capas)
             {
                 TbNeuronas.Text += item.Neuronas.Count + ";";
             }
             TbNeuronas.Text = TbNeuronas.Text.Remove(TbNeuronas.Text.Length - 1);
+            TbFuncion.Text = "";
             foreach (var item in N.Capas)
             {
                 TbFuncion.Text += item.Activacion.Funcion.ToString()[0] + ";";

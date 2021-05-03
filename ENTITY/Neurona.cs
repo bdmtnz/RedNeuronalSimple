@@ -74,7 +74,7 @@ namespace ENTITY
         {
             //SOBREESCRIBIR PESOS TEMP EN PESOS
             Pesos.Valores = PesosTemp.Valores.Select(i => new Peso(i.Valor)).ToList();
-            PesosTemp.Valores.Clear();
+            //PesosTemp.Valores.Clear();
         }
 
     }
