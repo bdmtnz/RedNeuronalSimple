@@ -31,3 +31,14 @@ C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\BLL\obj\Debug\BL
 C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\BLL\obj\Debug\BLL.dll
 C:\Users\jhean\Documents\2021-1\Inteligencia artificial\Neurona\BLL\obj\Debug\BLL.pdb
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\bin\Debug\BLL.dll
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\bin\Debug\BLL.pdb
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\bin\Debug\DAL.dll
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\bin\Debug\ENTITY.dll
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\bin\Debug\DAL.pdb
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\bin\Debug\ENTITY.pdb
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\obj\Debug\BLL.dll
+C:\Users\gerson\Documents\IA\RedMadaline\BLL\obj\Debug\BLL.pdb

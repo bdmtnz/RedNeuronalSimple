@@ -253,7 +253,58 @@ namespace ENTITY
             }
             return Capas[Capas.Count - 1].Neuronas.Select(n => n.Salida.YR).ToList();
         }
+        public void BuscarErrores(int buscar, Capa capa)
+        {
+            int cantidad = capa.Neuronas.Count;
+            List<int> indices = new List<int>();
+            int index=0;
+            double errormin=0.0;
+            bool encontro=false;
+            for (int i = 0; i < buscar; i++)
+            {
+                errormin = 9999.9999;
+                encontro = false;
+                for (int j = 0; j < cantidad; j++)
+                {
+                    if (capa.Neuronas[j].Salida.Error<=errormin && capa.Neuronas[j].Habilitada==true)
+                    {
+                        errormin = capa.Neuronas[j].Salida.Error;
+                        index = j;
+                        encontro = true;
+                    }
+                }
+                if (encontro==false)
+                {
+                    break;
+                }
+                else
+                {
+                    indices.Add(index);
+                    capa.Neuronas[index].Habilitada = false;
+                }
+            }
+            for (int i = 0; i < indices.Count; i++)
+            {
+                //Aqui es donde se entrenan los pesos y umbrales nuevamente
+                List<double> entradas;
+                if (capa.Indice ==0)
+                {
+                    entradas = Patrones[PatronIndex].Entradas;
+                }
+                else
+                {
+                    entradas = Capas[capa.Indice - 1].Neuronas.Select(x=>x.Salida.YR).ToList();
+                }
+                CompararErrores(capa.Neuronas[i],capa.ErrorPatron,capa.Activacion,entradas);
+            }
+
+            buscar++;
+            if (encontro==true && buscar<cantidad)
+            {
+                BuscarErrores(buscar, capa);
+            }
+        }
     }
     
-
+    
 }
