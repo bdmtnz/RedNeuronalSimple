@@ -179,7 +179,7 @@ namespace DAL
                                                 return null;
                                             }
                                         }
-                                        Red.Capas[W].Neuronas[i].PesosTemp = new ENTITY.Pesos(Pesos[i]);
+                                        //Red.Capas[W].Neuronas[i].PesosTemp = new ENTITY.Pesos(Pesos[i]);
                                         Red.Capas[W].Neuronas[i].Pesos = new ENTITY.Pesos(Pesos[i]);
                                     }
                                     ++W;
@@ -196,7 +196,7 @@ namespace DAL
                                                 return null;
                                             }
                                             Red.Capas[U].Neuronas[i].Umbral = new Umbral(Double.Parse(Peso[i]));
-                                            Red.Capas[U].Neuronas[i].UmbralTemp = new Umbral(Double.Parse(Peso[i]));
+                                            //Red.Capas[U].Neuronas[i].UmbralTemp = new Umbral(Double.Parse(Peso[i]));
                                         }
                                     }
                                     ++W;

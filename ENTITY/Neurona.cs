@@ -31,8 +31,15 @@ namespace ENTITY
         {
             var Productos = 0.0;
             for (int i = 0; i < Entradas.Count; i++)
-                Productos += Entradas[i] * PesosTemp.Valores[i].Valor;
+                Productos += Entradas[i] * Pesos.Valores[i].Valor;
             return Productos - Umbral.Valor;
+        }
+        private double CalcularSomaTemp(List<double> Entradas)
+        {
+            var Productos = 0.0;
+            for (int i = 0; i < Entradas.Count; i++)
+                Productos += Entradas[i] * PesosTemp.Valores[i].Valor;
+            return Productos - UmbralTemp.Valor;
         }
 
         public void Activar(Activacion Activacion, List<double> Entradas)
@@ -41,7 +48,7 @@ namespace ENTITY
         }
         public double ActivarTemp(Activacion Activacion, List<double> Entradas)
         {
-            return Activacion.Activar(CalcularSoma(Entradas));
+            return Activacion.Activar(CalcularSomaTemp(Entradas));
         }
 
         //private void EntrenarPesos(int Fila, Patron Patron, double Rata)
@@ -49,6 +56,19 @@ namespace ENTITY
         //LAS ENTRADAS SON LAS SALIDAS DE CADA NEURONA DE LA CAPA INMEDIATAMENTE ANTERIOR
         public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorPatron)
         {
+            for (int j = 0; j < Pesos.Valores.Count; j++)
+            {
+                Pesos.Valores[j].Entrenar(
+                    Pesos.Valores[j].Valor,
+                    Rata,
+                    ErrorPatron,
+                    Entradas[j]
+                );
+            }
+        }
+        public void EntrenarPesosTemp(List<double> Entradas, double Rata, double ErrorPatron)
+        {
+            PesosTemp.Valores = Pesos.Valores.Select(x=>new Peso(x.Valor)).ToList();
             for (int j = 0; j < PesosTemp.Valores.Count; j++)
             {
                 PesosTemp.Valores[j].Entrenar(
