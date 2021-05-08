@@ -12,6 +12,7 @@ namespace ENTITY
         public double YR { get; set; }
         public double Error => YD - YR;
 
+
         public Salida()
         {
 

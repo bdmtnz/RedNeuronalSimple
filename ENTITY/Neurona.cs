@@ -36,6 +36,7 @@ namespace ENTITY
         }
         private double CalcularSomaTemp(List<double> Entradas)
         {
+            //VALIDAR LOS PESOS TEMPORALES
             var Productos = 0.0;
             for (int i = 0; i < Entradas.Count; i++)
                 Productos += Entradas[i] * PesosTemp.Valores[i].Valor;
@@ -46,9 +47,12 @@ namespace ENTITY
         {            
             Salida.YR = Activacion.Activar(CalcularSoma(Entradas));
         }
-        public double ActivarTemp(Activacion Activacion, List<double> Entradas)
+        public Salida ActivarTemp(Activacion Activacion, List<double> Entradas)
         {
-            return Activacion.Activar(CalcularSomaTemp(Entradas));
+            var salida = new Salida();
+            salida.YR = Activacion.Activar(CalcularSomaTemp(Entradas));
+            salida.YD = Salida.YD;
+            return salida;
         }
 
         //private void EntrenarPesos(int Fila, Patron Patron, double Rata)

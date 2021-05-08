@@ -58,7 +58,7 @@ namespace ENTITY
                             );
                             //Capas[j].Entrenar(Patrones[i], Rata, Xo);
                         }
-                        else
+                        else 
                         {
                             //SE ENTRENA CON LAS SALIDAS DE LA ANTERIOR CAPA
                             Capas[c].Neuronas[n].Activar( 
@@ -66,20 +66,25 @@ namespace ENTITY
                                 Capas[c - 1].Neuronas.Select( x => x.Salida.YR).ToList()
                             );
                         }
+                        
+                    }
+                    
+                }
+                
+                //SE CALCULA LOS ERRORES NO LINEALES DE LAS CAPAS
+                for (int t = Capas.Count - 2; t >=0 ; t--)
+                {
+                    for (int k = 0; k < Capas[t].Neuronas.Count; k++)
+                    {
+                        Capas[t].Neuronas[k].CalcularError(Capas[t].Neuronas[k].Pesos.Valores.Select(x=>x.Valor).ToList(),
+                            Capas[t+1].Neuronas.Select(x=>x.Salida.Error).ToList());
                     }
                 }
-                //BACKFOWARD
-                //for (int b = Capas.Count - 2; b >= 0 ; b--)
-                //{
-                //    for (int n = 0; n < Capas[b].Neuronas.Count; n++)
-                //    {
-                //        Capas[b].Neuronas[n].CalcularError(
-                //            Capas[b].Neuronas[n].Pesos.Valores.Select( x => x.Valor).ToList(), 
-                //            Capas[b].Neuronas.Select( x => x.Salida.Error).ToList()
-                //        );
-                //    }
-                //}
+                //MODIFICAR PESOS Y UMBRALES
+                for (int j = 0; j < Capas.Count-1; j++)
+                {
 
+                }
                 //BACK FOWARD
                 RecurrenteCapa(Capas[Capas.Count - 1], this);
 
@@ -178,6 +183,8 @@ namespace ENTITY
         }
         public void BuscarNeurona(int buscar, Capa capa)
         {
+            List<double> salidasTem = new List<double>();
+            
             int cantidad = capa.Neuronas.Count;
             List<int> indices = new List<int>();
             int index = 0;
@@ -218,14 +225,31 @@ namespace ENTITY
                 {
                     entradas = Capas[capa.Indice - 1].Neuronas.Select(x => x.Salida.YR).ToList();
                 }
-                CompararErrores(capa.Neuronas[i], capa.ErrorPatron, capa.Activacion, entradas);
+                salidasTem.Add(CompararErrores(capa.Neuronas[i], capa.ErrorPatron, capa.Activacion, entradas));
             }
             //Aqui se reentrena las salidas
+
             ReEntrenar();
+            //Se aceptan o rechazan los pesos y umbrales
             for (int i = 0; i < indices.Count; i++)
             {
-                //Aqui es donde se entrenan los pesos y umbrales nuevamente
-                
+                List<double> entradas;
+                double ErrorAnt = capa.Neuronas[indices[i]].Salida.Error;
+                if (salidasTem[i]< ErrorAnt)
+                {
+                    if (capa.Indice == 0)
+                    {
+                        entradas = Patrones[PatronIndex].Entradas;
+                    }
+                    else
+                    {
+                        entradas = Capas[capa.Indice - 1].Neuronas.Select(x => x.Salida.YR).ToList();
+                    }
+                    capa.Neuronas[indices[i]].AceptarPesos();
+                    capa.Neuronas[indices[i]].Activar(capa.Activacion, entradas);
+                    //Min.Habilitada = false;
+                }
+
             }
             buscar++;
             if (encontro == true && buscar < cantidad)
@@ -299,21 +323,16 @@ namespace ENTITY
             }
         }
 
-        private void CompararErrores(Neurona Min, double ErrorPatron, Activacion Activacion, List<double> Entradas)
+        private double CompararErrores(Neurona Min, double ErrorPatron, Activacion Activacion, List<double> Entradas)
         {
             //RECALCULAMOS PESOS DE LA SELECCIONADA
             var ErrorAnt = Min.Salida.Error;
             Min.EntrenarPesosTemp(Entradas, Rata, ErrorPatron);
-            var Salida = Min.ActivarTemp(Activacion, Entradas);
+            var ErrorTemp = Min.ActivarTemp(Activacion, Entradas);
             Min.Usada = true;
-            
+            return ErrorTemp.Error;
             //COMPARAMOS PARA HACER PERMANENTE O NO
-            if (ErrorAnt < Salida)
-            {
-                Min.AceptarPesos();
-                Min.Activar(Activacion, Entradas);
-                //Min.Habilitada = false;
-            }
+            
             /*else
             {
                 Min.Habilitada = true;
