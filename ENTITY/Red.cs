@@ -79,16 +79,17 @@ namespace ENTITY
                         
                     }
                     
-                }
-                
+                }              
                 
                 //SE CALCULA LOS ERRORES NO LINEALES DE LAS CAPAS
                 for (int t = Capas.Count - 2; t >=0 ; t--)
                 {
                     for (int k = 0; k < Capas[t].Neuronas.Count; k++)
                     {
-                        Capas[t].Neuronas[k].CalcularError(Capas[t].Neuronas[k].Pesos.Valores.Select(x=>x.Valor).ToList(),
-                            Capas[t+1].Neuronas.Select(x=>x.Salida.Error).ToList());
+                        Capas[t].Neuronas[k].CalcularError(
+                            Capas[t+1].Neuronas.Select( n => n.Pesos.Valores[k].Valor ).ToList(),
+                            Capas[t+1].Neuronas.Select( x => x.Salida.Error ).ToList()
+                        );
                     }
                 }
                 //SUMA DE ERROR DE PATRON
@@ -185,8 +186,10 @@ namespace ENTITY
                 {
                     for (int k = 0; k < Capas[t].Neuronas.Count; k++)
                     {
-                        Capas[t].Neuronas[k].CalcularError(Capas[t].Neuronas[k].PesosTemp.Valores.Select(x => x.Valor).ToList(),
-                            Capas[t + 1].Neuronas.Select(x => x.Salida.Error).ToList());
+                        Capas[t].Neuronas[k].CalcularError(
+                            Capas[t + 1].Neuronas.Select(n => n.PesosTemp.Valores[k].Valor).ToList(),
+                            Capas[t + 1].Neuronas.Select(x => x.Salida.Error).ToList()
+                        );
                     }
                 }
 
