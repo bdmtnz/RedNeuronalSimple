@@ -87,15 +87,15 @@ namespace ENTITY
                 var Errores = 0.0;
                 Capas[Capas.Count - 1].Neuronas.ForEach(x =>
                 {
-                    Errores += x.Salida.Error;
+                    Errores += Math.Abs(x.Salida.Error);
                 });
                 ErrorPatron += Errores / Capas[Capas.Count - 1].Neuronas.Count;
                 //MODIFICAR PESOS Y UMBRALES
                 //Recorro las capas
-                for (int j = 0; j < Capas.Count - 1; j++)
+                for (int j = 0; j < Capas.Count; j++)
                 {
                     //Recorro las neuronas
-                    for (int h = 0; h < Capas[j].Neuronas.Count-1; h++)
+                    for (int h = 0; h < Capas[j].Neuronas.Count; h++)
                     {
                         if (j==Capas.Count-1)
                         {

@@ -30,8 +30,10 @@ namespace ENTITY
         private double CalcularSoma(List<double> Entradas)
         {
             var Productos = 0.0;
-            for (int i = 0; i < Entradas.Count-1; i++)
+            for (int i = 0; i < Entradas.Count; i++) {
                 Productos += Entradas[i] * Pesos.Valores[i].Valor;
+            }
+                
             return Productos - Umbral.Valor;
         }
         private double CalcularSomaTemp(List<double> Entradas)
