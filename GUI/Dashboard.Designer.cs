@@ -167,7 +167,7 @@
             this.BtnPausa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.BtnPausa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnPausa.Location = new System.Drawing.Point(659, 27);
+            this.BtnPausa.Location = new System.Drawing.Point(660, 65);
             this.BtnPausa.Name = "BtnPausa";
             this.BtnPausa.Size = new System.Drawing.Size(30, 30);
             this.BtnPausa.TabIndex = 9;
