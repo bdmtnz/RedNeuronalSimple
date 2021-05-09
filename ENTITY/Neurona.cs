@@ -9,6 +9,7 @@ namespace ENTITY
     public class Neurona
     {
         public Salida Salida { get; set; }
+        public Salida SalidaTemp { get; set; }
         public Pesos Pesos { get; set; }
         public Pesos PesosTemp { get; set; }
         public Umbral Umbral { get; set; }
@@ -21,6 +22,7 @@ namespace ENTITY
             Pesos = new Pesos();
             PesosTemp = new Pesos();
             Salida = new Salida();
+            SalidaTemp = new Salida();
             Umbral = new Umbral();
             UmbralTemp = new Umbral();
             Habilitada = true;
@@ -49,13 +51,10 @@ namespace ENTITY
         {            
             Salida.YR = Activacion.Activar(CalcularSoma(Entradas));
         }
-        public Salida ActivarTemp(Activacion Activacion, List<double> Entradas)
+        public void ActivarTemp(Activacion Activacion, List<double> Entradas)
         {
-            
-            var salida = new Salida();
-            salida.YR = Activacion.Activar(CalcularSomaTemp(Entradas));
-            salida.YD = Salida.YD;
-            return salida;
+            SalidaTemp.YD = Salida.YD;
+            SalidaTemp.YR = Activacion.Activar(CalcularSomaTemp(Entradas));            
         }
 
         //private void EntrenarPesos(int Fila, Patron Patron, double Rata)
@@ -94,6 +93,16 @@ namespace ENTITY
                 Error += Pesos[i] * Errores[i];
             }
             Salida.SetError(Error);
+        }
+
+        public void CalcularErrorTemp(List<double> Pesos, List<double> Errores)
+        {
+            var Error = 0.0;
+            for (int i = 0; i < Pesos.Count; i++)
+            {
+                Error += Pesos[i] * Errores[i];
+            }
+            SalidaTemp.SetError(Error);
         }
 
         public void AceptarPesos()

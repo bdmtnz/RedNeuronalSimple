@@ -101,7 +101,7 @@ namespace ENTITY
                 });
                 ErrorPatron += Errores / Capas[Capas.Count - 1].Neuronas.Count;
                 ErrorIteracion += ErrorPatron;
-                //MODIFICAR PESOS Y UMBRALES
+                //MODIFICAR PESOS Y UMBRALES VALIDADOOOOO
                 //Recorro las capas
                 for (int j = 0; j < Capas.Count; j++)
                 {
@@ -110,24 +110,47 @@ namespace ENTITY
                     {
                         if (j==Capas.Count-1)
                         {
-                            Capas[j].Neuronas[h].EntrenarPesos(Capas[j - 1].Neuronas.Select(x => x.Salida.YR).ToList(),
-                                                            Rata, Capas[j].Neuronas[h].Salida.Error);
-                            Capas[j].Neuronas[h].Umbral.Entrenar(Capas[j].Neuronas[h].Umbral.Valor, Rata,
-                                 Capas[j].Neuronas[h].Salida.Error, 1);
+                            //public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorPatron)
+                            Capas[j].Neuronas[h].EntrenarPesos(
+                                Capas[j - 1].Neuronas.Select(x => x.Salida.YR).ToList(),
+                                Rata, 
+                                Capas[j].Neuronas[h].Salida.Error
+                            );
+                            //public void Entrenar(double AnteriorValor, double Rata, double ErrorSalida, double Entrada)
+                            Capas[j].Neuronas[h].Umbral.Entrenar(
+                                Capas[j].Neuronas[h].Umbral.Valor, 
+                                Rata,
+                                Capas[j].Neuronas[h].Salida.Error, 
+                                Xo
+                            );
                         }
                         else if(j==0)
                         {
-                            Capas[j].Neuronas[h].EntrenarPesos(Patrones[PatronIndex].Entradas,
-                                                            Rata, ErrorPatron);
-                            Capas[j].Neuronas[h].Umbral.Entrenar(Capas[j].Neuronas[h].Umbral.Valor, Rata,
-                                ErrorPatron, 1);
+                            Capas[j].Neuronas[h].EntrenarPesos(
+                                Patrones[PatronIndex].Entradas,
+                                Rata, 
+                                ErrorPatron
+                            );
+                            Capas[j].Neuronas[h].Umbral.Entrenar(
+                                Capas[j].Neuronas[h].Umbral.Valor, 
+                                Rata,
+                                ErrorPatron, 
+                                Xo
+                            );
                         }
                         else
                         {
-                            Capas[j].Neuronas[h].EntrenarPesos(Capas[j - 1].Neuronas.Select(x => x.Salida.YR).ToList(),
-                                                            Rata, ErrorPatron);
-                            Capas[j].Neuronas[h].Umbral.Entrenar(Capas[j].Neuronas[h].Umbral.Valor, Rata,
-                                ErrorPatron, 1);
+                            Capas[j].Neuronas[h].EntrenarPesos(
+                                Capas[j - 1].Neuronas.Select(x => x.Salida.YR).ToList(),
+                                Rata, 
+                                ErrorPatron
+                            );
+                            Capas[j].Neuronas[h].Umbral.Entrenar(
+                                Capas[j].Neuronas[h].Umbral.Valor, 
+                                Rata,
+                                ErrorPatron, 
+                                Xo
+                            );
                         }
                         //Se llenan los pesosy umbrales temporales con los permanenetes
                         Capas[j].Neuronas[h].PesosTemp.Valores = Capas[j].Neuronas[h].Pesos.Valores.Select(x => new Peso(x.Valor)).ToList();
@@ -150,7 +173,6 @@ namespace ENTITY
             //SE ITERA POR PATRÓN
             for (int i = 0; i < Patrones.Count; i++)
             {
-                PatronIndex = i;
                 //SE ITERA POR CAPAS
                 for (int c = 0; c < Capas.Count; c++)
                 {
@@ -186,9 +208,9 @@ namespace ENTITY
                 {
                     for (int k = 0; k < Capas[t].Neuronas.Count; k++)
                     {
-                        Capas[t].Neuronas[k].CalcularError(
+                        Capas[t].Neuronas[k].CalcularErrorTemp(
                             Capas[t + 1].Neuronas.Select(n => n.PesosTemp.Valores[k].Valor).ToList(),
-                            Capas[t + 1].Neuronas.Select(x => x.Salida.Error).ToList()
+                            Capas[t + 1].Neuronas.Select(x => x.SalidaTemp.Error).ToList()
                         );
                     }
                 }
@@ -202,10 +224,7 @@ namespace ENTITY
             BuscarNeurona(1, Capa);
             //CRITERIO DE PARADA (PRIMERA CAPA)
             if (Capa.Indice > 0)
-                RecurrenteCapa(Capas[Capa.Indice - 1], Red);
-            
-
-            
+                RecurrenteCapa(Capas[Capa.Indice - 1], Red);  
         }
         public void BuscarNeurona(int buscar, Capa capa)
         {
@@ -255,13 +274,12 @@ namespace ENTITY
                 salidasAnt.Add(RecalcularPesosUmbrales(capa.Neuronas[i], capa.ErrorPatron, capa.Activacion, entradas));
             }
             //Aqui se reentrena las salidas
-
             ReEntrenar();
             //Se aceptan o rechazan los pesos y umbrales
             for (int i = 0; i < indices.Count; i++)
             {
                 List<double> entradas;
-                ErrorTemp = capa.Neuronas[indices[i]].Salida.Error;
+                ErrorTemp = capa.Neuronas[indices[i]].SalidaTemp.Error;
                 if (ErrorTemp < salidasAnt[i])
                 {
                     if (capa.Indice == 0)
@@ -274,15 +292,11 @@ namespace ENTITY
                     }
                     capa.Neuronas[indices[i]].AceptarPesos();
                     capa.Neuronas[indices[i]].Activar(capa.Activacion, entradas);
-
-
-                }
-                else
-                {
-                    capa.Neuronas[indices[i]].Salida.SetError(salidasAnt[i]);
-                }
+                    capa.Neuronas[indices[i]].Salida.SetError(ErrorTemp);
+                }             
 
             }
+            //CRITERIO DE PARADA DE BUSQUEDA DE NEURONAS ALLEGADAS A CERO
             buscar++;
             if (encontro == true && buscar < cantidad)
             {
