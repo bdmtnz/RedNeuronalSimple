@@ -199,7 +199,7 @@ namespace DAL
                                             //Red.Capas[U].Neuronas[i].UmbralTemp = new Umbral(Double.Parse(Peso[i]));
                                         }
                                     }
-                                    ++W;
+                                    ++U;
                                     break;
                             }
                         }
@@ -373,6 +373,8 @@ namespace DAL
                 XmlText PesosText = doc.CreateTextNode(" " + PesosMap + " ");
                 Peso.AppendChild(PesosText);
                 Pesos.AppendChild(Peso);
+                Console.WriteLine(PesosMap);
+                Console.WriteLine("-------");
             }
             Red.AppendChild(Pesos);
 

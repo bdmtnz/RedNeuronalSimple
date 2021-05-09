@@ -51,7 +51,7 @@ namespace ENTITY
         }
         public Salida ActivarTemp(Activacion Activacion, List<double> Entradas)
         {
-            PesosTemp.Valores = Pesos.Valores.Select(x => new Peso(x.Valor)).ToList();
+            
             var salida = new Salida();
             salida.YR = Activacion.Activar(CalcularSomaTemp(Entradas));
             salida.YD = Salida.YD;
@@ -75,7 +75,6 @@ namespace ENTITY
         }
         public void EntrenarPesosTemp(List<double> Entradas, double Rata, double ErrorPatron)
         {
-            PesosTemp.Valores = Pesos.Valores.Select(x=>new Peso(x.Valor)).ToList();
             for (int j = 0; j < PesosTemp.Valores.Count; j++)
             {
                 PesosTemp.Valores[j].Entrenar(
