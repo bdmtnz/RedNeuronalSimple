@@ -37,6 +37,7 @@ namespace ENTITY
             Umbral = new Umbral();
             UmbralTemp = new Umbral();
             this.Indice = Indice;
+            Habilitada = true;
         }
 
         //public void CalcularSoma(Pesos Pesos, Patron Patron)
@@ -122,7 +123,12 @@ namespace ENTITY
             Pesos.Valores = PesosTemp.Valores.Select(i => new Peso(i.Valor)).ToList();
             //PesosTemp.Valores.Clear();
         }
-
+        public void AceptarUmbrales()
+        {
+            //SOBREESCRIBIR PESOS TEMP EN Umbrales
+            Umbral.Valor = UmbralTemp.Valor;
+            //PesosTemp.Valores.Clear();
+        }
     }
 
 }

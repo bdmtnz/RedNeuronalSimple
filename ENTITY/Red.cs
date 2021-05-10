@@ -245,8 +245,9 @@ namespace ENTITY
         public void BuscarNeurona(int buscar, Capa capa,double ErrorPatron)
         {
             double ErrorTemp = 0.0;
-            List<double> salidasAnt = new List<double>();
-            
+            double ErrorAnt = 0.0;
+
+
             int cantidad = capa.Neuronas.Count;
             List<int> indices = new List<int>();
             int index = 0;
@@ -287,28 +288,21 @@ namespace ENTITY
                 {
                     entradas = Capas[capa.Indice - 1].Neuronas.Select(x => x.Salida.YR).ToList();
                 }
-                salidasAnt.Add(RecalcularPesosUmbrales(capa.Neuronas[i], ErrorPatron, capa.Activacion, entradas));
+                RecalcularPesosUmbrales(capa.Neuronas[i], ErrorPatron, capa.Activacion, entradas);
             }
             //Aqui se reentrena las salidas
             ReEntrenar();
             //Se aceptan o rechazan los pesos y umbrales
             for (int i = 0; i < indices.Count; i++)
             {
-                List<double> entradas;
                 ErrorTemp = capa.Neuronas[indices[i]].SalidaTemp.Error;
-                if (ErrorTemp < salidasAnt[i])
+                ErrorAnt = capa.Neuronas[indices[i]].Salida.Error;
+                if (ErrorTemp < ErrorAnt)
                 {
-                    if (capa.Indice == 0)
-                    {
-                        entradas = Patrones[PatronIndex].Entradas;
-                    }
-                    else
-                    {
-                        entradas = Capas[capa.Indice - 1].Neuronas.Select(x => x.Salida.YR).ToList();
-                    }
-                    capa.Neuronas[indices[i]].AceptarPesos();
-                    capa.Neuronas[indices[i]].Activar(capa.Activacion, entradas);
-                    capa.Neuronas[indices[i]].Salida.Error=ErrorTemp;
+                    capa.Neuronas[indices[i]].Pesos= capa.Neuronas[indices[i]].PesosTemp;
+                    capa.Neuronas[indices[i]].Umbral = capa.Neuronas[indices[i]].UmbralTemp;
+                    capa.Neuronas[indices[i]].Salida = capa.Neuronas[indices[i]].SalidaTemp;
+
                 }             
 
             }
@@ -320,7 +314,7 @@ namespace ENTITY
             }
         }
         
-        private double RecalcularPesosUmbrales(Neurona Min, double ErrorPatron, Activacion Activacion, List<double> Entradas)
+        private void RecalcularPesosUmbrales(Neurona Min, double ErrorPatron, Activacion Activacion, List<double> Entradas)
         {
             //RECALCULAMOS PESOS DE LA SELECCIONADA
             var ErrorAnt = Min.Salida.Error;
@@ -328,7 +322,6 @@ namespace ENTITY
             Min.UmbralTemp.EntrenarTemp(Min.Umbral.Valor, Rata, ErrorPatron, 1);
             //var ErrorTemp = Min.ActivarTemp(Activacion, Entradas);
             //Min.Usada = true;
-            return ErrorAnt;
         }
 
         public List<double> Generalizar(Patron Patron)

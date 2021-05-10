@@ -61,14 +61,14 @@ namespace GUI
             this.grafica1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.grafica1.Legends.Add(legend1);
-            this.grafica1.Location = new System.Drawing.Point(386, 30);
+            this.grafica1.Location = new System.Drawing.Point(16, 40);
             this.grafica1.Name = "grafica1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.grafica1.Series.Add(series1);
-            this.grafica1.Size = new System.Drawing.Size(346, 155);
+            this.grafica1.Size = new System.Drawing.Size(754, 155);
             this.grafica1.TabIndex = 0;
             this.grafica1.Text = "grafica1";
             // 
@@ -76,7 +76,7 @@ namespace GUI
             // 
             this.NombreGrafica2.AutoSize = true;
             this.NombreGrafica2.BackColor = System.Drawing.Color.White;
-            this.NombreGrafica2.Location = new System.Drawing.Point(473, 210);
+            this.NombreGrafica2.Location = new System.Drawing.Point(267, 214);
             this.NombreGrafica2.Name = "NombreGrafica2";
             this.NombreGrafica2.Size = new System.Drawing.Size(90, 13);
             this.NombreGrafica2.TabIndex = 3;
@@ -86,7 +86,7 @@ namespace GUI
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(501, 24);
+            this.label2.Location = new System.Drawing.Point(295, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 4;
@@ -97,7 +97,7 @@ namespace GUI
             this.LbIteracion.AutoSize = true;
             this.LbIteracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbIteracion.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbIteracion.Location = new System.Drawing.Point(212, 169);
+            this.LbIteracion.Location = new System.Drawing.Point(106, 9);
             this.LbIteracion.Name = "LbIteracion";
             this.LbIteracion.Size = new System.Drawing.Size(18, 20);
             this.LbIteracion.TabIndex = 9;
@@ -108,7 +108,7 @@ namespace GUI
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(118, 169);
+            this.label3.Location = new System.Drawing.Point(12, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 20);
             this.label3.TabIndex = 8;
@@ -119,7 +119,7 @@ namespace GUI
             this.LbError.AutoSize = true;
             this.LbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbError.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbError.Location = new System.Drawing.Point(212, 194);
+            this.LbError.Location = new System.Drawing.Point(334, 9);
             this.LbError.Name = "LbError";
             this.LbError.Size = new System.Drawing.Size(18, 20);
             this.LbError.TabIndex = 13;
@@ -130,7 +130,7 @@ namespace GUI
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(162, 194);
+            this.label8.Location = new System.Drawing.Point(284, 9);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 20);
             this.label8.TabIndex = 12;
@@ -150,14 +150,14 @@ namespace GUI
             this.chart2.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(386, 219);
+            this.chart2.Location = new System.Drawing.Point(16, 223);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(346, 155);
+            this.chart2.Size = new System.Drawing.Size(754, 155);
             this.chart2.TabIndex = 14;
             this.chart2.Text = "chart1";
             // 
