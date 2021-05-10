@@ -33,6 +33,7 @@ namespace ENTITY
             ErrorMaxPermitido = 0.1;
             Patrones = new List<Patron>();
         }
+
         private void cargarYD(Patron patron)
         {
             for (int i = 0; i < patron.SalidasSupervisada.Count; i++)
@@ -219,6 +220,7 @@ namespace ENTITY
             
          
         }
+        
         private void RecurrenteCapa(Capa Capa, Red Red)
         {
             BuscarNeurona(1, Capa);
@@ -226,6 +228,7 @@ namespace ENTITY
             if (Capa.Indice > 0)
                 RecurrenteCapa(Capas[Capa.Indice - 1], Red);  
         }
+        
         public void BuscarNeurona(int buscar, Capa capa)
         {
             double ErrorTemp = 0.0;
@@ -303,7 +306,6 @@ namespace ENTITY
                 BuscarNeurona(buscar, capa);
             }
         }
-
         
         private double RecalcularPesosUmbrales(Neurona Min, double ErrorPatron, Activacion Activacion, List<double> Entradas)
         {
@@ -349,6 +351,41 @@ namespace ENTITY
                 }                
             }
             return Capas[Capas.Count - 1].Neuronas.Select(n => n.Salida.YR).ToList();
+        }
+
+        public void ReiniciarRed()
+        {
+            var R = new Random();
+            //GENERAR ALEATORIAMENTE LOS PESOS Y UMBRALES DE CADA NEURONA DE CADA CAPA
+            //RESPETANDO LOS LIMITES EN CADA CASO
+            for (int i = 0; i < Capas.Count; i++)
+            {
+                //SE RECORRE LAS NEURONAS DE CADA CAPA
+                for (int j = 0; j < Capas[i].Neuronas.Count; j++)
+                {
+                    //GENERAMOS ALEATORIAMENTE LOS PESOS
+                    Capas[i].Neuronas[j].Pesos.Valores = Capas[i].Neuronas[j].Pesos.Valores.Select(x => new Peso(R.NextDouble())).ToList();
+                    Capas[i].Neuronas[j].PesosTemp.Valores.Clear();
+                    //GENERAMOS ALEATORIAMENTE LOS UMBRALES
+                    Capas[i].Neuronas[j].Umbral.Valor = R.NextDouble();
+                    Capas[i].Neuronas[j].UmbralTemp.Valor = 0;
+                }
+            }
+        }
+
+        public void ReiniciarCapas(List<int> Neuronas, List<Activacion> Funciones)
+        {
+            Capas.Clear();
+            for (int i = 0; i < Neuronas.Count; i++)
+            {
+                Capas.Add(new Capa(i));
+                Capas[i].Activacion = Funciones[i];
+                for (int j = 0; j < Neuronas[i]; j++)
+                {
+                    Capas[i].Neuronas.Add(new Neurona());
+                }
+            }
+            ReiniciarRed();
         }
         
     }
