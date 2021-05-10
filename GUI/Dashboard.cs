@@ -71,6 +71,7 @@ namespace GUI
 
         private void ShowInfo(Red N)
         {
+            
             LbEntradas.Text = N.Entradas.ToString();
             LbPatrones.Text = N.Patrones.Count.ToString();
             LbSalidas.Text = N.Capas[N.Capas.Count - 1].Neuronas.Count.ToString();
@@ -127,10 +128,37 @@ namespace GUI
         {
             WindowState = FormWindowState.Minimized;
         }
-
+        private void CargarCapas()
+        {
+            var Neuronas = TbNeuronas.Text.Trim().Split(';').Select(x => Int32.Parse(x)).ToList();
+            var FuncionesText = TbFuncion.Text.Trim().Split(';');
+            var Funciones = new List<Activacion>();
+            foreach (var item in FuncionesText)
+            {
+                switch (item)
+                {
+                    case "L":
+                        Funciones.Add(new Activacion(FUNCIONES.Lineal));
+                        break;
+                    case "S":
+                        Funciones.Add(new Activacion(FUNCIONES.Sigmoide));
+                        break;
+                    case "T":
+                        Funciones.Add(new Activacion(FUNCIONES.TangenteHip));
+                        break;
+                    case "G":
+                        Funciones.Add(new Activacion(FUNCIONES.Gaussiana));
+                        break;
+                    default:
+                        Funciones.Add(new Activacion(FUNCIONES.Sigmoide));
+                        break;
+                }
+            }
+            Red.ReiniciarCapas(Neuronas, Funciones);
+        }
         private void Entrenar(object sender, EventArgs e)
         {
-            if(Red.Error <= Red.ErrorMaxPermitido)
+            if (Red.Error <= Red.ErrorMaxPermitido)
             {
                 MessageBox.Show("Esta red ya se encuentra entrenada, proceda a simular");
                 return;
@@ -140,16 +168,18 @@ namespace GUI
                 MessageBox.Show("Esta red está vacia, llenela y entrenela");
                 return;
             }
-            else if(Red.Iteraciones <= 0)
+            else if (Red.Iteraciones <= 0)
             {
                 MessageBox.Show("Por favor ingrese un número de iteraciones valido");
                 return;
             }
+            CargarCapas();
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
             Abrir(new Graficador(Red));
         }
+
 
         private async void RunTask()
         {
@@ -250,7 +280,8 @@ namespace GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Red = Plataforma.Red = new Red();
+            Plataforma.Red.ReiniciarRed();
+            Red = Plataforma.Red;
             ShowInfo(Red);
         }
 

@@ -368,7 +368,8 @@ namespace ENTITY
 
         public void ReiniciarRed()
         {
-            var R = new Random();
+            Entrenamientos = 0;
+            Error = 10;
             //GENERAR ALEATORIAMENTE LOS PESOS Y UMBRALES DE CADA NEURONA DE CADA CAPA
             //RESPETANDO LOS LIMITES EN CADA CASO
             for (int i = 0; i < Capas.Count; i++)
@@ -377,10 +378,10 @@ namespace ENTITY
                 for (int j = 0; j < Capas[i].Neuronas.Count; j++)
                 {
                     //GENERAMOS ALEATORIAMENTE LOS PESOS
-                    Capas[i].Neuronas[j].Pesos.Valores = Capas[i].Neuronas[j].Pesos.Valores.Select(x => new Peso(R.NextDouble())).ToList();
+                    Capas[i].Neuronas[j].Pesos.Valores = Capas[i].Neuronas[j].Pesos.Valores.Select(x => new Peso(Plataforma.Random())).ToList();
                     Capas[i].Neuronas[j].PesosTemp.Valores.Clear();
                     //GENERAMOS ALEATORIAMENTE LOS UMBRALES
-                    Capas[i].Neuronas[j].Umbral.Valor = R.NextDouble();
+                    Capas[i].Neuronas[j].Umbral.Valor = Plataforma.Random();
                     Capas[i].Neuronas[j].UmbralTemp.Valor = 0;
                 }
             }
@@ -395,12 +396,27 @@ namespace ENTITY
                 Capas[i].Activacion = Funciones[i];
                 for (int j = 0; j < Neuronas[i]; j++)
                 {
-                    Capas[i].Neuronas.Add(new Neurona());
+                    Capas[i].Neuronas.Add(new Neurona(j));
+                    if (i == 0)
+                    {
+                        for (int p = 0; p < Patrones[0].Entradas.Count; p++)
+                        {
+                            Capas[i].Neuronas[j].Pesos.Valores.Add(new Peso(Plataforma.Random()));
+                        }
+                    }
+                    else
+                    {
+                        for (int p = 0; p < Capas[i - 1].Neuronas.Count; p++)
+                        {
+                            Capas[i].Neuronas[j].Pesos.Valores.Add(new Peso(Plataforma.Random()));
+                        }
+                    }
                 }
             }
             ReiniciarRed();
         }
-        
+
+
     }
     
     

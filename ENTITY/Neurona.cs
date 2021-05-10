@@ -16,6 +16,7 @@ namespace ENTITY
         public Umbral UmbralTemp { get; set; }
         public bool Habilitada { get; set; }
         public bool Usada { get; set; }
+        public int Indice { get; set; }
 
         public Neurona()
         {
@@ -26,6 +27,16 @@ namespace ENTITY
             Umbral = new Umbral();
             UmbralTemp = new Umbral();
             Habilitada = true;
+        }
+        public Neurona(int Indice)
+        {
+            Pesos = new Pesos();
+            PesosTemp = new Pesos();
+            Salida = new Salida();
+            SalidaTemp = new Salida();
+            Umbral = new Umbral();
+            UmbralTemp = new Umbral();
+            this.Indice = Indice;
         }
 
         //public void CalcularSoma(Pesos Pesos, Patron Patron)
