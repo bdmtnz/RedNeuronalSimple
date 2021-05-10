@@ -373,8 +373,7 @@ namespace DAL
                 XmlText PesosText = doc.CreateTextNode(" " + PesosMap + " ");
                 Peso.AppendChild(PesosText);
                 Pesos.AppendChild(Peso);
-                Console.WriteLine(PesosMap);
-                Console.WriteLine("-------");
+               
             }
             Red.AppendChild(Pesos);
 

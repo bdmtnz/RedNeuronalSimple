@@ -10,7 +10,7 @@ namespace ENTITY
     {
         public double YD { get; set; }
         public double YR { get; set; }
-        public double Error => YD - YR;
+        public double Error { get; set; }
 
 
 
@@ -24,11 +24,7 @@ namespace ENTITY
             YD = Double.Parse(Value);
         }
 
-        public void SetError(double Error)
-        {
-            YD = (Error + YR);
-        }
-
+        
     }
 
 }

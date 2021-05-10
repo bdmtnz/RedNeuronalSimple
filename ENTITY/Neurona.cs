@@ -92,7 +92,7 @@ namespace ENTITY
             {
                 Error += Pesos[i] * Errores[i];
             }
-            Salida.SetError(Error);
+            Salida.Error = Error;
         }
 
         public void CalcularErrorTemp(List<double> Pesos, List<double> Errores)
@@ -102,7 +102,7 @@ namespace ENTITY
             {
                 Error += Pesos[i] * Errores[i];
             }
-            SalidaTemp.SetError(Error);
+            SalidaTemp.Error = Error;
         }
 
         public void AceptarPesos()

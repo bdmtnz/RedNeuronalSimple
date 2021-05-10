@@ -80,8 +80,13 @@ namespace ENTITY
                         
                     }
                     
-                }              
-                
+                }
+                // SE CALCULA LOS ERRORES LINEALES DE LAS SALIDAS DEL PATRON
+                for (int k = 0; k < Capas[Capas.Count-1].Neuronas.Count; k++)
+                {
+                    Capas[Capas.Count - 1].Neuronas[k].Salida.Error = Capas[Capas.Count - 1].Neuronas[k].Salida.YD -
+                        Capas[Capas.Count - 1].Neuronas[k].Salida.YR;
+                }
                 //SE CALCULA LOS ERRORES NO LINEALES DE LAS CAPAS
                 for (int t = Capas.Count - 2; t >=0 ; t--)
                 {
@@ -161,11 +166,13 @@ namespace ENTITY
                 }
                 
                 //BACK FOWARD
-                RecurrenteCapa(Capas[Capas.Count - 1], this);
+                RecurrenteCapa(Capas[Capas.Count - 1], this, ErrorPatron);
 
                
             }
             ErrorIteracion = ErrorIteracion / Patrones.Count;
+            Console.WriteLine(ErrorIteracion);
+            Console.WriteLine("_______________");
             return ErrorIteracion;
         }
 
@@ -203,6 +210,12 @@ namespace ENTITY
 
                 }
 
+                // SE CALCULA LOS ERRORES LINEALES DE LAS SALIDAS DEL PATRON
+                for (int k = 0; k < Capas[Capas.Count - 1].Neuronas.Count; k++)
+                {
+                    Capas[Capas.Count - 1].Neuronas[k].SalidaTemp.Error = Capas[Capas.Count - 1].Neuronas[k].SalidaTemp.YD -
+                        Capas[Capas.Count - 1].Neuronas[k].SalidaTemp.YR;
+                }
 
                 //SE CALCULA LOS ERRORES NO LINEALES DE LAS CAPAS
                 for (int t = Capas.Count - 2; t >= 0; t--)
@@ -221,15 +234,15 @@ namespace ENTITY
          
         }
         
-        private void RecurrenteCapa(Capa Capa, Red Red)
+        private void RecurrenteCapa(Capa Capa, Red Red,double ErrorPatron)
         {
-            BuscarNeurona(1, Capa);
+            BuscarNeurona(1, Capa, ErrorPatron);
             //CRITERIO DE PARADA (PRIMERA CAPA)
             if (Capa.Indice > 0)
-                RecurrenteCapa(Capas[Capa.Indice - 1], Red);  
+                RecurrenteCapa(Capas[Capa.Indice - 1], Red, ErrorPatron);  
         }
         
-        public void BuscarNeurona(int buscar, Capa capa)
+        public void BuscarNeurona(int buscar, Capa capa,double ErrorPatron)
         {
             double ErrorTemp = 0.0;
             List<double> salidasAnt = new List<double>();
@@ -274,7 +287,7 @@ namespace ENTITY
                 {
                     entradas = Capas[capa.Indice - 1].Neuronas.Select(x => x.Salida.YR).ToList();
                 }
-                salidasAnt.Add(RecalcularPesosUmbrales(capa.Neuronas[i], capa.ErrorPatron, capa.Activacion, entradas));
+                salidasAnt.Add(RecalcularPesosUmbrales(capa.Neuronas[i], ErrorPatron, capa.Activacion, entradas));
             }
             //Aqui se reentrena las salidas
             ReEntrenar();
@@ -295,7 +308,7 @@ namespace ENTITY
                     }
                     capa.Neuronas[indices[i]].AceptarPesos();
                     capa.Neuronas[indices[i]].Activar(capa.Activacion, entradas);
-                    capa.Neuronas[indices[i]].Salida.SetError(ErrorTemp);
+                    capa.Neuronas[indices[i]].Salida.Error=ErrorTemp;
                 }             
 
             }
@@ -303,7 +316,7 @@ namespace ENTITY
             buscar++;
             if (encontro == true && buscar < cantidad)
             {
-                BuscarNeurona(buscar, capa);
+                BuscarNeurona(buscar, capa, ErrorPatron);
             }
         }
         
