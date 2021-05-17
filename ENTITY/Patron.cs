@@ -9,7 +9,6 @@ namespace ENTITY
     public class Patron
     {
         public List<double> Entradas { get; set; }
-        public double Error { get; set; }
         public List<Salida> SalidasSupervisada { get; set; }
 
         public Patron()
