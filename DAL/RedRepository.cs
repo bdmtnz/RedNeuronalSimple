@@ -361,7 +361,7 @@ namespace DAL
                 var PesosMap = "";
                 foreach (var neurona in item.Neuronas)
                 {
-                    foreach (var peso in neurona.PesosTemp.Valores)
+                    foreach (var peso in neurona.Pesos.Valores)
                     {
                         PesosMap += $"{peso.Valor};";
                     }
@@ -384,7 +384,7 @@ namespace DAL
                 var UmbralesConcat = "";
                 foreach (var _item in item.Neuronas)
                 {
-                    UmbralesConcat += _item.UmbralTemp.Valor+";";
+                    UmbralesConcat += _item.Umbral.Valor+";";
                 }
                 XmlElement Umbral = doc.CreateElement(string.Empty, "U", string.Empty);
                 UmbralesConcat = UmbralesConcat.Substring(0, UmbralesConcat.Length - 1);
