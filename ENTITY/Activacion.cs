@@ -26,11 +26,19 @@ namespace ENTITY
         public double Activar(double SalidaSoma)
         {
             if (Funcion == FUNCIONES.Lineal)
-                return SalidaSoma;
+            {
+                //return SalidaSoma;
+                return SalidaSoma < 0 ? 0 : SalidaSoma;
+            }
             else if (Funcion == FUNCIONES.Sigmoide)
-                return 1 / 1 + Math.Pow(Math.E, -1 * SalidaSoma);
+                return 1 / (1 + Math.Pow(Math.E, -1 * SalidaSoma));
             else if (Funcion == FUNCIONES.TangenteHip)
-                return SalidaSoma >= 0 ? 1 : 0;
+            {
+                //return Math.Tanh(SalidaSoma);
+                var Numerador = Math.Pow(Math.E, SalidaSoma) - Math.Pow(Math.E, -1 * SalidaSoma);
+                var Denominador = Math.Pow(Math.E, SalidaSoma) + Math.Pow(Math.E, -1 * SalidaSoma);
+                return Numerador / Denominador;
+            }
             else if (Funcion == FUNCIONES.Gaussiana)
                 return SalidaSoma >= 0 ? 1 : 0;
             else
