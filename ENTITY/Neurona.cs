@@ -32,16 +32,18 @@ namespace ENTITY
         private double CalcularSoma(List<double> Entradas)
         {
             var Productos = 0.0;
+
             for (int i = 0; i < Entradas.Count; i++) {
                 Productos += Entradas[i] * Pesos.Valores[i].Valor;
             }
                 
-            return Productos - Umbral.Valor;
+            return Productos + Umbral.Valor;
         }
 
         public void Activar(Activacion Activacion, List<double> Entradas)
-        {            
-            Salida.YR = Activacion.Activar(CalcularSoma(Entradas));
+        {
+            Salida.YR = CalcularSoma(Entradas);
+            Salida.Activado = Activacion.Activar(Salida.YR);
         }
 
         public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorNeurona)
