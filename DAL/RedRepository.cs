@@ -8,6 +8,23 @@ namespace DAL
 {
     public class RedRepository
     {
+        private MLApp.MLApp Api { get; set; }
+
+        public RedRepository()
+        {
+            Api = new MLApp.MLApp();
+            Api.MinimizeCommandWindow();
+            Api.Quit();
+        }
+
+        public void Parcial(string Dependiente, string Independiente)
+        {
+            var Declare = "syms X; syms Y;";
+            var Problem = $"FXY = {Dependiente}; DP = diff(FXY, {Independiente})";
+            var Command = Declare + Problem;
+            var Answer = Api.Execute(Command);
+            Console.WriteLine(Answer);
+        }
 
         private bool CheckRata(double Rata)
         {

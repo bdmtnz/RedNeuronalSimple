@@ -40,6 +40,7 @@ namespace GUI
         private void Preload()
         {
             Abrir(new Home(Red));
+            _Neurona.Parcial("X^2*Y^2","Y");
         }
 
         private void Config()
