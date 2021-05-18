@@ -9,18 +9,26 @@ namespace ENTITY
     public class Peso
     {
         public double Valor { get; set; }
+        public double Error { get; private set; }
 
         public Peso(double Valor)
         {
             this.Valor = Valor;
         }
 
-        public void Entrenar(double AnteriorValor, double Rata, double ErrorSalida, double Entrada)
+        public void Entrenar(double AnteriorValor, double Rata, double Entrada)
         {
-            Valor = AnteriorValor + (Rata * ErrorSalida * Entrada);
+            Valor = AnteriorValor + (Rata * Error * Entrada);
             Valor = Valor > 1 ? Plataforma.Random() : Valor;
             Valor = Valor < -1 ? Plataforma.Random() : Valor;
         }
+
+        public double CalcularError(double ErrorNeurona, double ActivacionNeurona)
+        {
+            this.Error = ErrorNeurona * ActivacionNeurona;
+            return this.Error;
+        }
+
     }
     
     public class Pesos

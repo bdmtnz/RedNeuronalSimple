@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ENTITY
 {
@@ -10,8 +6,7 @@ namespace ENTITY
     {
         public double YD { get; set; }
         public double YR { get; set; }
-        public double Error { get; set; }
-
+        public double Activado { get; set; }
 
 
         public Salida()

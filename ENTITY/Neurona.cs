@@ -12,6 +12,7 @@ namespace ENTITY
         public Pesos Pesos { get; set; }
         public Umbral Umbral { get; set; }
         public int Indice { get; set; }
+        public double Error { get; set; }
 
         public Neurona()
         {
@@ -56,14 +57,21 @@ namespace ENTITY
             }
         }
 
-        public void CalcularError(List<double> Pesos, List<double> Errores)
+        public double ErrorOculto(List<double> Pesos, List<double> Errores, double DerivadaActivacion)
         {
             var Error = 0.0;
             for (int i = 0; i < Pesos.Count; i++)
             {
                 Error += Pesos[i] * Errores[i];
             }
-            Salida.Error = Error;
+            this.Error = Error * DerivadaActivacion;
+            return this.Error;
+        }
+
+        public double ErrorSalida(double DerivadaActivacion)
+        {
+            Error = (Salida.Activado - Salida.YD) * DerivadaActivacion;
+            return Error;
         }
 
     }
