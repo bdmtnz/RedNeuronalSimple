@@ -44,14 +44,14 @@ namespace ENTITY
             Salida.YR = Activacion.Activar(CalcularSoma(Entradas));
         }
 
-        public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorPatron)
+        public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorNeurona)
         {
             for (int j = 0; j < Pesos.Valores.Count; j++)
             {
+                Pesos.Valores[j].CalcularError(ErrorNeurona, Entradas[j]);
                 Pesos.Valores[j].Entrenar(
                     Pesos.Valores[j].Valor,
                     Rata,
-                    ErrorPatron,
                     Entradas[j]
                 );
             }
