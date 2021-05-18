@@ -65,12 +65,14 @@ namespace ENTITY
                 Error += Pesos[i] * Errores[i];
             }
             this.Error = Error * DerivadaActivacion;
+            Umbral.Valor = this.Error;
             return this.Error;
         }
 
         public double ErrorSalida(double DerivadaActivacion)
         {
             Error = (Salida.Activado - Salida.YD) * DerivadaActivacion;
+            Umbral.Valor = this.Error;
             return Error;
         }
 

@@ -40,9 +40,14 @@ namespace ENTITY
                 return Numerador / Denominador;
             }
             else if (Funcion == FUNCIONES.Gaussiana)
-                return SalidaSoma >= 0 ? 1 : 0;
+            {
+                //return Math.Tanh(SalidaSoma);
+                var Numerador = Math.Pow(Math.E, SalidaSoma) - Math.Pow(Math.E, -1 * SalidaSoma);
+                var Denominador = Math.Pow(Math.E, SalidaSoma) + Math.Pow(Math.E, -1 * SalidaSoma);
+                return Numerador / Denominador;
+            }
             else
-                return 1 / 1 + Math.Pow(Math.E, -1 * SalidaSoma);
+                return 1 / (1 + Math.Pow(Math.E, -1 * SalidaSoma));
         }
     }
 }
