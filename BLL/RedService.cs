@@ -40,6 +40,7 @@ namespace BLL
 
         public void Iterar()
         {
+            //Plataforma.Red.ReiniciarRed();
             var i = Plataforma.Red.Entrenamientos;
             if (Plataforma.Red.Error > Plataforma.Red.ErrorMaxPermitido)
             {

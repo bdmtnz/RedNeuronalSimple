@@ -45,13 +45,13 @@ namespace ENTITY
         public double Entrenar()
         {            
             var ErrorIteracion = 0.0;
-           
+
             //SE ITERA POR PATRÓN
             for (int i = 0; i < Patrones.Count; i++)
             {
+                var ErrorPatron = 0.0;
                 CargarYD(Patrones[i]);
                 PatronIndex = i;
-                var ErrorPatron = 0.0;
                 //SE ITERA POR CAPAS
                 for (int c = 0; c < Capas.Count; c++)
                 {
@@ -68,29 +68,30 @@ namespace ENTITY
                             );
                             //Capas[j].Entrenar(Patrones[i], Rata, Xo);
                         }
-                        else 
+                        else
                         {
                             //SE ENTRENA CON LAS SALIDAS DE LA ANTERIOR CAPA
-                            Capas[c].Neuronas[n].Activar( 
+                            Capas[c].Neuronas[n].Activar(
                                 Capas[c].Activacion,
-                                Capas[c - 1].Neuronas.Select( x => x.Salida.Activado ).ToList()
+                                Capas[c - 1].Neuronas.Select(x => x.Salida.Activado).ToList()
                             );
                         }
-                        
-                    }
-                    
-                }
 
-                //CALCULAR EL ERROR DE CADA SALIDA Y PATRON
-                var Activacion = Capas[Capas.Count - 1].Activacion;
-                //var Activacion = new Activacion(FUNCIONES.Sigmoide);
+                    }
+
+                }
+                //CALCULAMOS EL ERROR DE CADA PATRON
+                //var Activacion = Capas[Capas.Count - 1].Activacion;
+                var Activacion = new Activacion(FUNCIONES.Sigmoide);
                 Capas[Capas.Count - 1].Neuronas.ForEach(n => {
-                    var DerivadaActivacion = Activacion.Activar(n.Salida.YR) * (1 - Activacion.Activar(n.Salida.YR));
-                    ErrorPatron += n.ErrorSalida(DerivadaActivacion);
-                   // ErrorPatron += Math.Abs(n.ErrorSalida(Activacion.Activar(n.Salida.YR)));
+                    ErrorPatron += Math.Abs(n.Salida.YD - n.Salida.YR);
                 });
-                ErrorPatron /= Capas[Capas.Count - 1].Neuronas.Count;
-                ErrorPatron = Math.Abs(ErrorPatron);
+
+                //CALCULAR EL ERROR ASIGNADO A CADA SALIDA
+                Capas[Capas.Count - 1].Neuronas.ForEach(n => {
+                    //var DerivadaActivacion = Activacion.Activar(n.Salida.YR) * (1 - Activacion.Activar(n.Salida.YR));
+                    n.ErrorSalida(Capas[Capas.Count - 1].Activacion.Activar(n.Salida.YD - n.Salida.YR));
+                });
                 //IDENTIFICAMOS SI ES APLICABLE A BACK PROPAGATION                
                 /*if (ErrorPatron > ErrorMaxPermitido)
                 {
@@ -98,17 +99,18 @@ namespace ENTITY
                         //BACK PROPAGATION
                         Backpropagation(Capas[Capas.Count - 2], this);
                 }*/
-                Backpropagation(Capas[Capas.Count - 2], this);
-
+                ErrorPatron /= Capas[Capas.Count - 1].Neuronas.Count;
                 ErrorIteracion += ErrorPatron;
+                Backpropagation(Capas[Capas.Count - 2], ErrorPatron, this);
+
             }
-            ErrorIteracion = ErrorIteracion / Patrones.Count;
+            ErrorIteracion /= (Patrones.Count * Capas[Capas.Count - 1].Neuronas.Count);
             Console.WriteLine(ErrorIteracion);
             Console.WriteLine("_______________");
             return ErrorIteracion;
         }        
         
-        private void Backpropagation(Capa Capa, Red Red)
+        private void Backpropagation(Capa Capa, double ErrorLinealPatron, Red Red)
         {
             //APLICAR LAS PARCIALES PARA CALCULAR ERRORES Y ENTRENAR PESOS Y UMBRALES
             for (int i = 0; i < Capa.Neuronas.Count; i++)
@@ -118,25 +120,25 @@ namespace ENTITY
                 var Errores = Red.Capas[Capa.Indice + 1].Neuronas.Select(n => n.Error).ToList();
                 var DerivadaActivacion = Capa.Activacion.Activar(Capa.Neuronas[i].Salida.YR) * (1 - Capa.Activacion.Activar(Capa.Neuronas[i].Salida.YR));
                 Capa.Neuronas[i].ErrorOculto(Pesos, Errores, DerivadaActivacion);
-                Capa.Neuronas[i].Umbral.Entrenar(Capa.Neuronas[i].Umbral.Valor, Red.Rata, Xo);
+                Capa.Neuronas[i].Umbral.Entrenar(Red.Rata, Capa.Neuronas[i].Error, ErrorLinealPatron, Xo);
                 //ERRORES DE PESOS
                 for (int j = 0; j < Capa.Neuronas[i].Pesos.Valores.Count; j++)
                 {
                     if(Capa.Indice == 0)
                     {
                         Capa.Neuronas[i].Pesos.Valores[j].CalcularError(Capa.Neuronas[i].Error, Red.Patrones[Red.PatronIndex].Entradas[j]);
-                        Capa.Neuronas[i].Pesos.Valores[j].Entrenar(Capa.Neuronas[i].Pesos.Valores[j].Valor, Red.Rata, Red.Patrones[Red.PatronIndex].Entradas[j]);
+                        Capa.Neuronas[i].Pesos.Valores[j].Entrenar(Red.Rata,Capa.Neuronas[i].Error, ErrorLinealPatron, Red.Patrones[Red.PatronIndex].Entradas[j]);
                     }
                     else
                     {
                         Capa.Neuronas[i].Pesos.Valores[j].CalcularError(Capa.Neuronas[i].Error, Red.Capas[Capa.Indice - 1].Neuronas[j].Salida.Activado);
-                        Capa.Neuronas[i].Pesos.Valores[j].Entrenar(Capa.Neuronas[i].Pesos.Valores[j].Valor, Red.Rata, Red.Capas[Capa.Indice - 1].Neuronas[j].Salida.Activado);
+                        Capa.Neuronas[i].Pesos.Valores[j].Entrenar(Red.Rata, Capa.Neuronas[i].Error, ErrorLinealPatron, Red.Capas[Capa.Indice - 1].Neuronas[j].Salida.Activado);
                     }
                 }
             }
             //CRITERIO DE PARO
             if (Capa.Indice > 0)
-                Backpropagation(Capas[Capa.Indice - 1], Red);
+                Backpropagation(Capas[Capa.Indice - 1], ErrorLinealPatron, Red);
         }       
         
         

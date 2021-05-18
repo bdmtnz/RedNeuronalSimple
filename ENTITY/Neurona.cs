@@ -47,14 +47,15 @@ namespace ENTITY
             Salida.Activado = Activacion.Activar(CalcularSoma(Entradas));
         }
 
-        public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorNeurona)
+        public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorNeurona, double ErrorLinealPatron)
         {
             for (int j = 0; j < Pesos.Valores.Count; j++)
             {
                 Pesos.Valores[j].CalcularError(ErrorNeurona, Entradas[j]);
                 Pesos.Valores[j].Entrenar(
-                    Pesos.Valores[j].Valor,
                     Rata,
+                    ErrorNeurona,
+                    ErrorLinealPatron,
                     Entradas[j]
                 );
             }
@@ -74,7 +75,8 @@ namespace ENTITY
 
         public double ErrorSalida(double DerivadaActivacion)
         {
-            Error = (Salida.Activado - Salida.YD) * DerivadaActivacion;
+            //Error = (Salida.Activado - Salida.YD) * DerivadaActivacion;
+            this.Error = DerivadaActivacion;
             Umbral.Error = this.Error;
             return Error;
         }

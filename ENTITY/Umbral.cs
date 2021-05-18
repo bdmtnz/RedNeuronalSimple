@@ -21,13 +21,13 @@ namespace ENTITY
             this.Valor = Valor;
         }
 
-        public void Entrenar(double AnteriorValor, double Rata, double Entrada)
+        public void Entrenar(double Rata, double ErrorNeurona, double ErrorLinealPatron, double Entrada)
         {
-            Valor = AnteriorValor + (Rata * Error * Entrada);
+            Valor = Valor + (2 * ErrorNeurona * Rata * ErrorLinealPatron * Entrada);
             //Valor = Valor > 1 ? Plataforma.Random() : Valor;
             //Valor = Valor < -1 ? Plataforma.Random() : Valor;
-            Valor = Valor < -3 ? -3 : Valor;
-            Valor = Valor > 3 ? 3 : Valor;
+            //Valor = Valor < -1 ? -1 : Valor;
+            //Valor = Valor > 1 ? 1 : Valor;
         }
 
     }
