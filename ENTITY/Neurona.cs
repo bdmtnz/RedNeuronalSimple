@@ -36,14 +36,15 @@ namespace ENTITY
             for (int i = 0; i < Entradas.Count; i++) {
                 Productos += Entradas[i] * Pesos.Valores[i].Valor;
             }
-                
-            return Productos + Umbral.Valor;
+
+            Salida.YR = Productos + Umbral.Valor;
+
+            return Salida.YR;
         }
 
         public void Activar(Activacion Activacion, List<double> Entradas)
-        {
-            Salida.YR = CalcularSoma(Entradas);
-            Salida.Activado = Activacion.Activar(Salida.YR);
+        {            
+            Salida.Activado = Activacion.Activar(CalcularSoma(Entradas));
         }
 
         public void EntrenarPesos(List<double> Entradas, double Rata, double ErrorNeurona)
@@ -67,14 +68,14 @@ namespace ENTITY
                 Error += Pesos[i] * Errores[i];
             }
             this.Error = Error * DerivadaActivacion;
-            Umbral.Valor = this.Error;
+            Umbral.Error = this.Error;
             return this.Error;
         }
 
         public double ErrorSalida(double DerivadaActivacion)
         {
             Error = (Salida.Activado - Salida.YD) * DerivadaActivacion;
-            Umbral.Valor = this.Error;
+            Umbral.Error = this.Error;
             return Error;
         }
 

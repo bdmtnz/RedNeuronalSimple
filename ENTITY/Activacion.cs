@@ -27,8 +27,8 @@ namespace ENTITY
         {
             if (Funcion == FUNCIONES.Lineal)
             {
-                //return SalidaSoma;
-                return SalidaSoma < 0 ? 0 : SalidaSoma;
+                return SalidaSoma;
+                //return SalidaSoma < 0 ? 0 : SalidaSoma;
             }
             else if (Funcion == FUNCIONES.Sigmoide)
                 return 1 / (1 + Math.Pow(Math.E, -1 * SalidaSoma));

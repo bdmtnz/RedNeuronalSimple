@@ -73,20 +73,34 @@ namespace ENTITY
                             //SE ENTRENA CON LAS SALIDAS DE LA ANTERIOR CAPA
                             Capas[c].Neuronas[n].Activar( 
                                 Capas[c].Activacion,
-                                Capas[c - 1].Neuronas.Select( x => x.Salida.YR).ToList()
+                                Capas[c - 1].Neuronas.Select( x => x.Salida.Activado ).ToList()
                             );
                         }
                         
                     }
                     
                 }
-                
-                //CALCULAR EL ERROR EN LA SALIDA CON PARCIALES
 
-                
-                //BACK PROPAGATION
-                RecurrenteCapa(Capas[Capas.Count - 1], this, ErrorPatron);
-               
+                //CALCULAR EL ERROR DE CADA SALIDA Y PATRON
+                var Activacion = Capas[Capas.Count - 1].Activacion;
+                //var Activacion = new Activacion(FUNCIONES.Sigmoide);
+                Capas[Capas.Count - 1].Neuronas.ForEach(n => {
+                    var DerivadaActivacion = Activacion.Activar(n.Salida.YR) * (1 - Activacion.Activar(n.Salida.YR));
+                    ErrorPatron += n.ErrorSalida(DerivadaActivacion);
+                   // ErrorPatron += Math.Abs(n.ErrorSalida(Activacion.Activar(n.Salida.YR)));
+                });
+                ErrorPatron /= Capas[Capas.Count - 1].Neuronas.Count;
+                ErrorPatron = Math.Abs(ErrorPatron);
+                //IDENTIFICAMOS SI ES APLICABLE A BACK PROPAGATION                
+                /*if (ErrorPatron > ErrorMaxPermitido)
+                {
+                    if (Capas.Count > 1)
+                        //BACK PROPAGATION
+                        Backpropagation(Capas[Capas.Count - 2], this);
+                }*/
+                Backpropagation(Capas[Capas.Count - 2], this);
+
+                ErrorIteracion += ErrorPatron;
             }
             ErrorIteracion = ErrorIteracion / Patrones.Count;
             Console.WriteLine(ErrorIteracion);
@@ -94,49 +108,76 @@ namespace ENTITY
             return ErrorIteracion;
         }        
         
-        private void RecurrenteCapa(Capa Capa, Red Red,double ErrorPatron)
+        private void Backpropagation(Capa Capa, Red Red)
         {
+            //APLICAR LAS PARCIALES PARA CALCULAR ERRORES Y ENTRENAR PESOS Y UMBRALES
+            for (int i = 0; i < Capa.Neuronas.Count; i++)
+            {
+                //ERRORES DE NEURONA Y UMBRA
+                var Pesos = Red.Capas[Capa.Indice + 1].Neuronas.Select(n => n.Pesos.Valores[i].Valor).ToList();
+                var Errores = Red.Capas[Capa.Indice + 1].Neuronas.Select(n => n.Error).ToList();
+                var DerivadaActivacion = Capa.Activacion.Activar(Capa.Neuronas[i].Salida.YR) * (1 - Capa.Activacion.Activar(Capa.Neuronas[i].Salida.YR));
+                Capa.Neuronas[i].ErrorOculto(Pesos, Errores, DerivadaActivacion);
+                Capa.Neuronas[i].Umbral.Entrenar(Capa.Neuronas[i].Umbral.Valor, Red.Rata, Xo);
+                //ERRORES DE PESOS
+                for (int j = 0; j < Capa.Neuronas[i].Pesos.Valores.Count; j++)
+                {
+                    if(Capa.Indice == 0)
+                    {
+                        Capa.Neuronas[i].Pesos.Valores[j].CalcularError(Capa.Neuronas[i].Error, Red.Patrones[Red.PatronIndex].Entradas[j]);
+                        Capa.Neuronas[i].Pesos.Valores[j].Entrenar(Capa.Neuronas[i].Pesos.Valores[j].Valor, Red.Rata, Red.Patrones[Red.PatronIndex].Entradas[j]);
+                    }
+                    else
+                    {
+                        Capa.Neuronas[i].Pesos.Valores[j].CalcularError(Capa.Neuronas[i].Error, Red.Capas[Capa.Indice - 1].Neuronas[j].Salida.Activado);
+                        Capa.Neuronas[i].Pesos.Valores[j].Entrenar(Capa.Neuronas[i].Pesos.Valores[j].Valor, Red.Rata, Red.Capas[Capa.Indice - 1].Neuronas[j].Salida.Activado);
+                    }
+                }
+            }
             //CRITERIO DE PARO
             if (Capa.Indice > 0)
-                RecurrenteCapa(Capas[Capa.Indice - 1], Red, ErrorPatron);
-            //APLICAR LAS PARCIALES
-
+                Backpropagation(Capas[Capa.Indice - 1], Red);
         }       
         
         
         public List<double> Generalizar(Patron Patron)
         {
-            //SE ITERA POR PATRÓN
-            for (int i = 0; i < Patrones.Count; i++)
+            //SE ITERA POR CAPAS
+            for (int c = 0; c < Capas.Count; c++)
             {
-                PatronIndex = i;
-                //SE ITERA POR CAPAS
-                for (int c = 0; c < Capas.Count; c++)
+                //SE ITERA POR NEURONAS
+                for (int n = 0; n < Capas[c].Neuronas.Count; n++)
                 {
-                    //SE ITERA POR NEURONAS
-                    for (int n = 0; n < Capas[c].Neuronas.Count; n++)
+                    //SE ENTRENAN LA NEURONAS
+                    if (c == 0)
                     {
-                        //SE ENTRENAN LA NEURONAS
-                        if (c == 0)
-                        {
-                            //SE ENTRENA CON LAS ENTRADAS DE CADA PATRON
-                            Capas[c].Neuronas[n].Activar(
-                                Capas[c].Activacion,
-                                Patrones[i].Entradas
-                            );
-                        }
-                        else
-                        {
-                            //SE ENTRENA CON LAS SALIDAS DE LA ANTERIOR CAPA
-                            Capas[c].Neuronas[n].Activar(
-                                Capas[c].Activacion,
-                                Capas[c - 1].Neuronas.Select(x => x.Salida.YR).ToList()
-                            );
-                        }
+                        //SE ENTRENA CON LAS ENTRADAS DE CADA PATRON
+                        Capas[c].Neuronas[n].Activar(
+                            Capas[c].Activacion,
+                            Patron.Entradas
+                        );
                     }
-                }                
+                    else
+                    {
+                        //SE ENTRENA CON LAS SALIDAS DE LA ANTERIOR CAPA
+                        Capas[c].Neuronas[n].Activar(
+                            Capas[c].Activacion,
+                            Capas[c - 1].Neuronas.Select(x => x.Salida.Activado).ToList()
+                        );
+                    }
+                }
             }
-            return Capas[Capas.Count - 1].Neuronas.Select(n => n.Salida.YR).ToList();
+            //CALCULAR EL ERROR DE CADA SALIDA Y PATRON
+            var Activacion = Capas[Capas.Count - 1].Activacion;
+            var ErrorPatron = 0.0;
+            //var Activacion = new Activacion(FUNCIONES.Sigmoide);
+            Capas[Capas.Count - 1].Neuronas.ForEach(n => {
+                var DerivadaActivacion = Activacion.Activar(n.Salida.YR) * (1 - Activacion.Activar(n.Salida.YR));
+                ErrorPatron += n.ErrorSalida(DerivadaActivacion);
+                // ErrorPatron += Math.Abs(n.ErrorSalida(Activacion.Activar(n.Salida.YR)));
+            });
+            Console.WriteLine("Error al generalizar: ", ErrorPatron);
+            return Capas[Capas.Count - 1].Neuronas.Select(n => n.Salida.Activado).ToList();
         }
 
         public void ReiniciarRed()
@@ -186,7 +227,6 @@ namespace ENTITY
             }
             ReiniciarRed();
         }
-
 
     }
     

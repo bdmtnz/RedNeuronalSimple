@@ -19,8 +19,10 @@ namespace ENTITY
         public void Entrenar(double AnteriorValor, double Rata, double Entrada)
         {
             Valor = AnteriorValor + (Rata * Error * Entrada);
-            Valor = Valor > 1 ? Plataforma.Random() : Valor;
-            Valor = Valor < -1 ? Plataforma.Random() : Valor;
+            //Valor = Valor > 1 ? Plataforma.Random() : Valor;
+            //Valor = Valor < -1 ? Plataforma.Random() : Valor;
+            Valor = Valor > 3 ? 3 : Valor;
+            Valor = Valor < -3 ? -3 : Valor;
         }
 
         public double CalcularError(double ErrorNeurona, double ActivacionNeurona)
