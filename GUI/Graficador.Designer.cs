@@ -37,14 +37,14 @@ namespace GUI
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.grafica1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.NombreGrafica2 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.LbIteracion = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.LbError = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.grafica2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grafica1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grafica2)).BeginInit();
             this.SuspendLayout();
             // 
             // grafica1
@@ -61,7 +61,7 @@ namespace GUI
             this.grafica1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.grafica1.Legends.Add(legend1);
-            this.grafica1.Location = new System.Drawing.Point(16, 40);
+            this.grafica1.Location = new System.Drawing.Point(15, 63);
             this.grafica1.Name = "grafica1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -74,30 +74,21 @@ namespace GUI
             // 
             // NombreGrafica2
             // 
-            this.NombreGrafica2.AutoSize = true;
             this.NombreGrafica2.BackColor = System.Drawing.Color.White;
-            this.NombreGrafica2.Location = new System.Drawing.Point(267, 214);
+            this.NombreGrafica2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NombreGrafica2.Location = new System.Drawing.Point(15, 234);
             this.NombreGrafica2.Name = "NombreGrafica2";
-            this.NombreGrafica2.Size = new System.Drawing.Size(90, 13);
+            this.NombreGrafica2.Size = new System.Drawing.Size(754, 19);
             this.NombreGrafica2.TabIndex = 3;
-            this.NombreGrafica2.Text = "Error por iteración";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(295, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Error YR";
+            this.NombreGrafica2.Text = "Error por salida";
+            this.NombreGrafica2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LbIteracion
             // 
             this.LbIteracion.AutoSize = true;
             this.LbIteracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbIteracion.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbIteracion.Location = new System.Drawing.Point(106, 9);
+            this.LbIteracion.Location = new System.Drawing.Point(106, 12);
             this.LbIteracion.Name = "LbIteracion";
             this.LbIteracion.Size = new System.Drawing.Size(18, 20);
             this.LbIteracion.TabIndex = 9;
@@ -108,7 +99,7 @@ namespace GUI
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Location = new System.Drawing.Point(12, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 20);
             this.label3.TabIndex = 8;
@@ -119,7 +110,7 @@ namespace GUI
             this.LbError.AutoSize = true;
             this.LbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LbError.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbError.Location = new System.Drawing.Point(334, 9);
+            this.LbError.Location = new System.Drawing.Point(334, 12);
             this.LbError.Name = "LbError";
             this.LbError.Size = new System.Drawing.Size(18, 20);
             this.LbError.TabIndex = 13;
@@ -130,13 +121,13 @@ namespace GUI
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(284, 9);
+            this.label8.Location = new System.Drawing.Point(284, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 20);
             this.label8.TabIndex = 12;
             this.label8.Text = "Error : ";
             // 
-            // chart2
+            // grafica2
             // 
             chartArea2.AxisX.IsLabelAutoFit = false;
             chartArea2.AxisX.LineColor = System.Drawing.SystemColors.WindowFrame;
@@ -147,32 +138,43 @@ namespace GUI
             chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
             chartArea2.AxisY.MajorTickMark.Enabled = false;
             chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            this.grafica2.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(16, 223);
-            this.chart2.Name = "chart2";
+            this.grafica2.Legends.Add(legend2);
+            this.grafica2.Location = new System.Drawing.Point(15, 253);
+            this.grafica2.Name = "grafica2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(754, 155);
-            this.chart2.TabIndex = 14;
-            this.chart2.Text = "chart1";
+            this.grafica2.Series.Add(series2);
+            this.grafica2.Size = new System.Drawing.Size(754, 155);
+            this.grafica2.TabIndex = 14;
+            this.grafica2.Text = "chart1";
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(754, 19);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Error IT";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Graficador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.ClientSize = new System.Drawing.Size(782, 412);
+            this.ClientSize = new System.Drawing.Size(782, 424);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.NombreGrafica2);
-            this.Controls.Add(this.chart2);
+            this.Controls.Add(this.grafica2);
             this.Controls.Add(this.LbError);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.LbIteracion);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.grafica1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Graficador";
@@ -183,7 +185,7 @@ namespace GUI
             this.Text = "Grafica";
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveWindow);
             ((System.ComponentModel.ISupportInitialize)(this.grafica1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grafica2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,11 +194,11 @@ namespace GUI
         #endregion
         public System.Windows.Forms.DataVisualization.Charting.Chart grafica1;
         private System.Windows.Forms.Label NombreGrafica2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LbIteracion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label LbError;
         private System.Windows.Forms.Label label8;
-        public System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        public System.Windows.Forms.DataVisualization.Charting.Chart grafica2;
+        private System.Windows.Forms.Label label1;
     }
 }

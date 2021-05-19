@@ -54,7 +54,7 @@ namespace GUI
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.label6.Location = new System.Drawing.Point(55, 96);
+            this.label6.Location = new System.Drawing.Point(55, 127);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 20);
             this.label6.TabIndex = 12;
@@ -72,7 +72,7 @@ namespace GUI
             this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.BtnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnIniciar.Location = new System.Drawing.Point(157, 89);
+            this.BtnIniciar.Location = new System.Drawing.Point(170, 119);
             this.BtnIniciar.Name = "BtnIniciar";
             this.BtnIniciar.Size = new System.Drawing.Size(40, 39);
             this.BtnIniciar.TabIndex = 16;
@@ -82,9 +82,9 @@ namespace GUI
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(255, 96);
+            this.dataGridView1.Location = new System.Drawing.Point(255, 105);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(465, 231);
+            this.dataGridView1.Size = new System.Drawing.Size(465, 222);
             this.dataGridView1.TabIndex = 20;
             // 
             // label1
@@ -103,7 +103,7 @@ namespace GUI
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(56, 172);
+            this.label2.Location = new System.Drawing.Point(56, 203);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 17);
             this.label2.TabIndex = 22;
@@ -114,7 +114,7 @@ namespace GUI
             this.LbPatrones.AutoSize = true;
             this.LbPatrones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.LbPatrones.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbPatrones.Location = new System.Drawing.Point(192, 172);
+            this.LbPatrones.Location = new System.Drawing.Point(192, 203);
             this.LbPatrones.Name = "LbPatrones";
             this.LbPatrones.Size = new System.Drawing.Size(16, 17);
             this.LbPatrones.TabIndex = 23;
@@ -125,7 +125,7 @@ namespace GUI
             this.LbError.AutoSize = true;
             this.LbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.LbError.ForeColor = System.Drawing.SystemColors.Control;
-            this.LbError.Location = new System.Drawing.Point(193, 205);
+            this.LbError.Location = new System.Drawing.Point(193, 66);
             this.LbError.Name = "LbError";
             this.LbError.Size = new System.Drawing.Size(16, 17);
             this.LbError.TabIndex = 25;
@@ -136,7 +136,7 @@ namespace GUI
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(57, 205);
+            this.label5.Location = new System.Drawing.Point(57, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 17);
             this.label5.TabIndex = 24;

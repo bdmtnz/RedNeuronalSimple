@@ -22,7 +22,7 @@ namespace GUI
         public int X_Click { get; set; }
         public int Y_Click { get; set; }
         private Generalizador FrmSimulador { get; set; }
-        private Graficador Grafica { get; set; }
+        private Graficador Graficador { get; set; }
         public ToolTip ToolTips { get; set; }
 
         public Dashboard()
@@ -40,7 +40,6 @@ namespace GUI
         private void Preload()
         {
             Abrir(new Home(Red));
-            _Neurona.Parcial("X^2*Y^2","Y");
         }
 
         private void Config()
@@ -129,6 +128,7 @@ namespace GUI
         {
             WindowState = FormWindowState.Minimized;
         }
+
         private void CargarCapas()
         {
             var Neuronas = TbNeuronas.Text.Trim().Split(';').Select(x => Int32.Parse(x)).ToList();
@@ -157,6 +157,7 @@ namespace GUI
             }
             Red.ReiniciarCapas(Neuronas, Funciones);
         }
+
         private void Entrenar(object sender, EventArgs e)
         {
             if (Red.Error <= Red.ErrorMaxPermitido)
@@ -174,13 +175,20 @@ namespace GUI
                 MessageBox.Show("Por favor ingrese un número de iteraciones valido");
                 return;
             }
-            CargarCapas();
+            if (Plataforma.Continuar)
+            {
+                Graficador = new Graficador(Red);
+                CargarCapas();
+            }
+            else
+            {
+                Graficador = new Graficador(Red);
+            }
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
-            Abrir(new Graficador(Red));
+            Abrir(Graficador);
         }
-
 
         private async void RunTask()
         {

@@ -26,17 +26,17 @@ namespace GUI
 
         private void Config(Red Red)
         {
-            chart2.Series.Clear();
+            grafica2.Series.Clear();
             grafica1.Series.Clear();
             grafica1.Series.Add("ErrorIT");
             grafica1.Series["ErrorIT"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             var i = 1;
-            /*foreach (var item in Red.Salidas)
+            foreach (var item in Red.Capas[Red.Capas.Count - 1].Neuronas)
             {
-                chart2.Series.Add("Error " + i);
-                chart2.Series["Error " + i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                grafica2.Series.Add("YR " + i);
+                grafica2.Series["YR " + i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
                 i++;
-            }*/
+            }
         }
 
         private void Config()
@@ -77,14 +77,25 @@ namespace GUI
             {
                 Invoke(new Action(() =>
                 {
+                    //VALIDAR SI SE DEBE LIMPIAR LAS GRAFICAS
+                    if(grafica1.Series["ErrorIT"].Points.Count > 50)
+                    {
+                        grafica1.Series["ErrorIT"].Points.RemoveAt(0);
+                        var Salidas = Red.Capas[Red.Capas.Count - 1].Neuronas.Count;
+                        for (int i = 0; i < Salidas; i++)
+                        {
+                            grafica2.Series["YR " + (i+1)].Points.RemoveAt(0);
+                        }
+                    }
+
+                    //GRAFICAR
                     grafica1.Series["ErrorIT"].Points.Add(Plataforma.Red.Error);
                     var j = 1;
-                    /*foreach (var item in Plataforma.Red.Salidas)
+                    foreach (var item in Red.Capas[Red.Capas.Count - 1].Neuronas)
                     {
-                        chart2.Series["Error " + j].Points.Add(item.Error);
+                        grafica2.Series["YR " + j].Points.Add(item.Error);
                         j++;
-                    }*/
-                    i++;
+                    }
                     CargarDatos();
                 }));
             }

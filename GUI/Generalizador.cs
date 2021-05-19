@@ -120,8 +120,8 @@ namespace GUI
             Plataforma.Red = Red;
             LbError.Text = "" + Plataforma.Red.Error;
             LbIteraciones.Text = "" + Plataforma.Red.Entrenamientos;
-            //LbPesos.Text = "" + Plataforma.W;
-            //LbUmbral.Text = "" + Plataforma.Red.Umbral.Valor;
+            LbPesos.Text = "" + Plataforma.Red.Capas.Count;
+            LbUmbral.Text = "" + Plataforma.Red.Capas.Count;
         }
 
     }

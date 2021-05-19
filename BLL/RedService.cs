@@ -18,11 +18,6 @@ namespace BLL
             RedRepo = new RedRepository();
         }
 
-        public void Parcial(string Dependiente, string Independiente)
-        {
-            RedRepo.Parcial(Dependiente, Independiente);
-        }
-
         public Red GetXML(string Path)
         {
             return RedRepo.GetXML(Path);
