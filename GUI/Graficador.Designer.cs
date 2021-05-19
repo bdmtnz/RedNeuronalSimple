@@ -61,14 +61,14 @@ namespace GUI
             this.grafica1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.grafica1.Legends.Add(legend1);
-            this.grafica1.Location = new System.Drawing.Point(15, 63);
+            this.grafica1.Location = new System.Drawing.Point(18, 63);
             this.grafica1.Name = "grafica1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.grafica1.Series.Add(series1);
-            this.grafica1.Size = new System.Drawing.Size(754, 155);
+            this.grafica1.Size = new System.Drawing.Size(740, 140);
             this.grafica1.TabIndex = 0;
             this.grafica1.Text = "grafica1";
             // 
@@ -76,9 +76,9 @@ namespace GUI
             // 
             this.NombreGrafica2.BackColor = System.Drawing.Color.White;
             this.NombreGrafica2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NombreGrafica2.Location = new System.Drawing.Point(15, 234);
+            this.NombreGrafica2.Location = new System.Drawing.Point(18, 219);
             this.NombreGrafica2.Name = "NombreGrafica2";
-            this.NombreGrafica2.Size = new System.Drawing.Size(754, 19);
+            this.NombreGrafica2.Size = new System.Drawing.Size(740, 19);
             this.NombreGrafica2.TabIndex = 3;
             this.NombreGrafica2.Text = "Error por salida";
             this.NombreGrafica2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -141,14 +141,14 @@ namespace GUI
             this.grafica2.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.grafica2.Legends.Add(legend2);
-            this.grafica2.Location = new System.Drawing.Point(15, 253);
+            this.grafica2.Location = new System.Drawing.Point(18, 238);
             this.grafica2.Name = "grafica2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.grafica2.Series.Add(series2);
-            this.grafica2.Size = new System.Drawing.Size(754, 155);
+            this.grafica2.Size = new System.Drawing.Size(740, 140);
             this.grafica2.TabIndex = 14;
             this.grafica2.Text = "chart1";
             // 
@@ -156,9 +156,9 @@ namespace GUI
             // 
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 44);
+            this.label1.Location = new System.Drawing.Point(18, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(754, 19);
+            this.label1.Size = new System.Drawing.Size(740, 19);
             this.label1.TabIndex = 15;
             this.label1.Text = "Error IT";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

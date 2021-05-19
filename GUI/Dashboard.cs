@@ -236,6 +236,7 @@ namespace GUI
                         else
                             MessageBox.Show("El dataset está corrupto o está mal configurado");
                         ShowInfo(Red);
+                        Abrir(new Home(Red));
                     }
                     else
                         MessageBox.Show("Se ha eliminado o movido el archivo");
