@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using ENTITY;
+using BLL;
 
 namespace GUI
 {
@@ -15,9 +16,12 @@ namespace GUI
 
         private readonly Red Red;
 
-        public Graficador(Red Red)
+        private readonly RedService Service;
+
+        public Graficador(Red Red, RedService Service)
         {
             this.Red = Red;
+            this.Service = Service;
             Crear = true;
             InitializeComponent();
             Config();
@@ -129,6 +133,7 @@ namespace GUI
             BtnIniciar.Visible = false;
             Plataforma.Continuar = true;
             CargarDatos();
+            Service.Iterar();
         }
 
         private void CloseWindow(object sender, FormClosingEventArgs e)

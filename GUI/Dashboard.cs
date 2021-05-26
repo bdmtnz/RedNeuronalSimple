@@ -168,12 +168,12 @@ namespace GUI
             }
             if (Plataforma.Continuar)
             {
-                Graficador = new Graficador(Red);
+                Graficador = new Graficador(Red, _Neurona);
                 CargarCapas();
             }
             else
             {
-                Graficador = new Graficador(Red);
+                Graficador = new Graficador(Red, _Neurona);
             }
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
