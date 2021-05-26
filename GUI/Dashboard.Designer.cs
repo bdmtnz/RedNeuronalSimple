@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnReiniciar = new System.Windows.Forms.Button();
@@ -39,6 +40,10 @@
             this.BtnOpen = new System.Windows.Forms.Button();
             this.Embebed = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.TbFuncion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TbNeuronas = new System.Windows.Forms.TextBox();
@@ -51,11 +56,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
             this.SFD = new System.Windows.Forms.SaveFileDialog();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NbRata)).BeginInit();
@@ -81,6 +81,17 @@
             this.panel1.Size = new System.Drawing.Size(980, 100);
             this.panel1.TabIndex = 0;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveWindow);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(12, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(167, 73);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "RED";
             // 
             // label2
             // 
@@ -250,6 +261,42 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 420);
             this.panel3.TabIndex = 2;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel6.Location = new System.Drawing.Point(20, 306);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(160, 1);
+            this.panel6.TabIndex = 57;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel5.Location = new System.Drawing.Point(20, 231);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(160, 1);
+            this.panel5.TabIndex = 56;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Location = new System.Drawing.Point(20, 157);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(160, 1);
+            this.panel4.TabIndex = 55;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(19, 86);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(160, 1);
+            this.panel2.TabIndex = 54;
             // 
             // TbFuncion
             // 
@@ -422,53 +469,6 @@
             // OFD
             // 
             this.OFD.FileName = "openFileDialog1";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(12, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(167, 73);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "RED";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(19, 86);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(160, 1);
-            this.panel2.TabIndex = 54;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(20, 157);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(160, 1);
-            this.panel4.TabIndex = 55;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(20, 231);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(160, 1);
-            this.panel5.TabIndex = 56;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(20, 306);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(160, 1);
-            this.panel6.TabIndex = 57;
             // 
             // Dashboard
             // 

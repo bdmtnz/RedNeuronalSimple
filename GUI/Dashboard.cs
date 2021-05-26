@@ -68,7 +68,7 @@ namespace GUI
 
         private void ShowInfo(Red N)
         {           
-            /*NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
+            NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
             NbRata.Value = (decimal)N.Rata;
           
@@ -83,7 +83,7 @@ namespace GUI
             {
                 TbFuncion.Text += item.Activacion.Funcion.ToString()[0] + ";";
             }
-            TbFuncion.Text = TbFuncion.Text.Remove(TbFuncion.Text.Length - 1);*/
+            TbFuncion.Text = TbFuncion.Text.Remove(TbFuncion.Text.Length - 1);
         }
 
         private void MoveWindow(object sender, MouseEventArgs e)
