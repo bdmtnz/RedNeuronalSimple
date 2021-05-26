@@ -189,8 +189,10 @@ namespace GUI
 
         public void Entrenar(Red Red)
         {
+            this.Red = Red;
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
+            Graficador = new Graficador(Red, this);
             RunTask();
             //Graficador.ShowDialog();
             //Abrir(Graficador);
