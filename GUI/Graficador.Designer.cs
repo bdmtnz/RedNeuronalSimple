@@ -87,7 +87,7 @@ namespace GUI
             // 
             this.LbIteracion.AutoSize = true;
             this.LbIteracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.LbIteracion.ForeColor = System.Drawing.SystemColors.Control;
+            this.LbIteracion.ForeColor = System.Drawing.Color.Black;
             this.LbIteracion.Location = new System.Drawing.Point(106, 12);
             this.LbIteracion.Name = "LbIteracion";
             this.LbIteracion.Size = new System.Drawing.Size(18, 20);
@@ -98,7 +98,7 @@ namespace GUI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(12, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 20);
@@ -109,7 +109,7 @@ namespace GUI
             // 
             this.LbError.AutoSize = true;
             this.LbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.LbError.ForeColor = System.Drawing.SystemColors.Control;
+            this.LbError.ForeColor = System.Drawing.Color.Black;
             this.LbError.Location = new System.Drawing.Point(334, 12);
             this.LbError.Name = "LbError";
             this.LbError.Size = new System.Drawing.Size(18, 20);
@@ -120,7 +120,7 @@ namespace GUI
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label8.ForeColor = System.Drawing.SystemColors.Control;
+            this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(284, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 20);
@@ -166,7 +166,7 @@ namespace GUI
             // Graficador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(782, 424);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NombreGrafica2);

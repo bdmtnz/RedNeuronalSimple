@@ -49,10 +49,7 @@ namespace GUI
             SFD.Filter = "Archivo XML (*.XML)|*.XML";
 
             //CONFIG LINK
-            linkLabel1.Links.Add(0, linkLabel1.Text.Length, "https://github.com/bdmtnz");
-            linkLabel2.Links.Add(0, linkLabel2.Text.Length, "https://sites.google.com/a/unicesar.edu.co/tonnyjimenezm/");
-
-            //CARGA DE CACHÉ
+            
             var Rd = _Neurona.GetXML(null);
             if (Rd != null)
                 Red = Plataforma.Red = Rd;
@@ -72,15 +69,11 @@ namespace GUI
         private void ShowInfo(Red N)
         {
             
-            LbEntradas.Text = N.Entradas.ToString();
-            LbPatrones.Text = N.Patrones.Count.ToString();
-            LbSalidas.Text = N.Capas[N.Capas.Count - 1].Neuronas.Count.ToString();
-            LbEntrenado.Text = N.Entrenamientos.ToString();
+           
             NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
             NbRata.Value = (decimal)N.Rata;
-            LbPeso.Text = N.Capas.Count.ToString() + " M";
-            LbUmbral.Text = N.Capas.Count.ToString() + " V";
+          
             TbNeuronas.Text = "";
             foreach (var item in N.Capas)
             {
@@ -192,7 +185,7 @@ namespace GUI
 
         private async void RunTask()
         {
-            PbCarga.Visible = true;
+           
             Plataforma.Continuar = true;
             Plataforma.Red = Red;
             var T = new Task(_Neurona.Iterar);
@@ -200,7 +193,7 @@ namespace GUI
             await T;
             Red = Plataforma.Red;
             ShowInfo(Red);
-            PbCarga.Visible = false;
+            
             BtnPausa.Visible = false;
             BtnIniciar.Visible = true;
         }
