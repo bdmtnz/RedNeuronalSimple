@@ -16,12 +16,12 @@ namespace GUI
 
         private readonly Red Red;
 
-        private readonly RedService Service;
+        private readonly Dashboard Padre;
 
-        public Graficador(Red Red, RedService Service)
+        public Graficador(Red Red, Dashboard Padre)
         {
             this.Red = Red;
-            this.Service = Service;
+            this.Padre = Padre;
             Crear = true;
             InitializeComponent();
             Config();
@@ -131,9 +131,9 @@ namespace GUI
         {
             BtnPausa.Visible = true;
             BtnIniciar.Visible = false;
-            Plataforma.Continuar = true;
+            //Plataforma.Continuar = true;
             CargarDatos();
-            Service.Iterar();
+            Padre.Entrenar(Plataforma.Red);
         }
 
         private void CloseWindow(object sender, FormClosingEventArgs e)

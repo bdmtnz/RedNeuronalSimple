@@ -37,7 +37,7 @@ namespace BLL
         {
             //Plataforma.Red.ReiniciarRed();
             var Error = 10000.0;
-            var i = Plataforma.Red.Entrenamientos;
+            var i = Plataforma.Red.Entrenamientos; 
             if (Plataforma.Red.Error > Plataforma.Red.ErrorMaxPermitido)
             {
                 while (i < Plataforma.Red.Iteraciones && Plataforma.Continuar)
@@ -56,8 +56,10 @@ namespace BLL
                         {
                             Plataforma.Red.ReiniciarRed();
                             i = 0;
+                            Error = 10000.0;
                         }
-                        Error = ErrorIteracion;
+                        else
+                            Error = ErrorIteracion;
                     }
 
                    if (Plataforma.Red.ErrorMaxPermitido >= ErrorIteracion) break;

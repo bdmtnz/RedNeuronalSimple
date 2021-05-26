@@ -151,6 +151,11 @@ namespace GUI
 
         private void Entrenar(object sender, EventArgs e)
         {
+            Entrenar();
+        }
+
+        private void Entrenar()
+        {
             if (Red.Error <= Red.ErrorMaxPermitido)
             {
                 MessageBox.Show("Esta red ya se encuentra entrenada, proceda a simular");
@@ -168,17 +173,26 @@ namespace GUI
             }
             if (Plataforma.Continuar)
             {
-                Graficador = new Graficador(Red, _Neurona);
+                Graficador = new Graficador(Red, this);
                 CargarCapas();
             }
             else
             {
-                Graficador = new Graficador(Red, _Neurona);
+                Graficador = new Graficador(Red, this);
             }
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
             Graficador.ShowDialog();
+            //Abrir(Graficador);
+        }
+
+        public void Entrenar(Red Red)
+        {
+            BtnIniciar.Visible = false;
+            BtnPausa.Visible = true;
+            RunTask();
+            //Graficador.ShowDialog();
             //Abrir(Graficador);
         }
 
