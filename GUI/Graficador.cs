@@ -17,6 +17,7 @@ namespace GUI
         private readonly Red Red;
 
         private readonly Dashboard Padre;
+        private FileSystemWatcher Watcher { get; set; }
 
         public Graficador(Red Red, Dashboard Padre)
         {
@@ -45,9 +46,9 @@ namespace GUI
 
         private void Config()
         {
-            var watcher = new FileSystemWatcher(@".\");
+            Watcher = new FileSystemWatcher(@".\");
 
-            watcher.NotifyFilter = NotifyFilters.Attributes
+            Watcher.NotifyFilter = NotifyFilters.Attributes
                                  | NotifyFilters.CreationTime
                                  | NotifyFilters.DirectoryName
                                  | NotifyFilters.FileName
@@ -56,10 +57,10 @@ namespace GUI
                                  | NotifyFilters.Security
                                  | NotifyFilters.Size;
 
-            watcher.Changed += OnChanged;
-            watcher.Filter = "*.xml";
-            watcher.IncludeSubdirectories = false;
-            watcher.EnableRaisingEvents = true;
+            Watcher.Changed += OnChanged;
+            Watcher.Filter = "*.xml";
+            Watcher.IncludeSubdirectories = false;
+            Watcher.EnableRaisingEvents = true;
         }
 
         private void MoveWindow(object sender, MouseEventArgs e)
@@ -138,7 +139,9 @@ namespace GUI
 
         private void CloseWindow(object sender, FormClosingEventArgs e)
         {
+            Watcher.Changed += null;
             Plataforma.Continuar = false;
+            Dispose(true);
         }
     }
 }
