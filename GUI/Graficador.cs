@@ -103,9 +103,9 @@ namespace GUI
 
         public void CargarDatos()
         {
-            //LbIteracion.Text = Plataforma.Red.Entrenamientos.ToString();
+            LbIteracion.Text = Plataforma.Red.Entrenamientos.ToString();
             //LbUmbral.Text = Plataforma.Red.Umbral.Valor.ToString();
-            //LbError.Text = Plataforma.Red.Error.ToString();
+            LbError.Text = Plataforma.Red.Error.ToString();
             //LbWs.Text = Plataforma.W;
         }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -126,7 +127,7 @@
             this.BtnReiniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnReiniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnReiniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnReiniciar.Location = new System.Drawing.Point(576, 60);
+            this.BtnReiniciar.Location = new System.Drawing.Point(581, 60);
             this.BtnReiniciar.Name = "BtnReiniciar";
             this.BtnReiniciar.Size = new System.Drawing.Size(85, 35);
             this.BtnReiniciar.TabIndex = 10;
@@ -145,7 +146,7 @@
             this.BtnPausa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnPausa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnPausa.Location = new System.Drawing.Point(753, 60);
+            this.BtnPausa.Location = new System.Drawing.Point(758, 60);
             this.BtnPausa.Name = "BtnPausa";
             this.BtnPausa.Size = new System.Drawing.Size(66, 35);
             this.BtnPausa.TabIndex = 9;
@@ -164,7 +165,7 @@
             this.BtnSimulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSimulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSimulation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnSimulation.Location = new System.Drawing.Point(676, 60);
+            this.BtnSimulation.Location = new System.Drawing.Point(681, 60);
             this.BtnSimulation.Name = "BtnSimulation";
             this.BtnSimulation.Size = new System.Drawing.Size(66, 35);
             this.BtnSimulation.TabIndex = 8;
@@ -183,7 +184,7 @@
             this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnIniciar.Location = new System.Drawing.Point(759, 60);
+            this.BtnIniciar.Location = new System.Drawing.Point(764, 60);
             this.BtnIniciar.Name = "BtnIniciar";
             this.BtnIniciar.Size = new System.Drawing.Size(66, 35);
             this.BtnIniciar.TabIndex = 6;
@@ -202,7 +203,7 @@
             this.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnSave.Location = new System.Drawing.Point(832, 60);
+            this.BtnSave.Location = new System.Drawing.Point(837, 60);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(66, 35);
             this.BtnSave.TabIndex = 5;
@@ -236,7 +237,7 @@
             this.Embebed.Location = new System.Drawing.Point(0, 100);
             this.Embebed.Name = "Embebed";
             this.Embebed.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.Embebed.Size = new System.Drawing.Size(780, 420);
+            this.Embebed.Size = new System.Drawing.Size(742, 420);
             this.Embebed.TabIndex = 1;
             // 
             // panel3
@@ -257,16 +258,16 @@
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(780, 100);
+            this.panel3.Location = new System.Drawing.Point(742, 100);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 420);
+            this.panel3.Size = new System.Drawing.Size(238, 420);
             this.panel3.TabIndex = 2;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(20, 306);
+            this.panel6.Location = new System.Drawing.Point(39, 305);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(160, 1);
             this.panel6.TabIndex = 57;
@@ -275,7 +276,7 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(20, 231);
+            this.panel5.Location = new System.Drawing.Point(39, 230);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(160, 1);
             this.panel5.TabIndex = 56;
@@ -284,7 +285,7 @@
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(20, 157);
+            this.panel4.Location = new System.Drawing.Point(39, 156);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(160, 1);
             this.panel4.TabIndex = 55;
@@ -293,7 +294,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(19, 86);
+            this.panel2.Location = new System.Drawing.Point(38, 85);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(160, 1);
             this.panel2.TabIndex = 54;
@@ -304,7 +305,7 @@
             this.TbFuncion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbFuncion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbFuncion.ForeColor = System.Drawing.Color.Black;
-            this.TbFuncion.Location = new System.Drawing.Point(19, 354);
+            this.TbFuncion.Location = new System.Drawing.Point(38, 362);
             this.TbFuncion.Name = "TbFuncion";
             this.TbFuncion.Size = new System.Drawing.Size(163, 24);
             this.TbFuncion.TabIndex = 19;
@@ -315,7 +316,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(16, 330);
+            this.label3.Location = new System.Drawing.Point(35, 329);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(167, 18);
             this.label3.TabIndex = 18;
@@ -327,7 +328,7 @@
             this.TbNeuronas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbNeuronas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbNeuronas.ForeColor = System.Drawing.Color.Black;
-            this.TbNeuronas.Location = new System.Drawing.Point(109, 110);
+            this.TbNeuronas.Location = new System.Drawing.Point(128, 109);
             this.TbNeuronas.Name = "TbNeuronas";
             this.TbNeuronas.Size = new System.Drawing.Size(71, 24);
             this.TbNeuronas.TabIndex = 16;
@@ -345,7 +346,7 @@
             0,
             0,
             65536});
-            this.NbRata.Location = new System.Drawing.Point(111, 258);
+            this.NbRata.Location = new System.Drawing.Point(130, 257);
             this.NbRata.Maximum = new decimal(new int[] {
             1,
             0,
@@ -371,7 +372,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(17, 260);
+            this.label11.Location = new System.Drawing.Point(36, 259);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(39, 18);
             this.label11.TabIndex = 13;
@@ -389,7 +390,7 @@
             0,
             0,
             65536});
-            this.NbErrorMax.Location = new System.Drawing.Point(106, 181);
+            this.NbErrorMax.Location = new System.Drawing.Point(125, 180);
             this.NbErrorMax.Maximum = new decimal(new int[] {
             1,
             0,
@@ -416,7 +417,7 @@
             0,
             0,
             0});
-            this.NbIteracion.Location = new System.Drawing.Point(109, 38);
+            this.NbIteracion.Location = new System.Drawing.Point(128, 37);
             this.NbIteracion.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -438,7 +439,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(16, 184);
+            this.label7.Location = new System.Drawing.Point(35, 183);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 18);
             this.label7.TabIndex = 8;
@@ -449,7 +450,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(15, 39);
+            this.label6.Location = new System.Drawing.Point(34, 38);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 20);
             this.label6.TabIndex = 5;
@@ -460,7 +461,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(16, 112);
+            this.label5.Location = new System.Drawing.Point(35, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 18);
             this.label5.TabIndex = 3;
@@ -480,6 +481,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Dashboard";

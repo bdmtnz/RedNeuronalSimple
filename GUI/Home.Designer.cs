@@ -103,7 +103,7 @@ namespace GUI
             this.LbError.BackColor = System.Drawing.Color.White;
             this.LbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbError.ForeColor = System.Drawing.Color.Black;
-            this.LbError.Location = new System.Drawing.Point(462, 208);
+            this.LbError.Location = new System.Drawing.Point(428, 208);
             this.LbError.Name = "LbError";
             this.LbError.Size = new System.Drawing.Size(18, 20);
             this.LbError.TabIndex = 37;
@@ -115,7 +115,7 @@ namespace GUI
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(462, 170);
+            this.label5.Location = new System.Drawing.Point(428, 170);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(114, 20);
             this.label5.TabIndex = 36;
@@ -151,7 +151,7 @@ namespace GUI
             this.LbUmbral.BackColor = System.Drawing.Color.White;
             this.LbUmbral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbUmbral.ForeColor = System.Drawing.Color.Black;
-            this.LbUmbral.Location = new System.Drawing.Point(462, 324);
+            this.LbUmbral.Location = new System.Drawing.Point(428, 324);
             this.LbUmbral.Name = "LbUmbral";
             this.LbUmbral.Size = new System.Drawing.Size(18, 20);
             this.LbUmbral.TabIndex = 50;
@@ -163,7 +163,7 @@ namespace GUI
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(462, 284);
+            this.label7.Location = new System.Drawing.Point(428, 284);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(165, 20);
             this.label7.TabIndex = 49;
@@ -175,7 +175,7 @@ namespace GUI
             this.LbEntrenamiento.BackColor = System.Drawing.Color.White;
             this.LbEntrenamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbEntrenamiento.ForeColor = System.Drawing.Color.Black;
-            this.LbEntrenamiento.Location = new System.Drawing.Point(462, 98);
+            this.LbEntrenamiento.Location = new System.Drawing.Point(428, 98);
             this.LbEntrenamiento.Name = "LbEntrenamiento";
             this.LbEntrenamiento.Size = new System.Drawing.Size(18, 20);
             this.LbEntrenamiento.TabIndex = 52;
@@ -187,7 +187,7 @@ namespace GUI
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(462, 60);
+            this.label9.Location = new System.Drawing.Point(428, 60);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(136, 20);
             this.label9.TabIndex = 51;
@@ -206,7 +206,7 @@ namespace GUI
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(467, 89);
+            this.panel2.Location = new System.Drawing.Point(433, 89);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(240, 1);
             this.panel2.TabIndex = 54;
@@ -224,7 +224,7 @@ namespace GUI
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(467, 199);
+            this.panel4.Location = new System.Drawing.Point(433, 199);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(240, 1);
             this.panel4.TabIndex = 56;
@@ -242,7 +242,7 @@ namespace GUI
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(467, 314);
+            this.panel6.Location = new System.Drawing.Point(433, 314);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(240, 1);
             this.panel6.TabIndex = 58;

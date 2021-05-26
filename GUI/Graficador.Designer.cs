@@ -29,44 +29,48 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.grafica1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.NombreGrafica2 = new System.Windows.Forms.Label();
             this.grafica2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.LbError = new System.Windows.Forms.Label();
+            this.LbIteracion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grafica1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grafica2)).BeginInit();
             this.SuspendLayout();
             // 
             // grafica1
             // 
-            chartArea3.AxisX.IsLabelAutoFit = false;
-            chartArea3.AxisX.LineColor = System.Drawing.SystemColors.WindowFrame;
-            chartArea3.AxisX.MajorGrid.Enabled = false;
-            chartArea3.AxisX.MajorTickMark.Enabled = false;
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.LineColor = System.Drawing.SystemColors.WindowFrame;
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea3.AxisY.MajorTickMark.Enabled = false;
-            chartArea3.Name = "ChartArea1";
-            this.grafica1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.grafica1.Legends.Add(legend3);
-            this.grafica1.Location = new System.Drawing.Point(386, 146);
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.LineColor = System.Drawing.SystemColors.WindowFrame;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LineColor = System.Drawing.SystemColors.WindowFrame;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.MajorTickMark.Enabled = false;
+            chartArea1.Name = "ChartArea1";
+            this.grafica1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.grafica1.Legends.Add(legend1);
+            this.grafica1.Location = new System.Drawing.Point(485, 105);
             this.grafica1.Name = "grafica1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.grafica1.Series.Add(series3);
-            this.grafica1.Size = new System.Drawing.Size(365, 182);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.grafica1.Series.Add(series1);
+            this.grafica1.Size = new System.Drawing.Size(459, 281);
             this.grafica1.TabIndex = 0;
             this.grafica1.Text = "grafica1";
             // 
@@ -74,7 +78,7 @@ namespace GUI
             // 
             this.NombreGrafica2.BackColor = System.Drawing.Color.White;
             this.NombreGrafica2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NombreGrafica2.Location = new System.Drawing.Point(20, 72);
+            this.NombreGrafica2.Location = new System.Drawing.Point(20, 31);
             this.NombreGrafica2.Name = "NombreGrafica2";
             this.NombreGrafica2.Size = new System.Drawing.Size(365, 19);
             this.NombreGrafica2.TabIndex = 3;
@@ -83,26 +87,26 @@ namespace GUI
             // 
             // grafica2
             // 
-            chartArea4.AxisX.IsLabelAutoFit = false;
-            chartArea4.AxisX.LineColor = System.Drawing.SystemColors.WindowFrame;
-            chartArea4.AxisX.MajorGrid.Enabled = false;
-            chartArea4.AxisX.MajorTickMark.Enabled = false;
-            chartArea4.AxisY.IsLabelAutoFit = false;
-            chartArea4.AxisY.LineColor = System.Drawing.SystemColors.WindowFrame;
-            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea4.AxisY.MajorTickMark.Enabled = false;
-            chartArea4.Name = "ChartArea1";
-            this.grafica2.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.grafica2.Legends.Add(legend4);
-            this.grafica2.Location = new System.Drawing.Point(20, 146);
+            chartArea2.AxisX.IsLabelAutoFit = false;
+            chartArea2.AxisX.LineColor = System.Drawing.SystemColors.WindowFrame;
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisX.MajorTickMark.Enabled = false;
+            chartArea2.AxisY.IsLabelAutoFit = false;
+            chartArea2.AxisY.LineColor = System.Drawing.SystemColors.WindowFrame;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisY.MajorTickMark.Enabled = false;
+            chartArea2.Name = "ChartArea1";
+            this.grafica2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.grafica2.Legends.Add(legend2);
+            this.grafica2.Location = new System.Drawing.Point(20, 105);
             this.grafica2.Name = "grafica2";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.grafica2.Series.Add(series4);
-            this.grafica2.Size = new System.Drawing.Size(365, 182);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.grafica2.Series.Add(series2);
+            this.grafica2.Size = new System.Drawing.Size(459, 281);
             this.grafica2.TabIndex = 14;
             this.grafica2.Text = "chart1";
             // 
@@ -110,7 +114,7 @@ namespace GUI
             // 
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(414, 72);
+            this.label1.Location = new System.Drawing.Point(512, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(350, 19);
             this.label1.TabIndex = 15;
@@ -121,25 +125,71 @@ namespace GUI
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(45, 119);
+            this.panel1.Location = new System.Drawing.Point(45, 78);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(320, 1);
+            this.panel1.Size = new System.Drawing.Size(420, 1);
             this.panel1.TabIndex = 54;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(410, 120);
+            this.panel2.Location = new System.Drawing.Point(508, 79);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(320, 1);
+            this.panel2.Size = new System.Drawing.Size(420, 1);
             this.panel2.TabIndex = 55;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Location = new System.Drawing.Point(45, 420);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(900, 1);
+            this.panel3.TabIndex = 56;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(41, 450);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 19);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "Error:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LbError
+            // 
+            this.LbError.BackColor = System.Drawing.Color.White;
+            this.LbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbError.Location = new System.Drawing.Point(113, 451);
+            this.LbError.Name = "LbError";
+            this.LbError.Size = new System.Drawing.Size(272, 19);
+            this.LbError.TabIndex = 58;
+            this.LbError.Text = "#";
+            this.LbError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // LbIteracion
+            // 
+            this.LbIteracion.BackColor = System.Drawing.Color.White;
+            this.LbIteracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbIteracion.Location = new System.Drawing.Point(877, 450);
+            this.LbIteracion.Name = "LbIteracion";
+            this.LbIteracion.Size = new System.Drawing.Size(68, 19);
+            this.LbIteracion.TabIndex = 59;
+            this.LbIteracion.Text = "#";
+            this.LbIteracion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Graficador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(782, 424);
+            this.ClientSize = new System.Drawing.Size(994, 506);
+            this.Controls.Add(this.LbIteracion);
+            this.Controls.Add(this.LbError);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -152,7 +202,7 @@ namespace GUI
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Grafica";
+            this.Text = "Entrenamiento";
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveWindow);
             ((System.ComponentModel.ISupportInitialize)(this.grafica1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grafica2)).EndInit();
@@ -167,5 +217,9 @@ namespace GUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LbError;
+        private System.Windows.Forms.Label LbIteracion;
     }
 }
