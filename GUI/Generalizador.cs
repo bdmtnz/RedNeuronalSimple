@@ -78,8 +78,8 @@ namespace GUI
                                 MessageBox.Show("El dataset no cuenta con las caracteristicas de la red entrenada");
                                 return;
                             }
-                            LbPath.Text = OFD.FileName;
-                            LbPatrones.Text = "" + Ps.Count();
+                            //LbPath.Text = OFD.FileName;
+                            //LbPatrones.Text = "" + Ps.Count();
                             CrearColumnas(Ps);
                             var Row = new List<string>();
                             foreach (var item in Ps)
@@ -118,10 +118,10 @@ namespace GUI
         private void ShowInfo(Red Red)
         {
             Plataforma.Red = Red;
-            LbError.Text = "" + Plataforma.Red.Error;
-            LbIteraciones.Text = "" + Plataforma.Red.Entrenamientos;
-            LbPesos.Text = "" + Plataforma.Red.Capas.Count;
-            LbUmbral.Text = "" + Plataforma.Red.Capas.Count;
+            //LbError.Text = "" + Plataforma.Red.Error;
+            //LbIteraciones.Text = "" + Plataforma.Red.Entrenamientos;
+            //LbPesos.Text = "" + Plataforma.Red.Capas.Count;
+            //LbUmbral.Text = "" + Plataforma.Red.Capas.Count;
         }
 
     }

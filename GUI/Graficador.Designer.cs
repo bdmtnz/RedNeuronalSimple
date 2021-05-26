@@ -37,12 +37,10 @@ namespace GUI
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.grafica1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.NombreGrafica2 = new System.Windows.Forms.Label();
-            this.LbIteracion = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.LbError = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.grafica2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.grafica1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grafica2)).BeginInit();
             this.SuspendLayout();
@@ -61,71 +59,27 @@ namespace GUI
             this.grafica1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.grafica1.Legends.Add(legend1);
-            this.grafica1.Location = new System.Drawing.Point(18, 63);
+            this.grafica1.Location = new System.Drawing.Point(386, 146);
             this.grafica1.Name = "grafica1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.grafica1.Series.Add(series1);
-            this.grafica1.Size = new System.Drawing.Size(740, 140);
+            this.grafica1.Size = new System.Drawing.Size(365, 182);
             this.grafica1.TabIndex = 0;
             this.grafica1.Text = "grafica1";
             // 
             // NombreGrafica2
             // 
             this.NombreGrafica2.BackColor = System.Drawing.Color.White;
-            this.NombreGrafica2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NombreGrafica2.Location = new System.Drawing.Point(18, 219);
+            this.NombreGrafica2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NombreGrafica2.Location = new System.Drawing.Point(20, 72);
             this.NombreGrafica2.Name = "NombreGrafica2";
-            this.NombreGrafica2.Size = new System.Drawing.Size(740, 19);
+            this.NombreGrafica2.Size = new System.Drawing.Size(365, 19);
             this.NombreGrafica2.TabIndex = 3;
             this.NombreGrafica2.Text = "Error por salida";
             this.NombreGrafica2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LbIteracion
-            // 
-            this.LbIteracion.AutoSize = true;
-            this.LbIteracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.LbIteracion.ForeColor = System.Drawing.Color.Black;
-            this.LbIteracion.Location = new System.Drawing.Point(106, 12);
-            this.LbIteracion.Name = "LbIteracion";
-            this.LbIteracion.Size = new System.Drawing.Size(18, 20);
-            this.LbIteracion.TabIndex = 9;
-            this.LbIteracion.Text = "?";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(12, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Iteraciones : ";
-            // 
-            // LbError
-            // 
-            this.LbError.AutoSize = true;
-            this.LbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.LbError.ForeColor = System.Drawing.Color.Black;
-            this.LbError.Location = new System.Drawing.Point(334, 12);
-            this.LbError.Name = "LbError";
-            this.LbError.Size = new System.Drawing.Size(18, 20);
-            this.LbError.TabIndex = 13;
-            this.LbError.Text = "?";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(284, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 20);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Error : ";
             // 
             // grafica2
             // 
@@ -141,40 +95,56 @@ namespace GUI
             this.grafica2.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.grafica2.Legends.Add(legend2);
-            this.grafica2.Location = new System.Drawing.Point(18, 238);
+            this.grafica2.Location = new System.Drawing.Point(20, 146);
             this.grafica2.Name = "grafica2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.grafica2.Series.Add(series2);
-            this.grafica2.Size = new System.Drawing.Size(740, 140);
+            this.grafica2.Size = new System.Drawing.Size(365, 182);
             this.grafica2.TabIndex = 14;
             this.grafica2.Text = "chart1";
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 44);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(414, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(740, 19);
+            this.label1.Size = new System.Drawing.Size(350, 19);
             this.label1.TabIndex = 15;
             this.label1.Text = "Error IT";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(45, 119);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(320, 1);
+            this.panel1.TabIndex = 54;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(410, 120);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(320, 1);
+            this.panel2.TabIndex = 55;
             // 
             // Graficador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(782, 424);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NombreGrafica2);
             this.Controls.Add(this.grafica2);
-            this.Controls.Add(this.LbError);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.LbIteracion);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.grafica1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Graficador";
@@ -187,18 +157,15 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.grafica1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grafica2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         public System.Windows.Forms.DataVisualization.Charting.Chart grafica1;
         private System.Windows.Forms.Label NombreGrafica2;
-        private System.Windows.Forms.Label LbIteracion;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label LbError;
-        private System.Windows.Forms.Label label8;
         public System.Windows.Forms.DataVisualization.Charting.Chart grafica2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

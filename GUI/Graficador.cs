@@ -80,11 +80,11 @@ namespace GUI
                     //VALIDAR SI SE DEBE LIMPIAR LAS GRAFICAS
                     if(grafica1.Series["ErrorIT"].Points.Count > 50)
                     {
-                        grafica1.Series["ErrorIT"].Points.RemoveAt(0);
+                        grafica1.Series["ErrorIT"].Points.Clear();
                         var Salidas = Red.Capas[Red.Capas.Count - 1].Neuronas.Count;
                         for (int i = 0; i < Salidas; i++)
                         {
-                            grafica2.Series["YR " + (i+1)].Points.RemoveAt(0);
+                            grafica2.Series["YR " + (i+1)].Points.Clear();
                         }
                     }
 
@@ -103,9 +103,9 @@ namespace GUI
 
         public void CargarDatos()
         {
-            LbIteracion.Text = Plataforma.Red.Entrenamientos.ToString();
+            //LbIteracion.Text = Plataforma.Red.Entrenamientos.ToString();
             //LbUmbral.Text = Plataforma.Red.Umbral.Valor.ToString();
-            LbError.Text = Plataforma.Red.Error.ToString();
+            //LbError.Text = Plataforma.Red.Error.ToString();
             //LbWs.Text = Plataforma.W;
         }
 

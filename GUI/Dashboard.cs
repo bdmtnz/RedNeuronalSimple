@@ -67,10 +67,8 @@ namespace GUI
         }
 
         private void ShowInfo(Red N)
-        {
-            
-           
-            NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
+        {           
+            /*NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
             NbRata.Value = (decimal)N.Rata;
           
@@ -85,7 +83,7 @@ namespace GUI
             {
                 TbFuncion.Text += item.Activacion.Funcion.ToString()[0] + ";";
             }
-            TbFuncion.Text = TbFuncion.Text.Remove(TbFuncion.Text.Length - 1);
+            TbFuncion.Text = TbFuncion.Text.Remove(TbFuncion.Text.Length - 1);*/
         }
 
         private void MoveWindow(object sender, MouseEventArgs e)
@@ -180,7 +178,8 @@ namespace GUI
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
-            Abrir(Graficador);
+            Graficador.Show();
+            //Abrir(Graficador);
         }
 
         private async void RunTask()
@@ -210,7 +209,11 @@ namespace GUI
                 MessageBox.Show("La red aún no esta entrenada, por favor entrenela");
             }
             else
-                Abrir(new Generalizador(Red, _Neurona));
+            {
+                var Generalizar = new Generalizador(Red, _Neurona);
+                Generalizar.Show();
+                //Abrir(new Generalizador(Red, _Neurona));
+            }
             //FrmSimulador = new Generalizador(Red, _Neurona);
         }
 
