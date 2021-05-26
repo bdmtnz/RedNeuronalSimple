@@ -78,7 +78,8 @@ namespace GUI
                 Invoke(new Action(() =>
                 {
                     //VALIDAR SI SE DEBE LIMPIAR LAS GRAFICAS
-                    if(grafica1.Series["ErrorIT"].Points.Count > 500)
+                    //if(grafica1.Series["ErrorIT"].Points.Count > 500)
+                    if(Plataforma.Red.Entrenamientos > 250)
                     {
                         grafica1.Series["ErrorIT"].Points.Clear();
                         var Salidas = Red.Capas[Red.Capas.Count - 1].Neuronas.Count;

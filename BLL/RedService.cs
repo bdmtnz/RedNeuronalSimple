@@ -36,6 +36,7 @@ namespace BLL
         public void Iterar()
         {
             //Plataforma.Red.ReiniciarRed();
+            var Error = 10000.0;
             var i = Plataforma.Red.Entrenamientos;
             if (Plataforma.Red.Error > Plataforma.Red.ErrorMaxPermitido)
             {
@@ -47,6 +48,17 @@ namespace BLL
                     Plataforma.Red.Entrenamientos = i;
                     System.Threading.Thread.Sleep(100);
                     RedRepo.PostXML(Plataforma.Red, null);
+
+                    if(i % 100 == 0)
+                    {
+                        //VERIFICAMOS UN CRECIMIENTO DEL ERROR O ESTABILIZACIÓN
+                        if (ErrorIteracion >= Error)
+                        {
+                            Plataforma.Red.ReiniciarRed();
+                            i = 0;
+                        }
+                        Error = ErrorIteracion;
+                    }
 
                    if (Plataforma.Red.ErrorMaxPermitido >= ErrorIteracion) break;
                 }

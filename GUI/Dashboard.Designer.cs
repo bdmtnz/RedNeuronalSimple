@@ -34,11 +34,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnReiniciar = new System.Windows.Forms.Button();
-            this.BtnPausa = new System.Windows.Forms.Button();
             this.BtnSimulation = new System.Windows.Forms.Button();
             this.BtnIniciar = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnOpen = new System.Windows.Forms.Button();
+            this.BtnPausa = new System.Windows.Forms.Button();
             this.Embebed = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -135,25 +135,6 @@
             this.BtnReiniciar.UseVisualStyleBackColor = true;
             this.BtnReiniciar.Click += new System.EventHandler(this.button3_Click);
             // 
-            // BtnPausa
-            // 
-            this.BtnPausa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BtnPausa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnPausa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.BtnPausa.FlatAppearance.BorderSize = 0;
-            this.BtnPausa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.BtnPausa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
-            this.BtnPausa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnPausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPausa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnPausa.Location = new System.Drawing.Point(758, 60);
-            this.BtnPausa.Name = "BtnPausa";
-            this.BtnPausa.Size = new System.Drawing.Size(66, 35);
-            this.BtnPausa.TabIndex = 9;
-            this.BtnPausa.Text = "Pausar";
-            this.BtnPausa.UseVisualStyleBackColor = true;
-            this.BtnPausa.Click += new System.EventHandler(this.BtnPausa_Click);
-            // 
             // BtnSimulation
             // 
             this.BtnSimulation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -230,6 +211,25 @@
             this.BtnOpen.UseVisualStyleBackColor = true;
             this.BtnOpen.Click += new System.EventHandler(this.BtnOpen_Click);
             // 
+            // BtnPausa
+            // 
+            this.BtnPausa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnPausa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnPausa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.BtnPausa.FlatAppearance.BorderSize = 0;
+            this.BtnPausa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnPausa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnPausa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPausa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtnPausa.Location = new System.Drawing.Point(758, 60);
+            this.BtnPausa.Name = "BtnPausa";
+            this.BtnPausa.Size = new System.Drawing.Size(66, 35);
+            this.BtnPausa.TabIndex = 9;
+            this.BtnPausa.Text = "Pausar";
+            this.BtnPausa.UseVisualStyleBackColor = true;
+            this.BtnPausa.Click += new System.EventHandler(this.BtnPausa_Click);
+            // 
             // Embebed
             // 
             this.Embebed.BackColor = System.Drawing.SystemColors.Control;
@@ -267,7 +267,7 @@
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(39, 305);
+            this.panel6.Location = new System.Drawing.Point(39, 301);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(160, 1);
             this.panel6.TabIndex = 57;
@@ -276,7 +276,7 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(39, 230);
+            this.panel5.Location = new System.Drawing.Point(39, 226);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(160, 1);
             this.panel5.TabIndex = 56;
@@ -285,7 +285,7 @@
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(39, 156);
+            this.panel4.Location = new System.Drawing.Point(39, 152);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(160, 1);
             this.panel4.TabIndex = 55;
@@ -294,7 +294,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(38, 85);
+            this.panel2.Location = new System.Drawing.Point(38, 81);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(160, 1);
             this.panel2.TabIndex = 54;
@@ -305,7 +305,7 @@
             this.TbFuncion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbFuncion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbFuncion.ForeColor = System.Drawing.Color.Black;
-            this.TbFuncion.Location = new System.Drawing.Point(38, 362);
+            this.TbFuncion.Location = new System.Drawing.Point(38, 361);
             this.TbFuncion.Name = "TbFuncion";
             this.TbFuncion.Size = new System.Drawing.Size(163, 24);
             this.TbFuncion.TabIndex = 19;
@@ -316,7 +316,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(35, 329);
+            this.label3.Location = new System.Drawing.Point(35, 325);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(167, 18);
             this.label3.TabIndex = 18;
@@ -328,7 +328,7 @@
             this.TbNeuronas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbNeuronas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbNeuronas.ForeColor = System.Drawing.Color.Black;
-            this.TbNeuronas.Location = new System.Drawing.Point(128, 109);
+            this.TbNeuronas.Location = new System.Drawing.Point(128, 105);
             this.TbNeuronas.Name = "TbNeuronas";
             this.TbNeuronas.Size = new System.Drawing.Size(71, 24);
             this.TbNeuronas.TabIndex = 16;
@@ -346,7 +346,7 @@
             0,
             0,
             65536});
-            this.NbRata.Location = new System.Drawing.Point(130, 257);
+            this.NbRata.Location = new System.Drawing.Point(130, 253);
             this.NbRata.Maximum = new decimal(new int[] {
             1,
             0,
@@ -372,7 +372,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(36, 259);
+            this.label11.Location = new System.Drawing.Point(36, 255);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(39, 18);
             this.label11.TabIndex = 13;
@@ -390,7 +390,7 @@
             0,
             0,
             65536});
-            this.NbErrorMax.Location = new System.Drawing.Point(125, 180);
+            this.NbErrorMax.Location = new System.Drawing.Point(125, 176);
             this.NbErrorMax.Maximum = new decimal(new int[] {
             1,
             0,
@@ -417,7 +417,7 @@
             0,
             0,
             0});
-            this.NbIteracion.Location = new System.Drawing.Point(128, 37);
+            this.NbIteracion.Location = new System.Drawing.Point(128, 33);
             this.NbIteracion.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -439,7 +439,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(35, 183);
+            this.label7.Location = new System.Drawing.Point(35, 179);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 18);
             this.label7.TabIndex = 8;
@@ -450,7 +450,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(34, 38);
+            this.label6.Location = new System.Drawing.Point(34, 34);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 20);
             this.label6.TabIndex = 5;
@@ -461,7 +461,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(35, 111);
+            this.label5.Location = new System.Drawing.Point(35, 107);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 18);
             this.label5.TabIndex = 3;

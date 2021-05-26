@@ -77,6 +77,7 @@ namespace GUI
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.BtnIniciar);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "Generalizador";
             this.ShowIcon = false;

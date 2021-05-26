@@ -178,13 +178,12 @@ namespace GUI
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
-            Graficador.Show();
+            Graficador.ShowDialog();
             //Abrir(Graficador);
         }
 
         private async void RunTask()
-        {
-           
+        {           
             Plataforma.Continuar = true;
             Plataforma.Red = Red;
             var T = new Task(_Neurona.Iterar);
@@ -211,7 +210,7 @@ namespace GUI
             else
             {
                 var Generalizar = new Generalizador(Red, _Neurona);
-                Generalizar.Show();
+                Generalizar.ShowDialog();
                 //Abrir(new Generalizador(Red, _Neurona));
             }
             //FrmSimulador = new Generalizador(Red, _Neurona);
@@ -285,8 +284,8 @@ namespace GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Plataforma.Red = Red;
             Plataforma.Red.ReiniciarRed();
-            Red = Plataforma.Red;
             ShowInfo(Red);
         }
 
