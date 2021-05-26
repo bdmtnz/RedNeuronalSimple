@@ -249,7 +249,7 @@ namespace GUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SFD.FileName = $"data.XML";
+            SFD.FileName = $"COPIA.XML";
             if (SFD.ShowDialog() == DialogResult.OK)
             {
                 _Neurona.PostXML(Red, SFD.FileName);
@@ -262,8 +262,7 @@ namespace GUI
             BtnIniciar.Visible = true;
             Red = Plataforma.Red;
             Plataforma.Continuar = false;
-            ShowInfo(Red);
-            
+            ShowInfo(Red);            
         }
 
         private void ItChange(object sender, EventArgs e)

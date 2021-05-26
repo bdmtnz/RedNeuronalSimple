@@ -113,5 +113,26 @@ namespace GUI
         {
             Dispose();
         }
+
+        private void BtnPausa_Click(object sender, EventArgs e)
+        {
+            BtnPausa.Visible = false;
+            BtnIniciar.Visible = true;
+            Plataforma.Continuar = false;
+            CargarDatos();
+        }
+
+        private void BtnIniciar_Click(object sender, EventArgs e)
+        {
+            BtnPausa.Visible = true;
+            BtnIniciar.Visible = false;
+            Plataforma.Continuar = true;
+            CargarDatos();
+        }
+
+        private void CloseWindow(object sender, FormClosingEventArgs e)
+        {
+            Plataforma.Continuar = false;
+        }
     }
 }

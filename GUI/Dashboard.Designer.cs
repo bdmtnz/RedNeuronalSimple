@@ -71,11 +71,11 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.BtnReiniciar);
-            this.panel1.Controls.Add(this.BtnPausa);
             this.panel1.Controls.Add(this.BtnSimulation);
             this.panel1.Controls.Add(this.BtnIniciar);
             this.panel1.Controls.Add(this.BtnSave);
             this.panel1.Controls.Add(this.BtnOpen);
+            this.panel1.Controls.Add(this.BtnPausa);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -184,7 +184,7 @@
             this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnIniciar.Location = new System.Drawing.Point(764, 60);
+            this.BtnIniciar.Location = new System.Drawing.Point(759, 60);
             this.BtnIniciar.Name = "BtnIniciar";
             this.BtnIniciar.Size = new System.Drawing.Size(66, 35);
             this.BtnIniciar.TabIndex = 6;
