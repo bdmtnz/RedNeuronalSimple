@@ -29,12 +29,12 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.grafica1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.NombreGrafica2 = new System.Windows.Forms.Label();
             this.grafica2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -47,31 +47,32 @@ namespace GUI
             this.LbIteracion = new System.Windows.Forms.Label();
             this.BtnPausa = new System.Windows.Forms.Button();
             this.BtnIniciar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grafica1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grafica2)).BeginInit();
             this.SuspendLayout();
             // 
             // grafica1
             // 
-            chartArea1.AxisX.IsLabelAutoFit = false;
-            chartArea1.AxisX.LineColor = System.Drawing.SystemColors.WindowFrame;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.MajorTickMark.Enabled = false;
-            chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.LineColor = System.Drawing.SystemColors.WindowFrame;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisY.MajorTickMark.Enabled = false;
-            chartArea1.Name = "ChartArea1";
-            this.grafica1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.grafica1.Legends.Add(legend1);
+            chartArea11.AxisX.IsLabelAutoFit = false;
+            chartArea11.AxisX.LineColor = System.Drawing.SystemColors.WindowFrame;
+            chartArea11.AxisX.MajorGrid.Enabled = false;
+            chartArea11.AxisX.MajorTickMark.Enabled = false;
+            chartArea11.AxisY.IsLabelAutoFit = false;
+            chartArea11.AxisY.LineColor = System.Drawing.SystemColors.WindowFrame;
+            chartArea11.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea11.AxisY.MajorTickMark.Enabled = false;
+            chartArea11.Name = "ChartArea1";
+            this.grafica1.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.grafica1.Legends.Add(legend11);
             this.grafica1.Location = new System.Drawing.Point(485, 105);
             this.grafica1.Name = "grafica1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.grafica1.Series.Add(series1);
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            this.grafica1.Series.Add(series11);
             this.grafica1.Size = new System.Drawing.Size(459, 281);
             this.grafica1.TabIndex = 0;
             this.grafica1.Text = "grafica1";
@@ -89,25 +90,25 @@ namespace GUI
             // 
             // grafica2
             // 
-            chartArea2.AxisX.IsLabelAutoFit = false;
-            chartArea2.AxisX.LineColor = System.Drawing.SystemColors.WindowFrame;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisX.MajorTickMark.Enabled = false;
-            chartArea2.AxisY.IsLabelAutoFit = false;
-            chartArea2.AxisY.LineColor = System.Drawing.SystemColors.WindowFrame;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisY.MajorTickMark.Enabled = false;
-            chartArea2.Name = "ChartArea1";
-            this.grafica2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.grafica2.Legends.Add(legend2);
+            chartArea12.AxisX.IsLabelAutoFit = false;
+            chartArea12.AxisX.LineColor = System.Drawing.SystemColors.WindowFrame;
+            chartArea12.AxisX.MajorGrid.Enabled = false;
+            chartArea12.AxisX.MajorTickMark.Enabled = false;
+            chartArea12.AxisY.IsLabelAutoFit = false;
+            chartArea12.AxisY.LineColor = System.Drawing.SystemColors.WindowFrame;
+            chartArea12.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea12.AxisY.MajorTickMark.Enabled = false;
+            chartArea12.Name = "ChartArea1";
+            this.grafica2.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.grafica2.Legends.Add(legend12);
             this.grafica2.Location = new System.Drawing.Point(20, 105);
             this.grafica2.Name = "grafica2";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.grafica2.Series.Add(series2);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            this.grafica2.Series.Add(series12);
             this.grafica2.Size = new System.Drawing.Size(459, 281);
             this.grafica2.TabIndex = 14;
             this.grafica2.Text = "chart1";
@@ -221,11 +222,32 @@ namespace GUI
             this.BtnIniciar.UseVisualStyleBackColor = true;
             this.BtnIniciar.Click += new System.EventHandler(this.BtnIniciar_Click);
             // 
+            // button1
+            // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button1.Location = new System.Drawing.Point(951, -2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 35);
+            this.button1.TabIndex = 62;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Close);
+            // 
             // Graficador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(994, 506);
+            this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.LbIteracion);
             this.Controls.Add(this.LbError);
             this.Controls.Add(this.label2);
@@ -238,15 +260,11 @@ namespace GUI
             this.Controls.Add(this.grafica1);
             this.Controls.Add(this.BtnPausa);
             this.Controls.Add(this.BtnIniciar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "Graficador";
-            this.Opacity = 0.98D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Entrenamiento";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CloseWindow);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveWindow);
             ((System.ComponentModel.ISupportInitialize)(this.grafica1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grafica2)).EndInit();
@@ -267,5 +285,6 @@ namespace GUI
         private System.Windows.Forms.Label LbIteracion;
         private System.Windows.Forms.Button BtnPausa;
         private System.Windows.Forms.Button BtnIniciar;
+        private System.Windows.Forms.Button button1;
     }
 }

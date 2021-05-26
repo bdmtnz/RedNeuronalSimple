@@ -84,7 +84,7 @@ namespace GUI
                 {
                     //VALIDAR SI SE DEBE LIMPIAR LAS GRAFICAS
                     //if(grafica1.Series["ErrorIT"].Points.Count > 500)
-                    if(Plataforma.Red.Entrenamientos > 250)
+                    if(Plataforma.Red.Entrenamientos % 250 == 0)
                     {
                         grafica1.Series["ErrorIT"].Points.Clear();
                         var Salidas = Red.Capas[Red.Capas.Count - 1].Neuronas.Count;
@@ -137,11 +137,10 @@ namespace GUI
             Padre.Entrenar(Plataforma.Red);
         }
 
-        private void CloseWindow(object sender, FormClosingEventArgs e)
+        private void Close(object sender, EventArgs e)
         {
-            Watcher.Changed += null;
             Plataforma.Continuar = false;
-            Dispose(true);
+            Hide();
         }
     }
 }

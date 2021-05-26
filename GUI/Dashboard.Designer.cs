@@ -127,7 +127,7 @@
             this.BtnReiniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnReiniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnReiniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnReiniciar.Location = new System.Drawing.Point(581, 60);
+            this.BtnReiniciar.Location = new System.Drawing.Point(586, 60);
             this.BtnReiniciar.Name = "BtnReiniciar";
             this.BtnReiniciar.Size = new System.Drawing.Size(85, 35);
             this.BtnReiniciar.TabIndex = 10;
