@@ -46,7 +46,7 @@ namespace BLL
                     Plataforma.Red.Error = ErrorIteracion;
                     i++;
                     Plataforma.Red.Entrenamientos = i;
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(50);
                     RedRepo.PostXML(Plataforma.Red, null);
 
                     if(i % 100 == 0)

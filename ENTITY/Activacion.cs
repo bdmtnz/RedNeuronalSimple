@@ -34,6 +34,7 @@ namespace ENTITY
                 return 1 / (1 + Math.Pow(Math.E, -1 * SalidaSoma));
             else if (Funcion == FUNCIONES.TangenteHip)
             {
+                return 1 / (1 + Math.Pow(Math.E, -1 * SalidaSoma));
                 //return Math.Tanh(SalidaSoma);
                 var Numerador = Math.Pow(Math.E, SalidaSoma) - Math.Pow(Math.E, -1 * SalidaSoma);
                 var Denominador = Math.Pow(Math.E, SalidaSoma) + Math.Pow(Math.E, -1 * SalidaSoma);
@@ -41,6 +42,7 @@ namespace ENTITY
             }
             else if (Funcion == FUNCIONES.Gaussiana)
             {
+                return 1 / (1 + Math.Pow(Math.E, -1 * SalidaSoma));
                 //return Math.Tanh(SalidaSoma);
                 var Numerador = Math.Pow(Math.E, SalidaSoma) - Math.Pow(Math.E, -1 * SalidaSoma);
                 var Denominador = Math.Pow(Math.E, SalidaSoma) + Math.Pow(Math.E, -1 * SalidaSoma);

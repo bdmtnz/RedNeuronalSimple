@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using ENTITY;
-using BLL;
+using System.Drawing;
 
 namespace GUI
 {
@@ -18,6 +18,7 @@ namespace GUI
 
         private readonly Dashboard Padre;
         private FileSystemWatcher Watcher { get; set; }
+        private int Iteracion { get; set; }
 
         public Graficador(Red Red, Dashboard Padre)
         {
@@ -38,8 +39,37 @@ namespace GUI
             var i = 1;
             foreach (var item in Red.Capas[Red.Capas.Count - 1].Neuronas)
             {
+                //SERIES PARA LA GRÁFICA
                 grafica2.Series.Add("YR " + i);
                 grafica2.Series["YR " + i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+
+                //CONTROLES PARA LOS ERRORES
+                var Pn = new Panel();
+                Pn.Dock = DockStyle.Top;
+                Pn.Height = 50;
+                Pn.Padding = new Padding(6);
+
+                var TextName = new Label();
+                TextName.Name = "LbYR0" + i;
+                TextName.Text = "YR " + i + ":";
+                TextName.AutoSize = false;
+                TextName.Dock = DockStyle.Left;
+                TextName.Width = 68;
+                TextName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+                TextName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+                Pn.Controls.Add(TextName);
+
+                var TextError = new Label();
+                TextError.Name = "LbError0" + i;
+                TextError.Text = "#";
+                TextError.AutoSize = false;
+                TextError.Dock = DockStyle.Right;
+                TextError.Width = 194;
+                TextError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                TextError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+                Pn.Controls.Add(TextError);
+
+                PnErrores.Controls.Add(Pn);
                 i++;
             }
         }
@@ -82,27 +112,32 @@ namespace GUI
             {
                 Invoke(new Action(() =>
                 {
-                    //VALIDAR SI SE DEBE LIMPIAR LAS GRAFICAS
-                    //if(grafica1.Series["ErrorIT"].Points.Count > 500)
-                    if(Plataforma.Red.Entrenamientos % 250 == 0)
+                    if(Iteracion % 2 == 0)
                     {
-                        grafica1.Series["ErrorIT"].Points.Clear();
-                        var Salidas = Red.Capas[Red.Capas.Count - 1].Neuronas.Count;
-                        for (int i = 0; i < Salidas; i++)
+                        //VALIDAR SI SE DEBE LIMPIAR LAS GRAFICAS
+                        //if (grafica1.Series["ErrorIT"].Points.Count >= 1000)
+                        //if(Plataforma.Red.Entrenamientos % 1000 == 0)
+                        if (Plataforma.Red.Entrenamientos >= 400)
                         {
-                            grafica2.Series["YR " + (i+1)].Points.Clear();
+                            grafica1.Series["ErrorIT"].Points.RemoveAt(0);
+                            var Salidas = Red.Capas[Red.Capas.Count - 1].Neuronas.Count;
+                            for (int i = 0; i < Salidas; i++)
+                            {
+                                grafica2.Series["YR " + (i + 1)].Points.RemoveAt(0);
+                            }
                         }
-                    }
 
-                    //GRAFICAR
-                    grafica1.Series["ErrorIT"].Points.Add(Plataforma.Red.Error);
-                    var j = 1;
-                    foreach (var item in Red.Capas[Red.Capas.Count - 1].Neuronas)
-                    {
-                        grafica2.Series["YR " + j].Points.Add(item.Error);
-                        j++;
+                        //GRAFICAR
+                        var j = 1;
+                        foreach (var item in Red.Capas[Red.Capas.Count - 1].Neuronas)
+                        {
+                            grafica2.Series["YR " + j].Points.Add(item.Error);
+                            j++;
+                        }
+                        grafica1.Series["ErrorIT"].Points.Add(Plataforma.Red.Error);
+                        CargarDatos();
                     }
-                    CargarDatos();
+                    Iteracion++;
                 }));
             }
         }
@@ -113,6 +148,21 @@ namespace GUI
             //LbUmbral.Text = Plataforma.Red.Umbral.Valor.ToString();
             LbError.Text = Plataforma.Red.Error.ToString();
             //LbWs.Text = Plataforma.W;
+
+            //ERRORES POR SALIDA
+            var i = 0;
+            foreach (Control item in PnErrores.Controls)
+            {
+                item.Controls[1].Text = Plataforma.Red.Capas[Plataforma.Red.Capas.Count - 1].Neuronas[i].Error.ToString();
+                i++;
+            }
+
+            //ENTRENADO
+            if(Plataforma.Red.ErrorMaxPermitido >= Plataforma.Red.Error)
+            {
+                LbEntrenado.Text = "Sí";
+                LbEntrenado.ForeColor = Color.Green;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

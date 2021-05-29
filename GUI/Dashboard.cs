@@ -24,6 +24,7 @@ namespace GUI
         private Generalizador FrmSimulador { get; set; }
         private Graficador Graficador { get; set; }
         public ToolTip ToolTips { get; set; }
+        public bool Quemado { get; set; }
 
         public Dashboard()
         {
@@ -49,7 +50,10 @@ namespace GUI
             SFD.Filter = "Archivo XML (*.XML)|*.XML";
 
             //CONFIG LINK
-            
+            linkLabel1.Links.Add(0, linkLabel1.Text.Length, "https://github.com/bdmtnz");
+            linkLabel2.Links.Add(0, linkLabel2.Text.Length, "https://sites.google.com/a/unicesar.edu.co/tonnyjimenezm/");
+            linkLabel3.Links.Add(0, linkLabel1.Text.Length, "https://github.com/GersonMoreno");
+
             var Rd = _Neurona.GetXML(null);
             if (Rd != null)
                 Red = Plataforma.Red = Rd;
@@ -67,7 +71,16 @@ namespace GUI
         }
 
         private void ShowInfo(Red N)
-        {           
+        {
+            //STATUS BAR
+            LbEntradas.Text = N.Entradas.ToString();
+            LbPatrones.Text = N.Patrones.Count.ToString();
+            LbSalidas.Text = N.Capas[N.Capas.Count - 1].Neuronas.Count.ToString();
+            LbEntrenado.Text = N.Entrenamientos.ToString();
+            LbPeso.Text = N.Capas.Count.ToString() + " M";
+            LbUmbral.Text = N.Capas.Count.ToString() + " V";
+
+            //LATERAL BAR
             NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
             NbRata.Value = (decimal)N.Rata;
@@ -108,16 +121,6 @@ namespace GUI
             Embebed.Tag = true;
             ventana.Dock = DockStyle.Fill;
             ventana.Show();
-        }
-
-        private void Close(object sender, EventArgs e)
-        {
-            Dispose();
-        }
-
-        private void Minimize(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
         }
 
         private void CargarCapas()
@@ -171,20 +174,45 @@ namespace GUI
                 MessageBox.Show("Por favor ingrese un número de iteraciones valido");
                 return;
             }
-            if (Plataforma.Continuar)
+            
+            if(Red.Iteraciones == Red.Entrenamientos || Quemado)
+            {
+                var Rta = MessageBox.Show("¿Desea seguir con los pesos anteriormente calculados?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (Rta == DialogResult.Yes)
+                {
+                    Red.Entrenamientos = 0;
+                    Graficador = new Graficador(Red, this);
+                }
+                else
+                {
+                    Graficador = new Graficador(Red, this);
+                    CargarCapas();
+                }
+            }
+            else if (Plataforma.Continuar)
             {
                 Graficador = new Graficador(Red, this);
                 CargarCapas();
             }
             else
             {
+                //SI ESTÁ ABIERTA LA VENTANA
+                Console.WriteLine(Embebed.Controls[0].GetType().ToString());
+                if (Embebed.Controls[0].GetType().ToString().Equals("GUI.Graficador"))
+                {
+                    //PROSEGUIR SIN REINSTANCIAR
+                    Entrenar(Red);
+                    return;
+                }
+
                 Graficador = new Graficador(Red, this);
             }
+
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
-            Graficador.ShowDialog();
-            //Abrir(Graficador);
+            //Graficador.ShowDialog();
+            Abrir(Graficador);
         }
 
         public void Entrenar(Red Red)
@@ -192,22 +220,25 @@ namespace GUI
             this.Red = Red;
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
-            Graficador = new Graficador(Red, this);
+            //Graficador = new Graficador(Red, this);
             RunTask();
             //Graficador.ShowDialog();
-            //Abrir(Graficador);
+            Abrir(Graficador);
         }
 
         private async void RunTask()
-        {           
+        {
+            PbCarga.Visible = true;
             Plataforma.Continuar = true;
             Plataforma.Red = Red;
+
             var T = new Task(_Neurona.Iterar);
             T.Start();
             await T;
             Red = Plataforma.Red;
             ShowInfo(Red);
-            
+
+            PbCarga.Visible = false;
             BtnPausa.Visible = false;
             BtnIniciar.Visible = true;
         }
@@ -226,8 +257,8 @@ namespace GUI
             else
             {
                 var Generalizar = new Generalizador(Red, _Neurona);
-                Generalizar.ShowDialog();
-                //Abrir(new Generalizador(Red, _Neurona));
+                //Generalizar.ShowDialog();
+                Abrir(new Generalizador(Red, _Neurona));
             }
             //FrmSimulador = new Generalizador(Red, _Neurona);
         }
@@ -264,7 +295,7 @@ namespace GUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SFD.FileName = $"COPIA.XML";
+            SFD.FileName = $"DATA.XML";
             if (SFD.ShowDialog() == DialogResult.OK)
             {
                 _Neurona.PostXML(Red, SFD.FileName);
@@ -282,6 +313,14 @@ namespace GUI
 
         private void ItChange(object sender, EventArgs e)
         {
+            if (Red.Iteraciones == Red.Entrenamientos)
+            {
+                Red.Iteraciones = (int)NbIteracion.Value;
+                //Red.Entrenamientos = 0;
+                Plataforma.Red = Red;
+                Quemado = true;
+                return;
+            }
             Red.Iteraciones = (int)NbIteracion.Value;
             Plataforma.Red = Red;
         }
@@ -302,6 +341,7 @@ namespace GUI
         {
             Plataforma.Red = Red;
             Plataforma.Red.ReiniciarRed();
+            Abrir(new Home(Red));
             ShowInfo(Red);
         }
 
@@ -309,7 +349,13 @@ namespace GUI
         {
             ProcessStartInfo PInfo = new ProcessStartInfo(e.Link.LinkData.ToString());
             Process.Start(PInfo);
+        }
 
+        private void Home(object sender, EventArgs e)
+        {
+            Red = Plataforma.Red;
+            Abrir(new Home(Red));
+            ShowInfo(Red);
         }
     }
 }
