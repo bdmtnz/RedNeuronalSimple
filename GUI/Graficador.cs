@@ -170,23 +170,6 @@ namespace GUI
             Dispose();
         }
 
-        private void BtnPausa_Click(object sender, EventArgs e)
-        {
-            BtnPausa.Visible = false;
-            BtnIniciar.Visible = true;
-            Plataforma.Continuar = false;
-            CargarDatos();
-        }
-
-        private void BtnIniciar_Click(object sender, EventArgs e)
-        {
-            BtnPausa.Visible = true;
-            BtnIniciar.Visible = false;
-            //Plataforma.Continuar = true;
-            CargarDatos();
-            Padre.Entrenar(Plataforma.Red);
-        }
-
         private void Close(object sender, EventArgs e)
         {
             Plataforma.Continuar = false;

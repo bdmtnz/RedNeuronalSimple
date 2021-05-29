@@ -215,7 +215,7 @@ namespace GUI
             Abrir(Graficador);
         }
 
-        public void Entrenar(Red Red)
+        private void Entrenar(Red Red)
         {
             this.Red = Red;
             BtnIniciar.Visible = false;
