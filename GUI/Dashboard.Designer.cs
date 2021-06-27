@@ -78,6 +78,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbCarga)).BeginInit();
             this.panel3.SuspendLayout();
@@ -91,6 +92,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.PbCarga);
             this.panel1.Controls.Add(this.BtnSimulation);
             this.panel1.Controls.Add(this.BtnSave);
@@ -237,7 +239,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.Control;
-            this.linkLabel1.Location = new System.Drawing.Point(163, 47);
+            this.linkLabel1.Location = new System.Drawing.Point(162, 47);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(104, 16);
             this.linkLabel1.TabIndex = 15;
@@ -736,6 +738,17 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Entradas: ";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.label15.Location = new System.Drawing.Point(654, 14);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(90, 31);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Admin";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -822,6 +835,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label15;
     }
 }
 

@@ -15,7 +15,7 @@ namespace GUI
 {
     public partial class Generalizador : Form
     {
-        private readonly Red Red;
+        private Red Red { get; set; }
 
         private readonly RedService _Neurona;
 
@@ -35,6 +35,7 @@ namespace GUI
             _Neurona = Neurona;
             this.Red = Red;
             InitializeComponent();
+            label3.Visible = false;
         }
 
         private void CrearColumnas(List<Patron> Patrones)
@@ -138,6 +139,38 @@ namespace GUI
         private void Generalizador_FormClosing(object sender, FormClosingEventArgs e)
         {
             Padre.Show();
+        }
+
+        private void BtnOpen_Click(object sender, EventArgs e)
+        {
+            var Result = OFD.ShowDialog();
+            if (Result == DialogResult.OK)
+            {
+                try
+                {
+                    if (File.Exists(OFD.FileName))
+                    {
+                        var Rd = _Neurona.GetXML(OFD.FileName);
+                        if (Rd != null)
+                            Red = Plataforma.Red = Rd;
+                        else
+                            MessageBox.Show("El dataset está corrupto o está mal configurado");
+                        ShowInfo(Red);
+                        _Neurona.PostXML(Red, null);
+                        MessageBox.Show("Se ha cargado la configuración de la red");
+                        //Abrir(new Home(Red));
+                    }
+                    else
+                        MessageBox.Show("Se ha eliminado o movido el archivo");
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show("Error al abrir el archivo => " + er.Message, "Proceso fallido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if (Result == DialogResult.Cancel)
+            {
+            }
         }
     }
 }

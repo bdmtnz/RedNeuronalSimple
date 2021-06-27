@@ -40,6 +40,8 @@ namespace GUI
             this.label1 = new System.Windows.Forms.Label();
             this.LbPatrones = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.BtnOpen = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,11 +155,43 @@ namespace GUI
             this.label2.TabIndex = 37;
             this.label2.Text = "Patrones cargados: ";
             // 
+            // BtnOpen
+            // 
+            this.BtnOpen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnOpen.BackgroundImage")));
+            this.BtnOpen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnOpen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnOpen.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.BtnOpen.FlatAppearance.BorderSize = 0;
+            this.BtnOpen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnOpen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(144)))), ((int)(((byte)(166)))));
+            this.BtnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.BtnOpen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtnOpen.Location = new System.Drawing.Point(632, 106);
+            this.BtnOpen.Name = "BtnOpen";
+            this.BtnOpen.Size = new System.Drawing.Size(30, 30);
+            this.BtnOpen.TabIndex = 39;
+            this.BtnOpen.UseVisualStyleBackColor = true;
+            this.BtnOpen.Click += new System.EventHandler(this.BtnOpen_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.label3.Location = new System.Drawing.Point(628, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 24);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "Normal";
+            // 
             // Generalizador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.ClientSize = new System.Drawing.Size(777, 420);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.BtnOpen);
             this.Controls.Add(this.LbPatrones);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.LbPath);
@@ -194,5 +228,7 @@ namespace GUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LbPatrones;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BtnOpen;
+        private System.Windows.Forms.Label label3;
     }
 }
