@@ -49,7 +49,7 @@ namespace BLL
                     System.Threading.Thread.Sleep(50);
                     RedRepo.PostXML(Plataforma.Red, null);
 
-                    if(i % 100 == 0)
+                    /*if(i % 100 == 0)
                     {
                         //VERIFICAMOS UN CRECIMIENTO DEL ERROR O ESTABILIZACIÓN
                         if (ErrorIteracion >= Error)
@@ -60,7 +60,7 @@ namespace BLL
                         }
                         else
                             Error = ErrorIteracion;
-                    }
+                    }*/
 
                    if (Plataforma.Red.ErrorMaxPermitido >= ErrorIteracion) break;
                 }

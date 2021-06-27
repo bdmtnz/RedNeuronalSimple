@@ -19,6 +19,17 @@ namespace GUI
 
         private readonly RedService _Neurona;
 
+        private readonly Login Padre;
+
+        public Generalizador(Login padre)
+        {
+            Padre = padre;
+            _Neurona = new RedService();
+            this.Red = _Neurona.GetXML(null);
+            InitializeComponent();
+            FormBorderStyle = FormBorderStyle.Sizable;
+        }
+
         public Generalizador(Red Red, RedService Neurona)
         {
             _Neurona = Neurona;
@@ -124,5 +135,9 @@ namespace GUI
             //LbUmbral.Text = "" + Plataforma.Red.Capas.Count;
         }
 
+        private void Generalizador_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Padre.Show();
+        }
     }
 }

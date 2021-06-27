@@ -75,3 +75,4 @@ C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.csproj.Co
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.exe
 C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.pdb
+C:\Users\bdmtnz\Documents\DesktopProjects\IA\Neurona\GUI\obj\Debug\GUI.Login.resources

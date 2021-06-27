@@ -1,17 +1,13 @@
-﻿using System;
+﻿using BLL;
+using ENTITY;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using System.Diagnostics;
-
-using ENTITY;
-using BLL;
 
 namespace GUI
 {
@@ -26,8 +22,11 @@ namespace GUI
         public ToolTip ToolTips { get; set; }
         public bool Quemado { get; set; }
 
-        public Dashboard()
+        public readonly Login Padre;
+
+        public Dashboard(Login padre)
         {
+            Padre = padre;
             _Neurona = new RedService();
             ToolTips = new ToolTip();
             Red = new Red();
@@ -84,7 +83,7 @@ namespace GUI
             NbErrorMax.Value = (decimal)N.ErrorMaxPermitido;
             NbIteracion.Value = N.Iteraciones;
             NbRata.Value = (decimal)N.Rata;
-          
+
             TbNeuronas.Text = "";
             foreach (var item in N.Capas)
             {
@@ -174,8 +173,8 @@ namespace GUI
                 MessageBox.Show("Por favor ingrese un número de iteraciones valido");
                 return;
             }
-            
-            if(Red.Iteraciones == Red.Entrenamientos || Quemado)
+
+            if (Red.Iteraciones == Red.Entrenamientos || Quemado)
             {
                 var Rta = MessageBox.Show("¿Desea seguir con los pesos anteriormente calculados?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (Rta == DialogResult.Yes)
@@ -245,7 +244,7 @@ namespace GUI
 
         private void Simular(object sender, EventArgs e)
         {
-            if(Red.Patrones.Count <= 0)
+            if (Red.Patrones.Count <= 0)
             {
                 MessageBox.Show("Esta red está vacia, llenela y entrenela");
                 return;
@@ -272,7 +271,7 @@ namespace GUI
                 {
                     if (File.Exists(OFD.FileName))
                     {
-                        var Rd =  _Neurona.GetXML(OFD.FileName);
+                        var Rd = _Neurona.GetXML(OFD.FileName);
                         if (Rd != null)
                             Red = Plataforma.Red = Rd;
                         else
@@ -308,7 +307,7 @@ namespace GUI
             BtnIniciar.Visible = true;
             Red = Plataforma.Red;
             Plataforma.Continuar = false;
-            ShowInfo(Red);            
+            ShowInfo(Red);
         }
 
         private void ItChange(object sender, EventArgs e)
@@ -356,6 +355,11 @@ namespace GUI
             Red = Plataforma.Red;
             Abrir(new Home(Red));
             ShowInfo(Red);
+        }
+
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Padre.Show();
         }
     }
 }
