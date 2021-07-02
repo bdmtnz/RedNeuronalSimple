@@ -21,6 +21,7 @@ namespace GUI
 
         private readonly Login Padre;
 
+
         public Generalizador(Login padre)
         {
             Padre = padre;
@@ -28,6 +29,7 @@ namespace GUI
             this.Red = _Neurona.GetXML(null);
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.Sizable;
+            comboBox1.SelectedIndex = 0;
         }
 
         public Generalizador(Red Red, RedService Neurona)
@@ -36,6 +38,7 @@ namespace GUI
             this.Red = Red;
             InitializeComponent();
             label3.Visible = false;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void CrearColumnas(List<Patron> Patrones)
@@ -50,6 +53,7 @@ namespace GUI
                     Columna.HeaderText = "E" + i;
                     Columna.Name = Columna.HeaderText;
                     dataGridView1.Columns.Add(Columna);
+                    dataGridView1.Columns[i - 1].Width = 40;
                     i++;
                 }
                 for (int s = 0; s < Red.Capas[Red.Capas.Count - 1].Neuronas.Count; s++)
@@ -74,7 +78,9 @@ namespace GUI
 
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
-            ShowInfo(Red);
+            ShowInfo(Red); 
+            LbRiesgo.Text = "Sin riesgo";
+            LbRiesgo.ForeColor = Color.Green;
             var Result = OFD.ShowDialog();
             if (Result == DialogResult.OK)
             {
@@ -94,6 +100,8 @@ namespace GUI
                             LbPatrones.Text = "" + Ps.Count();
                             CrearColumnas(Ps);
                             var Row = new List<string>();
+                            var Indice = 0;
+                            var Atacado = 0;
                             foreach (var item in Ps)
                             {
                                 Row.Clear();
@@ -102,11 +110,34 @@ namespace GUI
                                     Row.Add(it2.ToString());
                                 }
                                 var Yrs = Red.Generalizar(item);
+                                var Rojo = false;
                                 Yrs.ForEach(x =>
                                 {
-                                    Row.Add(x.ToString());
+                                    if (Padre != null)
+                                        Row.Add(Math.Abs(Math.Round((x + .1)*100,2)).ToString()+" %");
+                                    else
+                                        Row.Add((x + .1).ToString());
+
+                                    if(comboBox1.SelectedIndex == 0)
+                                        Rojo = (x + .1) > .7 ? true : Rojo;
+                                    if (comboBox1.SelectedIndex == 1)
+                                        Rojo = (x + .1) > .5 ? true : Rojo;
                                 });
                                 dataGridView1.Rows.Add(Row.ToArray());
+                                if (Rojo)
+                                {
+                                    var CeldaRoja = new DataGridViewCellStyle();
+                                    CeldaRoja.ForeColor = Color.Red;
+                                    dataGridView1.Rows[Indice].DefaultCellStyle = CeldaRoja;
+                                    ++Atacado;
+                                }
+                                ++Indice;
+                            }
+                            //Validamos el ataque
+                            if(Atacado > (Ps.Count * .30))
+                            {
+                                LbRiesgo.Text = "Se encuentra bajo ataque";
+                                LbRiesgo.ForeColor = Color.Red;
                             }
                         }
                         else

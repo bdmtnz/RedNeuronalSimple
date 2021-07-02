@@ -42,6 +42,9 @@ namespace GUI
             this.label2 = new System.Windows.Forms.Label();
             this.BtnOpen = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.LbRiesgo = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,11 +188,47 @@ namespace GUI
             this.label3.TabIndex = 40;
             this.label3.Text = "Normal";
             // 
+            // LbRiesgo
+            // 
+            this.LbRiesgo.AutoSize = true;
+            this.LbRiesgo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.LbRiesgo.ForeColor = System.Drawing.Color.Green;
+            this.LbRiesgo.Location = new System.Drawing.Point(190, 21);
+            this.LbRiesgo.Name = "LbRiesgo";
+            this.LbRiesgo.Size = new System.Drawing.Size(94, 24);
+            this.LbRiesgo.TabIndex = 41;
+            this.LbRiesgo.Text = "Sin riesgo";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Flexible",
+            "Estricto"});
+            this.comboBox1.Location = new System.Drawing.Point(387, 115);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 42;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(309, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 17);
+            this.label4.TabIndex = 43;
+            this.label4.Text = "Detección: ";
+            // 
             // Generalizador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.ClientSize = new System.Drawing.Size(777, 420);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.LbRiesgo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.BtnOpen);
             this.Controls.Add(this.LbPatrones);
@@ -230,5 +269,8 @@ namespace GUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BtnOpen;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LbRiesgo;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
